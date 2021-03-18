@@ -1,7 +1,5 @@
 package org.ifinal.finalframework.annotation.core;
 
-import org.springframework.lang.Nullable;
-
 import java.io.Serializable;
 
 /**
@@ -18,7 +16,6 @@ public interface IUser<I extends Serializable> extends IEntity<I> {
      *
      * @return user name.
      */
-    @Nullable
     String getName();
 
     /**
@@ -26,6 +23,6 @@ public interface IUser<I extends Serializable> extends IEntity<I> {
      *
      * @param name user name.
      */
-    void setName(@Nullable String name);
+    void setName(String name);
 
 }

@@ -1,6 +1,5 @@
 package org.ifinal.finalframework.annotation.core.jackson.deserializer;
 
-import org.springframework.lang.Nullable;
 
 import org.ifinal.auto.service.annotation.AutoService;
 import org.ifinal.finalframework.annotation.core.IEnum;
@@ -63,7 +62,6 @@ public class IEnumDeserializers extends SimpleDeserializers {
         }
 
         @Override
-        @Nullable
         public T deserialize(final JsonParser p, final DeserializationContext context) throws IOException {
             return cache.get(p.getValueAsString());
         }

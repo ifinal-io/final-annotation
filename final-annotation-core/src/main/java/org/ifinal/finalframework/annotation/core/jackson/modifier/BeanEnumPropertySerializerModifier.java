@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
@@ -62,10 +61,6 @@ public class BeanEnumPropertySerializerModifier extends AbsSimpleBeanPropertySer
         final BeanDescription beanDesc, final JsonSerializer<?> serializer) {
 
         if (IEnum.class.isAssignableFrom(valueType.getRawClass())) {
-            final JsonFormat jsonFormat = beanDesc.getClassAnnotations().get(JsonFormat.class);
-            if (jsonFormat != null && JsonFormat.Shape.OBJECT == jsonFormat.shape()) {
-                return EnumSerializer.instance;
-            }
             return EnumCodeSerializer.instance;
         }
         return super.modifyEnumSerializer(config, valueType, beanDesc, serializer);
@@ -165,45 +160,6 @@ public class BeanEnumPropertySerializerModifier extends AbsSimpleBeanPropertySer
             throws IOException {
 
             gen.writeString(value.name());
-        }
-
-    }
-
-    /**
-     * 枚举{@link IEnum}对象序列化器，将枚举序列化成一个Json对象。
-     *
-     * <pre>
-     *     <code>
-     *         {
-     *             "name" : "NAME",
-     *             "code" : 1,
-     *             "description" : "名称",
-     *         }
-     *     </code>
-     * </pre>
-     *
-     * @author likly
-     * @version 1.0.0
-     * @since 1.0.0
-     */
-    private static class EnumSerializer extends JsonSerializer<IEnum<?>> {
-
-        public static final EnumSerializer instance = new EnumSerializer();
-
-        @Override
-        public void serialize(final IEnum<?> value, final JsonGenerator gen, final SerializerProvider serializers)
-            throws IOException {
-
-            gen.writeStartObject();
-            gen.writeFieldName("code");
-            gen.writeObject(value.getCode());
-            if (value instanceof Enum) {
-                gen.writeFieldName("name");
-                gen.writeObject(((Enum<?>) value).name());
-            }
-            gen.writeFieldName("desc");
-            gen.writeObject(value.getDesc());
-            gen.writeEndObject();
         }
 
     }

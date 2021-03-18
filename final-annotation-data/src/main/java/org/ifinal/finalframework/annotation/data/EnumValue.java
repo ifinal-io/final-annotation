@@ -1,14 +1,15 @@
 package org.ifinal.finalframework.annotation.data;
 
+import org.ifinal.finalframework.annotation.core.IEnum;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.ifinal.finalframework.annotation.core.IEnum;
 
 /**
- * Annotate the bean {@linkplain java.lang.reflect.Field property} is a {@link Enum} which will be serialized some ext
- * property in json, such as {@literal xxxName} and {@literal xxxDesc}.
+ * Annotate the bean {@linkplain java.lang.reflect.Field property} is a {@link Enum} which will be serialized some ext property in json,
+ * such as {@literal xxxName} and {@literal xxxDesc}.
  *
  * @author likly
  * @version 1.0.0
@@ -31,7 +32,6 @@ public @interface EnumValue {
      * return the static {@linkplain java.lang.reflect.Method creator} name of target {@link Enum}.
      *
      * @return the static creator method name.
-     * @see com.fasterxml.jackson.annotation.JsonCreator
      */
     String creator() default "valueOf";
 

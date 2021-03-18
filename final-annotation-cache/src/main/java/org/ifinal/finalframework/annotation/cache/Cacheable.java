@@ -1,5 +1,7 @@
 package org.ifinal.finalframework.annotation.cache;
 
+import org.springframework.core.annotation.AliasFor;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +9,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
-import org.springframework.core.annotation.AliasFor;
 
 /**
  * 缓存，为目标方法增加缓存能力。
@@ -17,6 +18,33 @@ import org.springframework.core.annotation.AliasFor;
  * <li>在执行之后，将方法的执行结果写到 {@link #key()} 和 {@link #field()} 所描述的缓存区域里，
  * {@link Cache#set(Object, Object, Object, Long, TimeUnit, Class)}。</li>
  * </ol>
+ *
+ * <h3>Usage:</h3>
+ * <p>Normal, use cache like this: </p>
+ * <pre class="code">
+ *      public User findUserById(Long id){
+ *          User user = Cache.get(id,null);
+ *          if(Objects.nonNull(user)){
+ *              return user;
+ *          }
+ *
+ *          user = doFindUserById(id);
+ *
+ *          if(Objects.nonNull(user)){
+ *              Cache.set(id,null,user);
+ *          }
+ *
+ *          return user;
+ *      }
+ * </pre>
+ *
+ * <p>Now, use cache with @Cacheable like this:</p>
+ * <pre class="code">
+ *     &#64;Cacheable(key="#{#id}")
+ *     public User findUserById(Long id){
+ *         ...
+ *     }
+ * </pre>
  *
  * @author likly
  * @version 1.0.0
