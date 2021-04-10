@@ -1,4 +1,4 @@
-package org.ifinal.finalframework.query.annotation;
+package org.ifinal.finalframework.query;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;

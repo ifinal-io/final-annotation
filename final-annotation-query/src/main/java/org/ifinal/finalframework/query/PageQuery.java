@@ -1,9 +1,12 @@
-package org.ifinal.finalframework.query.annotation;
+package org.ifinal.finalframework.query;
 
 import org.ifinal.finalframework.annotation.core.Pageable;
 import org.ifinal.finalframework.annotation.core.lang.Transient;
+import org.ifinal.finalframework.query.annotation.Page;
+import org.ifinal.finalframework.query.annotation.Size;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +21,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Transient
-public class PageQuery implements Pageable, Serializable {
+public class PageQuery implements Pageable, Groupable, Orderable, Limitable, Serializable {
 
     private static final long serialVersionUID = 4813020012879522797L;
 
@@ -48,5 +51,13 @@ public class PageQuery implements Pageable, Serializable {
      * 是否启用Count统计
      */
     private Boolean count = Boolean.TRUE;
+
+    private List<String> groups;
+
+    private List<String> orders;
+
+    private Long offset;
+
+    private Long limit;
 
 }

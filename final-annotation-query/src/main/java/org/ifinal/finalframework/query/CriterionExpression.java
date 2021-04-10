@@ -145,4 +145,34 @@ public final class CriterionExpression {
         "!JSON_CONTAINS( ${column},", FRAGMENT_VALUE,
         "       #if($path), '${path}'#end )");
 
+    // UPDATE
+
+    private static String update(String test, String... fragments) {
+        if (Objects.isNull(test)) {
+            return CDATA_OPEN + String.join(DELIMITER, fragments) + "," + CDATA_CLOSE;
+        }
+
+        return "<if test=\"" + test + "\">"
+            + CDATA_OPEN + String.join(DELIMITER, fragments) + "," + CDATA_CLOSE
+            + "</if>";
+    }
+
+    /**
+     * {@code column = #{value,javaType=,typeHandler=}}
+     */
+    public static final String UPDATE_SET = update(TEST_VALUE_NOT_NULL,
+        "${column} = ", FRAGMENT_VALUE);
+
+    /**
+     * {@code column = column + #{value,javaType=,typeHandler=}}
+     */
+    public static final String UPDATE_INCR = update(TEST_VALUE_NOT_NULL,
+        "${column} = ${column} + ", FRAGMENT_VALUE);
+
+    /**
+     * {@code column = column - #{value,javaType=,typeHandler=}}
+     */
+    public static final String UPDATE_DECR = update(TEST_VALUE_NOT_NULL,
+        "${column} = ${column} - ", FRAGMENT_VALUE);
+
 }
