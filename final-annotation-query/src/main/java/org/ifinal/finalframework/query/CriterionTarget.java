@@ -21,7 +21,7 @@ public class CriterionTarget implements FunctionCriteriable<Object> {
     private final CriterionAttributes criterion;
 
     private CriterionTarget(final String column) {
-        this.column = column;
+        this.column = Objects.requireNonNull(column, "criterion column can not be null.");
         this.criterion = new CriterionAttributes();
     }
 

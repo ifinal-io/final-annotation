@@ -23,9 +23,9 @@ public final class BetweenValue<T> implements Serializable {
 
     private static final long serialVersionUID = 6194662646358531082L;
 
-    T min;
+    private T min;
 
-    T max;
+    private T max;
 
 }
 

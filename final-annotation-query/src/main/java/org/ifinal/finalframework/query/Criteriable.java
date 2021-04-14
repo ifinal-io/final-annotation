@@ -14,7 +14,7 @@ import org.ifinal.finalframework.query.condition.NullCondition;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface Criteriable<V> extends NullCondition, CompareCondition<V>, BetweenCondition<V>, InCondition<V>, LikeCondition
+public interface Criteriable<V> extends NullCondition, CompareCondition<V>, BetweenCondition<V>, InCondition, LikeCondition
     , JsonCondition<V> {
 
 }

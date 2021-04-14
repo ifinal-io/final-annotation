@@ -31,7 +31,7 @@ public class Criteria extends ArrayList<Criterion> implements Criterion {
     }
 
     public Criteria(final AndOr andOr, Collection<Criterion> criteria) {
-        this.andOr = Objects.requireNonNull(andOr,"Criteria andOr can n");
+        this.andOr = Objects.requireNonNull(andOr, "Criteria andOr can not be null.");
         this.addAll(criteria);
     }
 

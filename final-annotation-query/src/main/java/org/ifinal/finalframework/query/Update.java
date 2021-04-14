@@ -1,35 +1,83 @@
 package org.ifinal.finalframework.query;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 /**
- * Update.
+ * Update sql fragment in java.
+ *
+ * <h3>Usage</h3>
+ *
+ * <pre class="code">
+ *      Update update = Update.update();
+ *      // set column value
+ *      update.set(column,value);
+ *      // incr or decr column value
+ *      update.incr(column,number);
+ *      update.decr(column,number);
+ *      // custom update
+ *      update.update(expression,column,value,consumer);
+ * </pre>
+ *
+ * <h3>Support update sql fragments:</h3>
+ * <ul>
+ *     <li>set column with value like {@code column = #{value}},{@link #set(String, Object)}</li>
+ *     <li>set column with value like {@code column = column +/- #{value}},see {@link #incr(String, Number)} and {@link #decr(String, Number)}</li>
+ *     <li>set column with custom sql, see {@link #update(String, String, Object, Consumer)}</li>
+ * </ul>
  *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
  */
-public final class Update extends ArrayList<Criterion> {
+public final class Update extends LinkedList<Criterion> {
 
     public static Update update() {
         return new Update();
     }
 
+    public Update set(QProperty<?> property, Object value) {
+        return set(property.getColumn(), value);
+    }
+
+    /**
+     * Update {@code column} with {@code value} use sql like {@code column = #{value}}.
+     *
+     * @param column the column to update
+     * @param value  the update value
+     * @return update
+     * @see CriterionExpression#UPDATE_SET
+     */
     public Update set(String column, Object value) {
         return update(CriterionExpression.UPDATE_SET, column, value, null);
+    }
+
+    public Update inc(QProperty<?> property) {
+        return inc(property.getColumn());
     }
 
     public Update inc(String column) {
         return incr(column, 1);
     }
 
+    public Update incr(QProperty<?> property, Number value) {
+        return incr(property.getColumn(), value);
+    }
+
     public Update incr(String column, Number value) {
         return update(CriterionExpression.UPDATE_INCR, column, value, null);
     }
 
+    public Update dec(QProperty<?> property) {
+        return dec(property.getColumn());
+    }
+
     public Update dec(String column) {
         return decr(column, 1);
+    }
+
+    public Update decr(QProperty<?> property, Number value) {
+        return decr(property.getColumn(), value);
     }
 
     public Update decr(String column, Number value) {

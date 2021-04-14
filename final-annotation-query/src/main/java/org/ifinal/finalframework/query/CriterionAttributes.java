@@ -40,6 +40,10 @@ public class CriterionAttributes extends AnnotationAttributes implements Criteri
         return getString(ATTRIBUTE_NAME_COLUMN);
     }
 
+    public Object getValue() {
+        return get(ATTRIBUTE_NAME_VALUE);
+    }
+
     public Class<?> getJavaType() {
         return getClass(ATTRIBUTE_NAME_JAVA_TYPE);
     }

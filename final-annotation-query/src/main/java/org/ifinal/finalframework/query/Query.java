@@ -2,6 +2,7 @@ package org.ifinal.finalframework.query;
 
 import org.springframework.lang.NonNull;
 
+import org.ifinal.finalframework.core.annotation.IQuery;
 import org.ifinal.finalframework.core.annotation.Pageable;
 
 import java.util.Arrays;
@@ -13,6 +14,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
+ * Class can be used to build a {@linkplain IQuery query} instance from java.
+ *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0

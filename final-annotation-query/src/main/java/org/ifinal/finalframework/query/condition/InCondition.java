@@ -14,13 +14,13 @@ import java.util.Collection;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface InCondition<V> extends Condition {
+public interface InCondition extends Condition {
 
-    default Criterion in(@Nullable Collection<V> value) {
+    default Criterion in(@Nullable Collection<?> value) {
         return condition(CriterionExpression.IN, value);
     }
 
-    default Criterion nin(@Nullable Collection<V> value) {
+    default Criterion nin(@Nullable Collection<?> value) {
         return condition(CriterionExpression.NOT_IN, value);
     }
 
