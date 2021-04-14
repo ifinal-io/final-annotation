@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
@@ -14,6 +16,7 @@ import lombok.Getter;
  * @version 1.0.0
  * @since 1.0.0
  */
+@EqualsAndHashCode(callSuper = true)
 public class Criteria extends ArrayList<Criterion> implements Criterion {
 
     @Getter
@@ -28,7 +31,7 @@ public class Criteria extends ArrayList<Criterion> implements Criterion {
     }
 
     public Criteria(final AndOr andOr, Collection<Criterion> criteria) {
-        this.andOr = andOr;
+        this.andOr = Objects.requireNonNull(andOr,"Criteria andOr can n");
         this.addAll(criteria);
     }
 
