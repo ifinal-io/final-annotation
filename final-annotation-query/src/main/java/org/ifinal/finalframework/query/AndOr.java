@@ -1,6 +1,6 @@
 package org.ifinal.finalframework.query;
 
-import org.ifinal.finalframework.annotation.core.lang.Transient;
+import org.ifinal.finalframework.core.annotation.lang.Transient;
 
 /**
  * SQL 元素

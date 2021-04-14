@@ -2,7 +2,7 @@ package org.ifinal.finalframework.query;
 
 import org.springframework.lang.NonNull;
 
-import org.ifinal.finalframework.annotation.core.Pageable;
+import org.ifinal.finalframework.core.annotation.Pageable;
 
 import java.util.Arrays;
 import java.util.Collection;

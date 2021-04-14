@@ -1,7 +1,7 @@
 package org.ifinal.finalframework.query;
 
-import org.ifinal.finalframework.annotation.core.Pageable;
-import org.ifinal.finalframework.annotation.core.lang.Transient;
+import org.ifinal.finalframework.core.annotation.Pageable;
+import org.ifinal.finalframework.core.annotation.lang.Transient;
 import org.ifinal.finalframework.query.annotation.Page;
 import org.ifinal.finalframework.query.annotation.Size;
 
