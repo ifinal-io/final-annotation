@@ -8,6 +8,7 @@ import java.io.Serializable;
 /**
  * The interface of pagination info which query with {@link Pageable}.
  *
+ *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0

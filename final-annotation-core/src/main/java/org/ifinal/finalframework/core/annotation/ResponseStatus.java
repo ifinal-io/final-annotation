@@ -1,6 +1,4 @@
-package org.ifinal.finalframework.core.annotation.result;
-
-import org.ifinal.finalframework.core.annotation.IEnum;
+package org.ifinal.finalframework.core.annotation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

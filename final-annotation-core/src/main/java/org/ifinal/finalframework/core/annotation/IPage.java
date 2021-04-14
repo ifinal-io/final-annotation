@@ -8,6 +8,6 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface IPage<T extends Serializable> extends IData<List<T>>, IPagination {
+public interface IPage<T extends Serializable> extends IData<List<T>>, org.ifinal.finalframework.annotation.core.IPagination {
 
 }

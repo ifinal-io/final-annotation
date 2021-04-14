@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
  * The interface which a service {@link Exception} should be impl. The exception {@linkplain #getCode()} and {@linkplain
  * #getMessage()} should be injected into {@linkplain IResult result}.
  *
+ *
  * @author likly
  * @version 1.0.0
  * @see IResult

@@ -7,6 +7,7 @@ import java.io.Serializable;
 /**
  * A marker superinterface of a entity must be impls.
  *
+ *
  * @author likly
  * @version 1.0.0
  * @see IEnum

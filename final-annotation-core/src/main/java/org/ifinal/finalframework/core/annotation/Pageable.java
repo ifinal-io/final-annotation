@@ -7,6 +7,7 @@ import org.springframework.lang.Nullable;
  * {@linkplain #getSize()} are not null, and do count query only then the {@linkplain #getCount() count} is {@code
  * true}.
  *
+ *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0

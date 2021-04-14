@@ -14,6 +14,7 @@ import lombok.Setter;
  * The build-in base impl of {@linkplain IEntity entity} which have the common property. such as {@link #id}, {@link
  * #version},{@link #created},{@link #lastModified},{@link #yn}.
  *
+ *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
@@ -61,7 +62,7 @@ public class AbsEntity implements IEntity<Long> {
     @Default
     @Column
     @View(IView.class)
-    private YN yn;
+    private org.ifinal.finalframework.annotation.data.YN yn;
 
 }
 

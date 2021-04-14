@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ *
  * Annotate the {@linkplain java.lang.reflect.Field property} is {@literal final} which would not be updated.
  *
  * @author likly

@@ -4,6 +4,7 @@ import org.ifinal.finalframework.core.annotation.IData;
 import org.ifinal.finalframework.core.annotation.IException;
 import org.ifinal.finalframework.core.annotation.IResult;
 import org.ifinal.finalframework.core.annotation.IUser;
+import org.ifinal.finalframework.core.annotation.ResponseStatus;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -15,6 +16,7 @@ import lombok.Setter;
 
 /**
  * 业务数据返回结果封装，统一业务返回的数据结构。
+ *
  *
  * @author likly
  * @version 1.0.0
