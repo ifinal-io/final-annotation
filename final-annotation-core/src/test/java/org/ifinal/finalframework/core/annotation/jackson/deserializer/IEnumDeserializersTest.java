@@ -1,4 +1,4 @@
-package org.ifinal.finalframework.core.jackson.deserializer;
+package org.ifinal.finalframework.core.annotation.jackson.deserializer;
 
 import org.ifinal.finalframework.core.annotation.IEnum;
 import org.ifinal.finalframework.json.Json;
@@ -52,7 +52,7 @@ class IEnumDeserializersTest {
     void findEnumDeserializer() {
 
         Assertions.assertDoesNotThrow(() -> {
-            org.ifinal.finalframework.core.jackson.deserializer.IEnumDeserializers deserializers = new org.ifinal.finalframework.core.jackson.deserializer.IEnumDeserializers();
+            IEnumDeserializers deserializers = new IEnumDeserializers();
 
             JsonDeserializer<?> deserializer = deserializers.findEnumDeserializer(YN.class, null, null);
 

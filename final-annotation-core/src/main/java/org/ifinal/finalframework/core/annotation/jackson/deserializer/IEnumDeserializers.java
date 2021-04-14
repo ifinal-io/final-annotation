@@ -1,4 +1,4 @@
-package org.ifinal.finalframework.core.jackson.deserializer;
+package org.ifinal.finalframework.core.annotation.jackson.deserializer;
 
 import org.ifinal.auto.service.annotation.AutoService;
 import org.ifinal.finalframework.core.annotation.IEnum;

@@ -46,7 +46,6 @@ import org.springframework.lang.Nullable;
  *
  * @author likly
  * @version 1.0.0
- * @see Result
  * @since 1.0.0
  */
 public interface IResult<T> extends IData<T> {

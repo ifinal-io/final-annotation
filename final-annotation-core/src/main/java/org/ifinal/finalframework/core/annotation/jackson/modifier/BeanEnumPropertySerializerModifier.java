@@ -1,4 +1,4 @@
-package org.ifinal.finalframework.core.jackson.modifier;
+package org.ifinal.finalframework.core.annotation.jackson.modifier;
 
 import org.ifinal.auto.service.annotation.AutoService;
 import org.ifinal.finalframework.core.annotation.IEnum;

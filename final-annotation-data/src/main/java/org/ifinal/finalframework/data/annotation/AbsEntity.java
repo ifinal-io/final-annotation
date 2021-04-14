@@ -62,7 +62,7 @@ public class AbsEntity implements IEntity<Long> {
     @Default
     @Column
     @View(IView.class)
-    private org.ifinal.finalframework.annotation.data.YN yn;
+    private YN yn;
 
 }
 

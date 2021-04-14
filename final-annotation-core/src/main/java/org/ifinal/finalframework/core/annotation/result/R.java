@@ -18,33 +18,33 @@ public final class R {
     private R() {
     }
 
-    public static <T> org.ifinal.finalframework.annotation.core.result.Result<T> success() {
+    public static <T> Result<T> success() {
         return success(null);
     }
 
-    public static <T> org.ifinal.finalframework.annotation.core.result.Result<T> success(final T data) {
+    public static <T> Result<T> success(final T data) {
 
-        return new org.ifinal.finalframework.annotation.core.result.Result<>(SUCCESS_CODE, SUCCESS_MESSAGE, data);
+        return new Result<>(SUCCESS_CODE, SUCCESS_MESSAGE, data);
     }
 
-    public static <T> org.ifinal.finalframework.annotation.core.result.Result<T> success(final @NonNull String code,
+    public static <T> Result<T> success(final @NonNull String code,
         final @NonNull String message,
         final @Nullable T data) {
 
-        return new org.ifinal.finalframework.annotation.core.result.Result<>(SUCCESS_CODE, SUCCESS_MESSAGE, code, message, data);
+        return new Result<>(SUCCESS_CODE, SUCCESS_MESSAGE, code, message, data);
     }
 
     @SuppressWarnings("rawtypes")
     public static Result failure(final @NonNull Integer status, final @NonNull String description,
         final @NonNull String code, final @NonNull String message) {
 
-        return new org.ifinal.finalframework.annotation.core.result.Result<>(status, description, code, message);
+        return new Result<>(status, description, code, message);
     }
 
     @SuppressWarnings("rawtypes")
     public static Result failure(final @NonNull Integer status, final @NonNull String message) {
 
-        return new org.ifinal.finalframework.annotation.core.result.Result<>(status, message);
+        return new Result<>(status, message);
     }
 
 }

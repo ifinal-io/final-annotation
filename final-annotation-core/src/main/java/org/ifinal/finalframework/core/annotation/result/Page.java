@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Page<T extends Serializable> extends org.ifinal.finalframework.annotation.core.result.Pagination implements IPage<T> {
+public class Page<T extends Serializable> extends Pagination implements IPage<T> {
 
     private List<T> data;
 
