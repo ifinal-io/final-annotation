@@ -18,7 +18,7 @@
     </modules>
 
     <name>final-annotation</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Define annotation and interface for final framework.</description>
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
@@ -173,9 +173,9 @@
     <url>https://github.com/final-projects/final-annotation</url>
 
     <scm>
-        <connection>scm:git:git://github.com/final-projects/final-framework.git</connection>
-        <developerConnection>scm:git:ssh://github.com:final-projects/final-framework.git</developerConnection>
-        <url>http://github.com/final-projects/final-framework/tree/master</url>
+        <connection>scm:git:git://github.com/final-projects/final-annotation.git</connection>
+        <developerConnection>scm:git:ssh://github.com:final-projects/final-annotation.git</developerConnection>
+        <url>http://github.com/final-projects/final-annotation/tree/main</url>
     </scm>
 
     <developers>
@@ -282,9 +282,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <dataFile>target/jacoco.exec</dataFile>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
