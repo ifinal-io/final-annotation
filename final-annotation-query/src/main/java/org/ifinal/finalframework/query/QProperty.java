@@ -72,12 +72,12 @@ public interface QProperty<T> extends Comparable<QProperty<T>>, FunctionCriteria
 
     @Override
     default Order asc() {
-        return Order.asc(this);
+        return Order.asc(this.getColumn());
     }
 
     @Override
     default Order desc() {
-        return Order.desc(this);
+        return Order.desc(this.getColumn());
     }
 
     @Override

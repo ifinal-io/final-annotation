@@ -12,20 +12,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public final class Order {
 
-    private final QProperty<?> property;
+    private final String column;
 
     private final Direction direction;
 
-    static Order order(QProperty<?> property, Direction direction) {
-        return new Order(property, direction);
+    static Order order(String column, Direction direction) {
+        return new Order(column, direction);
     }
 
-    static Order asc(QProperty<?> property) {
-        return order(property, Direction.ASC);
+    static Order asc(String column) {
+        return order(column, Direction.ASC);
     }
 
-    static Order desc(QProperty<?> property) {
-        return order(property, Direction.DESC);
+    static Order desc(String column) {
+        return order(column, Direction.DESC);
     }
 
 }

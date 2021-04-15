@@ -3,6 +3,8 @@ package org.ifinal.finalframework.data.annotation;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import org.ifinal.finalframework.core.annotation.lang.Default;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,12 +12,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 最后更新时间
+ * <ul>
+ *     <li>define default value with ddl {@code DEFAULT NULL ON UPDATE NOW}.</li>
+ *     <li>would not be generated sql when {@code insert} and {@code update}.</li>
+ * </ul>
  *
  * @author likly
  * @version 1.0.0
  * @see Created
  * @see LastModifier
+ * @see Default DEFAULT NULL ON UPDATE NOW()
  * @since 1.0.0
  */
 @Documented

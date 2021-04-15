@@ -111,7 +111,7 @@ public class Query implements Groupable, Orderable, Limitable, Pageable {
     public Query sort(final @NonNull Collection<Order> orders) {
 
         for (final Order order : orders) {
-            this.sort(order.getProperty().getColumn(), order.getDirection());
+            this.sort(order.getColumn(), order.getDirection());
         }
 
         return this;

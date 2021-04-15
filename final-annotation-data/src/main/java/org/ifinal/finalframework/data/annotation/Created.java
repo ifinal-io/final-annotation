@@ -14,8 +14,13 @@ import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 
 /**
- * Annotate the {@link Field property} is a {@code created} column which is have a {@link Default} value of {@code
- * NOW()} and it is {@link Final} and {@link ReadOnly}.
+ * Annotate the {@link Field property} is a {@code created} column which is have a {@link Default} value of {@code NOW()} and it is {@link
+ * Final} and {@link ReadOnly}.
+ *
+ * <ul>
+ *     <li>define default value with {@code DEFAULT NOW()}.</li>
+ *     <li>would not be generated sql when {@code insert} and {@code update}.</li>
+ * </ul>
  *
  * @author likly
  * @version 1.0.0
