@@ -25,6 +25,9 @@
         <maven.compiler.target>8</maven.compiler.target>
         <final.version>1.1.4-SNAPSHOT</final.version>
         <final.annotaiton.version>1.1.4-SNAPSHOT</final.annotaiton.version>
+        <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
+        <sonar.organization>final-projects</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
