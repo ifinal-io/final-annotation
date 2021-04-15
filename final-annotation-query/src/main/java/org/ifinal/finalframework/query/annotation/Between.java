@@ -7,12 +7,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <pre>
+ * <pre class="code">
  *     column BETWEEN #{min} AND #{max}
  * </pre>
  *
  * @author likly
  * @version 1.0.0
+ * @see org.ifinal.finalframework.query.QProperty#between(Object, Object)
  * @since 1.0.0
  */
 @Documented

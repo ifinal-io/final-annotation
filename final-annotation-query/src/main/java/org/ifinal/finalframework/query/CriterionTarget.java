@@ -29,6 +29,7 @@ public class CriterionTarget implements FunctionCriteriable<Object> {
         return new CriterionTarget(column);
     }
 
+    @NonNull
     @Override
     public Criterion condition(@NonNull final String expression, @Nullable final Object value,
         @Nullable final Consumer<CriterionAttributes> consumer) {

@@ -59,6 +59,7 @@ public interface QProperty<T> extends Comparable<QProperty<T>>, FunctionCriteria
 
     boolean nonnull();
 
+    @NonNull
     @Override
     default Criterion condition(@NonNull String expression, @Nullable Object value, @Nullable Consumer<CriterionAttributes> consumer) {
         return CriterionTarget.from(getColumn()).condition(expression, value, consumer);

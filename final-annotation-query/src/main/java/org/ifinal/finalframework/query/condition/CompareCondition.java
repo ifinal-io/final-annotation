@@ -14,34 +14,84 @@ import org.ifinal.finalframework.query.CriterionExpression;
  */
 public interface CompareCondition<V> extends Condition {
 
+    /**
+     * Build a {@code eq} criterion for {@code column = #{value}}.
+     *
+     * @param value value.
+     * @return a {@code eq} criterion.
+     */
     default Criterion eq(@Nullable V value) {
         return condition(CriterionExpression.EQUAL, value);
     }
 
+    /**
+     * Build a {@code neq} criterion for {@code column != #{value}}.
+     *
+     * @param value value.
+     * @return a {@code neq} criterion.
+     */
     default Criterion neq(@Nullable V value) {
         return condition(CriterionExpression.NOT_EQUAL, value);
     }
 
+    /**
+     * Build a {@code gt} criterion for {@code column > #{value}}.
+     *
+     * @param value value.
+     * @return a {@code gt} criterion.
+     */
     default Criterion gt(@Nullable V value) {
         return condition(CriterionExpression.GREAT_THAN, value);
     }
 
+    /**
+     * Build a {@code gte} criterion for {@code column >= #{value}}.
+     *
+     * @param value value.
+     * @return a {@code gte} criterion.
+     */
     default Criterion gte(@Nullable V value) {
         return condition(CriterionExpression.GREAT_THAN_EQUAL, value);
     }
 
+    /**
+     * Build a {@code lt} criterion for {@code column < #{value}}.
+     *
+     * @param value value
+     * @return a {@code lt} criterion.
+     */
     default Criterion lt(@Nullable V value) {
         return condition(CriterionExpression.LESS_THAN, value);
     }
 
+    /**
+     * Build a {@code lte} criterion for {@code column <= #{value}}.
+     *
+     * @param value value.
+     * @return a {@code lte} criterion.
+     */
     default Criterion lte(@Nullable V value) {
         return condition(CriterionExpression.LESS_THAN_EQUAL, value);
     }
 
+    /**
+     * Build a {@link Criterion} like {@link #lt(Object)}
+     *
+     * @param value value.
+     * @return a criterion.
+     * @see #lt(Object)
+     */
     default Criterion before(@Nullable V value) {
         return lt(value);
     }
 
+    /**
+     * Build a {@link Criterion} like {@link #gt(Object)}
+     *
+     * @param value value.
+     * @return a criterion.
+     * @see #gt(Object)
+     */
     default Criterion after(@Nullable V value) {
         return gt(value);
     }
