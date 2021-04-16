@@ -3,8 +3,8 @@ package org.ifinal.finalframework.data.annotation;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.data.annotation.CreatedDate;
 
-import org.ifinal.finalframework.core.annotation.lang.Default;
-import org.ifinal.finalframework.core.annotation.lang.Final;
+import org.ifinal.finalframework.core.lang.Default;
+import org.ifinal.finalframework.core.lang.Final;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

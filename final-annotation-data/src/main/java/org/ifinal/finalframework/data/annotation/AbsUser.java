@@ -1,6 +1,6 @@
 package org.ifinal.finalframework.data.annotation;
 
-import org.ifinal.finalframework.core.annotation.IUser;
+import org.ifinal.finalframework.core.IUser;
 
 import lombok.Getter;
 import lombok.Setter;

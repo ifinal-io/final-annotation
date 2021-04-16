@@ -1,9 +1,9 @@
 package org.ifinal.finalframework.data.annotation;
 
-import org.ifinal.finalframework.core.annotation.IEntity;
-import org.ifinal.finalframework.core.annotation.IView;
-import org.ifinal.finalframework.core.annotation.lang.Default;
-import org.ifinal.finalframework.core.annotation.lang.Transient;
+import org.ifinal.finalframework.core.IEntity;
+import org.ifinal.finalframework.core.IView;
+import org.ifinal.finalframework.core.lang.Default;
+import org.ifinal.finalframework.core.lang.Transient;
 
 import java.time.LocalDateTime;
 

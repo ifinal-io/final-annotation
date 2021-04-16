@@ -1,7 +1,7 @@
 package org.ifinal.finalframework.data.annotation;
 
-import org.ifinal.finalframework.core.annotation.IEntity;
-import org.ifinal.finalframework.core.annotation.IEnum;
+import org.ifinal.finalframework.core.IEntity;
+import org.ifinal.finalframework.core.IEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

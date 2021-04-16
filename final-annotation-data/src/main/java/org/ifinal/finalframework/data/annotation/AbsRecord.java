@@ -1,6 +1,6 @@
 package org.ifinal.finalframework.data.annotation;
 
-import org.ifinal.finalframework.core.annotation.IRecord;
+import org.ifinal.finalframework.core.IRecord;
 
 import lombok.Getter;
 import lombok.Setter;

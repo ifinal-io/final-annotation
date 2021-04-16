@@ -3,7 +3,7 @@ package org.ifinal.finalframework.cache.annotation;
 import org.springframework.core.annotation.AliasFor;
 
 import org.ifinal.finalframework.cache.annotation.CacheIncrement.CacheIncrements;
-import org.ifinal.finalframework.core.annotation.aop.JoinPoint;
+import org.ifinal.finalframework.core.aop.JoinPoint;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

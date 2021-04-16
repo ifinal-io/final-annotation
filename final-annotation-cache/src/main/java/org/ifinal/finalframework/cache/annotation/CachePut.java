@@ -1,7 +1,7 @@
 package org.ifinal.finalframework.cache.annotation;
 
 import org.ifinal.finalframework.cache.annotation.CachePut.CachePuts;
-import org.ifinal.finalframework.core.annotation.aop.JoinPoint;
+import org.ifinal.finalframework.core.aop.JoinPoint;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -2,7 +2,7 @@ package org.ifinal.finalframework.data.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 
-import org.ifinal.finalframework.core.annotation.IUser;
+import org.ifinal.finalframework.core.IUser;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

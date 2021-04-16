@@ -2,8 +2,11 @@ package org.ifinal.finalframework.query;
 
 import org.springframework.lang.NonNull;
 
-import org.ifinal.finalframework.core.annotation.IQuery;
-import org.ifinal.finalframework.core.annotation.Pageable;
+import org.ifinal.finalframework.core.Groupable;
+import org.ifinal.finalframework.core.IQuery;
+import org.ifinal.finalframework.core.Limitable;
+import org.ifinal.finalframework.core.Orderable;
+import org.ifinal.finalframework.core.Pageable;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,7 +14,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Class can be used to build a {@linkplain IQuery query} instance from java.
@@ -30,20 +32,17 @@ public class Query implements Groupable, Orderable, Limitable, Pageable {
      * 页码，第一页从1开始
      */
     @Getter
-    @Setter
     private Integer page;
 
     /**
      * 页面容量
      */
-    @Setter
     @Getter
     private Integer size;
 
     /**
      * 是否进行Count查询
      */
-    @Setter
     @Getter
     private Boolean count = Boolean.TRUE;
 

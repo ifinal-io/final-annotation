@@ -1,7 +1,7 @@
 package org.ifinal.finalframework.monitor.annotation;
 
-import org.ifinal.finalframework.core.annotation.IEnum;
-import org.ifinal.finalframework.core.annotation.lang.Transient;
+import org.ifinal.finalframework.core.IEnum;
+import org.ifinal.finalframework.core.lang.Transient;
 
 import lombok.Getter;
 

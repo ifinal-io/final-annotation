@@ -1,6 +1,6 @@
 package org.ifinal.finalframework.data.annotation;
 
-import org.ifinal.finalframework.core.annotation.IEnum;
+import org.ifinal.finalframework.core.IEnum;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

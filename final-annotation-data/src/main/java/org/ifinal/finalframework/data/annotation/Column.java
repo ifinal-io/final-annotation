@@ -3,7 +3,7 @@ package org.ifinal.finalframework.data.annotation;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.data.annotation.Persistent;
 
-import org.ifinal.finalframework.core.annotation.lang.Transient;
+import org.ifinal.finalframework.core.lang.Transient;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

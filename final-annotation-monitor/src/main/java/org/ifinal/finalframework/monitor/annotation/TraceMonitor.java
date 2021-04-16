@@ -2,7 +2,7 @@ package org.ifinal.finalframework.monitor.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 
-import org.ifinal.finalframework.core.annotation.aop.AopAnnotation;
+import org.ifinal.finalframework.core.aop.AopAnnotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
