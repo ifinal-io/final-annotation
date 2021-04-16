@@ -2,6 +2,7 @@ package org.ifinal.finalframework.core;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -53,5 +54,13 @@ public class PageQuery implements Pageable, Groupable, Orderable, Limitable, Ser
     private Long offset;
 
     private Long limit;
+
+    public void setPage(final Integer page) {
+        if (Objects.nonNull(page) && page < DEFAULT_PAGE) {
+            this.page = DEFAULT_PAGE;
+        } else {
+            this.page = page;
+        }
+    }
 
 }
