@@ -8,7 +8,6 @@ import java.util.Objects;
 /**
  * A maker superinterface which the {@linkplain Enum enum} should be impl.
  *
- *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
@@ -24,14 +23,13 @@ public interface IEnum<T> {
      * @return enum value of code
      */
     @Nullable
-    static <T extends IEnum<?>> T valueOf(@Nullable Class<T> type, @Nullable Object code) {
-        Objects.requireNonNull(type, "enum type can not be null");
+    static <T extends IEnum<?>> T valueOf(@NonNull Class<T> type, @Nullable Object code) {
 
         if (Objects.isNull(code)) {
             return null;
         }
 
-        final T[] constants = type.getEnumConstants();
+        final T[] constants = Objects.requireNonNull(type, "enum type can not be null").getEnumConstants();
         for (T constant : constants) {
             if (Objects.equals(constant.getCode(), code)) {
                 return constant;
