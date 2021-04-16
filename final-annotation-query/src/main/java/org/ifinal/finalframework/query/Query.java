@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class can be used to build a {@linkplain IQuery query} instance from java.
@@ -31,18 +32,21 @@ public class Query implements Groupable, Orderable, Limitable, Pageable {
     /**
      * 页码，第一页从1开始
      */
+    @Setter
     @Getter
     private Integer page;
 
     /**
      * 页面容量
      */
+    @Setter
     @Getter
     private Integer size;
 
     /**
      * 是否进行Count查询
      */
+    @Setter
     @Getter
     private Boolean count = Boolean.TRUE;
 

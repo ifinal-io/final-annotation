@@ -21,6 +21,8 @@ public interface Pageable extends IQuery {
     @Nullable
     Integer getPage();
 
+    void setPage(@Nullable Integer page);
+
     /**
      * return the page size.
      *
@@ -29,14 +31,16 @@ public interface Pageable extends IQuery {
     @Nullable
     Integer getSize();
 
+    void setSize(@Nullable Integer size);
+
     /**
      * return {@code true} if need do count, otherwise {@code false}, default need count.
      *
      * @return {@code true} if need do count, otherwise {@code false}.
      */
     @Nullable
-    default Boolean getCount() {
-        return Boolean.TRUE;
-    }
+    Boolean getCount();
+
+    void setCount(@Nullable Boolean count);
 
 }
