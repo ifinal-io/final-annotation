@@ -28,4 +28,9 @@ public final class Order {
         return order(column, Direction.DESC);
     }
 
+    @Override
+    public String toString() {
+        return String.join(" ", column, direction.name());
+    }
+
 }
