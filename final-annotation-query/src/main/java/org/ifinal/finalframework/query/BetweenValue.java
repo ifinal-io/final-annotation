@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
  * The value holder which have one {@code min} value and {@code max} value for {@code between} value.
  *
  * @author likly
+ *
  * @version 1.0.0
  * @see Between
  * @see NotBetween

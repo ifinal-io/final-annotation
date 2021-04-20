@@ -13,7 +13,8 @@ import org.ifinal.finalframework.query.CriterionExpression;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface BetweenCondition<V> extends Condition {
+public interface BetweenCondition<V>
+    extends Condition {
 
     default Criterion between(@Nullable V min, @Nullable V max) {
         return condition(CriterionExpression.BETWEEN, new BetweenValue<>(min, max));
