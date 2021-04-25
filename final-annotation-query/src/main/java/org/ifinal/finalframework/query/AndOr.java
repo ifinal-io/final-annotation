@@ -1,7 +1,5 @@
 package org.ifinal.finalframework.query;
 
-import org.ifinal.finalframework.core.lang.Transient;
-
 /**
  * SQL 元素
  *
@@ -9,7 +7,6 @@ import org.ifinal.finalframework.core.lang.Transient;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Transient
 public enum AndOr {
     /**
      * AND
