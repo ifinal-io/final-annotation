@@ -18,6 +18,7 @@
 package org.finalframework.data.annotation;
 
 import org.finalframework.core.IUser;
+import org.finalframework.core.lang.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@Transient
 public class AbsUser implements IUser<Long> {
 
     @PrimaryKey

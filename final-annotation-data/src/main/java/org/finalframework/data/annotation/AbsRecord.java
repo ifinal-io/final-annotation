@@ -18,6 +18,7 @@
 package org.finalframework.data.annotation;
 
 import org.finalframework.core.IRecord;
+import org.finalframework.core.lang.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@Transient
 public class AbsRecord extends AbsEntity implements IRecord<Long, AbsUser> {
 
     @Creator

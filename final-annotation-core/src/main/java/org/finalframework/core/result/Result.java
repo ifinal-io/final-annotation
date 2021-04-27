@@ -34,7 +34,6 @@ import lombok.Setter;
 /**
  * 业务数据返回结果封装，统一业务返回的数据结构。
  *
- *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
@@ -120,9 +119,6 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
      */
     private IUser<?> operator;
 
-    /**
-     * @see com.fasterxml.jackson.annotation.JsonView
-     */
     private Class<?> view;
 
     private Class<? extends Throwable> exception;
