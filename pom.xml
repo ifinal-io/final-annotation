@@ -22,15 +22,15 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>org.ifinal.finalframework.parent</groupId>
-        <artifactId>final-projects-parent</artifactId>
-        <version>1.2.0-SNAPSHOT</version>
+        <groupId>org.ifinalframework.project</groupId>
+        <artifactId>final-project</artifactId>
+        <version>1.2.0-alpha</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.ifinal.finalframework.annotation</groupId>
+    <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0-alpha</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -47,8 +47,7 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <final.version>${project.version}</final.version>
-        <final.annotaiton.version>${project.version}</final.annotaiton.version>
+        <final.auto.version>${project.version}</final.auto.version>
         <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
         <sonar.organization>final-projects</sonar.organization>
@@ -66,41 +65,42 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.ifinal.auto</groupId>
-                <artifactId>auto-service</artifactId>
-                <version>1.0.0</version>
+                <groupId>org.ifinalframework.auto</groupId>
+                <artifactId>final-auto</artifactId>
+                <version>${final.auto.version}</version>
                 <optional>true</optional>
-                <scope>provided</scope>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-core</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-query</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-sharding</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-cache</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ifinal.finalframework.annotation</groupId>
+                <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
-                <version>${final.annotaiton.version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
