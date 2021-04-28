@@ -24,13 +24,13 @@
     <parent>
         <groupId>org.ifinalframework.project</groupId>
         <artifactId>final-project</artifactId>
-        <version>1.2.0-alpha</version>
+        <version>1.2.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.2.0-alpha</version>
+    <version>1.2.0-SNAPSHOT</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -47,7 +47,7 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <final.auto.version>${project.version}</final.auto.version>
+        <final.auto.version>1.2.0-SNAPSHOT</final.auto.version>
         <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
         <sonar.organization>final-projects</sonar.organization>
