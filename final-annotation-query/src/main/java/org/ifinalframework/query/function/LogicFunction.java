@@ -30,12 +30,22 @@ import org.ifinalframework.query.Criteriable;
  */
 public interface LogicFunction<V> extends Function<V> {
 
+    /**
+     * <pre class="code">
+     *      ${column} & #{logicValue}
+     * </pre>
+     *
+     * @param value the logic value
+     * @return the logic Criteriable
+     */
     default Criteriable<V> and(@NonNull Object value) {
-        return apply(column -> String.format("%s & #{${criterion}.logicValue}", column), criterion -> criterion.put("logicValue", value));
+        return apply(column -> String.format("%s & #{${criterion}.logicValue}", column),
+            criterion -> criterion.put("logicValue", value));
     }
 
     default Criteriable<V> or(@NonNull Object value) {
-        return apply(column -> String.format("%s | #{${criterion}.logicValue}", column), criterion -> criterion.put("logicValue", value));
+        return apply(column -> String.format("%s | #{${criterion}.logicValue}", column),
+            criterion -> criterion.put("logicValue", value));
     }
 
 }

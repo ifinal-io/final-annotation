@@ -29,6 +29,7 @@ import org.ifinalframework.query.condition.NullCondition;
  *
  * @author likly
  * @version 1.0.0
+ * @see FunctionCriteriable
  * @since 1.0.0
  */
 public interface Criteriable<V> extends NullCondition, CompareCondition<V>, BetweenCondition<V>, InCondition,

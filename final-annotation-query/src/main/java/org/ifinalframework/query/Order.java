@@ -33,15 +33,23 @@ public final class Order {
 
     private final Direction direction;
 
-    static Order order(String column, Direction direction) {
+    public static Order order(String column, Direction direction) {
         return new Order(column, direction);
     }
 
-    static Order asc(String column) {
+    public static Order asc(QProperty<?> property) {
+        return asc(property.getColumn());
+    }
+
+    public static Order asc(String column) {
         return order(column, Direction.ASC);
     }
 
-    static Order desc(String column) {
+    public static Order desc(QProperty<?> property) {
+        return desc(property.getColumn());
+    }
+
+    public static Order desc(String column) {
         return order(column, Direction.DESC);
     }
 

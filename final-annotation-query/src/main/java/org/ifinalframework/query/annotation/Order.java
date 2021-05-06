@@ -27,9 +27,11 @@ import java.lang.annotation.Target;
  *
  * @author likly
  * @version 1.0.0
+ * @see org.ifinalframework.core.Orderable
  * @since 1.0.0
  */
 
+@Deprecated
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Order {

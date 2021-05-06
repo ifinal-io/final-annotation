@@ -19,6 +19,12 @@ package org.ifinalframework.query;
 
 import org.springframework.lang.NonNull;
 
+import org.ifinalframework.core.Groupable;
+import org.ifinalframework.core.IQuery;
+import org.ifinalframework.core.Limitable;
+import org.ifinalframework.core.Orderable;
+import org.ifinalframework.core.Pageable;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -26,14 +32,14 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.ifinalframework.core.Groupable;
-import org.ifinalframework.core.IQuery;
-import org.ifinalframework.core.Limitable;
-import org.ifinalframework.core.Orderable;
-import org.ifinalframework.core.Pageable;
 
 /**
  * Class can be used to build a {@linkplain IQuery query} instance from java.
+ *
+ * <pre class="code">
+ *      Query query = new Query.page(page,size)
+ *          .where(QProperty.eq.("name"));
+ * </pre>
  *
  * @author likly
  * @version 1.0.0
