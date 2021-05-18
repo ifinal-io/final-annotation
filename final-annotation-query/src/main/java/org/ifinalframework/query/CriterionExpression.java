@@ -56,7 +56,23 @@ public final class CriterionExpression {
 
     }
 
+    private static String expression2(@Nullable String test, String prefix, String suffix,
+        @NonNull String... fragments) {
+        if (Objects.isNull(test)) {
+            return AND_OR + prefix + CDATA_OPEN + String.join(DELIMITER, fragments) + CDATA_CLOSE + suffix;
+        }
+
+        return "<if test=\"" + test + "\">"
+            + AND_OR + prefix
+            + CDATA_OPEN + String.join(DELIMITER, fragments) + CDATA_CLOSE
+            + suffix
+            + "</if>";
+
+    }
+
     private static final String TEST_VALUE_NOT_NULL = "${value} != null";
+
+    private static final String TEST_VALUE_NOT_EMPTY = "${value} != null and ${value}.size() > 0";
 
     private static final String FRAGMENT_JAVA_TYPE = "#if($javaType), javaType=$!{javaType.canonicalName}#end";
 
@@ -67,15 +83,23 @@ public final class CriterionExpression {
      */
     private static final String FRAGMENT_VALUE = "#{${value}" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
+    private static final String FRAGMENT_MIN_VALUE =
+        "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+
+    private static final String FRAGMENT_MAX_VALUE =
+        "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+
     /**
      * {@code #{${value}.min,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_VALUE_MIN = "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    private static final String FRAGMENT_VALUE_MIN =
+        "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
     /**
      * {@code #{${value}.max,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_VALUE_AMX = "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    private static final String FRAGMENT_VALUE_AMX =
+        "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
     // NULL
 
@@ -110,12 +134,10 @@ public final class CriterionExpression {
     private static final String TEST_BETWEEN_VALUE_NOT_NULL = "${value} != null and ${value}.min != null and ${value}.max != null";
 
     public static final String BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} BETWEEN #{${value}.min", FRAGMENT_JAVA_TYPE, FRAGMENT_TYPE_HANDLER,
-        "AND #{${value}.max", FRAGMENT_JAVA_TYPE, FRAGMENT_TYPE_HANDLER);
+        "${column} BETWEEN ", FRAGMENT_MIN_VALUE, " AND ", FRAGMENT_MAX_VALUE);
 
     public static final String NOT_BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} NOT BETWEEN #{${value}.min", FRAGMENT_JAVA_TYPE, FRAGMENT_TYPE_HANDLER,
-        "AND #{${value}.max", FRAGMENT_JAVA_TYPE, FRAGMENT_TYPE_HANDLER);
+        "${column} NOT BETWEEN ", FRAGMENT_MIN_VALUE, " AND ", FRAGMENT_MAX_VALUE);
 
     // LIKE
 
@@ -125,29 +147,35 @@ public final class CriterionExpression {
 
     public static final String NOT_LIKE = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE #{${value}}");
 
-    public static final String START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} LIKE CONCAT('%',#{${value}})");
+    public static final String START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} LIKE CONCAT('%',#{${value}})");
 
-    public static final String NOT_START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE CONCAT('%',#{${value}})");
+    public static final String NOT_START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} NOT LIKE CONCAT('%',#{${value}})");
 
-    public static final String END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} LIKE CONCAT(#{${value}},'%')");
+    public static final String END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} LIKE CONCAT(#{${value}},'%')");
 
-    public static final String NOT_END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE CONCAT(#{${value}},'%')");
+    public static final String NOT_END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} NOT LIKE CONCAT(#{${value}},'%')");
 
-    public static final String CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} LIKE CONCAT('%',#{${value}},'%')");
+    public static final String CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} LIKE CONCAT('%',#{${value}},'%')");
 
-    public static final String NOT_CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE CONCAT('%',#{${value}},'%')");
+    public static final String NOT_CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL,
+        "${column} NOT LIKE CONCAT('%',#{${value}},'%')");
 
     // IN
 
-    public static final String IN = expression(TEST_VALUE_NOT_NULL,
+    public static final String IN = expression2(TEST_VALUE_NOT_EMPTY,
         "<foreach collection=\"${value}\" item=\"item\" open=\"${column} IN (\" close=\")\" separator=\",\">",
-        "#{item}",
-        "</foreach>");
+        "</foreach>",
+        "#{item}");
 
-    public static final String NOT_IN = expression(TEST_VALUE_NOT_NULL,
+    public static final String NOT_IN = expression2(TEST_VALUE_NOT_EMPTY,
         "<foreach collection=\"${value}\" item=\"item\" open=\"${column} NOT IN (\" close=\")\" separator=\",\">",
-        "#{item}",
-        "</foreach>");
+        "</foreach>",
+        "#{item}");
 
     // JSON
 
