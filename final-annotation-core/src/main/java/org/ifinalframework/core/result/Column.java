@@ -13,33 +13,34 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.query;
+package org.ifinalframework.core.result;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.io.Serializable;
 
-import org.junit.jupiter.api.Test;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
- * OrderTest.
+ * Column.
  *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
  */
-class OrderTest {
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Column implements Serializable {
 
-    @Test
-    void from() {
-        Order name_asc = Order.from("name asc");
-        assertEquals(Direction.ASC, name_asc.getDirection());
-        assertEquals("name", name_asc.getColumn());
-    }
+    private String key;
 
-    @Test
-    void testToString() {
+    private String name;
 
-        assertEquals("name ASC", Order.asc("name").toString());
-        assertEquals("name DESC", Order.desc("name").toString());
-    }
+    private String value;
 
 }

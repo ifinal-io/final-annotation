@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,23 +11,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.core.result;
 
-import java.io.Serializable;
-import java.time.Duration;
-import java.util.Locale;
-import java.util.TimeZone;
-
-import lombok.Getter;
-import lombok.Setter;
 import org.ifinalframework.core.IData;
 import org.ifinalframework.core.IException;
 import org.ifinalframework.core.IResult;
 import org.ifinalframework.core.IUser;
 import org.ifinalframework.core.ResponseStatus;
+
+import java.io.Serializable;
+import java.time.Duration;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 业务数据返回结果封装，统一业务返回的数据结构。
@@ -66,6 +66,8 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
      * the result error {@linkplain IException#getMessage() message}
      */
     private String message;
+
+    private List<Column> header;
 
     /**
      * the result {@linkplain IData#getData() data}
