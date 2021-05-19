@@ -67,6 +67,12 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
      */
     private String message;
 
+    /**
+     * the header info of {@link #data}.
+     *
+     * @see Column
+     * @since 1.2.0
+     */
     private List<Column> header;
 
     /**
