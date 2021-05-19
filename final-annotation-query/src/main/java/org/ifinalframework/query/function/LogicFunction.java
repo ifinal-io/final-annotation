@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query.function;
@@ -30,14 +28,6 @@ import org.ifinalframework.query.Criteriable;
  */
 public interface LogicFunction<V> extends Function<V> {
 
-    /**
-     * <pre class="code">
-     *      ${column} & #{logicValue}
-     * </pre>
-     *
-     * @param value the logic value
-     * @return the logic Criteriable
-     */
     default Criteriable<V> and(@NonNull Object value) {
         return apply(column -> String.format("%s & #{${criterion}.logicValue}", column),
             criterion -> criterion.put("logicValue", value));
