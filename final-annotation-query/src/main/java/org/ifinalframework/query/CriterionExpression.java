@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query;
@@ -83,22 +81,16 @@ public final class CriterionExpression {
      */
     private static final String FRAGMENT_VALUE = "#{${value}" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
-    private static final String FRAGMENT_MIN_VALUE =
-        "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
-
-    private static final String FRAGMENT_MAX_VALUE =
-        "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
-
     /**
      * {@code #{${value}.min,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_VALUE_MIN =
+    private static final String FRAGMENT_MIN_VALUE =
         "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
     /**
      * {@code #{${value}.max,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_VALUE_AMX =
+    private static final String FRAGMENT_MAX_VALUE =
         "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
     // NULL
