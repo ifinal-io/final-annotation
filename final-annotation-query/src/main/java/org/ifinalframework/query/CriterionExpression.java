@@ -81,6 +81,9 @@ public final class CriterionExpression {
      */
     private static final String FRAGMENT_VALUE = "#{${value}" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
+    private static final String FRAGMENT_CRITERION_VALUE =
+        "#{${value}.value" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+
     /**
      * {@code #{${value}.min,javaType=,typeHandler=}}
      */
@@ -198,18 +201,18 @@ public final class CriterionExpression {
      * {@code column = #{value,javaType=,typeHandler=}}
      */
     public static final String UPDATE_SET = update(TEST_VALUE_NOT_NULL,
-        "${column} = ", FRAGMENT_VALUE);
+        "${column} = ", FRAGMENT_CRITERION_VALUE);
 
     /**
      * {@code column = column + #{value,javaType=,typeHandler=}}
      */
     public static final String UPDATE_INCR = update(TEST_VALUE_NOT_NULL,
-        "${column} = ${column} + ", FRAGMENT_VALUE);
+        "${column} = ${column} + ", FRAGMENT_CRITERION_VALUE);
 
     /**
      * {@code column = column - #{value,javaType=,typeHandler=}}
      */
     public static final String UPDATE_DECR = update(TEST_VALUE_NOT_NULL,
-        "${column} = ${column} - ", FRAGMENT_VALUE);
+        "${column} = ${column} - ", FRAGMENT_CRITERION_VALUE);
 
 }
