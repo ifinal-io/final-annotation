@@ -50,6 +50,7 @@
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
         <sonar.organization>final-projects</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <jacoco.disablePlainGetterSetter>true</jacoco.disablePlainGetterSetter>
     </properties>
 
     <profiles>

@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.*;
 
 /**
  * OrderTest.
@@ -56,6 +57,15 @@ class OrderTest {
 
         assertEquals("name ASC", Order.asc("name").toString());
         assertEquals("name DESC", Order.desc("name").toString());
+    }
+
+    @Test
+    void testEquals() {
+        QProperty<?> property = Mockito.mock(QProperty.class);
+        Mockito.when(property.getColumn()).thenReturn("name");
+        assertEquals(Order.asc("name"), Order.asc(property));
+        assertEquals(Order.desc("name"), Order.desc(property));
+
     }
 
 }
