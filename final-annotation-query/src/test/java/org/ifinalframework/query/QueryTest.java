@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * QueryTest.
@@ -71,6 +73,16 @@ class QueryTest {
         query.limit(2, 10);
         assertEquals(2, query.getOffset());
         assertEquals(10, query.getLimit());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"name ASC", "name DESC"})
+    void orders(String order) {
+        Query query = new Query();
+
+        query.sort(Order.from(order));
+
+        assertEquals(order, query.getOrders().get(0));
 
     }
 
