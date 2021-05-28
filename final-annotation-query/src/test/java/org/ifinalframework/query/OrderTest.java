@@ -17,7 +17,10 @@ package org.ifinalframework.query;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * OrderTest.
@@ -28,11 +31,24 @@ import org.junit.jupiter.api.Test;
  */
 class OrderTest {
 
-    @Test
-    void from() {
-        Order name_asc = Order.from("name asc");
+    @ParameterizedTest
+    @ValueSource(strings = {"name", "name asc"})
+    void from(String order) {
+        Order name_asc = Order.from(order);
         assertEquals(Direction.ASC, name_asc.getDirection());
         assertEquals("name", name_asc.getColumn());
+    }
+
+    @Test
+    void orderDescFrom() {
+        Order order = Order.from("name desc");
+        assertEquals(Direction.DESC, order.getDirection());
+        assertEquals("name", order.getColumn());
+    }
+
+    @Test
+    void fromException() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Order.from("name asc test"));
     }
 
     @Test
