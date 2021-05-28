@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query;
@@ -120,12 +118,16 @@ public class Query implements Groupable, Orderable, Limitable, Pageable {
     }
 
     public Query group(final QProperty<?>... properties) {
-
         return group(Arrays.asList(properties));
     }
 
     public Query group(final Collection<QProperty<?>> properties) {
         properties.forEach(it -> this.groups.add(it.getColumn()));
+        return this;
+    }
+
+    public Query group(String... cloumns) {
+        this.groups.addAll(Arrays.asList(cloumns));
         return this;
     }
 

@@ -86,4 +86,14 @@ class QueryTest {
 
     }
 
+    @Test
+    void groups() {
+        Query query = new Query();
+        query.group("name", "age");
+
+        assertEquals("name", query.getGroups().get(0));
+        assertEquals("age", query.getGroups().get(1));
+
+    }
+
 }
