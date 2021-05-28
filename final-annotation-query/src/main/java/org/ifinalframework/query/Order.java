@@ -15,8 +15,10 @@
 
 package org.ifinalframework.query;
 
+import java.io.Serializable;
 import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -27,7 +29,8 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public final class Order {
+@EqualsAndHashCode
+public final class Order implements Serializable {
 
     private final String column;
 
@@ -65,23 +68,6 @@ public final class Order {
 
     public static Order desc(String column) {
         return order(column, Direction.DESC);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final Order order = (Order) o;
-        return Objects.equals(column, order.column) && direction == order.direction;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(column, direction);
     }
 
     @Override
