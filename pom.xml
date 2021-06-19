@@ -153,33 +153,30 @@
 
     <build>
         <plugins>
+
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
-                    <excludes>
-                        <exclude>**/*Entity.java</exclude>
-                        <exclude>**/*Entity.class</exclude>
-                    </excludes>
+                    <doclet>org.ifinalframework.javadoc.JsonDoclet</doclet>
+                    <docletArtifacts>
+                        <docletArtifact>
+                            <groupId>org.ifinalframework.javadoc</groupId>
+                            <artifactId>javadoc-doclet</artifactId>
+                            <version>0.0.1-alpha</version>
+                        </docletArtifact>
+                    </docletArtifacts>
+                    <show>private</show>
+                    <useStandardDocletOptions>false</useStandardDocletOptions>
+                    <outputDirectory>${project.basedir}/target/classes/META-INF/docs/json</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>prepare-agent</goal>
+                            <goal>jar</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/*Entity.java</exclude>
-                                <exclude>**/*Entity.class</exclude>
-                            </excludes>
-                        </configuration>
+                        <phase>compile</phase>
                     </execution>
                 </executions>
             </plugin>
