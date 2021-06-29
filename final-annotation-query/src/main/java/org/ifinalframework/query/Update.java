@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,12 +11,13 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query;
 
+import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -99,6 +99,19 @@ public final class Update extends LinkedList<Criterion> {
 
     public Update decr(String column, Number value) {
         return update(CriterionExpression.UPDATE_DECR, column, value, null);
+    }
+
+    /**
+     * @param column update column
+     * @param values value type only support {@code string、number and boolean}.
+     * @return update
+     */
+    public Update jsonSet(String column, Map<String, Object> values) {
+        return update(CriterionExpression.JSON_SET, column, values, null);
+    }
+
+    public Update jsonRemove(String column, Collection<String> paths) {
+        return update(CriterionExpression.JSON_REMOVE, column, paths, null);
     }
 
     public Update update(String expression, String column, Object value, Consumer<CriterionAttributes> consumer) {

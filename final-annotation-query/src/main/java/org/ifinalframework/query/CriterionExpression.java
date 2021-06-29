@@ -185,6 +185,10 @@ public final class CriterionExpression {
         "!JSON_CONTAINS( ${column},", FRAGMENT_VALUE,
         "       #if($path), '${path}'#end )");
 
+    public static final String JSON_CONTAINS_PATH = expression(TEST_VALUE_NOT_EMPTY,
+        "JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', ",
+        "<foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>",
+        ")");
     // UPDATE
 
     private static String update(String test, String... fragments) {
@@ -214,5 +218,17 @@ public final class CriterionExpression {
      */
     public static final String UPDATE_DECR = update(TEST_VALUE_NOT_NULL,
         "${column} = ${column} - ", FRAGMENT_CRITERION_VALUE);
+
+    /**
+     * {@code column = JSON_SET(column, path,val[,path,val]...))}
+     */
+    public static final String JSON_SET = update(TEST_VALUE_NOT_EMPTY,
+        "${column} = JSON_SET(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+
+    /**
+     * {@code JSON_REMOVE(doc, path[,path...])}
+     */
+    public static final String JSON_REMOVE = update(TEST_VALUE_NOT_EMPTY,
+        "${column} = JSON_REMOVE(${column},<foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)");
 
 }
