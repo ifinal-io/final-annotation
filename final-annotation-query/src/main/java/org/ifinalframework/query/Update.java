@@ -15,7 +15,9 @@
 
 package org.ifinalframework.query;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -47,6 +49,7 @@ import java.util.function.Consumer;
  * @version 1.0.0
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public final class Update extends LinkedList<Criterion> {
 
     public static Update update() {
@@ -63,7 +66,6 @@ public final class Update extends LinkedList<Criterion> {
      * @param column the column to update
      * @param value  the update value
      * @return update
-     * @see CriterionExpression#UPDATE_SET
      */
     public Update set(String column, Object value) {
         return update(CriterionExpression.UPDATE_SET, column, value, null);
@@ -101,6 +103,53 @@ public final class Update extends LinkedList<Criterion> {
         return update(CriterionExpression.UPDATE_DECR, column, value, null);
     }
 
+    //    JSON_INSERT
+    public Update jsonInsert(QProperty<?> property, String path, Object value) {
+        return jsonInsert(property.getColumn(), path, value);
+    }
+
+    public Update jsonInsert(QProperty<?> property, Map<String, Object> values) {
+        return jsonInsert(property.getColumn(), values);
+    }
+
+    public Update jsonInsert(String column, String path, Object value) {
+        return jsonInsert(column, Collections.singletonMap(path, value));
+    }
+
+    public Update jsonInsert(String column, Map<String, Object> values) {
+        return update(CriterionExpression.JSON_INSERT, column, values, null);
+    }
+
+    //    JSON_REPLACE
+    public Update jsonReplace(QProperty<?> property, String path, Object value) {
+        return jsonReplace(property.getColumn(), path, value);
+    }
+
+    public Update jsonReplace(QProperty<?> property, Map<String, Object> values) {
+        return jsonReplace(property.getColumn(), values);
+    }
+
+    public Update jsonReplace(String column, String path, Object value) {
+        return jsonReplace(column, Collections.singletonMap(path, value));
+    }
+
+    public Update jsonReplace(String column, Map<String, Object> values) {
+        return update(CriterionExpression.JSON_REPLACE, column, values, null);
+    }
+
+    //    JSON_SET
+    public Update jsonSet(QProperty<?> property, String path, Object value) {
+        return jsonSet(property.getColumn(), path, value);
+    }
+
+    public Update jsonSet(QProperty<?> property, Map<String, Object> values) {
+        return jsonSet(property.getColumn(), values);
+    }
+
+    public Update jsonSet(String column, String path, Object value) {
+        return jsonSet(column, Collections.singletonMap(path, value));
+    }
+
     /**
      * @param column update column
      * @param values value type only support {@code string、number and boolean}.
@@ -108,6 +157,18 @@ public final class Update extends LinkedList<Criterion> {
      */
     public Update jsonSet(String column, Map<String, Object> values) {
         return update(CriterionExpression.JSON_SET, column, values, null);
+    }
+
+    public Update jsonRemove(QProperty<?> property, String... path) {
+        return jsonRemove(property.getColumn(), path);
+    }
+
+    public Update jsonRemove(QProperty<?> property, Collection<String> paths) {
+        return jsonRemove(property.getColumn(), paths);
+    }
+
+    public Update jsonRemove(String column, String... path) {
+        return jsonRemove(column, Arrays.asList(path));
     }
 
     public Update jsonRemove(String column, Collection<String> paths) {

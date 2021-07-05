@@ -220,13 +220,34 @@ public final class CriterionExpression {
         "${column} = ${column} - ", FRAGMENT_CRITERION_VALUE);
 
     /**
+     * {@code column = JSON_INSERT(column, path,val[,path,val]...))}
+     *
+     * @see #JSON_REPLACE
+     * @see #JSON_SET
+     */
+    public static final String JSON_INSERT = update(TEST_VALUE_NOT_EMPTY,
+        "${column} = JSON_INSERT(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+
+    /**
+     * {@code column = JSON_REPLACE(column, path,val[,path,val]...))}
+     *
+     * @see #JSON_INSERT
+     * @see #JSON_SET
+     */
+    public static final String JSON_REPLACE = update(TEST_VALUE_NOT_EMPTY,
+        "${column} = JSON_REPLACE(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+
+    /**
      * {@code column = JSON_SET(column, path,val[,path,val]...))}
+     *
+     * @see #JSON_INSERT
+     * @see #JSON_REPLACE
      */
     public static final String JSON_SET = update(TEST_VALUE_NOT_EMPTY,
         "${column} = JSON_SET(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
 
     /**
-     * {@code JSON_REMOVE(doc, path[,path...])}
+     * {@code column = JSON_REMOVE(column, path[,path...])}
      */
     public static final String JSON_REMOVE = update(TEST_VALUE_NOT_EMPTY,
         "${column} = JSON_REMOVE(${column},<foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)");
