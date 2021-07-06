@@ -34,7 +34,7 @@
 |   `column LIKE CONCAT('%',#{value},'%') `   |        `contains(value)`         |    `@Contains`     |
 | `column NOT LIKE CONCAT('%',#{value},'%') ` |       `notContains(value)`       |   `@NotContains`   |
 |     `column LIKE CONCAT(#{value},'%') `     |       `startsWith(value)`        |   `@StartsWith`    |
-|   `column NOT LIKE CONCAT(#{value},'%') `   |      `notStartsWith(value)`      | `@NotStarttsWith`  |
+|   `column NOT LIKE CONCAT(#{value},'%') `   |      `notStartsWith(value)`      |  `@NotStartsWith`  |
 |     `column LIKE CONCAT('%',#{value}) `     |        `endsWith(value)`         |    `@EndsWith`     |
 |   `column NOT LIKE CONCAT('%',#{value}) `   |       `notEndsWith(value)`       |   `@NotEndsWith`   |
 |         `column IN (val[,val]...)`          |           `in(values)`           |       `@In`        |
