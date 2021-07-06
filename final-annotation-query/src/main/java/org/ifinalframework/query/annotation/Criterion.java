@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,18 +11,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query.annotation;
+
+import org.ifinalframework.query.CriterionAttributes;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import org.ifinalframework.query.CriterionAttributes;
 
 /**
  * The meta annotation to mark the {@link java.lang.annotation.Annotation} is a criterion annotation. The {@link
@@ -53,10 +51,10 @@ import org.ifinalframework.query.CriterionAttributes;
  *     <li>use {@link NotLike} for `column NOT LIKE #{value}`</li>
  *     <li>use {@link Contains} for `column LIKE CONCAT('%',#{value},'%')`</li>
  *     <li>use {@link NotContains} for `column NOT LIKE CONCAT('%',#{value},'%')`</li>
- *     <li>use {@link StartWith} for `column LIKE CONCAT('%',#{value})`</li>
- *     <li>use {@link NotStartWith} for `column NOT LIKE CONCAT('%',#{value})`</li>
- *     <li>use {@link EndWith} for `column LIKE CONCAT(#{value},'%')`</li>
- *     <li>use {@link NotEndWith} for `column NOT LIKE CONCAT(#{value},'%')`</li>
+ *     <li>use {@link StartsWith} for `column LIKE CONCAT('%',#{value})`</li>
+ *     <li>use {@link NotStartsWith} for `column NOT LIKE CONCAT('%',#{value})`</li>
+ *     <li>use {@link EndsWith} for `column LIKE CONCAT(#{value},'%')`</li>
+ *     <li>use {@link NotEndsWith} for `column NOT LIKE CONCAT(#{value},'%')`</li>
  * </ul>
  *
  * @author likly
@@ -75,10 +73,10 @@ import org.ifinalframework.query.CriterionAttributes;
  * @see NotLike
  * @see Contains
  * @see NotContains
- * @see StartWith
- * @see NotStartWith
- * @see EndWith
- * @see NotEndWith
+ * @see StartsWith
+ * @see NotStartsWith
+ * @see EndsWith
+ * @see NotEndsWith
  * @see In
  * @see NotIn
  * @see Between

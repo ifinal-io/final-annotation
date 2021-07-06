@@ -21,27 +21,21 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <pre class="code">
- *      column LIKE CONCAT('%',#{value})
- * </pre>
- *
  * @author likly
- * @version 1.0.0
+ * @version 1.2.1
  * @see Like
- * @see NotStartWith
- * @since 1.0.0
+ * @since 1.2.1
  */
-@Deprecated
-@Criterion(StartWith.class)
+@Criterion(NotEndsWith.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StartWith {
+public @interface NotEndsWith {
 
     String property() default "";
 
     String[] value() default {
         "<if test=\"${value} != null and ${value} != ''\">",
-        "     ${andOr} ${column} LIKE CONCAT('%',#{${value}}) ",
+        "    ${andOr} ${column} NOT LIKE CONCAT(#{${value}},'%') ",
         "</if>"
     };
 
