@@ -13,37 +13,55 @@
 
 ## Final Annotation Query
 
-|               方法               |        注解        |
-| :------------------------------: | :----------------: |
-|            `isNull()`            |     `@IsNull`      |
-|          `isNotNull()`           |    `@IsNotNull`    |
-|           `eq(value)`            |      `@Equal`      |
-|           `neq(value)`           |    `@NotEqual`     |
-|           `lt(value)`            |    `@LessThan`     |
-|           `lte(value)`           |  `@LessThanEqual`  |
-|           `gt(value)`            |    `@GreatThan`    |
-|           `gte(value)`           | `@GreatThanEqual`  |
-|          `like(value)`           |      `@Like`       |
-|         `notLike(value)`         |     `@NotLike`     |
-|        `contains(value)`         |    `@Contains`     |
-|       `notContains(value)`       |   `@NotContains`   |
-|       `startsWith(value)`        |   `@StartsWith`    |
-|      `notStartsWith(value)`      | `@NotStarttsWith`  |
-|        `endsWith(value)`         |    `@EndsWith`     |
-|       `notEndsWith(value)`       |   `@NotEndsWith`   |
-|           `in(values)`           |       `@In`        |
-|          `nin(values)`           |      `@NotIn`      |
-|        `between(min,max)`        |     `@Between`     |
-|      `notBetween(min,max)`       |   `@NotBetween`    |
-|   `jsonContains(value[,path])`   |  `@JsonContains`   |
-| `notJsonContains(values[,path])` | `@NotJsonContains` |
-|                                  |                    |
-|                                  |                    |
-|                                  |                    |
-|                                  |                    |
-|                                  |                    |
-|                                  |                    |
-|                                  |                    |
+`Final Annotation Query`提供了丰富的查询条件(`Criterion`)和更新操作(`Update`)。
 
+### Criterion
 
+**支持的`Criterion`对下表所示：**
+
+|                     SQL                     |               方法               |        注解        |
+| :-----------------------------------------: | :------------------------------: | :----------------: |
+|              `column IS NULL`               |            `isNull()`            |     `@IsNull`      |
+|            `column IS NOT NULL`             |          `isNotNull()`           |    `@IsNotNull`    |
+|             `column = #{value}`             |           `eq(value)`            |      `@Equal`      |
+|            `column != #{value}`             |           `neq(value)`           |    `@NotEqual`     |
+|             `column < #{value`}             |           `lt(value)`            |    `@LessThan`     |
+|            `column <= #{value}`             |           `lte(value)`           |  `@LessThanEqual`  |
+|             `cloumn > #{value}`             |           `gt(value)`            |    `@GreatThan`    |
+|            `cloumn >= #{value}`             |           `gte(value)`           | `@GreatThanEqual`  |
+|           `column LIKE #{value}`            |          `like(value)`           |      `@Like`       |
+|         `column NOT LIKE #{value}`          |         `notLike(value)`         |     `@NotLike`     |
+|   `column LIKE CONCAT('%',#{value},'%') `   |        `contains(value)`         |    `@Contains`     |
+| `column NOT LIKE CONCAT('%',#{value},'%') ` |       `notContains(value)`       |   `@NotContains`   |
+|     `column LIKE CONCAT(#{value},'%') `     |       `startsWith(value)`        |   `@StartsWith`    |
+|   `column NOT LIKE CONCAT(#{value},'%') `   |      `notStartsWith(value)`      | `@NotStarttsWith`  |
+|     `column LIKE CONCAT('%',#{value}) `     |        `endsWith(value)`         |    `@EndsWith`     |
+|   `column NOT LIKE CONCAT('%',#{value}) `   |       `notEndsWith(value)`       |   `@NotEndsWith`   |
+|         `column IN (val[,val]...)`          |           `in(values)`           |       `@In`        |
+|       `column NOT IN (val[,val]...)`        |          `nin(values)`           |      `@NotIn`      |
+|     `column BETWEEN #{min} AND #{max}`      |        `between(min,max)`        |     `@Between`     |
+|   `column NOT BETWEEN #{min} AND #{max}`    |      `notBetween(min,max)`       |   `@NotBetween`    |
+|    `JSON_CONTAINS(column, value[,path])`    |   `jsonContains(value[,path])`   |  `@JsonContains`   |
+|   `!JSON_CONTAINS(column, value[,path])`    | `notJsonContains(values[,path])` | `@NotJsonContains` |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+|                                             |                                  |                    |
+
+### Update
+
+|                           SQL                            |                方法                |
+| :------------------------------------------------------: | :--------------------------------: |
+|                   `column = #{value}`                    |        `set(column,value)`         |
+|               `column = column + #{value}`               |        `incr(column,value)`        |
+|               `column = column - #{value}`               |        `decr(column,value)`        |
+| `column = JSON_INSERT(column,path,val[,path1,val1]...)`  | `jsonInsert(column,<path,value>)`  |
+| `column = JSON_REPLACE(column,path,val[,path1,val1]...)` | `jsonReplace(column,<path,value>)` |
+|   `column = JSON_SET(column,path,val[,path1,val1]...)`   |   `jsonSet(column,<path,value>)`   |
+|     `column = JSON_REMOVE(column,path,[,path1]...)`      |     `jsonRemove(column,paths)`     |
+|                                                          |                                    |
+|                                                          |                                    |
 
