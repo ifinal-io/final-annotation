@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.core.result;
@@ -21,7 +19,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 /**
- *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
@@ -51,15 +48,13 @@ public final class R {
         return new Result<>(SUCCESS_CODE, SUCCESS_MESSAGE, code, message, data);
     }
 
-    @SuppressWarnings("rawtypes")
-    public static Result failure(final @NonNull Integer status, final @NonNull String description,
+    public static <T> Result<T> failure(final @NonNull Integer status, final @NonNull String description,
         final @NonNull String code, final @NonNull String message) {
 
         return new Result<>(status, description, code, message);
     }
 
-    @SuppressWarnings("rawtypes")
-    public static Result failure(final @NonNull Integer status, final @NonNull String message) {
+    public static <T> Result<T> failure(final @NonNull Integer status, final @NonNull String message) {
 
         return new Result<>(status, message);
     }

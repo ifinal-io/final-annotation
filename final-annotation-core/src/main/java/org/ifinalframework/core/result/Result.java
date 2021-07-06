@@ -25,6 +25,7 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import lombok.Getter;
@@ -135,24 +136,18 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
 
     public Result(final Integer status, final String description, final String code, final String message,
         final T data) {
-
-        this.status = status;
-        this.description = description;
-        this.code = code;
-        this.message = message;
+        this.status = Objects.requireNonNull(status);
+        this.description = Objects.requireNonNull(description);
+        this.code = Objects.requireNonNull(code);
+        this.message = Objects.requireNonNull(message);
         this.data = data;
     }
 
     public Result(final Integer status, final String description, final String code, final String message) {
-
-        this.status = status;
-        this.description = description;
-        this.code = code;
-        this.message = message;
+        this(status, description, code, message, null);
     }
 
     public Result(final Integer status, final String description, final T data) {
-
         this(status, description, status.toString(), description, data);
     }
 
