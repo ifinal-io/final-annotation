@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 /**
  * @author likly
  * @version 1.2.1
+ * @see org.ifinalframework.query.condition.LikeCondition#endsWith(String)
  * @since 1.2.1
  */
 @Criterion(EndsWith.class)

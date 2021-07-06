@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query;
@@ -192,7 +190,7 @@ class CriterionTargetTest {
         CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).startWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
-        assertEquals(CriterionExpression.START_WITH, criterion.getExpression());
+        assertEquals(CriterionExpression.STARTS_WITH, criterion.getExpression());
     }
 
     @Test
@@ -200,7 +198,7 @@ class CriterionTargetTest {
         CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notStartWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
-        assertEquals(CriterionExpression.NOT_START_WITH, criterion.getExpression());
+        assertEquals(CriterionExpression.NOT_STARTS_WITH, criterion.getExpression());
     }
 
     @Test
@@ -208,7 +206,7 @@ class CriterionTargetTest {
         CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).endWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
-        assertEquals(CriterionExpression.END_WITH, criterion.getExpression());
+        assertEquals(CriterionExpression.ENDS_WITH, criterion.getExpression());
     }
 
     @Test
@@ -216,7 +214,7 @@ class CriterionTargetTest {
         CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notEndWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
-        assertEquals(CriterionExpression.NOT_END_WITH, criterion.getExpression());
+        assertEquals(CriterionExpression.NOT_ENDS_WITH, criterion.getExpression());
     }
 
     @Test

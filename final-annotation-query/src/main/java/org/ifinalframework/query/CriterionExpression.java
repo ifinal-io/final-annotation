@@ -142,16 +142,16 @@ public final class CriterionExpression {
 
     public static final String NOT_LIKE = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE #{${value}}");
 
-    public static final String START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+    public static final String STARTS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
         "${column} LIKE CONCAT('%',#{${value}})");
 
-    public static final String NOT_START_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+    public static final String NOT_STARTS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
         "${column} NOT LIKE CONCAT('%',#{${value}})");
 
-    public static final String END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+    public static final String ENDS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
         "${column} LIKE CONCAT(#{${value}},'%')");
 
-    public static final String NOT_END_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
+    public static final String NOT_ENDS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
         "${column} NOT LIKE CONCAT(#{${value}},'%')");
 
     public static final String CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL,

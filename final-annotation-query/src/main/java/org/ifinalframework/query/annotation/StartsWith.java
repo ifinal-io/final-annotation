@@ -29,6 +29,7 @@ import java.lang.annotation.Target;
  * @version 1.2.1
  * @see Like
  * @see NotStartsWith
+ * @see org.ifinalframework.query.condition.LikeCondition#startsWith(String)
  * @since 1.2.1
  */
 @Criterion(StartsWith.class)
