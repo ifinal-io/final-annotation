@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.query.condition;
@@ -36,6 +34,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value.
      * @return a {@code eq} criterion.
+     * @see org.ifinalframework.query.annotation.Equal
      */
     default Criterion eq(@Nullable V value) {
         return condition(CriterionExpression.EQUAL, value);
@@ -46,6 +45,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value.
      * @return a {@code neq} criterion.
+     * @see org.ifinalframework.query.annotation.NotEqual
      */
     default Criterion neq(@Nullable V value) {
         return condition(CriterionExpression.NOT_EQUAL, value);
@@ -56,6 +56,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value.
      * @return a {@code gt} criterion.
+     * @see org.ifinalframework.query.annotation.GreatThan
      */
     default Criterion gt(@Nullable V value) {
         return condition(CriterionExpression.GREAT_THAN, value);
@@ -66,6 +67,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value.
      * @return a {@code gte} criterion.
+     * @see org.ifinalframework.query.annotation.GreatThanEqual
      */
     default Criterion gte(@Nullable V value) {
         return condition(CriterionExpression.GREAT_THAN_EQUAL, value);
@@ -76,6 +78,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value
      * @return a {@code lt} criterion.
+     * @see org.ifinalframework.query.annotation.LessThan
      */
     default Criterion lt(@Nullable V value) {
         return condition(CriterionExpression.LESS_THAN, value);
@@ -86,6 +89,7 @@ public interface CompareCondition<V> extends Condition {
      *
      * @param value value.
      * @return a {@code lte} criterion.
+     * @see org.ifinalframework.query.annotation.LessThanEqual
      */
     default Criterion lte(@Nullable V value) {
         return condition(CriterionExpression.LESS_THAN_EQUAL, value);

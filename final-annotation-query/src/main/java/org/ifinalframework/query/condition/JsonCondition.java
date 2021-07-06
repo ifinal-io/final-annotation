@@ -28,14 +28,27 @@ import java.util.Collection;
  *
  * @author likly
  * @version 1.0.0
+ * @see org.ifinalframework.query.annotation.JsonContains
+ * @see org.ifinalframework.query.annotation.NotJsonContains
  * @since 1.0.0
  */
 public interface JsonCondition<V> extends Condition {
 
+    /**
+     * @param value value
+     * @return criterion
+     * @see #jsonContains(Object, String)
+     */
     default Criterion jsonContains(@Nullable V value) {
         return jsonContains(value, null);
     }
 
+    /**
+     * @param value value
+     * @param path  path
+     * @return criterion
+     * @see org.ifinalframework.query.annotation.JsonContains
+     */
     default Criterion jsonContains(@Nullable V value, @Nullable String path) {
         return condition(CriterionExpression.JSON_CONTAINS, value,
             criterionAttributes -> criterionAttributes.put("path", path));
@@ -45,6 +58,12 @@ public interface JsonCondition<V> extends Condition {
         return notJsonContains(value, null);
     }
 
+    /**
+     * @param value value
+     * @param path  path
+     * @return criterion
+     * @see org.ifinalframework.query.annotation.NotJsonContains
+     */
     default Criterion notJsonContains(@Nullable V value, @Nullable String path) {
         return condition(CriterionExpression.NOT_JSON_CONTAINS, value,
             criterionAttributes -> criterionAttributes.put("path", path));
