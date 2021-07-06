@@ -15,7 +15,38 @@
 
 `Final Annotation Query`提供了丰富的查询条件(`Criterion`)和更新操作(`Update`)。
 
-### Criterion
+### Query
+
+**Final Annotation Query**提供**编码**和**注解**两种方式来构建查询条件。
+
+如当需要构建以下查询条件时：
+
+```sql
+WHERE name = #{value} AND age BETWEEN #{min} AND #{max}
+```
+
+* 编码
+
+```java
+new Query().where(
+	name.eq("name"),
+    age.between(min,max)
+);
+```
+
+* 注解
+
+```java
+public class MyQuery implements IQuery{
+    @Equal
+    private String name;
+    @Between
+    private BetweenValue<Integer> age;
+    
+    //setter and getter
+    //...
+}
+```
 
 **支持的`Criterion`对下表所示：**
 
