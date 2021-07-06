@@ -10,3 +10,40 @@
 ![CODECOV](https://codecov.io/gh/final-projects/final-annotation/branch/main/graph/badge.svg)
 
 定义基础的注释与接口
+
+## Final Annotation Query
+
+|               方法               |        注解        |
+| :------------------------------: | :----------------: |
+|            `isNull()`            |     `@IsNull`      |
+|          `isNotNull()`           |    `@IsNotNull`    |
+|           `eq(value)`            |      `@Equal`      |
+|           `neq(value)`           |    `@NotEqual`     |
+|           `lt(value)`            |    `@LessThan`     |
+|           `lte(value)`           |  `@LessThanEqual`  |
+|           `gt(value)`            |    `@GreatThan`    |
+|           `gte(value)`           | `@GreatThanEqual`  |
+|          `like(value)`           |      `@Like`       |
+|         `notLike(value)`         |     `@NotLike`     |
+|        `contains(value)`         |    `@Contains`     |
+|       `notContains(value)`       |   `@NotContains`   |
+|       `startsWith(value)`        |   `@StartsWith`    |
+|      `notStartsWith(value)`      | `@NotStarttsWith`  |
+|        `endsWith(value)`         |    `@EndsWith`     |
+|       `notEndsWith(value)`       |   `@NotEndsWith`   |
+|           `in(values)`           |       `@In`        |
+|          `nin(values)`           |      `@NotIn`      |
+|        `between(min,max)`        |     `@Between`     |
+|      `notBetween(min,max)`       |   `@NotBetween`    |
+|   `jsonContains(value[,path])`   |  `@JsonContains`   |
+| `notJsonContains(values[,path])` | `@NotJsonContains` |
+|                                  |                    |
+|                                  |                    |
+|                                  |                    |
+|                                  |                    |
+|                                  |                    |
+|                                  |                    |
+|                                  |                    |
+
+
+
