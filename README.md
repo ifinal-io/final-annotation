@@ -11,6 +11,18 @@
 
 `Final Annotation`定义基础的注释与接口。
 
+## Final Annotation Core
+
+`Final Annotation Core`定义了大量的超接口和注释，用于标记标记和区分元素（类）在项目中所扮演的角色。
+
+如：
+
+* **IEnum**：用于枚举的`IEnum`接口，可实现Json序列化增强及自定义数据映射。
+* **IEntity**：用于实体类的`IEntity`接口，可实现ORM映射及通用的`CRUD`数据操作。
+* **IException**: 用于异常的`IException`接口，可用于区分系统异常和业务异常，从而进行全局的异常处理。
+* **IQuery**：用于查询的`IQuery`接口，可用于定义统一的查询规则。
+* **IResult**：用于结果的`IResult`接口，可实现统一的结果集处理。
+
 ## Final Annotation Cache
 
 `Final Annotation Cache`定义了切面缓存注释，使用`Redis`做为缓存存储，支持`Value`和`Hash`等数据结构。
