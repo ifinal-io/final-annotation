@@ -1,6 +1,6 @@
 ![Final Annotation](LOGO.png)
 
-# final-annotation
+# Final Annotation
 
 ![Github CI](https://github.com/final-projects/final-annotation/workflows/ci/badge.svg)
 [![LICENSE](https://img.shields.io/github/license/final-projects/final-annotation)](http://www.apache.org/licenses/LICENSE-2.0.html)
@@ -9,7 +9,7 @@
 ![Snapshots](https://img.shields.io/nexus/s/org.ifinalframework.annotation/final-annotation?server=https://s01.oss.sonatype.org&label=Snapshots)
 ![CODECOV](https://codecov.io/gh/final-projects/final-annotation/branch/main/graph/badge.svg)
 
-定义基础的注释与接口
+`Final Annotation`定义基础的注释与接口。
 
 ## Final Annotation Cache
 
@@ -37,14 +37,7 @@ public interface UserService {
 如当需要构建以下查询条件时：
 
 ```sql
-WHERE name =
-#{value}
-AND
-age
-BETWEEN
-#{min}
-AND
-#{max}
+WHERE name = #{value} AND age BETWEEN #{min} AND #{max}
 ```
 
 * 编码
