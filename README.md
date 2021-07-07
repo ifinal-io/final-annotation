@@ -13,7 +13,7 @@
 
 ## Final Annotation Core
 
-`Final Annotation Core`定义了大量的超接口和注释，用于标记标记和区分元素（类）在项目中所扮演的角色。
+`Final Annotation Core`定义了大量的超接口和注释，用于标记标记和区分元素（类、方法或属性）在项目中所扮演的角色。
 
 如：
 
@@ -22,6 +22,20 @@
 * **IException**: 用于异常的`IException`接口，可用于区分系统异常和业务异常，从而进行全局的异常处理。
 * **IQuery**：用于查询的`IQuery`接口，可用于定义统一的查询规则。
 * **IResult**：用于结果的`IResult`接口，可实现统一的结果集处理。
+* **@Default**: 用于标记元素含有（或是）**默认**值，不需要框架进行处理。如数据的默认值。
+* **@Final**：用于标记元素是**终态**，不应该被修改，如数据库的主键ID和创建时间。
+* **@Transient**: 用于票房元素是**短暂**的，不需要被处理。
+
+## Final Annotation Data
+
+`Final Annotation Data`为`ORM`的定义了大量的注解。
+
+如：
+
+* **@Table**：用于指定实体类与数据库表的映射关系。
+* **@Column**：用于指定实体类属性与数据库列的映射关系。
+
+> 一个实体类应有实现`IEntity`接口，或继承自`AbsEntity`。
 
 ## Final Annotation Cache
 
