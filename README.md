@@ -96,19 +96,19 @@ public class MyQuery implements IQuery {
 `Update`支持常用的数据设置及数学运算，如：
 
 ```java
-new Update().set("name","value").incr("version");
-// ==> UPDATE table SET name = #{value},version = version + 1;
+    // UPDATE table SET name = #{value},version = version + 1;
+    new Update().set("name","value").incr("version");
 ```
 
 也添加了对`Json`数据列的支持：
 
 ```java
-// UPDATE table SET json = JSON_SET(json,path,value);
-new Update().jsonSet("json",<path, value>);
-// UPDATE table SET json = JSON_INSERT(json,path,value);
+    // UPDATE table SET json = JSON_SET(json,path,value);
+    new Update().jsonSet("json",<path, value>);
+    // UPDATE table SET json = JSON_INSERT(json,path,value);
     new Update().jsonInsert("json",<path, value>);
-// UPDATE table SET json = JSON_REPLACE(json,path,value);
+    // UPDATE table SET json = JSON_REPLACE(json,path,value);
     new Update().jsonReplace("json",<path, value>);
-// UPDATE table SET json = JSON_REMOVE(json,paths);
+    // UPDATE table SET json = JSON_REMOVE(json,paths);
     new Update().jsonRemove("json",paths);
 ```
