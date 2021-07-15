@@ -96,43 +96,71 @@ public final class CriterionExpression {
     private static final String FRAGMENT_MAX_VALUE =
         "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
 
+    /**
+     * <pre class="code">
+     * ${andOr} ${column} IS NULL
+     * </pre>
+     */
     // NULL
-
     public static final String IS_NULL = expression(null,
         "${column} IS NULL");
 
+    /**
+     * <pre class="code">
+     *     ${andOr} ${column} IS NOT NULL
+     * </pre>
+     */
     public static final String IS_NOT_NULL = expression(null,
         "${column} IS NOT NULL");
 
     // COMPARE
 
+    /**
+     * <pre class="code">
+     * &lt;if test="${value} != null"&gt;
+     *      ${andOr} ${column} = #{value,javaType=,typeHandler=}
+     * &lt;/if&gt;
+     * </pre>
+     */
     public static final String EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} = ", FRAGMENT_VALUE);
+        "${column} =", FRAGMENT_VALUE);
 
+    /**
+     * <pre class="code">
+     * &lt;if test="${value} != null"&gt;
+     *     ${andOr} ${column} != #{value,javaType=,typeHandler=}
+     * &lt;/if&gt;
+     * </pre>
+     */
     public static final String NOT_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} != ", FRAGMENT_VALUE);
+        "${column} !=", FRAGMENT_VALUE);
 
+    /**
+     * {@code <if test="${value} != null"> ${andOr}
+     * </if>
+     * }
+     */
     public static final String GREAT_THAN = expression(TEST_VALUE_NOT_NULL,
-        "${column} > ", FRAGMENT_VALUE);
+        "${column} >", FRAGMENT_VALUE);
 
     public static final String GREAT_THAN_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} >= ", FRAGMENT_VALUE);
+        "${column} >=", FRAGMENT_VALUE);
 
     public static final String LESS_THAN = expression(TEST_VALUE_NOT_NULL,
-        "${column} < ", FRAGMENT_VALUE);
+        "${column} <", FRAGMENT_VALUE);
 
     public static final String LESS_THAN_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} <= ", FRAGMENT_VALUE);
+        "${column} <=", FRAGMENT_VALUE);
 
     // BETWEEN
 
     private static final String TEST_BETWEEN_VALUE_NOT_NULL = "${value} != null and ${value}.min != null and ${value}.max != null";
 
     public static final String BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} BETWEEN ", FRAGMENT_MIN_VALUE, " AND ", FRAGMENT_MAX_VALUE);
+        "${column} BETWEEN", FRAGMENT_MIN_VALUE, "AND", FRAGMENT_MAX_VALUE);
 
     public static final String NOT_BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} NOT BETWEEN ", FRAGMENT_MIN_VALUE, " AND ", FRAGMENT_MAX_VALUE);
+        "${column} NOT BETWEEN", FRAGMENT_MIN_VALUE, "AND", FRAGMENT_MAX_VALUE);
 
     // LIKE
 
