@@ -38,7 +38,7 @@ public class CriterionTarget implements FunctionCriteriable<Object> {
     private CriterionTarget(final String column) {
         this.column = Objects.requireNonNull(column, "criterion column can not be null.");
         this.criterion = new CriterionAttributes();
-//        this.criterion.put("andOr", AndOr.AND);
+        this.criterion.put("andOr", AndOr.AND);
     }
 
     public static CriterionTarget from(String column) {
