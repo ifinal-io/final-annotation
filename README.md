@@ -112,3 +112,5 @@ public class MyQuery implements IQuery {
     // UPDATE table SET json = JSON_REMOVE(json,paths);
     new Update().jsonRemove("json",paths);
 ```
+
+> **注意**`path`的格式为要以`$开头`。

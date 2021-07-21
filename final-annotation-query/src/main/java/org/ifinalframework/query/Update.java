@@ -27,6 +27,7 @@ import java.util.function.Consumer;
  *
  * <h3>Usage</h3>
  *
+ *
  * <pre class="code">
  *      Update update = Update.update();
  *      // set column value
@@ -36,6 +37,12 @@ import java.util.function.Consumer;
  *      update.decr(column,number);
  *      // custom update
  *      update.update(expression,column,value,consumer);
+ * </pre>
+ *
+ * <h4>Update With {@code JSON_SET}</h4>
+ *
+ * <pre class="code">
+ * Update.update().jsonSet(column,&lt;path,val&gt;);
  * </pre>
  *
  * <h3>Support update sql fragments:</h3>

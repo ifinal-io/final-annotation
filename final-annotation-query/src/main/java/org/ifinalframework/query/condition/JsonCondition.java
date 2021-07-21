@@ -75,9 +75,23 @@ public interface JsonCondition<V> extends Condition {
      * @param oneOrAll one or all, required not null
      * @param paths    paths, requited not empty
      * @return json contains path criterion
+     * @since 1.2.1
      */
     default Criterion jsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
         return condition(CriterionExpression.JSON_CONTAINS_PATH, paths,
+            criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll));
+    }
+
+    /**
+     * !JSON_CONTAINS_PATH(doc,'oneOrAll',path[,path ...])
+     *
+     * @param oneOrAll one or all, required not null
+     * @param paths    paths, requited not empty
+     * @return json contains path criterion
+     * @since 1.2.1
+     */
+    default Criterion notJsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
+        return condition(CriterionExpression.NOT_JSON_CONTAINS_PATH, paths,
             criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll));
     }
 

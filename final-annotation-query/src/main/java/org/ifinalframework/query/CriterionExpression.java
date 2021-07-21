@@ -266,6 +266,10 @@ public final class CriterionExpression {
         + "${andOr} JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', <foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)"
         + END_IF;
 
+    public static final String NOT_JSON_CONTAINS_PATH = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${andOr} !JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', <foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)"
+        + END_IF;
+
     // =================================================================================================================
     // ===========================================           UPDATE          ===========================================
     // =================================================================================================================
