@@ -13,30 +13,33 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.query.annotation;
+package org.ifinalframework.query.expression.velocity.criterion;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.springframework.lang.NonNull;
+
+import org.ifinalframework.query.CriterionExpression;
+import org.ifinalframework.query.Expression;
 
 /**
+ * IsNotNullExpression.
+ *
  * @author likly
- * @version 1.0.0
- * @see Offset
- * @see org.ifinalframework.core.Limitable
- * @since 1.0.0
- * @deprecated deprecated from 1.2.1, replaced by {@link org.ifinalframework.core.Limitable}.
+ * @version 1.2.1
+ * @see org.ifinalframework.query.annotation.IsNotNull
+ * @since 1.2.1
  */
-@Deprecated
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Limit {
+public class IsNotNullExpression implements Expression {
 
-    String[] value() default {
-        "<if test=\"${value} != null\">",
-        "   #{${value}}",
-        "</if>"
-    };
+    @NonNull
+    @Override
+    public String key() {
+        return IS_NOT_NULL;
+    }
+
+    @NonNull
+    @Override
+    public String value() {
+        return CriterionExpression.IS_NOT_NULL;
+    }
 
 }

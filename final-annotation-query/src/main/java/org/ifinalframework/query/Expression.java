@@ -13,30 +13,31 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.query.annotation;
+package org.ifinalframework.query;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.springframework.lang.NonNull;
 
 /**
+ * Expression.
+ *
  * @author likly
- * @version 1.0.0
- * @see Offset
- * @see org.ifinalframework.core.Limitable
- * @since 1.0.0
- * @deprecated deprecated from 1.2.1, replaced by {@link org.ifinalframework.core.Limitable}.
+ * @version 1.2.1
+ * @since 1.2.1
  */
-@Deprecated
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Limit {
+public interface Expression {
 
-    String[] value() default {
-        "<if test=\"${value} != null\">",
-        "   #{${value}}",
-        "</if>"
-    };
+    String IS_NULL = "isNull";
+
+    String IS_NOT_NULL = "isNotNull";
+
+    String EQUAL = "eq";
+
+    String NOT_EQUAL = "neq";
+
+    @NonNull
+    String key();
+
+    @NonNull
+    String value();
 
 }

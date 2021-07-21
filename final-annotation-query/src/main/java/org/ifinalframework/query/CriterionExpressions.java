@@ -13,30 +13,22 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.query.annotation;
+package org.ifinalframework.query;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
+ * CriterionExpressions.
+ *
  * @author likly
- * @version 1.0.0
- * @see Offset
- * @see org.ifinalframework.core.Limitable
- * @since 1.0.0
- * @deprecated deprecated from 1.2.1, replaced by {@link org.ifinalframework.core.Limitable}.
+ * @version 1.2.1
+ * @since 1.2.1
  */
-@Deprecated
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Limit {
+public final class CriterionExpressions {
 
-    String[] value() default {
-        "<if test=\"${value} != null\">",
-        "   #{${value}}",
-        "</if>"
-    };
+    private static final Map<String, String> CRITERION_EXPRESSIONS = new LinkedHashMap<>(32);
+
+    private static final Map<String, String> UPDATE_EXPRESSIONS = new LinkedHashMap<>(8);
 
 }

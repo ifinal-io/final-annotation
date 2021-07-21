@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
@@ -33,6 +34,7 @@ import org.junit.jupiter.params.provider.ValueSource;
  * @version 1.0.0
  * @since 1.0.0
  */
+@Slf4j
 class CriterionTargetTest {
 
     public static final String COLUMN = "name";
@@ -153,6 +155,7 @@ class CriterionTargetTest {
 
     @Test
     void in() {
+
         CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).in(IN_VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(IN_VALUE, criterion.getValue());

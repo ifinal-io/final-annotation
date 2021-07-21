@@ -15,11 +15,6 @@
 
 package org.ifinalframework.query;
 
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
-
-import java.util.Objects;
-
 import lombok.Getter;
 
 /**
@@ -35,66 +30,60 @@ public final class CriterionExpression {
     private CriterionExpression() {
     }
 
-    private static final String DELIMITER = " ";
+    private static final String CLOSE_IF = "\">";
+
+    private static final String OPEN_IF = "<if test=\"";
+
+    private static final String END_IF = "</if>";
 
     private static final String CDATA_OPEN = "<![CDATA[ ";
 
     private static final String CDATA_CLOSE = " ]]>";
 
-    private static final String AND_OR = "${andOr} ";
+    // =================================================================================================================
+    // ===========================================           TEST            ===========================================
+    // =================================================================================================================
+    public static final String TEST_VALUE = "${value} != null";
 
-    private static String expression(@Nullable String test, @NonNull String... fragments) {
-        if (Objects.isNull(test)) {
-            return CDATA_OPEN + AND_OR + String.join(DELIMITER, fragments) + CDATA_CLOSE;
-        }
+    public static final String TEST_LIKE = "${value} != null and ${value} != ''";
 
-        return "<if test=\"" + test + "\">"
-            + CDATA_OPEN + AND_OR + String.join(DELIMITER, fragments) + CDATA_CLOSE
-            + "</if>";
+    public static final String TEST_COLLECTION = "${value} != null and ${value}.size() > 0";
 
-    }
+    public static final String TEST_BETWEEN = "${value} != null and ${value}.min != null and ${value}.max != null";
 
-    private static String expression2(@Nullable String test, String prefix, String suffix,
-        @NonNull String... fragments) {
-        if (Objects.isNull(test)) {
-            return AND_OR + prefix + CDATA_OPEN + String.join(DELIMITER, fragments) + CDATA_CLOSE + suffix;
-        }
+    // =================================================================================================================
+    // ===========================================           VALUE           ===========================================
+    // =================================================================================================================
 
-        return "<if test=\"" + test + "\">"
-            + AND_OR + prefix
-            + CDATA_OPEN + String.join(DELIMITER, fragments) + CDATA_CLOSE
-            + suffix
-            + "</if>";
+    public static final String JAVA_TYPE = "#if($javaType), javaType=$!{javaType.canonicalName}#end";
 
-    }
-
-    private static final String TEST_VALUE_NOT_NULL = "${value} != null";
-
-    private static final String TEST_VALUE_NOT_EMPTY = "${value} != null and ${value}.size() > 0";
-
-    private static final String FRAGMENT_JAVA_TYPE = "#if($javaType), javaType=$!{javaType.canonicalName}#end";
-
-    private static final String FRAGMENT_TYPE_HANDLER = "#if($typeHandler), typeHandler=$!{typeHandler.canonicalName}#end";
+    public static final String TYPE_HANDLER = "#if($typeHandler), typeHandler=$!{typeHandler.canonicalName}#end";
 
     /**
      * {@code #{${value},javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_VALUE = "#{${value}" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    public static final String VALUE = "#{${value}" + JAVA_TYPE + TYPE_HANDLER + "}";
 
-    private static final String FRAGMENT_CRITERION_VALUE =
-        "#{${value}.value" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    /**
+     * {@code #{item,javaType=,typeHandler=}}
+     */
+    public static final String ITEM = "#{item" + JAVA_TYPE + TYPE_HANDLER + "}";
+
+    public static final String FRAGMENT_CRITERION_VALUE = "#{${value}.value" + JAVA_TYPE + TYPE_HANDLER + "}";
 
     /**
      * {@code #{${value}.min,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_MIN_VALUE =
-        "#{${value}.min" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    public static final String MIN_VALUE = "#{${value}.min" + JAVA_TYPE + TYPE_HANDLER + "}";
 
     /**
      * {@code #{${value}.max,javaType=,typeHandler=}}
      */
-    private static final String FRAGMENT_MAX_VALUE =
-        "#{${value}.max" + FRAGMENT_JAVA_TYPE + FRAGMENT_TYPE_HANDLER + "}";
+    public static final String MAX_VALUE = "#{${value}.max" + JAVA_TYPE + TYPE_HANDLER + "}";
+
+    // =================================================================================================================
+    // ===========================================           NULL            ===========================================
+    // =================================================================================================================
 
     /**
      * <pre class="code">
@@ -102,18 +91,20 @@ public final class CriterionExpression {
      * </pre>
      */
     // NULL
-    public static final String IS_NULL = expression(null,
-        "${column} IS NULL");
+    public static final String IS_NULL = CDATA_OPEN + "${andOr} ${column} IS NULL" + CDATA_CLOSE;
 
     /**
      * <pre class="code">
      *     ${andOr} ${column} IS NOT NULL
      * </pre>
      */
-    public static final String IS_NOT_NULL = expression(null,
-        "${column} IS NOT NULL");
+    public static final String IS_NOT_NULL = CDATA_OPEN + "${andOr} ${column} IS NOT NULL" + CDATA_CLOSE;
 
     // COMPARE
+
+    // =================================================================================================================
+    // ===========================================          COMPARE          ===========================================
+    // =================================================================================================================
 
     /**
      * <pre class="code">
@@ -122,8 +113,11 @@ public final class CriterionExpression {
      * &lt;/if&gt;
      * </pre>
      */
-    public static final String EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} =", FRAGMENT_VALUE);
+    public static final String EQUAL = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} = " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
      * <pre class="code">
@@ -132,138 +126,216 @@ public final class CriterionExpression {
      * &lt;/if&gt;
      * </pre>
      */
-    public static final String NOT_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} !=", FRAGMENT_VALUE);
+    public static final String NOT_EQUAL = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} != " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
      * {@code <if test="${value} != null"> ${andOr}
      * </if>
      * }
      */
-    public static final String GREAT_THAN = expression(TEST_VALUE_NOT_NULL,
-        "${column} >", FRAGMENT_VALUE);
+    public static final String GREAT_THAN = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} > " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String GREAT_THAN_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} >=", FRAGMENT_VALUE);
+    public static final String GREAT_THAN_EQUAL = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} >= " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String LESS_THAN = expression(TEST_VALUE_NOT_NULL,
-        "${column} <", FRAGMENT_VALUE);
+    public static final String LESS_THAN = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} < " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String LESS_THAN_EQUAL = expression(TEST_VALUE_NOT_NULL,
-        "${column} <=", FRAGMENT_VALUE);
+    public static final String LESS_THAN_EQUAL = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} <= " + VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     // BETWEEN
 
-    private static final String TEST_BETWEEN_VALUE_NOT_NULL = "${value} != null and ${value}.min != null and ${value}.max != null";
+    public static final String BETWEEN = OPEN_IF + TEST_BETWEEN + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} BETWEEN " + MIN_VALUE + " AND " + MAX_VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} BETWEEN", FRAGMENT_MIN_VALUE, "AND", FRAGMENT_MAX_VALUE);
+    public static final String NOT_BETWEEN = OPEN_IF + TEST_BETWEEN + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT BETWEEN " + MIN_VALUE + " AND " + MAX_VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String NOT_BETWEEN = expression(TEST_BETWEEN_VALUE_NOT_NULL,
-        "${column} NOT BETWEEN", FRAGMENT_MIN_VALUE, "AND", FRAGMENT_MAX_VALUE);
+    // =================================================================================================================
+    // ===========================================           LIKE            ===========================================
+    // =================================================================================================================
 
     // LIKE
+    public static final String LIKE = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} LIKE #{${value}}"
+        + CDATA_CLOSE
+        + END_IF;
 
-    private static final String TEST_LIKE_VALUE_NOT_NULL = "${value} != null and ${value} != ''";
+    public static final String NOT_LIKE = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT LIKE #{${value}}"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String LIKE = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} LIKE #{${value}}");
+    public static final String STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} LIKE CONCAT('%',#{${value}})"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String NOT_LIKE = expression(TEST_LIKE_VALUE_NOT_NULL, "${column} NOT LIKE #{${value}}");
+    public static final String NOT_STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}})"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String STARTS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} LIKE CONCAT('%',#{${value}})");
+    public static final String ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} LIKE CONCAT(#{${value}},'%')"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String NOT_STARTS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} NOT LIKE CONCAT('%',#{${value}})");
+    public static final String NOT_ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT LIKE CONCAT(#{${value}},'%')"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String ENDS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} LIKE CONCAT(#{${value}},'%')");
+    public static final String CONTAINS = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} LIKE CONCAT('%',#{${value}},'%')"
+        + CDATA_CLOSE
+        + END_IF;
 
-    public static final String NOT_ENDS_WITH = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} NOT LIKE CONCAT(#{${value}},'%')");
-
-    public static final String CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} LIKE CONCAT('%',#{${value}},'%')");
-
-    public static final String NOT_CONTAINS = expression(TEST_LIKE_VALUE_NOT_NULL,
-        "${column} NOT LIKE CONCAT('%',#{${value}},'%')");
+    public static final String NOT_CONTAINS = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}},'%')"
+        + CDATA_CLOSE
+        + END_IF;
 
     // IN
 
-    public static final String IN = expression2(TEST_VALUE_NOT_EMPTY,
-        "<foreach collection=\"${value}\" item=\"item\" open=\"${column} IN (\" close=\")\" separator=\",\">",
-        "</foreach>",
-        "#{item}");
+    // =================================================================================================================
+    // ===========================================             IN            ===========================================
+    // =================================================================================================================
+    public static final String IN = OPEN_IF + TEST_COLLECTION + CLOSE_IF
+        + "<foreach collection=\"${value}\" item=\"item\" open=\"${andOr} ${column} IN (\" close=\")\" separator=\",\">"
+        + ITEM
+        + "</foreach>"
+        + END_IF;
 
-    public static final String NOT_IN = expression2(TEST_VALUE_NOT_EMPTY,
-        "<foreach collection=\"${value}\" item=\"item\" open=\"${column} NOT IN (\" close=\")\" separator=\",\">",
-        "</foreach>",
-        "#{item}");
+    public static final String NOT_IN = OPEN_IF + TEST_COLLECTION + CLOSE_IF
+        + "<foreach collection=\"${value}\" item=\"item\" open=\"${andOr} ${column} NOT IN (\" close=\")\" separator=\",\">"
+        + ITEM
+        + "</foreach>"
+        + END_IF;
 
     // JSON
+
+    // =================================================================================================================
+    // ===========================================            JSON           ===========================================
+    // =================================================================================================================
 
     /**
      * {@code JSON_CONTAINS(column,value[,path])}
      */
-    public static final String JSON_CONTAINS = expression(TEST_VALUE_NOT_NULL,
-        "JSON_CONTAINS( ${column},", FRAGMENT_VALUE,
-        "       #if($path), '${path}'#end )");
+    public static final String JSON_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${andOr} JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
+        + END_IF;
 
-    public static final String NOT_JSON_CONTAINS = expression(TEST_VALUE_NOT_NULL,
-        "!JSON_CONTAINS( ${column},", FRAGMENT_VALUE,
-        "       #if($path), '${path}'#end )");
+    public static final String NOT_JSON_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${andOr} !JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
+        + END_IF;
 
-    public static final String JSON_CONTAINS_PATH = expression(TEST_VALUE_NOT_EMPTY,
-        "JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', ",
-        "<foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>",
-        ")");
-    // UPDATE
+    public static final String JSON_CONTAINS_PATH = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${andOr} JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', <foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)"
+        + END_IF;
 
-    private static String update(String test, String... fragments) {
-        if (Objects.isNull(test)) {
-            return CDATA_OPEN + String.join(DELIMITER, fragments) + "," + CDATA_CLOSE;
-        }
-
-        return "<if test=\"" + test + "\">"
-            + CDATA_OPEN + String.join(DELIMITER, fragments) + "," + CDATA_CLOSE
-            + "</if>";
-    }
+    // =================================================================================================================
+    // ===========================================           UPDATE          ===========================================
+    // =================================================================================================================
 
     /**
-     * {@code column = #{value,javaType=,typeHandler=}}
+     * <pre class="code">
+     * <if test="${value} != null">
+     *     ${column} = #{value,javaType=,typeHandler}
+     * </if>
+     * </pre>
      */
-    public static final String UPDATE_SET = update(TEST_VALUE_NOT_NULL,
-        "${column} = ", FRAGMENT_CRITERION_VALUE);
+    public static final String UPDATE_SET = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${column} = " + FRAGMENT_CRITERION_VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
-     * {@code column = column + #{value,javaType=,typeHandler=}}
+     * <pre class="code">
+     * <if test="${value} != null">
+     *     ${column} = ${column} + #{value,javaType=,typeHandler}
+     * </if>
+     * </pre>
      */
-    public static final String UPDATE_INCR = update(TEST_VALUE_NOT_NULL,
-        "${column} = ${column} + ", FRAGMENT_CRITERION_VALUE);
+    public static final String UPDATE_INCR = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${column} = ${column} + " + FRAGMENT_CRITERION_VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
-     * {@code column = column - #{value,javaType=,typeHandler=}}
+     * <pre class="code">
+     * <if test="${value} != null">
+     *      ${column} = ${column} - #{value,javaType=,typeHandler=}
+     * </if>
+     * </pre>
      */
-    public static final String UPDATE_DECR = update(TEST_VALUE_NOT_NULL,
-        "${column} = ${column} - ", FRAGMENT_CRITERION_VALUE);
+    public static final String UPDATE_DECR = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${column} = ${column} - " + FRAGMENT_CRITERION_VALUE
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
+     * <pre class="code">
+     *      ${column} = JSON_INSERT(${column},<foreach collection="${value}.entrySet()" index="key" item="val" separator=",">#{key},#{val}</foreach>)
+     * </pre>
      * {@code column = JSON_INSERT(column, path,val[,path,val]...))}
      *
      * @see #JSON_REPLACE
      * @see #JSON_SET
      */
-    public static final String JSON_INSERT = update(TEST_VALUE_NOT_EMPTY,
-        "${column} = JSON_INSERT(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+    public static final String JSON_INSERT = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + CDATA_OPEN
+        + "${column} = JSON_INSERT(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)"
+        + CDATA_CLOSE
+        + END_IF;
 
     /**
+     * <pre class="code">
+     *      ${column} = JSON_REPLACE(${column},<foreach collection="${value}.entrySet()" index="key" item="val" separator=",">#{key},#{val}</foreach>)
+     * </pre>
      * {@code column = JSON_REPLACE(column, path,val[,path,val]...))}
      *
      * @see #JSON_INSERT
      * @see #JSON_SET
      */
-    public static final String JSON_REPLACE = update(TEST_VALUE_NOT_EMPTY,
-        "${column} = JSON_REPLACE(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+    public static final String JSON_REPLACE = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${column} = JSON_REPLACE(${column},<foreach collection=\"${value}.value.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>),"
+        + END_IF;
 
     /**
      * {@code column = JSON_SET(column, path,val[,path,val]...))}
@@ -271,13 +343,15 @@ public final class CriterionExpression {
      * @see #JSON_INSERT
      * @see #JSON_REPLACE
      */
-    public static final String JSON_SET = update(TEST_VALUE_NOT_EMPTY,
-        "${column} = JSON_SET(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)");
+    public static final String JSON_SET = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${column} = JSON_SET(${column},<foreach collection=\"${value}.value.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>),"
+        + END_IF;
 
     /**
      * {@code column = JSON_REMOVE(column, path[,path...])}
      */
-    public static final String JSON_REMOVE = update(TEST_VALUE_NOT_EMPTY,
-        "${column} = JSON_REMOVE(${column},<foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)");
+    public static final String JSON_REMOVE = OPEN_IF + TEST_VALUE + CLOSE_IF
+        + "${column} = JSON_REMOVE(${column},<foreach collection=\"${value}.value\" item=\"item\" separator=\",\">#{item}</foreach>),"
+        + END_IF;
 
 }

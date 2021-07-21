@@ -18,7 +18,10 @@ package org.ifinalframework.query.condition;
 import org.springframework.lang.Nullable;
 
 import org.ifinalframework.query.Criterion;
+import org.ifinalframework.query.CriterionAttributes;
 import org.ifinalframework.query.CriterionExpression;
+
+import java.util.function.Consumer;
 
 /**
  * CompareCondition.
@@ -37,7 +40,21 @@ public interface CompareCondition<V> extends Condition {
      * @see org.ifinalframework.query.annotation.Equal
      */
     default Criterion eq(@Nullable V value) {
-        return condition(CriterionExpression.EQUAL, value);
+        return eq(value, null);
+    }
+
+    /**
+     * @param value
+     * @param consumer
+     * @return
+     * @since 1.2.1
+     */
+    default Criterion eq(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.EQUAL, value, consumer);
+    }
+
+    default Criterion neq(@Nullable V value) {
+        return neq(value, null);
     }
 
     /**
@@ -46,9 +63,10 @@ public interface CompareCondition<V> extends Condition {
      * @param value value.
      * @return a {@code neq} criterion.
      * @see org.ifinalframework.query.annotation.NotEqual
+     * @since 1.2.1
      */
-    default Criterion neq(@Nullable V value) {
-        return condition(CriterionExpression.NOT_EQUAL, value);
+    default Criterion neq(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.NOT_EQUAL, value, consumer);
     }
 
     /**
@@ -58,8 +76,27 @@ public interface CompareCondition<V> extends Condition {
      * @return a {@code gt} criterion.
      * @see org.ifinalframework.query.annotation.GreatThan
      */
+    default Criterion gt(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.GREAT_THAN, value, consumer);
+    }
+
     default Criterion gt(@Nullable V value) {
-        return condition(CriterionExpression.GREAT_THAN, value);
+        return gt(value, null);
+    }
+
+    /**
+     * Build a {@code geq} criterion for sql {@code column >= #{value}}
+     *
+     * @param value value.
+     * @return a {@code geq} criterion.
+     * @since 1.2.1
+     */
+    default Criterion geq(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.GREAT_THAN_EQUAL, value, consumer);
+    }
+
+    default Criterion geq(@Nullable V value) {
+        return geq(value, null);
     }
 
     /**
@@ -68,9 +105,11 @@ public interface CompareCondition<V> extends Condition {
      * @param value value.
      * @return a {@code gte} criterion.
      * @see org.ifinalframework.query.annotation.GreatThanEqual
+     * @see #geq(Object)
      */
+    @Deprecated
     default Criterion gte(@Nullable V value) {
-        return condition(CriterionExpression.GREAT_THAN_EQUAL, value);
+        return geq(value);
     }
 
     /**
@@ -80,19 +119,37 @@ public interface CompareCondition<V> extends Condition {
      * @return a {@code lt} criterion.
      * @see org.ifinalframework.query.annotation.LessThan
      */
+    default Criterion lt(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.LESS_THAN, value, consumer);
+    }
+
     default Criterion lt(@Nullable V value) {
-        return condition(CriterionExpression.LESS_THAN, value);
+        return lt(value, null);
     }
 
     /**
      * Build a {@code lte} criterion for {@code column <= #{value}}.
      *
      * @param value value.
-     * @return a {@code lte} criterion.
+     * @return a {@code leq} criterion.
      * @see org.ifinalframework.query.annotation.LessThanEqual
+     * @since 1.2.1
      */
+    default Criterion leq(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
+        return condition(CriterionExpression.LESS_THAN_EQUAL, value, consumer);
+    }
+
+    default Criterion leq(@Nullable V value) {
+        return leq(value, null);
+    }
+
+    /**
+     * @see #leq(Object)
+     * @deprecated replaced by {@code let()}
+     */
+    @Deprecated
     default Criterion lte(@Nullable V value) {
-        return condition(CriterionExpression.LESS_THAN_EQUAL, value);
+        return leq(value);
     }
 
     /**
