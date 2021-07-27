@@ -17,12 +17,9 @@ package org.ifinalframework.query;
 
 import org.springframework.lang.NonNull;
 
-import org.ifinalframework.core.Groupable;
 import org.ifinalframework.core.IQuery;
-import org.ifinalframework.core.Limitable;
-import org.ifinalframework.core.Orderable;
-import org.ifinalframework.core.Pageable;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -43,8 +40,7 @@ import lombok.Setter;
  * @version 1.0.0
  * @since 1.0.0
  */
-@SuppressWarnings("unused")
-public class Query implements Groupable, Orderable, Limitable, Pageable {
+public class Query implements IQuery, Serializable {
 
     @Getter
     private final Criteria criteria = new Criteria();

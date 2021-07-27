@@ -30,6 +30,7 @@ import java.lang.annotation.Target;
  * @see Like
  * @see NotStartWith
  * @since 1.0.0
+ * @deprecated replaced by {@link StartsWith} since {@code 1.2.1}.
  */
 @Deprecated
 @Criterion(StartWith.class)

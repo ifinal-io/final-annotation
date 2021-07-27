@@ -26,6 +26,7 @@ import java.lang.annotation.Target;
  * @see Like
  * @see NotEndsWith
  * @since 1.0.0
+ * @deprecated replaced by {@link NotEndsWith}
  */
 @Deprecated
 @Criterion(NotEndWith.class)

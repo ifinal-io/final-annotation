@@ -277,13 +277,13 @@ public final class CriterionExpression {
     /**
      * <pre class="code">
      * <if test="${value} != null">
-     *     ${column} = #{value,javaType=,typeHandler}
+     *     ${column} = #{value,javaType=,typeHandler},
      * </if>
      * </pre>
      */
     public static final String UPDATE_SET = OPEN_IF + TEST_VALUE + CLOSE_IF
         + CDATA_OPEN
-        + "${column} = " + FRAGMENT_CRITERION_VALUE
+        + "${column} = " + FRAGMENT_CRITERION_VALUE + ","
         + CDATA_CLOSE
         + END_IF;
 
@@ -296,7 +296,7 @@ public final class CriterionExpression {
      */
     public static final String UPDATE_INCR = OPEN_IF + TEST_VALUE + CLOSE_IF
         + CDATA_OPEN
-        + "${column} = ${column} + " + FRAGMENT_CRITERION_VALUE
+        + "${column} = ${column} + " + FRAGMENT_CRITERION_VALUE + ","
         + CDATA_CLOSE
         + END_IF;
 
@@ -309,7 +309,7 @@ public final class CriterionExpression {
      */
     public static final String UPDATE_DECR = OPEN_IF + TEST_VALUE + CLOSE_IF
         + CDATA_OPEN
-        + "${column} = ${column} - " + FRAGMENT_CRITERION_VALUE
+        + "${column} = ${column} - " + FRAGMENT_CRITERION_VALUE + ","
         + CDATA_CLOSE
         + END_IF;
 
@@ -323,9 +323,7 @@ public final class CriterionExpression {
      * @see #JSON_SET
      */
     public static final String JSON_INSERT = OPEN_IF + TEST_VALUE + CLOSE_IF
-        + CDATA_OPEN
-        + "${column} = JSON_INSERT(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>)"
-        + CDATA_CLOSE
+        + "${column} = JSON_INSERT(${column},<foreach collection=\"${value}.entrySet()\" index=\"key\" item=\"val\" separator=\",\">#{key},#{val}</foreach>),"
         + END_IF;
 
     /**

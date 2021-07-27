@@ -20,8 +20,11 @@ import org.springframework.lang.Nullable;
 
 import org.ifinalframework.query.Criterion;
 import org.ifinalframework.query.CriterionExpression;
+import org.ifinalframework.query.OneOrAll;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * JsonCondition.
@@ -32,6 +35,7 @@ import java.util.Collection;
  * @see org.ifinalframework.query.annotation.NotJsonContains
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public interface JsonCondition<V> extends Condition {
 
     /**
@@ -69,30 +73,79 @@ public interface JsonCondition<V> extends Condition {
             criterionAttributes -> criterionAttributes.put("path", path));
     }
 
+    //==================================================================================================================
+    //============================================    JSON_CONTAINS_PATH    ============================================
+    //==================================================================================================================
+
+    default Criterion jsonContainsPath(String... paths) {
+        return jsonContainsPath(OneOrAll.ONE, paths);
+    }
+
+    default Criterion jsonContainsPath(Collection<String> paths) {
+        return jsonContainsPath(OneOrAll.ONE, paths);
+    }
+
+    /**
+     * A {@code override} method for {@link #jsonContainsPath(OneOrAll, Collection)}.
+     *
+     * @see #jsonContainsPath(String, Collection)
+     */
+    default Criterion jsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
+        return jsonContainsPath(OneOrAll.from(oneOrAll), paths);
+    }
+
+    default Criterion jsonContainsPath(OneOrAll oneOrAll, String... paths) {
+        return jsonContainsPath(oneOrAll, Objects.isNull(paths) ? null : Arrays.asList(paths));
+    }
+
     /**
      * JSON_CONTAINS_PATH(doc,'oneOrAll',path[,path ...])
      *
-     * @param oneOrAll one or all, required not null
-     * @param paths    paths, requited not empty
-     * @return json contains path criterion
+     * @param oneOrAll one or all, required not null.
+     * @param paths    paths, could be null or empty.
+     * @return json contains path criterion.
+     * @throws NullPointerException if {@code oneOrAll} is null.
      * @since 1.2.1
      */
-    default Criterion jsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
+    default Criterion jsonContainsPath(OneOrAll oneOrAll, Collection<String> paths) {
         return condition(CriterionExpression.JSON_CONTAINS_PATH, paths,
-            criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll));
+            criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll.name()));
+    }
+
+    // !JSON_CONTAINS_PATH
+
+    default Criterion notJsonContainsPath(String... paths) {
+        return notJsonContainsPath(OneOrAll.ONE, paths);
+    }
+
+    default Criterion notJsonContainsPath(Collection<String> paths) {
+        return notJsonContainsPath(OneOrAll.ONE, paths);
+    }
+
+    default Criterion notJsonContainsPath(String oneOrAll, String... paths) {
+        return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
+    }
+
+    default Criterion notJsonContainsPath(String oneOrAll, Collection<String> paths) {
+        return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
+    }
+
+    default Criterion notJsonContainsPath(OneOrAll oneOrAll, String... paths) {
+        return notJsonContainsPath(oneOrAll, Objects.isNull(paths) ? null : Arrays.asList(paths));
     }
 
     /**
      * !JSON_CONTAINS_PATH(doc,'oneOrAll',path[,path ...])
      *
      * @param oneOrAll one or all, required not null
-     * @param paths    paths, requited not empty
-     * @return json contains path criterion
+     * @param paths    paths, could be null or empty.
+     * @return not json contains path criterion
+     * @throws NullPointerException if {@code oneOrAll} is null.
      * @since 1.2.1
      */
-    default Criterion notJsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
+    default Criterion notJsonContainsPath(OneOrAll oneOrAll, Collection<String> paths) {
         return condition(CriterionExpression.NOT_JSON_CONTAINS_PATH, paths,
-            criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll));
+            criterionAttributes -> criterionAttributes.put("oneOrAll", oneOrAll.name()));
     }
 
 }
