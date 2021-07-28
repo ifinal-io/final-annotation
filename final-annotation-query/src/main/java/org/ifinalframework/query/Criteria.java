@@ -27,10 +27,25 @@ import lombok.Getter;
 /**
  * Criteria.
  *
+ * <h4>Criteria And</h4>
+ * Use {@link Criteria} build {@code and} sql like {@code A AND B AND C}.
+ * <pre class="code">
+ * Criteria.where(A,B,C);
+ * // or
+ * Criteria.and(A,B,C);
+ * </pre>
+ *
+ * <h4>Criteria Or</h4>
+ * Use {@link Criteria} build a {@code or} sql like {@code A OR B OR C}.
+ * <pre class="code">
+ * Criteria.or(A,B,C);
+ * </pre>
+ *
  * @author likly
  * @version 1.0.0
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 @EqualsAndHashCode(callSuper = true)
 public class Criteria extends ArrayList<Criterion> implements Criterion {
 

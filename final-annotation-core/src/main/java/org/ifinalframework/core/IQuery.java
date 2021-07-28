@@ -20,6 +20,10 @@ package org.ifinalframework.core;
  *
  * @author likly
  * @version 1.0.0
+ * @see Pageable
+ * @see Groupable
+ * @see Orderable
+ * @see Limitable
  * @since 1.0.0
  */
 public interface IQuery extends Pageable, Groupable, Orderable, Limitable {

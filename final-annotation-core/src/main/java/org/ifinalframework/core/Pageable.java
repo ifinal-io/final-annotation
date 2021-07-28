@@ -24,6 +24,7 @@ import org.springframework.lang.Nullable;
  *
  * @author likly
  * @version 1.0.0
+ * @see Limitable
  * @since 1.0.0
  */
 public interface Pageable {

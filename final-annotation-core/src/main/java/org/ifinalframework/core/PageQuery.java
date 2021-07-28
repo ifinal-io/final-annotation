@@ -15,6 +15,8 @@
 
 package org.ifinalframework.core;
 
+import org.springframework.lang.Nullable;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -48,26 +50,33 @@ public class PageQuery implements IQuery, Serializable {
     private static final Integer DEFAULT_SIZE = 20;
 
     /**
-     * 分页页面
+     * return the page index number for pageable, start from {@code 1}, could be null.
      */
+    @Nullable
     private Integer page = DEFAULT_PAGE;
 
     /**
-     * 页面容量
+     * return the page size for pageable, min is {@code 1}, could be null.
      */
+    @Nullable
     private Integer size = DEFAULT_SIZE;
 
     /**
-     * 是否启用Count统计
+     * return {@code true} when need count query otherwise {@code false}.
      */
+    @Nullable
     private Boolean count = Boolean.TRUE;
 
+    @Nullable
     private List<String> groups;
 
+    @Nullable
     private List<String> orders;
 
+    @Nullable
     private Long offset;
 
+    @Nullable
     private Long limit;
 
     public void setPage(final Integer page) {

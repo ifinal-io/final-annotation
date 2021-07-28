@@ -27,7 +27,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * JsonCondition.
+ * A condition for sql json criterion.
  *
  * @author likly
  * @version 1.0.0
