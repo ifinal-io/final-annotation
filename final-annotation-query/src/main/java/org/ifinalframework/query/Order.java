@@ -23,8 +23,17 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
+ * Sql order fragment builder.
+ *
+ * <pre class="code">
+ *  Order.from("name desc");
+ *  Order.asc("name");
+ *  Order.desc("age");
+ * </pre>
+ *
  * @author likly
  * @version 1.0.0
+ * @see org.ifinalframework.core.Orderable
  * @since 1.0.0
  */
 @Getter

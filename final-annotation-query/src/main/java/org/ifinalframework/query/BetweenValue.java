@@ -15,6 +15,8 @@
 
 package org.ifinalframework.query;
 
+import org.springframework.lang.Nullable;
+
 import org.ifinalframework.query.annotation.Between;
 import org.ifinalframework.query.annotation.NotBetween;
 import org.ifinalframework.query.condition.BetweenCondition;
@@ -42,8 +44,10 @@ public final class BetweenValue<T> implements Serializable {
 
     private static final long serialVersionUID = 6194662646358531082L;
 
+    @Nullable
     private T min;
 
+    @Nullable
     private T max;
 
 }

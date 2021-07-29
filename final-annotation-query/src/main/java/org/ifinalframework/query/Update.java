@@ -123,6 +123,14 @@ public final class Update extends LinkedList<Criterion> {
         return jsonInsert(column, Collections.singletonMap(path, value));
     }
 
+    /**
+     * {@code column = JSON_INSERT(column,path,value[,path1,value1...])}
+     *
+     * @param column update column name.
+     * @param values json insert path and values.
+     * @return update.
+     * @since 1.2.1
+     */
     public Update jsonInsert(String column, Map<String, Object> values) {
         return update(CriterionExpression.JSON_INSERT, column, values, null);
     }
@@ -158,9 +166,10 @@ public final class Update extends LinkedList<Criterion> {
     }
 
     /**
-     * @param column update column
+     * @param column update column.
      * @param values value type only support {@code string、number and boolean}.
-     * @return update
+     * @return update.
+     * @since 1.2.1
      */
     public Update jsonSet(String column, Map<String, Object> values) {
         return update(CriterionExpression.JSON_SET, column, values, null);

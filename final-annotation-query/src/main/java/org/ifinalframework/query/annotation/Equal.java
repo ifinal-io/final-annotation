@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 
 /**
  * <pre class="code">
- *     column = #{value, javatype=, typehandler=}
+ *     column = #{value, javaType=, typeHandler=}
  * </pre>
  *
  * @author likly
