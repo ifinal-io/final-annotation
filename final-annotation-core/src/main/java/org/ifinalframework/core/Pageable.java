@@ -27,7 +27,7 @@ import org.springframework.lang.Nullable;
  * @see Limitable
  * @since 1.0.0
  */
-public interface Pageable {
+public interface Pageable extends IQuery {
 
     /**
      * return the page number.

@@ -15,17 +15,15 @@
 
 package org.ifinalframework.core;
 
+import java.io.Serializable;
+
 /**
  * The marked {@code interface} of query to mark the target is a {@linkplain Object query}.
  *
  * @author likly
  * @version 1.0.0
- * @see Pageable
- * @see Groupable
- * @see Orderable
- * @see Limitable
  * @since 1.0.0
  */
-public interface IQuery extends Pageable, Groupable, Orderable, Limitable {
+public interface IQuery extends Serializable {
 
 }

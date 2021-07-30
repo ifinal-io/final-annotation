@@ -35,7 +35,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class PageQuery implements IQuery, Serializable {
+public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limitable, Serializable {
 
     private static final long serialVersionUID = 4813020012879522797L;
 
