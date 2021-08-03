@@ -19,7 +19,7 @@
     <parent>
         <artifactId>final-annotation</artifactId>
         <groupId>org.ifinalframework.annotation</groupId>
-        <version>1.2.1-SNAPSHOT</version>
+        <version>1.2.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.ifinalframework</groupId>
             <artifactId>final-velocity</artifactId>
-            <version>1.2.1-SNAPSHOT</version>
+            <version>1.2.1</version>
             <optional>true</optional>
             <scope>test</scope>
         </dependency>
