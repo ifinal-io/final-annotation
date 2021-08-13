@@ -15,11 +15,21 @@
 
 package org.ifinalframework.query;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
+import org.apache.ibatis.mapping.SqlSource;
+import org.apache.ibatis.ognl.OgnlException;
+import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.scripting.xmltags.XMLLanguageDriver;
+import org.apache.ibatis.session.Configuration;
 import org.ifinalframework.velocity.Velocities;
-
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * CriterionExpressionTest.
@@ -28,6 +38,7 @@ import org.junit.jupiter.api.Test;
  * @version 1.2.1
  * @since 1.2.1
  */
+@Slf4j
 class CriterionExpressionTest {
 
     @Test
@@ -40,15 +51,32 @@ class CriterionExpressionTest {
     void isNotNull() {
         final Criterion criterion = CriterionTarget.from("name").isNotNull();
         assertEquals("<![CDATA[ AND name IS NOT NULL ]]>",
-            Velocities.getValue(CriterionExpression.IS_NOT_NULL, criterion));
+                Velocities.getValue(CriterionExpression.IS_NOT_NULL, criterion));
     }
 
     @Test
-    void eq() {
+    void eq() throws OgnlException {
         final Criterion criterion = CriterionTarget.from("name").eq(null);
         appendValue(criterion);
+        final String script = Velocities.getValue(CriterionExpression.EQUAL, criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name = #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.EQUAL, criterion));
+                script);
+
+        final Configuration configuration = new Configuration();
+        final SqlSource sqlSource = new XMLLanguageDriver().createSqlSource(configuration,
+                String.join("", "<script>", script, "</script>"), Map.class);
+
+        final Map<String, String> map = Collections.singletonMap("value", "haha");
+        final BoundSql boundSql = sqlSource.getBoundSql(map);
+        String sql = boundSql.getSql();
+        logger.info("sql={}", sql);
+        final MetaObject metaObject = configuration.newMetaObject(map);
+        for (ParameterMapping parameterMapping : boundSql.getParameterMappings()) {
+            logger.info("{}={}", parameterMapping.getProperty(), metaObject.getValue(parameterMapping.getProperty()));
+            sql = sql.replaceFirst("\\?", String.valueOf(metaObject.getValue(parameterMapping.getProperty())));
+        }
+        logger.info("sql={}", sql);
+
     }
 
     @Test
@@ -56,7 +84,7 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").neq(null);
         appendValue(criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name != #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.NOT_EQUAL, criterion));
+                Velocities.getValue(CriterionExpression.NOT_EQUAL, criterion));
     }
 
     @Test
@@ -64,7 +92,7 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").gt(null);
         appendValue(criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name > #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.GREAT_THAN, criterion));
+                Velocities.getValue(CriterionExpression.GREAT_THAN, criterion));
     }
 
     @Test
@@ -72,7 +100,7 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").gte(null);
         appendValue(criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name >= #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.GREAT_THAN_EQUAL, criterion));
+                Velocities.getValue(CriterionExpression.GREAT_THAN_EQUAL, criterion));
     }
 
     @Test
@@ -80,7 +108,7 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").lt(null);
         appendValue(criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name < #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.LESS_THAN, criterion));
+                Velocities.getValue(CriterionExpression.LESS_THAN, criterion));
     }
 
     @Test
@@ -88,7 +116,7 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").lte(null);
         appendValue(criterion);
         assertEquals("<if test=\"value != null\"><![CDATA[ AND name <= #{value} ]]></if>",
-            Velocities.getValue(CriterionExpression.LESS_THAN_EQUAL, criterion));
+                Velocities.getValue(CriterionExpression.LESS_THAN_EQUAL, criterion));
     }
 
     @Test
@@ -96,8 +124,8 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").between(null, null);
         appendValue(criterion);
         assertEquals(
-            "<if test=\"value != null and value.min != null and value.max != null\"><![CDATA[ AND name BETWEEN #{value.min} AND #{value.max} ]]></if>",
-            Velocities.getValue(CriterionExpression.BETWEEN, criterion));
+                "<if test=\"value != null and value.min != null and value.max != null\"><![CDATA[ AND name BETWEEN #{value.min} AND #{value.max} ]]></if>",
+                Velocities.getValue(CriterionExpression.BETWEEN, criterion));
     }
 
     @Test
@@ -105,12 +133,13 @@ class CriterionExpressionTest {
         final Criterion criterion = CriterionTarget.from("name").between(null, null);
         appendValue(criterion);
         assertEquals(
-            "<if test=\"value != null and value.min != null and value.max != null\"><![CDATA[ AND name NOT BETWEEN #{value.min} AND #{value.max} ]]></if>",
-            Velocities.getValue(CriterionExpression.NOT_BETWEEN, criterion));
+                "<if test=\"value != null and value.min != null and value.max != null\"><![CDATA[ AND name NOT BETWEEN #{value.min} AND #{value.max} ]]></if>",
+                Velocities.getValue(CriterionExpression.NOT_BETWEEN, criterion));
     }
 
     private void appendValue(Criterion criterion) {
         ((CriterionAttributes) criterion).put("value", "value");
     }
+
 
 }

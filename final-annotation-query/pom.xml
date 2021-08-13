@@ -41,5 +41,9 @@
             <optional>true</optional>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
     </dependencies>
 </project>
