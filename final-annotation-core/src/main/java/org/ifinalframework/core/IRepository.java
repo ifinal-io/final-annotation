@@ -24,6 +24,7 @@ import java.util.Map;
  *
  * @author likly
  * @version 1.2.2
+ * @see ParamsBuilder
  * @since 1.2.2
  */
 public interface IRepository<I extends Serializable, T extends IEntity<I>> {

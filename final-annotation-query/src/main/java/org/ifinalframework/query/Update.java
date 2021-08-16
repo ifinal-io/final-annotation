@@ -15,11 +15,9 @@
 
 package org.ifinalframework.query;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Map;
+import org.ifinalframework.core.IUpdate;
+
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -57,7 +55,7 @@ import java.util.function.Consumer;
  * @since 1.0.0
  */
 @SuppressWarnings("unused")
-public final class Update extends LinkedList<Criterion> {
+public final class Update extends LinkedList<Criterion> implements IUpdate {
 
     public static Update update() {
         return new Update();
@@ -193,7 +191,7 @@ public final class Update extends LinkedList<Criterion> {
 
     public Update update(String expression, String column, Object value, Consumer<CriterionAttributes> consumer) {
         Criterion criterion = CriterionTarget.from(column)
-            .condition(expression, value, consumer);
+                .condition(expression, value, consumer);
         this.add(criterion);
         return this;
     }
