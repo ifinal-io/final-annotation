@@ -65,6 +65,10 @@ public @interface OperationAction {
      */
     String target() default "";
 
+    /**
+     * @return
+     * @since 1.2.2
+     */
     Attribute[] attributes() default {};
 
     /**
@@ -74,9 +78,18 @@ public @interface OperationAction {
 
     JoinPoint point() default JoinPoint.AFTER_RETURNING;
 
+    /**
+     * @since 1.2.2
+     */
     @interface Attribute {
+        /**
+         * return attribute name
+         */
         String name();
 
+        /**
+         * return attribute value, supports {@code SpEL}.
+         */
         String value();
     }
 
