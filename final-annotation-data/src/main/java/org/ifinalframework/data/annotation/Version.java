@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,20 +11,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.data.annotation;
 
+import org.ifinalframework.core.lang.Default;
 import org.springframework.core.annotation.AliasFor;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import org.ifinalframework.core.lang.Default;
+import java.lang.annotation.*;
 
 /**
  * Marked the element is a {@literal version} record, it's a {@link ReadOnly} column, it's value insert by {@link
@@ -33,6 +26,7 @@ import org.ifinalframework.core.lang.Default;
  *
  * @author likly
  * @version 1.0.0
+ * @see AbsEntity
  * @since 1.0.0
  */
 @Column

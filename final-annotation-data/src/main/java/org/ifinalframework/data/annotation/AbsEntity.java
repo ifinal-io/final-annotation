@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.annotation;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.ifinalframework.core.IEntity;
 import org.ifinalframework.core.IView;
 import org.ifinalframework.core.lang.Default;
@@ -22,15 +24,28 @@ import org.ifinalframework.core.lang.Transient;
 
 import java.time.LocalDateTime;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
- * The build-in base impl of {@linkplain IEntity entity} which have the common property. such as {@link #id}, {@link
+ * The built-in base impl of {@linkplain IEntity entity} which have the common property. such as {@link #id}, {@link
  * #version},{@link #created},{@link #lastModified},{@link #yn}.
+ *
+ * <pre class="code">
+ * CREATE TABLE tableName
+ * (
+ *     id            BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+ *     version       INT(11)    NOT NULL DEFAULT 1 COMMENT '版本号',
+ *     created       DATETIME   NOT NULL DEFAULT NOW() COMMENT '创建时间',
+ *     last_modified DATETIME   NULL     DEFAULT NULL ON UPDATE NOW() COMMENT '最后修改时间',
+ *     yn            INT(11)    NOT NULL DEFAULT 1 COMMENT '有效标记，1：有效，0：无效',
+ *     PRIMARY KEY (id)
+ * )
+ * </pre>
  *
  * @author likly
  * @version 1.0.0
+ * @see Version
+ * @see Created
+ * @see LastModified
+ * @see YN
  * @since 1.0.0
  */
 @Setter
@@ -64,6 +79,9 @@ public class AbsEntity implements IEntity<Long> {
 
     /**
      * 最后修改时间，使用数据库 ON UPDATE 操作
+     * <pre class="code">
+     * UPDATE table SET version = version + 1;
+     * </pre>
      */
     @LastModified
     @View(IView.class)
