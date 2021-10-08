@@ -15,15 +15,16 @@
 
 package org.ifinalframework.core;
 
-import org.springframework.lang.Nullable;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@linkplain IQuery query} with {@link Pageable}, {@link Orderable},{@link Limitable} and {@link Groupable}.
@@ -85,6 +86,36 @@ public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limita
         } else {
             this.page = page;
         }
+    }
+
+    /**
+     * add order to {@link #orders}
+     *
+     * @param order order
+     * @return page query
+     * @since 1.2.2
+     */
+    public PageQuery addOrder(@NonNull String order) {
+        if (orders == null) {
+            orders = new LinkedList<>();
+        }
+        orders.add(order);
+        return this;
+    }
+
+    /**
+     * add group to {@link #groups}
+     *
+     * @param group group
+     * @return page query
+     * @since 1.2.2
+     */
+    public PageQuery addGroup(@NonNull String group) {
+        if (Objects.isNull(groups)) {
+            groups = new LinkedList<>();
+        }
+        groups.add(group);
+        return this;
     }
 
 }
