@@ -15,6 +15,9 @@
 
 package org.ifinalframework.core;
 
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -29,25 +32,27 @@ import java.util.Map;
  */
 public interface IRepository<I extends Serializable, T extends IEntity<I>> {
 
-    int insert(Map<String, Object> params);
+    int insert(@NonNull Map<String, Object> params);
 
-    int replace(Map<String, Object> params);
+    int replace(@NonNull Map<String, Object> params);
 
-    int save(Map<String, Object> params);
+    int save(@NonNull Map<String, Object> params);
 
-    int update(Map<String, Object> params);
+    int update(@NonNull Map<String, Object> params);
 
-    int delete(Map<String, Object> params);
+    int delete(@NonNull Map<String, Object> params);
 
-    List<T> select(Map<String, Object> params);
+    @Nullable
+    List<T> select(@NonNull Map<String, Object> params);
 
-    List<I> selectIds(Map<String, Object> params);
+    @Nullable
+    List<I> selectIds(@NonNull Map<String, Object> params);
 
-    T selectOne(Map<String, Object> params);
+    T selectOne(@NonNull Map<String, Object> params);
 
-    long selectCount(Map<String, Object> params);
+    long selectCount(@NonNull Map<String, Object> params);
 
-    void truncate(Map<String, Object> params);
+    void truncate(@NonNull Map<String, Object> params);
 
 
 }
