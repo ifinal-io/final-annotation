@@ -15,20 +15,22 @@
 
 package org.ifinalframework.query;
 
-import org.springframework.lang.Nullable;
-
-import org.ifinalframework.query.annotation.Between;
-import org.ifinalframework.query.annotation.NotBetween;
-import org.ifinalframework.query.condition.BetweenCondition;
-
-import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ifinalframework.query.annotation.Between;
+import org.ifinalframework.query.annotation.NotBetween;
+import org.ifinalframework.query.condition.BetweenCondition;
+import org.springframework.lang.Nullable;
+
+import java.io.Serializable;
 
 /**
  * The value holder which have one {@code min} value and {@code max} value for {@code between} value.
+ *
+ * <pre class="code">
+ * BETWEEN {min} AND {max}
+ * </pre>
  *
  * @author likly
  * @version 1.0.0
