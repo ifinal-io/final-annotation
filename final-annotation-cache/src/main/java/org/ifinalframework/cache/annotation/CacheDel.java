@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,20 +11,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.cache.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Repeatable;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import org.ifinalframework.cache.annotation.CacheDel.CacheDels;
 import org.ifinalframework.core.aop.JoinPoint;
+import org.ifinalframework.core.lang.SpEL;
+
+import java.lang.annotation.*;
 
 /**
  * 在方法 {@link java.lang.reflect.Method} 执行的生命周期 {@link JoinPoint}中删除命中的缓存 {@link Cache#del(Object, Object)}。
@@ -46,6 +40,7 @@ public @interface CacheDel {
      *
      * @return key
      */
+    @SpEL
     String[] key();
 
     /**
@@ -53,6 +48,7 @@ public @interface CacheDel {
      *
      * @return field
      */
+    @SpEL
     String[] field() default {};
 
     /**
@@ -67,6 +63,7 @@ public @interface CacheDel {
      *
      * @return condition
      */
+    @SpEL
     String condition() default "";
 
     /**

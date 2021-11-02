@@ -1,6 +1,5 @@
 /*
  * Copyright 2020-2021 the original author or authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,18 +11,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package org.ifinalframework.cache.annotation;
 
+import org.ifinalframework.core.lang.SpEL;
 import org.springframework.core.annotation.AliasFor;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
@@ -39,20 +34,20 @@ import java.util.concurrent.TimeUnit;
  * <h3>Usage:</h3>
  * <p>Normal, use cache like this: </p>
  * <pre class="code">
- *      public User findUserById(Long id){
- *          User user = Cache.get(id,null);
- *          if(Objects.nonNull(user)){
- *              return user;
- *          }
+ * public User findUserById(Long id){
+ *     User user = Cache.get(id,null);
+ *     if(Objects.nonNull(user)){
+ *         return user;
+ *     }
  *
- *          user = doFindUserById(id);
+ *     user = doFindUserById(id);
  *
- *          if(Objects.nonNull(user)){
- *              Cache.set(id,null,user);
- *          }
+ *     if(Objects.nonNull(user)){
+ *         Cache.set(id,null,user);
+ *     }
  *
- *          return user;
- *      }
+ *     return user;
+ * }
  * </pre>
  *
  * <p>Now, use cache with @Cacheable like this:</p>
@@ -79,6 +74,7 @@ public @interface Cacheable {
      *
      * @return key
      */
+    @SpEL
     String[] key();
 
     /**
@@ -86,6 +82,7 @@ public @interface Cacheable {
      *
      * @return field
      */
+    @SpEL
     String[] field() default {};
 
     /**
@@ -101,6 +98,7 @@ public @interface Cacheable {
      * @return condition
      * @see #when()
      */
+    @SpEL
     @AliasFor("when")
     String condition() default "";
 
@@ -110,6 +108,7 @@ public @interface Cacheable {
      * @return when
      * @see #condition()
      */
+    @SpEL
     @AliasFor("condition")
     String when() default "";
 
@@ -118,6 +117,7 @@ public @interface Cacheable {
      *
      * @return expire
      */
+    @SpEL
     String expire() default "";
 
     /**

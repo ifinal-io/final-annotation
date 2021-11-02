@@ -13,10 +13,7 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.cache.annotation;
-
-import org.ifinalframework.core.lang.SpEL;
-import org.springframework.core.annotation.AliasFor;
+package org.ifinalframework.core.lang;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -24,30 +21,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 作用在方法参数 {@link java.lang.reflect.Parameter} 上，实现在方法执行之前，从缓存中获取值，并将该值赋于该参数。
+ * Annotated the {@link java.lang.reflect.Method} is supported {@code SpEl} in the {@link java.lang.annotation.Annotation}.
  *
  * @author likly
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.2.2
+ * @since 1.2.2
  */
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CacheValue {
-
-    @SpEL
-    String[] key();
-
-    @SpEL
-    String[] field() default {};
-
-    String delimiter() default ":";
-
-    @SpEL
-    @AliasFor("when")
-    String condition() default "";
-
-    @SpEL
-    @AliasFor("condition")
-    String when() default "";
-
+public @interface SpEL {
 }
