@@ -27,7 +27,7 @@
 
     <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3-SNAPSHOT</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -95,32 +95,32 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-core</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-query</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-sharding</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-cache</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
-                <version>1.2.2</version>
+                <version>1.2.3-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
