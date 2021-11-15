@@ -32,10 +32,40 @@ import java.util.Map;
  */
 public interface IRepository<I extends Serializable, T extends IEntity<I>> {
 
+    /**
+     * <pre class="code">
+     * INSERT [IGNORE] INTO ${table} col1,col2,... VALUES (val1,val2,...)
+     * </pre>
+     *
+     * @param params insert params
+     * @return insert rows.
+     * @see #replace(Map)
+     * @see #save(Map)
+     */
     int insert(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * REPLACE INTO ${table} col1,col2,... VALUES (val1,val2,...)
+     * </pre>
+     *
+     * @param params replace params.
+     * @return replace rows.
+     * @see #insert(Map)
+     * @see #save(Map)
+     */
     int replace(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * INSERT INTO ${table} col1,col2,... VALUES (val1,val2,...) ON DUPLICATE KEY UPDATE col1=values(col1),col2=values(col2),...
+     * </pre>
+     *
+     * @param params save params.
+     * @return save rows.
+     * @see #insert(Map)
+     * @see #replace(Map)
+     */
     int save(@NonNull Map<String, Object> params);
 
     int update(@NonNull Map<String, Object> params);
@@ -48,6 +78,7 @@ public interface IRepository<I extends Serializable, T extends IEntity<I>> {
     @Nullable
     List<I> selectIds(@NonNull Map<String, Object> params);
 
+    @Nullable
     T selectOne(@NonNull Map<String, Object> params);
 
     long selectCount(@NonNull Map<String, Object> params);
