@@ -17,11 +17,21 @@ package org.ifinalframework.monitor.annotation;
 
 import org.ifinalframework.core.aop.AopAnnotation;
 import org.ifinalframework.core.aop.JoinPoint;
+import org.ifinalframework.core.lang.SpEL;
 import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
 
 /**
+ * <pre class="code">
+ * public class UserService{
+ *
+ *      &#64;OperationAction(name="Update password")
+ *      void updatePassword(String oldPwd,String newPwd);
+ *
+ * }
+ * </pre>
+ *
  * @author likly
  * @version 1.2.2
  * @since 1.2.2
@@ -39,6 +49,7 @@ public @interface OperationAction {
      *
      * @see #value()
      */
+    @SpEL
     @AliasFor("value")
     String[] name() default {};
 
@@ -47,6 +58,7 @@ public @interface OperationAction {
      *
      * @see #name()
      */
+    @SpEL
     @AliasFor("name")
     String[] value() default {};
 
@@ -63,6 +75,7 @@ public @interface OperationAction {
     /**
      * 操作目标
      */
+    @SpEL
     String target() default "";
 
     /**
@@ -90,6 +103,7 @@ public @interface OperationAction {
         /**
          * return attribute value, supports {@code SpEL}.
          */
+        @SpEL
         String value();
     }
 
