@@ -29,7 +29,10 @@ import java.lang.annotation.*;
  * @see AbsEntity
  * @since 1.0.0
  */
-@Column
+@Column(
+        update = "${column} = ${column} + 1",
+        onDuplicateKey = "${column} = values(${column}) + 1"
+)
 @Default
 @ReadOnly
 @Documented
@@ -39,10 +42,16 @@ import java.lang.annotation.*;
 @org.springframework.data.annotation.Version
 public @interface Version {
 
-    @AliasFor(annotation = Column.class, value = "name")
+    /**
+     * Alias for {@link Column#value()}.
+     */
+    @AliasFor(annotation = Column.class)
     String value() default "";
 
-    @AliasFor(annotation = Column.class, value = "value")
+    /**
+     * Alias for {@link Column#name()}.
+     */
+    @AliasFor(annotation = Column.class)
     String name() default "";
 
 }
