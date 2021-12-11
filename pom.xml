@@ -36,6 +36,7 @@
         <module>final-annotation-sharding</module>
         <module>final-annotation-cache</module>
         <module>final-annotation-monitor</module>
+        <module>final-annotation-web</module>
     </modules>
 
     <name>final-annotation</name>
@@ -120,6 +121,11 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
+                <version>1.2.3-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ifinalframework.annotation</groupId>
+                <artifactId>final-annotation-web</artifactId>
                 <version>1.2.3-SNAPSHOT</version>
             </dependency>
         </dependencies>
