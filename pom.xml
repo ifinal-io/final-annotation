@@ -21,13 +21,13 @@
     <parent>
         <groupId>org.ifinalframework.project</groupId>
         <artifactId>final-project</artifactId>
-        <version>1.2.3-SNAPSHOT</version>
+        <version>1.2.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.2.3</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -45,12 +45,12 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <final.auto.version>1.2.2</final.auto.version>
         <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
         <sonar.organization>final-projects</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
+
 
     <profiles>
         <profile>
@@ -88,7 +88,7 @@
             <dependency>
                 <groupId>org.ifinalframework.auto</groupId>
                 <artifactId>final-auto</artifactId>
-                <version>${final.auto.version}</version>
+                <version>1.2.3</version>
                 <optional>true</optional>
                 <scope>import</scope>
                 <type>pom</type>
@@ -96,37 +96,37 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-core</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-query</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-sharding</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-cache</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-web</artifactId>
-                <version>1.2.3-SNAPSHOT</version>
+                <version>1.2.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
