@@ -36,7 +36,6 @@ import java.lang.annotation.*;
  * @version 1.2.2
  * @since 1.2.2
  */
-
 @Documented
 @AopAnnotation(expressions = {"name", "target"})
 @Repeatable(OperationAction.OperationActions.class)
