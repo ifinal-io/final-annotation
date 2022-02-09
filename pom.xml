@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
-  ~ Copyright 2020-2021 the original author or authors.
+  ~ Copyright 2020-2022 the original author or authors.
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
   ~ You may obtain a copy of the License at
@@ -21,13 +21,13 @@
     <parent>
         <groupId>org.ifinalframework.project</groupId>
         <artifactId>final-project</artifactId>
-        <version>1.2.4-SNAPSHOT</version>
+        <version>1.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.2.4-SNAPSHOT</version>
+    <version>1.2.4</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -88,7 +88,7 @@
             <dependency>
                 <groupId>org.ifinalframework.auto</groupId>
                 <artifactId>final-auto</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
                 <optional>true</optional>
                 <scope>import</scope>
                 <type>pom</type>
@@ -96,37 +96,37 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-core</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-query</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-sharding</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-cache</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-web</artifactId>
-                <version>1.2.4-SNAPSHOT</version>
+                <version>1.2.4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
