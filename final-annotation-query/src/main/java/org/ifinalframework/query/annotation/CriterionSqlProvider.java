@@ -29,10 +29,27 @@ import org.ifinalframework.query.CriterionAttributes;
  */
 public interface CriterionSqlProvider {
 
+    /**
+     * function sql
+     * @param annotation function
+     * @param metadata metadata
+     */
     void function(@NonNull AnnotationAttributes annotation, @NonNull CriterionAttributes metadata);
 
+    /**
+     * order sql
+     * @param order order
+     * @param metadata order metadata
+     * @return order sql
+     */
     String order(@NonNull AnnotationAttributes order, @NonNull CriterionAttributes metadata);
 
+    /**
+     * criterion sql
+     * @param criterion criterion sql
+     * @param metadata criterion metadata
+     * @return criterion sql
+     */
     String provide(@NonNull AnnotationAttributes criterion, @NonNull CriterionAttributes metadata);
 
 }

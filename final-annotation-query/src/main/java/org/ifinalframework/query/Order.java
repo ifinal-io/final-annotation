@@ -59,22 +59,46 @@ public final class Order implements Serializable {
 
     }
 
+    /**
+     * return order
+     *
+     * @param column    column
+     * @param direction order direction
+     * @return order
+     */
     public static Order order(String column, Direction direction) {
         return new Order(column, Objects.requireNonNull(direction));
     }
 
+    /**
+     * @param property property
+     * @return order
+     */
     public static Order asc(QProperty<?> property) {
         return asc(property.getColumn());
     }
 
+    /**
+     * @param column column
+     * @return order
+     */
     public static Order asc(String column) {
         return order(column, Direction.ASC);
     }
 
+    /**
+     * @param property property
+     * @return order
+     */
     public static Order desc(QProperty<?> property) {
         return desc(property.getColumn());
     }
 
+    /**
+     *
+     * @param column column
+     * @return order
+     */
     public static Order desc(String column) {
         return order(column, Direction.DESC);
     }

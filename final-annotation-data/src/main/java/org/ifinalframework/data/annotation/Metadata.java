@@ -29,14 +29,29 @@ import lombok.Data;
 @Data
 public class Metadata implements Serializable {
 
+    /**
+     * property name
+     */
     private String property;
 
+    /**
+     * column name
+     */
     private String column;
 
+    /**
+     * value
+     */
     private String value;
 
+    /**
+     * value java type
+     */
     private Class<?> javaType;
 
+    /**
+     * value type handler
+     */
     private Class<? extends org.apache.ibatis.type.TypeHandler> typeHandler;
 
 }

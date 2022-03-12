@@ -68,21 +68,56 @@ public interface IRepository<I extends Serializable, T extends IEntity<I>> {
      */
     int save(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * UPDATE ${table} SET col1=val1, col2=val2,... WHERE ...
+     * </pre>
+     */
     int update(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * DELETE ${table} WHERE ...
+     * </pre>
+     */
     int delete(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * SELECT col1,col2,... FROM ${table} WHERE ...
+     * </pre>
+     */
     @Nullable
     List<T> select(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * SELECT id FROM ${table} WHERE...
+     * </pre>
+     */
     @Nullable
     List<I> selectIds(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * SELECT col1,col2,... FROM ${table} WHERE...
+     * </pre>
+     */
     @Nullable
     T selectOne(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * SELECT COUNT(*) FROM ${table} WHERE...
+     * </pre>
+     */
     long selectCount(@NonNull Map<String, Object> params);
 
+    /**
+     * <pre class="code">
+     * TRUNCATE ${table}
+     * </pre>
+     */
     void truncate(@NonNull Map<String, Object> params);
 
 

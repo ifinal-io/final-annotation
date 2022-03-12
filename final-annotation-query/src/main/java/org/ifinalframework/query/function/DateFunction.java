@@ -28,6 +28,10 @@ import org.ifinalframework.query.Criteriable;
  */
 public interface DateFunction<V> extends Function<V> {
 
+    /**
+     * DATE(column)
+     * @return date Criterion
+     */
     default Criteriable<V> date() {
         return apply(column -> String.format("DATE(%s)", column), null);
     }

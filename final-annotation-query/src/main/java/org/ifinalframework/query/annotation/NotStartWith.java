@@ -32,7 +32,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotStartWith {
-
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
     String[] value() default {

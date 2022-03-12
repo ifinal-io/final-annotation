@@ -119,18 +119,34 @@ public interface LikeCondition extends Condition {
         return notEndsWith(value);
     }
 
+    /**
+     * @param value value
+     * @return criterion
+     */
     default Criterion contains(@Nullable String value) {
         return condition(CriterionExpression.CONTAINS, value);
     }
 
+    /**
+     *
+     * @param value value
+     * @return criterion
+     */
     default Criterion notContains(@Nullable String value) {
         return condition(CriterionExpression.NOT_CONTAINS, value);
     }
 
+    /**
+     * @param value value
+     * @return criterion
+     */
     default Criterion like(@Nullable String value) {
         return condition(CriterionExpression.LIKE, value);
     }
-
+    /**
+     * @param value value
+     * @return criterion
+     */
     default Criterion notLike(@Nullable String value) {
         return condition(CriterionExpression.NOT_LIKE, value);
     }

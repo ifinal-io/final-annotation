@@ -82,6 +82,13 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
     @Getter
     private final List<String> groups = new LinkedList<>();
 
+
+    /**
+     * set query page and size
+     * @param page page
+     * @param size size
+     * @return query
+     */
     public Query page(final Integer page, final Integer size) {
 
         this.page = page;
@@ -89,52 +96,99 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
         return this;
     }
 
+    /**
+     * set query page
+     * @param page page
+     * @return query
+     */
     public Query page(final Integer page) {
 
         this.page = page;
         return this;
     }
 
+    /**
+     * set query page size
+     * @param size size
+     * @return query
+     */
     public Query size(final Integer size) {
 
         this.size = size;
         return this;
     }
 
+    /**
+     * count
+     * @param count count
+     * @return query
+     */
     public Query count(final Boolean count) {
 
         this.count = count;
         return this;
     }
 
+    /**
+     * where
+     * @param criteria criteria
+     * @return query
+     */
     public Query where(final @NonNull Criterion... criteria) {
 
         return where(Arrays.asList(criteria));
     }
-
+    /**
+     * where
+     * @param criteria criteria
+     * @return query
+     */
     public Query where(final @NonNull Collection<Criterion> criteria) {
         this.criteria.addAll(criteria);
         return this;
     }
 
+    /**
+     *
+     * @param properties properties
+     * @return query
+     */
     public Query group(final QProperty<?>... properties) {
         return group(Arrays.asList(properties));
     }
-
+    /**
+     *
+     * @param properties properties
+     * @return query
+     */
     public Query group(final Collection<QProperty<?>> properties) {
         properties.forEach(it -> this.groups.add(it.getColumn()));
         return this;
     }
-
-    public Query group(String... cloumns) {
-        this.groups.addAll(Arrays.asList(cloumns));
+    /**
+     *
+     * @param cloumn cloumn
+     * @return query
+     */
+    public Query group(String... cloumn) {
+        this.groups.addAll(Arrays.asList(cloumn));
         return this;
     }
 
+    /**
+     *
+     * @param orders orders
+     * @return query
+     */
     public Query sort(final @NonNull Order... orders) {
         return sort(Arrays.asList(orders));
     }
 
+    /**
+     *
+     * @param orders orders
+     * @return query
+     */
     public Query sort(final @NonNull Collection<Order> orders) {
 
         for (final Order order : orders) {
@@ -144,6 +198,12 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
         return this;
     }
 
+    /**
+     * sort
+     * @param direction direction
+     * @param properties properties
+     * @return query
+     */
     public Query sort(final @NonNull Direction direction, final @NonNull QProperty<?>... properties) {
 
         for (final QProperty<?> property : properties) {
@@ -153,28 +213,58 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
         return this;
     }
 
+    /**
+     * ase
+     * @param properties properties
+     * @return query
+     */
     public Query asc(final @NonNull QProperty<?>... properties) {
         return sort(Direction.ASC, properties);
     }
 
+    /**
+     * desc
+     * @param properties properties
+     * @return query
+     */
     public Query desc(final @NonNull QProperty<?>... properties) {
         return sort(Direction.DESC, properties);
     }
 
+    /**
+     * sort
+     * @param column column
+     * @param direction direction
+     */
     private void sort(String column, Direction direction) {
         this.sort(String.format("%s %s", column, direction.name()));
     }
 
+    /**
+     *
+     * @param order order
+     */
     private void sort(String order) {
         this.orders.add(order);
     }
 
+    /**
+     *
+     * @param offset offset
+     * @param limit limit
+     * @return query
+     */
     public Query limit(final long offset, final long limit) {
         this.offset = offset;
         this.limit = limit;
         return this;
     }
 
+    /**
+     *
+     * @param limit limit
+     * @return query
+     */
     public Query limit(final long limit) {
         this.offset = null;
         this.limit = limit;

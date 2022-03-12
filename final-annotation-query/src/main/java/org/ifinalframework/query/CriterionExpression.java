@@ -43,20 +43,43 @@ public final class CriterionExpression {
     // =================================================================================================================
     // ===========================================           TEST            ===========================================
     // =================================================================================================================
+
+    /**
+     * {@code value != null}
+     */
     public static final String TEST_VALUE = "${value} != null";
 
+    /**
+     * {@code value != null and value != ''}
+     */
     public static final String TEST_LIKE = "${value} != null and ${value} != ''";
 
+    /**
+     * {@code value != null and value.size() > 0}
+     */
     public static final String TEST_COLLECTION = "${value} != null and ${value}.size() > 0";
 
+    /**
+     * {@code value != null and value.min != null and value.max != null}
+      */
     public static final String TEST_BETWEEN = "${value} != null and ${value}.min != null and ${value}.max != null";
 
     // =================================================================================================================
     // ===========================================           VALUE           ===========================================
     // =================================================================================================================
 
+    /**
+     * <pre class="code">
+     * javaType=${javaType}
+     * </pre>
+     */
     public static final String JAVA_TYPE = "#if($javaType), javaType=$!{javaType.canonicalName}#end";
 
+    /**
+     * <pre class="code">
+     * typeHandler=${typeHandler}
+     * </pre>
+     */
     public static final String TYPE_HANDLER = "#if($typeHandler), typeHandler=$!{typeHandler.canonicalName}#end";
 
     /**
@@ -69,6 +92,11 @@ public final class CriterionExpression {
      */
     public static final String ITEM = "#{item" + JAVA_TYPE + TYPE_HANDLER + "}";
 
+    /**
+     * <pre class="code">
+     * #{value,javaType=,typeHandler=}
+     * </pre>
+     */
     public static final String FRAGMENT_CRITERION_VALUE = "#{${value}.value" + JAVA_TYPE + TYPE_HANDLER + "}";
 
     /**
@@ -180,48 +208,90 @@ public final class CriterionExpression {
     // =================================================================================================================
 
     // LIKE
+
+    /**
+     * <pre class="code">
+     * #{column} LIKE #{value}
+     * </pre>
+     */
     public static final String LIKE = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} LIKE #{${value}}"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} NOT LIKE #{value}
+     * </pre>
+     */
     public static final String NOT_LIKE = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} NOT LIKE #{${value}}"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} LIKE CONCAT('%',#{value})
+     * </pre>
+     */
     public static final String STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} LIKE CONCAT('%',#{${value}})"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} NOT LIKE CONCAT('%',#{value})
+     * </pre>
+     */
     public static final String NOT_STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}})"
         + CDATA_CLOSE
         + END_IF;
 
+
+    /**
+     * <pre class="code">
+     * #{column} LIKE CONCAT(#{value},'%')
+     * </pre>
+     */
     public static final String ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} LIKE CONCAT(#{${value}},'%')"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} NOT LIKE CONCAT(#{value},'%')
+     * </pre>
+     */
     public static final String NOT_ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} NOT LIKE CONCAT(#{${value}},'%')"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} LIKE CONCAT('%',#{value},'%')
+     * </pre>
+     */
     public static final String CONTAINS = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} LIKE CONCAT('%',#{${value}},'%')"
         + CDATA_CLOSE
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * #{column} NOT LIKE CONCAT('%',#{value},'%')
+     * </pre>
+     */
     public static final String NOT_CONTAINS = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}},'%')"
@@ -233,12 +303,22 @@ public final class CriterionExpression {
     // =================================================================================================================
     // ===========================================             IN            ===========================================
     // =================================================================================================================
+    /**
+     * <pre class="code">
+     * ${column} IN (values)
+     * </pre>
+     */
     public static final String IN = OPEN_IF + TEST_COLLECTION + CLOSE_IF
         + "<foreach collection=\"${value}\" item=\"item\" open=\"${andOr} ${column} IN (\" close=\")\" separator=\",\">"
         + ITEM
         + "</foreach>"
         + END_IF;
 
+    /**
+     * <pre class="code">
+     * ${column} NOT IN (values)
+     * </pre>
+     */
     public static final String NOT_IN = OPEN_IF + TEST_COLLECTION + CLOSE_IF
         + "<foreach collection=\"${value}\" item=\"item\" open=\"${andOr} ${column} NOT IN (\" close=\")\" separator=\",\">"
         + ITEM
@@ -258,14 +338,23 @@ public final class CriterionExpression {
         + "${andOr} JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
         + END_IF;
 
+    /**
+     * {@code !JSON_CONTAINS(column,value[,path])}
+     */
     public static final String NOT_JSON_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
         + "${andOr} !JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
         + END_IF;
 
+    /**
+     *{@code !JSON_CONTAINS(column,one|all,paths)}
+     */
     public static final String JSON_CONTAINS_PATH = OPEN_IF + TEST_VALUE + CLOSE_IF
         + "${andOr} JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', <foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)"
         + END_IF;
 
+    /**
+     * {@code !JSON_CONTAINS(column,one|all,paths)}
+     */
     public static final String NOT_JSON_CONTAINS_PATH = OPEN_IF + TEST_VALUE + CLOSE_IF
         + "${andOr} !JSON_CONTAINS_PATH( ${column}, '${oneOrAll}', <foreach collection=\"${value}\" item=\"item\" separator=\",\">#{item}</foreach>)"
         + END_IF;
@@ -302,9 +391,9 @@ public final class CriterionExpression {
 
     /**
      * <pre class="code">
-     * <if test="${value} != null">
+     * &lt;if test="${value} != null"&gt;
      *      ${column} = ${column} - #{value,javaType=,typeHandler=}
-     * </if>
+     * &lt;/if&gt;
      * </pre>
      */
     public static final String UPDATE_DECR = OPEN_IF + TEST_VALUE + CLOSE_IF
@@ -314,9 +403,6 @@ public final class CriterionExpression {
         + END_IF;
 
     /**
-     * <pre class="code">
-     *      ${column} = JSON_INSERT(${column},<foreach collection="${value}.entrySet()" index="key" item="val" separator=",">#{key},#{val}</foreach>)
-     * </pre>
      * {@code column = JSON_INSERT(column, path,val[,path,val]...))}
      *
      * @see #JSON_REPLACE
@@ -327,9 +413,6 @@ public final class CriterionExpression {
         + END_IF;
 
     /**
-     * <pre class="code">
-     *      ${column} = JSON_REPLACE(${column},<foreach collection="${value}.entrySet()" index="key" item="val" separator=",">#{key},#{val}</foreach>)
-     * </pre>
      * {@code column = JSON_REPLACE(column, path,val[,path,val]...))}
      *
      * @see #JSON_INSERT

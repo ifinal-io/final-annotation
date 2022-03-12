@@ -31,6 +31,10 @@ import org.ifinalframework.core.Groupable;
 @FunctionalInterface
 public interface GroupProvider {
 
+    /**
+     * group sql
+     * @return group sql
+     */
     @Nullable
     String groups(@Nullable Groupable groupable);
 

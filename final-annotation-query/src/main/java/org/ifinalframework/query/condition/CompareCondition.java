@@ -44,15 +44,20 @@ public interface CompareCondition<V> extends Condition {
     }
 
     /**
-     * @param value
-     * @param consumer
-     * @return
+     * @param value    eq value
+     * @param consumer eq consumer
+     * @return criterion
      * @since 1.2.1
      */
     default Criterion eq(@Nullable V value, @Nullable Consumer<CriterionAttributes> consumer) {
         return condition(CriterionExpression.EQUAL, value, consumer);
     }
 
+    /**
+     *
+     * @param value neq value
+     * @return criterion
+     */
     default Criterion neq(@Nullable V value) {
         return neq(value, null);
     }
@@ -61,6 +66,7 @@ public interface CompareCondition<V> extends Condition {
      * Build a {@code neq} criterion for {@code column != #{value}}.
      *
      * @param value value.
+     * @param consumer consumer
      * @return a {@code neq} criterion.
      * @see org.ifinalframework.query.annotation.NotEqual
      * @since 1.2.1
@@ -73,6 +79,7 @@ public interface CompareCondition<V> extends Condition {
      * Build a {@code gt} criterion for {@code column > #{value}}.
      *
      * @param value value.
+     * @param consumer gt consumer
      * @return a {@code gt} criterion.
      * @see org.ifinalframework.query.annotation.GreatThan
      */
@@ -80,6 +87,11 @@ public interface CompareCondition<V> extends Condition {
         return condition(CriterionExpression.GREAT_THAN, value, consumer);
     }
 
+    /**
+     * @see #gt(Object, Consumer)
+     * @param value gt value
+     * @return criterion
+     */
     default Criterion gt(@Nullable V value) {
         return gt(value, null);
     }

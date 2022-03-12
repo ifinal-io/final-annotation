@@ -32,9 +32,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Criterion(NotJsonContains.class)
 public @interface NotJsonContains {
-
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
@@ -46,8 +53,16 @@ public @interface NotJsonContains {
         "</if>"
     };
 
+    /**
+     * json path
+     * @return json path
+     */
     String path() default "";
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

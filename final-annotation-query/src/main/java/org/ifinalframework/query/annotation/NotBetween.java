@@ -33,21 +33,35 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotBetween {
 
+    /**
+     * property name
+     *
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     *
+     * @return value
+     */
     String[] value() default {
-        "<if test=\"${value} != null and ${value}.min != null and ${value}.max != null\">",
-        "   <![CDATA[",
-        "       ${andOr} ${column} NOT BETWEEN #{${value}.min",
-        "           #if($javaType),javaType=$!{javaType.canonicalName}#end",
-        "           #if($typeHandler),typeHandler=$!{typeHandler.canonicalName}#end}",
-        "       AND #{${value}.max",
-        "           #if($javaType),javaType=$!{javaType.canonicalName}#end",
-        "           #if($typeHandler),typeHandler=$!{typeHandler.canonicalName}#end}",
-        "   ]]>",
-        "</if>"
+            "<if test=\"${value} != null and ${value}.min != null and ${value}.max != null\">",
+            "   <![CDATA[",
+            "       ${andOr} ${column} NOT BETWEEN #{${value}.min",
+            "           #if($javaType),javaType=$!{javaType.canonicalName}#end",
+            "           #if($typeHandler),typeHandler=$!{typeHandler.canonicalName}#end}",
+            "       AND #{${value}.max",
+            "           #if($javaType),javaType=$!{javaType.canonicalName}#end",
+            "           #if($typeHandler),typeHandler=$!{typeHandler.canonicalName}#end}",
+            "   ]]>",
+            "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

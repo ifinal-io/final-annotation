@@ -87,6 +87,7 @@ public @interface Column {
     String reader() default "${column}";
 
     /**
+     * select column
      * @since 1.2.3
      */
     String select() default "${column}";

@@ -41,6 +41,10 @@ public class CriterionTarget implements FunctionCriteriable<Object> {
         this.criterion.put("andOr", AndOr.AND);
     }
 
+    /**
+     * build an instance from column
+     * @param column column
+     */
     public static CriterionTarget from(String column) {
         return new CriterionTarget(column);
     }

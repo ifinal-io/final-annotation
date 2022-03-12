@@ -31,15 +31,25 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotContains {
-
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
-
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null and ${value} != ''\">",
         "    ${andOr} ${column} NOT LIKE CONCAT('%',#{${value}},'%') ",
         "</if>",
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

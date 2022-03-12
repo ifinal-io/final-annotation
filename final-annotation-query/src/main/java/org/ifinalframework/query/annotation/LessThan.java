@@ -32,8 +32,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LessThan {
 
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
@@ -44,6 +52,10 @@ public @interface LessThan {
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

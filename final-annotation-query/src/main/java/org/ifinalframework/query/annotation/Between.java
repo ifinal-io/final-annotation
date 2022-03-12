@@ -41,8 +41,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Between {
 
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null and ${value}.min != null and ${value}.max != null\">",
         "    <![CDATA[",
@@ -56,6 +64,10 @@ public @interface Between {
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

@@ -22,12 +22,28 @@ package org.ifinalframework.query;
  */
 public interface QueryProvider {
 
+    /**
+     * return sql of where
+     * @return sql of where
+     */
     String where();
 
+    /**
+     * return sql of group
+     * @return sql of group
+     */
     String groups();
 
+    /**
+     * return sql of order
+     * @return sql of order
+     */
     String orders();
 
+    /**
+     * return sql of limit
+     * @return sql of limit
+     */
     String limit();
 
 }

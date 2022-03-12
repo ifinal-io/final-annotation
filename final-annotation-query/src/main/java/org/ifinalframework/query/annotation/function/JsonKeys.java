@@ -36,8 +36,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonKeys {
 
+    /**
+     * json_keys
+     * @return json_keys
+     */
     String[] value() default "JSON_KEYS(${column},${path})";
 
+    /**
+     * json path
+     * @return json path
+     */
     String path() default "";
 
 }

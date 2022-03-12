@@ -36,6 +36,12 @@ import org.ifinalframework.query.CriterionAttributes;
 @FunctionalInterface
 public interface Function<V> {
 
+    /**
+     * apply function with consumer
+     * @param function function
+     * @param consumer consumer
+     * @return criterion
+     */
     Criteriable<V> apply(@NonNull UnaryOperator<String> function, @Nullable Consumer<CriterionAttributes> consumer);
 
 }

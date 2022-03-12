@@ -36,6 +36,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Max {
 
+    /**
+     * {@code MAX(column)}
+     * @return max column
+     */
     String[] value() default "MAX(${column})";
 
 }

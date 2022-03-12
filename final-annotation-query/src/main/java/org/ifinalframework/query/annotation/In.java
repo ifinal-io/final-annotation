@@ -33,8 +33,16 @@ import java.util.Collection;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface In {
 
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "    <foreach collection=\"${value}\" item=\"item\" open=\"${andOr} ${column} IN (\" close=\")\" separator=\",\">",
@@ -43,6 +51,10 @@ public @interface In {
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

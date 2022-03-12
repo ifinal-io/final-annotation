@@ -17,6 +17,8 @@
 
 package org.ifinalframework.query;
 
+import org.springframework.lang.NonNull;
+
 import java.io.Serializable;
 import java.util.stream.Stream;
 
@@ -27,28 +29,71 @@ import java.util.stream.Stream;
  */
 public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?>> {
 
+    /**
+     * return entity type
+     * @return entity type
+     */
     Class<T> getType();
 
+    /**
+     * return entity name
+     * @return entity name
+     */
     default String getName() {
         return getType().getName();
     }
 
+    /**
+     * return entity simple name
+     * @return simple name
+     */
     default String getSimpleName() {
         return getType().getSimpleName();
     }
 
+    /**
+     * return entity mapping table name
+     * @return mapping table name
+     */
     String getTable();
 
+    /**
+     * return id property
+     * @return id property
+     */
     QProperty<I> getIdProperty();
 
+    /**
+     * return version property
+     * @param <E> version type
+     * @return version property
+     */
     <E> QProperty<E> getVersionProperty();
 
+    /**
+     * return {@code true} if had a version property
+     * @return {@code true} if had a version property
+     * @see #getVersionProperty()
+     */
     default boolean hasVersionProperty() {
         return getVersionProperty() != null;
     }
 
+    /**
+     * return property by path
+     * @param path path
+     * @param <E> property type
+     * @return property
+     */
     <E> QProperty<E> getProperty(String path);
 
+    /**
+     * return required property of path
+     * @param path property path
+     * @param <E> property type
+     * @return property
+     */
+    @NonNull
     default <E> QProperty<E> getRequiredProperty(String path) {
         QProperty<E> property = getProperty(path);
 

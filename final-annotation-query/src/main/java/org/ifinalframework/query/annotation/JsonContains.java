@@ -36,8 +36,16 @@ import java.lang.annotation.Target;
 @Criterion(JsonContains.class)
 public @interface JsonContains {
 
+    /**
+     * property name
+     * @return property nam
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
@@ -49,8 +57,16 @@ public @interface JsonContains {
         "</if>"
     };
 
+    /**
+     * path
+     * @return path
+     */
     String path() default "";
 
+    /**
+     * java type
+     * @return javaType
+     */
     Class<?> javaType() default Object.class;
 
 }

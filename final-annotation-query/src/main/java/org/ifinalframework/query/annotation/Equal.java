@@ -36,8 +36,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Equal {
 
+    /**
+     * property name
+     * @return return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
@@ -48,6 +56,10 @@ public @interface Equal {
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

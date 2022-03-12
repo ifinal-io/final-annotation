@@ -36,8 +36,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonExtract {
 
+    /**
+     * sql value
+     * @return sql value
+     */
     String[] value() default "JSON_EXTRACT(${column},${path})";
 
+    /**
+     * json path
+     * @return json path
+     */
     String path() default "";
 
 }

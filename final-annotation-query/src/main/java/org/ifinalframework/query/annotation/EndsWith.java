@@ -31,14 +31,26 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EndsWith {
 
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * sql criterion
+     * @return sql criterion
+     */
     String[] value() default {
         "<if test=\"${value} != null and ${value} != ''\">",
         "     ${andOr} ${column} LIKE CONCAT(#{${value}},'%') ",
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

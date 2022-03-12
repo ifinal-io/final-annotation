@@ -35,10 +35,22 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Order {
 
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * order index
+     * @return order index
+     */
     int order() default 0;
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
             "<if test=\"${value} != null\">",
             "   ${column} \\${${value}},",

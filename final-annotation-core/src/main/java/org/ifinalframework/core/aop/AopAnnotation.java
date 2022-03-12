@@ -31,8 +31,14 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AopAnnotation {
 
+    /**
+     * attributes
+     */
     String[] attributes() default {};
 
+    /**
+     * expressions
+     */
     String[] expressions() default {};
 
 }

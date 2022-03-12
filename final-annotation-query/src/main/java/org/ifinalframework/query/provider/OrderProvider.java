@@ -31,6 +31,11 @@ import org.ifinalframework.core.Orderable;
 @FunctionalInterface
 public interface OrderProvider {
 
+    /**
+     *
+     * @param orderable order
+     * @return order sql
+     */
     @Nullable
     String orders(@Nullable Orderable orderable);
 

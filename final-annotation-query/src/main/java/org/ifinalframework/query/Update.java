@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 /**
  * Update sql fragment in java.
  *
- * <h3>Usage</h3>
+ * <p>Usage</p>
  *
  *
  * <pre class="code">
@@ -37,13 +37,13 @@ import java.util.function.Consumer;
  *      update.update(expression,column,value,consumer);
  * </pre>
  *
- * <h4>Update With {@code JSON_SET}</h4>
+ * <p>Update With {@code JSON_SET}</p>
  *
  * <pre class="code">
  * Update.update().jsonSet(column,&lt;path,val&gt;);
  * </pre>
  *
- * <h3>Support update sql fragments:</h3>
+ * <p>Support update sql fragments:</p>
  * <ul>
  *     <li>set column with value like {@code column = #{value}},{@link #set(String, Object)}</li>
  *     <li>set column with value like {@code column = column +/- #{value}},see {@link #incr(String, Number)} and {@link #decr(String, Number)}</li>

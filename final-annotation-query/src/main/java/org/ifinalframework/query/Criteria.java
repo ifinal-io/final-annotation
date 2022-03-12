@@ -27,7 +27,7 @@ import lombok.Getter;
 /**
  * Criteria.
  *
- * <h4>Criteria And</h4>
+ * <p>Criteria And</p>
  * Use {@link Criteria} build {@code and} sql like {@code A AND B AND C}.
  * <pre class="code">
  * Criteria.where(A,B,C);
@@ -35,7 +35,7 @@ import lombok.Getter;
  * Criteria.and(A,B,C);
  * </pre>
  *
- * <h4>Criteria Or</h4>
+ * <p>Criteria Or</p>
  * Use {@link Criteria} build a {@code or} sql like {@code A OR B OR C}.
  * <pre class="code">
  * Criteria.or(A,B,C);

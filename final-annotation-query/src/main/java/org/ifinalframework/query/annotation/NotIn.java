@@ -32,9 +32,16 @@ import java.util.Collection;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotIn {
-
+    /**
+     * property name
+     * @return property name
+     */
     String property() default "";
 
+    /**
+     * value
+     * @return value
+     */
     String[] value() default {
         "<if test=\"${value} != null\">",
         "   <foreach collection=\"${value}\" item=\"item\" open=\" ${andOr} ${column} NOT IN (\" close=\")\" separator=\",\">",
@@ -43,6 +50,10 @@ public @interface NotIn {
         "</if>"
     };
 
+    /**
+     * java type
+     * @return java type
+     */
     Class<?> javaType() default Object.class;
 
 }

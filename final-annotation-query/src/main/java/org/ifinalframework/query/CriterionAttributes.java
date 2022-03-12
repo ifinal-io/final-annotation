@@ -29,20 +29,44 @@ import org.ifinalframework.query.annotation.CriterionSqlProvider;
  */
 public class CriterionAttributes extends AnnotationAttributes implements Criterion {
 
+    /**
+     * andOr
+     */
     public static final String ATTRIBUTE_NAME_AND_OR = "andOr";
 
+    /**
+     * property
+     */
     public static final String ATTRIBUTE_NAME_PROPERTY = "property";
 
+    /**
+     * column
+     */
     public static final String ATTRIBUTE_NAME_COLUMN = "column";
 
+    /**
+     * value
+     */
     public static final String ATTRIBUTE_NAME_VALUE = "value";
 
+    /**
+     * javaType
+     */
     public static final String ATTRIBUTE_NAME_JAVA_TYPE = "javaType";
 
+    /**
+     * typeHandler
+     */
     public static final String ATTRIBUTE_NAME_TYPE_HANDLER = "typeHandler";
 
+    /**
+     * query
+     */
     public static final String ATTRIBUTE_NAME_QUERY = "query";
 
+    /**
+     * expression
+     */
     public static final String ATTRIBUTE_NAME_EXPRESSION = "expression";
 
     public AndOr getAndor() {

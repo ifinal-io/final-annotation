@@ -30,13 +30,28 @@ import org.ifinalframework.query.CriterionExpression;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface BetweenCondition<V>
-    extends Condition {
+public interface BetweenCondition<V> extends Condition {
 
+    /**
+     * <pre class="code">
+     * BETWEEN #{min} AND #{max}
+     * </pre>
+     * @param min min value
+     * @param max max value
+     * @return between sql
+     */
     default Criterion between(@Nullable V min, @Nullable V max) {
         return condition(CriterionExpression.BETWEEN, new BetweenValue<>(min, max));
     }
 
+    /**
+     * <pre class="code">
+     * NOT BETWEEN #{min} AND #{max}
+     * </pre>
+     * @param min min value
+     * @param max max value
+     * @return not between sql
+     */
     default Criterion notBetween(@Nullable V min, @Nullable V max) {
         return condition(CriterionExpression.NOT_BETWEEN, new BetweenValue<>(min, max));
     }

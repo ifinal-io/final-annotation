@@ -31,46 +31,144 @@ import java.util.function.UnaryOperator;
  */
 public interface QProperty<T> extends Comparable<QProperty<T>>, FunctionCriteriable<Object>, Sortable<Order> {
 
+    /**
+     * return entity
+     *
+     * @param <E> entity type
+     * @return entity
+     */
     <E extends QEntity<?, ?>> E getEntity();
 
+    /**
+     * return property type
+     *
+     * @return property type
+     */
     Class<T> getType();
 
+    /**
+     * return order
+     *
+     * @return order
+     */
     Integer getOrder();
 
+    /**
+     * return path
+     *
+     * @return path
+     */
     String getPath();
 
+    /**
+     * return table
+     *
+     * @return table
+     */
     String getTable();
 
+    /**
+     * return name
+     *
+     * @return name
+     */
     String getName();
 
+    /**
+     * return writer
+     *
+     * @return writer
+     */
     @Nullable
     String getWriter();
 
+    /**
+     * return reader
+     *
+     * @return reader
+     */
     @Nullable
     String getReader();
 
+    /**
+     * return column
+     *
+     * @return column
+     */
     String getColumn();
 
+    /**
+     * return {@code true} if was an id property
+     *
+     * @return {@code true} if ware an id property
+     */
     boolean isIdProperty();
 
+    /**
+     * return whether is version property
+     * @return whether is version property
+     */
     boolean isVersionProperty();
 
+    /**
+     * return can read
+     * @return can read
+     */
     boolean isReadable();
 
+    /**
+     * return can write
+     * @return can write
+     */
     boolean isWriteable();
 
+    /**
+     * return can modifiable
+     * @return can modifiable
+     */
     boolean isModifiable();
 
+    /**
+     * type handler
+     * @return type handler
+     */
     Class<?> getTypeHandler();
 
+    /**
+     * return whether is annotation present
+     *
+     * @param annotation annotation
+     * @return whether is annotation present
+     */
     boolean isAnnotationPresent(Class<? extends Annotation> annotation);
 
+    /**
+     * return whether is array.
+     *
+     * @return whether is array.
+     */
     boolean isArray();
 
+    /**
+     * return has the view
+     *
+     * @param view view
+     * @return has the view
+     */
     boolean hasView(@Nullable Class<?> view);
 
+    /**
+     * return unique
+     *
+     * @return unique
+     */
     boolean unique();
 
+    /**
+     * return nonnull
+     *
+     * @return nonnull
+     */
     boolean nonnull();
 
     @NonNull

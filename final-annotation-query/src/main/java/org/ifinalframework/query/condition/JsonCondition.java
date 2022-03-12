@@ -58,6 +58,9 @@ public interface JsonCondition<V> extends Condition {
             criterionAttributes -> criterionAttributes.put("path", path));
     }
 
+    /**
+     * @see #notJsonContains(Object, String)
+     */
     default Criterion notJsonContains(@Nullable V value) {
         return notJsonContains(value, null);
     }
@@ -77,10 +80,16 @@ public interface JsonCondition<V> extends Condition {
     //============================================    JSON_CONTAINS_PATH    ============================================
     //==================================================================================================================
 
+    /**
+     * @see #jsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion jsonContainsPath(String... paths) {
         return jsonContainsPath(OneOrAll.ONE, paths);
     }
 
+    /**
+     * @see #jsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion jsonContainsPath(Collection<String> paths) {
         return jsonContainsPath(OneOrAll.ONE, paths);
     }
@@ -94,6 +103,9 @@ public interface JsonCondition<V> extends Condition {
         return jsonContainsPath(OneOrAll.from(oneOrAll), paths);
     }
 
+    /**
+     * @see #jsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion jsonContainsPath(OneOrAll oneOrAll, String... paths) {
         return jsonContainsPath(oneOrAll, Objects.isNull(paths) ? null : Arrays.asList(paths));
     }
@@ -114,22 +126,38 @@ public interface JsonCondition<V> extends Condition {
 
     // !JSON_CONTAINS_PATH
 
+    /**
+     * @see #notJsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion notJsonContainsPath(String... paths) {
         return notJsonContainsPath(OneOrAll.ONE, paths);
     }
 
+    /**
+     * @see #notJsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion notJsonContainsPath(Collection<String> paths) {
         return notJsonContainsPath(OneOrAll.ONE, paths);
     }
 
+    /**
+     * @see #notJsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion notJsonContainsPath(String oneOrAll, String... paths) {
         return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
     }
 
+    /**
+     * @see #notJsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion notJsonContainsPath(String oneOrAll, Collection<String> paths) {
         return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
     }
 
+
+    /**
+     * @see #notJsonContainsPath(OneOrAll, Collection)
+     */
     default Criterion notJsonContainsPath(OneOrAll oneOrAll, String... paths) {
         return notJsonContainsPath(oneOrAll, Objects.isNull(paths) ? null : Arrays.asList(paths));
     }

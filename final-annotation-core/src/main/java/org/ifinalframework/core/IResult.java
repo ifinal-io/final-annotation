@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  * throw by a {@linkplain Exception exception} which impl the interface of {@link IException}.
  *
  *
- * <h3>Code Example</h3>
+ * <p>Code Example</p>
  *
  * <pre class="code">
  *      IResult result = getResult();
@@ -39,7 +39,7 @@ import org.springframework.lang.Nullable;
  *      }
  * </pre>
  *
- * <h3>Json Example</h3>
+ * <p>Json Example</p>
  * <pre class="code">
  *      {
  *           "status":null,
