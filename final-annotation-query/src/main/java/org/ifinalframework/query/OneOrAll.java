@@ -15,8 +15,6 @@
 
 package org.ifinalframework.query;
 
-import java.util.Objects;
-
 /**
  * OneOrAll.
  *
@@ -26,11 +24,4 @@ import java.util.Objects;
  */
 public enum OneOrAll {
     ONE, ALL;
-
-    public static OneOrAll from(String oneOrAll) {
-        if (Objects.isNull(oneOrAll)) {
-            return null;
-        }
-        return valueOf(oneOrAll.toUpperCase());
-    }
 }

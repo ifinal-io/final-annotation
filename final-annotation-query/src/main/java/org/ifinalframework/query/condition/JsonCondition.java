@@ -100,7 +100,7 @@ public interface JsonCondition<V> extends Condition {
      * @see #jsonContainsPath(String, Collection)
      */
     default Criterion jsonContainsPath(@NonNull String oneOrAll, Collection<String> paths) {
-        return jsonContainsPath(OneOrAll.from(oneOrAll), paths);
+        return jsonContainsPath(OneOrAll.valueOf(oneOrAll.toUpperCase()), paths);
     }
 
     /**
@@ -144,14 +144,14 @@ public interface JsonCondition<V> extends Condition {
      * @see #notJsonContainsPath(OneOrAll, Collection)
      */
     default Criterion notJsonContainsPath(String oneOrAll, String... paths) {
-        return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
+        return notJsonContainsPath(OneOrAll.valueOf(oneOrAll.toUpperCase()), paths);
     }
 
     /**
      * @see #notJsonContainsPath(OneOrAll, Collection)
      */
     default Criterion notJsonContainsPath(String oneOrAll, Collection<String> paths) {
-        return notJsonContainsPath(OneOrAll.from(oneOrAll), paths);
+        return notJsonContainsPath(OneOrAll.valueOf(oneOrAll.toUpperCase()), paths);
     }
 
 

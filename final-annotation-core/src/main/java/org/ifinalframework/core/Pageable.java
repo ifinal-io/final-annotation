@@ -50,9 +50,9 @@ public interface Pageable extends IQuery {
     void setSize(@Nullable Integer size);
 
     /**
-     * return {@code true} if need do count, otherwise {@code false}, default need count.
+     * return {@code true} when need to do count, otherwise {@code false}, default need count.
      *
-     * @return {@code true} if need do count, otherwise {@code false}.
+     * @return {@code true} when need to do count, otherwise {@code false}.
      */
     @Nullable
     Boolean getCount();
