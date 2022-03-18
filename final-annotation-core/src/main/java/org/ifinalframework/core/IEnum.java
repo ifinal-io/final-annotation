@@ -25,7 +25,7 @@ import java.util.Objects;
 /**
  * A maker superinterface which the {@linkplain Enum enum} should be impl.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

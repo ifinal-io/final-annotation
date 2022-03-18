@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
 /**
  * Mark the element is a {@link WriteOnly} property which will not be generated {@literal select}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

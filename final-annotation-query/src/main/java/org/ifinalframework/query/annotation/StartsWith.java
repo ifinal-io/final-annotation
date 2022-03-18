@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  *      column LIKE CONCAT('%',#{value})
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.2.1
  * @see Like
  * @see NotStartsWith

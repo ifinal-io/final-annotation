@@ -23,7 +23,7 @@ import org.ifinalframework.query.CriterionExpression;
 /**
  * LikeCondition.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.ifinalframework.query.annotation.Like
  * @see org.ifinalframework.query.annotation.NotLike

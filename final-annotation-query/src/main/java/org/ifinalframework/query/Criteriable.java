@@ -27,7 +27,7 @@ import org.ifinalframework.query.condition.NullCondition;
 /**
  * Criteriable.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see FunctionCriteriable
  * @since 1.0.0

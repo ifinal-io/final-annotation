@@ -25,7 +25,7 @@ import java.util.Collection;
 /**
  * InCondition.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.ifinalframework.query.annotation.In
  * @see org.ifinalframework.query.annotation.NotIn

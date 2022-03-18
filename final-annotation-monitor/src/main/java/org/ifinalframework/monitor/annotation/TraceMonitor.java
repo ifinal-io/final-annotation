@@ -30,7 +30,7 @@ import org.ifinalframework.core.aop.AopAnnotation;
 /**
  * 在方法执行之前，向上下文中注入{@code trace}链路追踪变量。
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

@@ -21,7 +21,7 @@ import org.ifinalframework.query.CriterionExpression;
 /**
  * NullCondition.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.ifinalframework.query.annotation.IsNull
  * @see org.ifinalframework.query.annotation.IsNotNull

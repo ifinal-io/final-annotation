@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Pageable#getSize()
  * @since 1.0.0

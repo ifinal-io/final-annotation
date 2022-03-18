@@ -44,7 +44,7 @@ import java.lang.annotation.*;
  * curl http://localhost:8080/json?json={"name":haha}
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see RequestParam
  * @see RequestBody

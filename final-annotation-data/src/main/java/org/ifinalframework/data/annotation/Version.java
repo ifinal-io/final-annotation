@@ -24,7 +24,7 @@ import java.lang.annotation.*;
  * Marked the element is a {@literal version} record, it's a {@link ReadOnly} column, it's value insert by {@link
  * Default}, such as {@literal 1}, and modified when {@literal update} whit {@literal column = column + 1}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see AbsEntity
  * @since 1.0.0

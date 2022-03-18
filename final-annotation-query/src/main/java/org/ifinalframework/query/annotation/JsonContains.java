@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 /**
  * Generate sql fragment like {@code JSON_CONTAINS(${column},'${value}'[,'${path}']})}
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see NotJsonContains
  * @see org.ifinalframework.query.condition.JsonCondition#jsonContains(Object)

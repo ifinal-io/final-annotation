@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see GreatThan
  * @see org.ifinalframework.query.condition.CompareCondition#gte(Object)

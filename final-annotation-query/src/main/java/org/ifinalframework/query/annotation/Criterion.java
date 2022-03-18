@@ -57,7 +57,7 @@ import java.lang.annotation.Target;
  *     <li>use {@link NotEndsWith} for `column NOT LIKE CONCAT(#{value},'%')`</li>
  * </ul>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see CriterionAttributes
  * @see CriterionSqlProvider

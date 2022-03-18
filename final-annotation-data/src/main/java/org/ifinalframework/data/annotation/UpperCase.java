@@ -28,7 +28,7 @@ import java.lang.reflect.Field;
  * Annotated the name of {@link Class table} or {@link Field column} should be convert to upper case use {@link
  * String#toUpperCase()}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

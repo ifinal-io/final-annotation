@@ -22,7 +22,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.ifinalframework.query.annotation.CriterionSqlProvider;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see CriterionSqlProvider
  * @since 1.0.0

@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
  *     }
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Cache#set(Object, Object, Object, Long, TimeUnit, Class)
  * @see Cache#get(Object, Object, Type, Class)

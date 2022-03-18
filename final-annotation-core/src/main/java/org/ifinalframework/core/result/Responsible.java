@@ -25,7 +25,7 @@ import org.ifinalframework.core.ResponseStatus;
  * The interface of the response which should be have the response {@linkplain #getStatus() status} and {@linkplain #getDescription()
  * description}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

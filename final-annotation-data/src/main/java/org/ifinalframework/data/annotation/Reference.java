@@ -33,7 +33,7 @@ import org.ifinalframework.core.IEntity;
  * and the {@linkplain Class type} of this {@linkplain Field property} must {@literal implements} the {@link IEntity
  * entity} interface.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see IEntity
  * @since 1.0.0

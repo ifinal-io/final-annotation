@@ -22,7 +22,7 @@ import java.io.Serializable;
 /**
  * The interface of {@code user} which impl the interface of {@link IEntity} in the system.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

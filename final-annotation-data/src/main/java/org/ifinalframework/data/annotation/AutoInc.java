@@ -29,7 +29,7 @@ import java.lang.annotation.*;
  *      }
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see PrimaryKey
  * @see org.apache.ibatis.annotations.Options

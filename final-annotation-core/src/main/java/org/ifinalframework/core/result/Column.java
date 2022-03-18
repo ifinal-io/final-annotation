@@ -26,7 +26,7 @@ import lombok.ToString;
 /**
  * Column.
  *
- * @author likly
+ * @author ilikly
  * @version 1.2.0
  * @since 1.2.0
  */

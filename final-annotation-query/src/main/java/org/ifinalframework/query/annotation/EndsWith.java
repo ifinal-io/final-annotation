@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.2.1
  * @see org.ifinalframework.query.condition.LikeCondition#endsWith(String)
  * @since 1.2.1

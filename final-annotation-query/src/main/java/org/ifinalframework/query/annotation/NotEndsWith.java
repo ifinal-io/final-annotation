@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.2.1
  * @see Like
  * @since 1.2.1

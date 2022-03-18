@@ -24,7 +24,7 @@ import java.lang.annotation.*;
 /**
  * 在方法 {@link java.lang.reflect.Method} 执行的生命周期 {@link JoinPoint}中删除命中的缓存 {@link Cache#del(Object, Object)}。
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Cache#del(Object, Object)
  * @since 1.0.0

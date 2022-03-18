@@ -18,7 +18,7 @@ package org.ifinalframework.query;
 /**
  * OneOrAll.
  *
- * @author likly
+ * @author ilikly
  * @version 1.2.1
  * @since 1.2.1
  */

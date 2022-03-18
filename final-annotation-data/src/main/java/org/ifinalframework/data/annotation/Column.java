@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 /**
  * Annotate a property of {@linkplain Field field} or {@linkplain Method method} mapping to a column of data table.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see NameConverter
  * @see Table

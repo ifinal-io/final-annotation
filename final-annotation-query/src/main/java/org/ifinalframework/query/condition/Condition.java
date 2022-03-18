@@ -28,7 +28,7 @@ import org.ifinalframework.query.CriterionAttributes;
 /**
  * A {@link Criterion} builder from {@link Condition}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see CompareCondition
  * @see InCondition

@@ -20,7 +20,7 @@ package org.ifinalframework.data.annotation;
 /**
  * 持久化类型
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

@@ -26,7 +26,7 @@ import org.apache.shardingsphere.sharding.api.config.strategy.sharding.ShardingS
 import org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see ShardingStrategyConfiguration
  * @see StandardShardingStrategyConfiguration
@@ -42,7 +42,7 @@ public @interface ShardingStrategy {
     String type();
 
     /**
-     * @author likly
+     * @author ilikly
      * @version 1.0.0
      * @see StandardShardingStrategyConfiguration
      * @see org.apache.shardingsphere.sharding.api.config.strategy.sharding.ComplexShardingStrategyConfiguration
@@ -55,7 +55,7 @@ public @interface ShardingStrategy {
     }
 
     /**
-     * @author likly
+     * @author ilikly
      * @version 1.0.0
      * @since 1.0.0
      */

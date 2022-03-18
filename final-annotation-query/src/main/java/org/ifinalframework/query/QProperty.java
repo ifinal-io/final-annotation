@@ -25,7 +25,7 @@ import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

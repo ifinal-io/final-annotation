@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * Generate sql fragment like {@code column IS NOT NULL} when the target {@link java.lang.reflect.Field} value is not
  * null.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see IsNull
  * @see NullCondition#isNotNull()

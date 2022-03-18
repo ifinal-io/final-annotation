@@ -50,7 +50,7 @@ import java.util.function.Consumer;
  *     <li>set column with custom sql, see {@link #update(String, String, Object, Consumer)}</li>
  * </ul>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

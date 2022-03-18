@@ -31,7 +31,7 @@ import lombok.RequiredArgsConstructor;
  *  Order.desc("age");
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.ifinalframework.core.Orderable
  * @since 1.0.0

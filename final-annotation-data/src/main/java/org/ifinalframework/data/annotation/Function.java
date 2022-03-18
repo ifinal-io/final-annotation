@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
 /**
  * Mark the target is a function column.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

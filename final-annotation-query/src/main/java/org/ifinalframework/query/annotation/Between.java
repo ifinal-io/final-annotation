@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
  *     column BETWEEN #{min} AND #{max}
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see QProperty#between(Object, Object)
  * @see org.ifinalframework.query.BetweenValue

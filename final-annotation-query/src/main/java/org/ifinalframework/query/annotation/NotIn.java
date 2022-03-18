@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 import java.util.Collection;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see In
  * @see org.ifinalframework.query.condition.InCondition#nin(Collection)

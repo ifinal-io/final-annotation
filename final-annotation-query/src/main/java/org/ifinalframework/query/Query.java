@@ -40,7 +40,7 @@ import lombok.Setter;
  *          .where(QProperty.eq.("name"));
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

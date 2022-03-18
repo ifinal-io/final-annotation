@@ -30,7 +30,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 /**
  * CriterionTargetTest.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

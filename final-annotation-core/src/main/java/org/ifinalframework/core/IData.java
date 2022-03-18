@@ -26,7 +26,7 @@ import java.io.Serializable;
  * get/set the data which could be {@literal null}.
  *
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see IResult
  * @see IPage

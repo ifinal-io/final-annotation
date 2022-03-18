@@ -24,7 +24,7 @@ import org.springframework.lang.NonNull;
  * #getMessage()} should be injected into {@linkplain IResult result}.
  *
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see IResult
  * @see Exception

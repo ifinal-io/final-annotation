@@ -20,7 +20,7 @@ import java.io.Serializable;
 /**
  * The marked {@code interface} of query to mark the target is a {@linkplain Object query}.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

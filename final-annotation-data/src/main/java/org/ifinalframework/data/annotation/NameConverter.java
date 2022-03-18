@@ -18,7 +18,7 @@
 package org.ifinalframework.data.annotation;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Table
  * @see Column

@@ -18,7 +18,7 @@ package org.ifinalframework.core;
 /**
  * IUpdate.
  *
- * @author likly
+ * @author ilikly
  * @version 1.2.1
  * @since 1.2.1
  */

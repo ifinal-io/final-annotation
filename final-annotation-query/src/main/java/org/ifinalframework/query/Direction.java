@@ -20,7 +20,7 @@ package org.ifinalframework.query;
 /**
  * 方向
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Order
  * @since 1.0.0

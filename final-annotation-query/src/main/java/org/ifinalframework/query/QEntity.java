@@ -23,7 +23,7 @@ import java.io.Serializable;
 import java.util.stream.Stream;
 
 /**
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */

@@ -27,7 +27,7 @@ import java.lang.annotation.*;
  *     <li>would not be generated sql when {@code insert} and {@code update}.</li>
  * </ul>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Created
  * @see LastModifier

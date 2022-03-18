@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  *     column = #{value, javaType=, typeHandler=}
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see NotEqual
  * @see org.ifinalframework.query.condition.CompareCondition#eq(Object)

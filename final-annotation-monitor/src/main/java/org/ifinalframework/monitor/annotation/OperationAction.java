@@ -32,7 +32,7 @@ import java.lang.annotation.*;
  * }
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.2.2
  * @since 1.2.2
  */

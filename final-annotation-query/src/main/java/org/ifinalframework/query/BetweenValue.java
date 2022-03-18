@@ -32,7 +32,7 @@ import java.io.Serializable;
  * BETWEEN {min} AND {max}
  * </pre>
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see Between
  * @see NotBetween

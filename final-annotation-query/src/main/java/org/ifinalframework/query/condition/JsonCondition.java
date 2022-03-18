@@ -29,7 +29,7 @@ import java.util.Objects;
 /**
  * A condition for sql json criterion.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.ifinalframework.query.annotation.JsonContains
  * @see org.ifinalframework.query.annotation.NotJsonContains

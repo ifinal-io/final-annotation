@@ -24,7 +24,7 @@ import java.lang.annotation.*;
 /**
  * Marked the element is a primary key.
  *
- * @author likly
+ * @author ilikly
  * @version 1.0.0
  * @see org.springframework.data.annotation.Id
  * @see IEntity
