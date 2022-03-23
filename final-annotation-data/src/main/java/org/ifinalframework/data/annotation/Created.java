@@ -31,7 +31,7 @@ import org.ifinalframework.core.lang.Default;
 import org.ifinalframework.core.lang.Final;
 
 /**
- * Annotate the {@link Field property} is a {@code created} column which is have a {@link Default} value of {@code NOW()} and it is {@link
+ * Annotate the {@link Field property} is a {@code created} column which is had a {@link Default} value of {@code NOW()} and it is {@link
  * Final} and {@link ReadOnly}.
  *
  * <ul>
