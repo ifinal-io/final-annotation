@@ -15,15 +15,15 @@
 
 package org.ifinalframework.query;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.io.Serializable;
+
 import org.ifinalframework.query.annotation.Between;
 import org.ifinalframework.query.annotation.NotBetween;
 import org.ifinalframework.query.condition.BetweenCondition;
-import org.springframework.lang.Nullable;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * The value holder which have one {@code min} value and {@code max} value for {@code between} value.
@@ -46,10 +46,14 @@ public final class BetweenValue<T> implements Serializable {
 
     private static final long serialVersionUID = 6194662646358531082L;
 
-    @Nullable
+    /**
+     * return the value of min.
+     */
     private T min;
 
-    @Nullable
+    /**
+     * return the value of max.
+     */
     private T max;
 
 }
