@@ -44,7 +44,6 @@ import java.util.List;
  * @see InterceptorRegistration
  * @see HandlerInterceptor
  * @see WebMvcConfigurer#addInterceptors(InterceptorRegistry)
- * @see org.ifinalframework.web.mvc.config.HandlerInterceptorWebMvcConfigurer
  * @since 1.0.0
  */
 @Component
@@ -65,9 +64,9 @@ public @interface Interceptor {
     String[] includes() default {};
 
     /**
-     * return the exclude path patterns.
+     * return exclude path patterns.
      *
-     * @return he exclude path patterns.
+     * @return exclude path patterns.
      * @see InterceptorRegistration#excludePathPatterns(String...)
      * @see InterceptorRegistration#excludePathPatterns(List)
      */
