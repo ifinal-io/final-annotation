@@ -24,6 +24,18 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * <pre class="code">
+ * &#064RestController
+ * public class ExcelController{
+ *
+ *      &#064GetMapping("/excel)
+ *      public List&lt;T&gt; excel(&#064RequestExcelPart List&lt;T&gt; list){
+ *          return list;
+ *      }
+ *
+ * }
+ * </pre>
+ *
  * @author ilikly
  * @version 1.2.4
  * @see RequestPart
