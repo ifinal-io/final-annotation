@@ -85,11 +85,12 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * set query page and size
+     *
      * @param page page
      * @param size size
      * @return query
      */
-    public Query page(final Integer page, final Integer size) {
+    public Query page(Integer page, Integer size) {
 
         this.page = page;
         this.size = size;
@@ -98,10 +99,11 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * set query page
+     *
      * @param page page
      * @return query
      */
-    public Query page(final Integer page) {
+    public Query page(Integer page) {
 
         this.page = page;
         return this;
@@ -109,10 +111,11 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * set query page size
+     *
      * @param size size
      * @return query
      */
-    public Query size(final Integer size) {
+    public Query size(Integer size) {
 
         this.size = size;
         return this;
@@ -120,10 +123,11 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * count
+     *
      * @param count count
      * @return query
      */
-    public Query count(final Boolean count) {
+    public Query count(Boolean count) {
 
         this.count = count;
         return this;
@@ -131,42 +135,51 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * where
+     *
      * @param criteria criteria
      * @return query
      */
-    public Query where(final @NonNull Criterion... criteria) {
-
+    public Query where(@NonNull Criterion... criteria) {
         return where(Arrays.asList(criteria));
     }
+
     /**
      * where
+     *
      * @param criteria criteria
      * @return query
      */
-    public Query where(final @NonNull Collection<Criterion> criteria) {
-        this.criteria.addAll(criteria);
+    public Query where(@NonNull Collection<Criterion> criteria) {
+        return where(AndOr.AND, criteria);
+    }
+
+    public Query where(AndOr andOr, @NonNull Collection<Criterion> criteria) {
+        if (AndOr.AND == andOr) {
+            this.criteria.addAll(criteria);
+        } else {
+            this.criteria.add(Criteria.or(criteria));
+        }
         return this;
     }
 
     /**
-     *
      * @param properties properties
      * @return query
      */
-    public Query group(final QProperty<?>... properties) {
+    public Query group(QProperty<?>... properties) {
         return group(Arrays.asList(properties));
     }
+
     /**
-     *
      * @param properties properties
      * @return query
      */
-    public Query group(final Collection<QProperty<?>> properties) {
+    public Query group(Collection<QProperty<?>> properties) {
         properties.forEach(it -> this.groups.add(it.getColumn()));
         return this;
     }
+
     /**
-     *
      * @param cloumn cloumn
      * @return query
      */
@@ -176,22 +189,20 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
     }
 
     /**
-     *
      * @param orders orders
      * @return query
      */
-    public Query sort(final @NonNull Order... orders) {
+    public Query sort(@NonNull Order... orders) {
         return sort(Arrays.asList(orders));
     }
 
     /**
-     *
      * @param orders orders
      * @return query
      */
-    public Query sort(final @NonNull Collection<Order> orders) {
+    public Query sort(@NonNull Collection<Order> orders) {
 
-        for (final Order order : orders) {
+        for (Order order : orders) {
             this.sort(order.getColumn(), order.getDirection());
         }
 
@@ -200,13 +211,14 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * sort
-     * @param direction direction
+     *
+     * @param direction  direction
      * @param properties properties
      * @return query
      */
-    public Query sort(final @NonNull Direction direction, final @NonNull QProperty<?>... properties) {
+    public Query sort(@NonNull Direction direction, @NonNull QProperty<?>... properties) {
 
-        for (final QProperty<?> property : properties) {
+        for (QProperty<?> property : properties) {
             this.sort(property.getColumn(), direction);
         }
 
@@ -215,25 +227,28 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
 
     /**
      * ase
+     *
      * @param properties properties
      * @return query
      */
-    public Query asc(final @NonNull QProperty<?>... properties) {
+    public Query asc(@NonNull QProperty<?>... properties) {
         return sort(Direction.ASC, properties);
     }
 
     /**
      * desc
+     *
      * @param properties properties
      * @return query
      */
-    public Query desc(final @NonNull QProperty<?>... properties) {
+    public Query desc(@NonNull QProperty<?>... properties) {
         return sort(Direction.DESC, properties);
     }
 
     /**
      * sort
-     * @param column column
+     *
+     * @param column    column
      * @param direction direction
      */
     private void sort(String column, Direction direction) {
@@ -241,7 +256,6 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
     }
 
     /**
-     *
      * @param order order
      */
     private void sort(String order) {
@@ -249,23 +263,21 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
     }
 
     /**
-     *
      * @param offset offset
-     * @param limit limit
+     * @param limit  limit
      * @return query
      */
-    public Query limit(final long offset, final long limit) {
+    public Query limit(long offset, long limit) {
         this.offset = offset;
         this.limit = limit;
         return this;
     }
 
     /**
-     *
      * @param limit limit
      * @return query
      */
-    public Query limit(final long limit) {
+    public Query limit(long limit) {
         this.offset = null;
         this.limit = limit;
         return this;
