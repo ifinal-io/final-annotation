@@ -99,12 +99,12 @@ public @interface Column {
             "   <when test=\"${selectiveTest}\">",
             "       ${column} = #{${value}#if($typeHandler)",
             "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
-            "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+            "           , typeHandler=$!{typeHandler.canonicalName}#end},",
             "   </when>",
             "   <when test=\"${test}\">",
             "       ${column} = #{${value}#if($typeHandler)",
             "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
-            "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+            "           , typeHandler=$!{typeHandler.canonicalName}#end},",
             "   </when>",
             "</choose>"
     };
