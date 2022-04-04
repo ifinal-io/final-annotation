@@ -19,6 +19,7 @@ package org.ifinalframework.data.annotation;
 
 import lombok.Getter;
 import lombok.Setter;
+
 import org.ifinalframework.core.IUser;
 import org.ifinalframework.core.lang.Transient;
 
@@ -32,9 +33,78 @@ import org.ifinalframework.core.lang.Transient;
 @Transient
 public class AbsUser implements IUser<Long> {
 
+
     @PrimaryKey
+    @Column(
+            insert = {
+                    "<choose>",
+                    "     <when test=\"${test}\">",
+                    "         #{${value}#if($typeHandler)",
+                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "      </when>",
+                    "     <when test=\"USER != null\">",
+                    "         #{USER.id#if($typeHandler)",
+                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "     </when>",
+                    "    <otherwise>null</otherwise>",
+                    "</choose>"
+            },
+            update = {
+                    "<choose>",
+                    "   <when test=\"${selectiveTest}\">",
+                    "       ${column} = #{${value}#if($typeHandler)",
+                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "   </when>",
+                    "   <when test=\"selective and USER!= null and USER.id != null\">",
+                    "       ${column} = #{USER.id}",
+                    "   </when>",
+                    "   <when test=\"${test}\">",
+                    "       ${column} = #{${value}#if($typeHandler)",
+                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "   </when>",
+                    "</choose>"
+            }
+    )
     private Long id;
 
+    @Column(
+            insert = {
+                    "<choose>",
+                    "     <when test=\"${test}\">",
+                    "         #{${value}#if($typeHandler)",
+                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "      </when>",
+                    "     <when test=\"USER != null\">",
+                    "         #{USER.name#if($typeHandler)",
+                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "     </when>",
+                    "    <otherwise>null</otherwise>",
+                    "</choose>"
+            },
+            update =  {
+
+                    "<choose>",
+                    "   <when test=\"${selectiveTest}\">",
+                    "       ${column} = #{${value}#if($typeHandler)",
+                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "   </when>",
+                    "   <when test=\"selective and USER!= null and USER.name != null\">",
+                    "       ${column} = #{USER.name}",
+                    "   </when>",
+                    "   <when test=\"${test}\">",
+                    "       ${column} = #{${value}#if($typeHandler)",
+                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "   </when>",
+                    "</choose>"
+            })
     private String name;
 
 }

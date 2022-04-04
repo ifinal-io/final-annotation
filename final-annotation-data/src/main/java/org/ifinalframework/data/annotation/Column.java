@@ -16,6 +16,7 @@
 package org.ifinalframework.data.annotation;
 
 import org.ifinalframework.core.lang.Transient;
+
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.data.annotation.Persistent;
 
@@ -72,22 +73,16 @@ public @interface Column {
      *
      * @return the column writer
      */
-    String writer() default "#{${value}#if($typeHandler)"
-            + "#if($javaType), javaType=$!{javaType.canonicalName}#end"
-            + ", typeHandler=$!{typeHandler.canonicalName}#end}";
+    String[] insert() default {
+            "#{${value}#if($typeHandler)",
+            "#if($javaType), javaType=$!{javaType.canonicalName}#end",
+            ", typeHandler=$!{typeHandler.canonicalName}#end}"
+    };
 
-    /**
-     * <pre class="code">
-     *      column
-     * </pre>
-     *
-     * @return the column reader
-     */
-    @AliasFor("select")
-    String reader() default "${column}";
 
     /**
      * select column
+     *
      * @since 1.2.3
      */
     String select() default "${column}";
@@ -99,9 +94,21 @@ public @interface Column {
      *
      * @since 1.2.3
      */
-    String update() default "${column} = #{${value}#if($typeHandler)"
-            + "#if($javaType), javaType=$!{javaType.canonicalName}#end"
-            + ", typeHandler=$!{typeHandler.canonicalName}#end}";
+    String[] update() default {
+            "<choose>",
+            "   <when test=\"${selectiveTest}\">",
+            "       ${column} = #{${value}#if($typeHandler)",
+            "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+            "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+            "   </when>",
+            "   <when test=\"${test}\">",
+            "       ${column} = #{${value}#if($typeHandler)",
+            "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+            "           , typeHandler=$!{typeHandler.canonicalName}#end}",
+            "   </when>",
+            "</choose>"
+    };
+
 
     /**
      * {@code column = values(column)}

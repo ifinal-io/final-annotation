@@ -36,7 +36,7 @@ import org.ifinalframework.core.IUser;
  * @see IUser
  * @since 1.0.0
  */
-@Column
+@Column()
 @Documented
 @Order(Integer.MAX_VALUE - 110)
 @Target({ElementType.FIELD})

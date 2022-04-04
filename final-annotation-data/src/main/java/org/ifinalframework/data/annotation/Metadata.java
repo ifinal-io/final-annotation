@@ -30,6 +30,15 @@ import lombok.Data;
 public class Metadata implements Serializable {
 
     /**
+     * test value
+     */
+    private String test;
+    /**
+     * selective test value
+     */
+    private String selectiveTest;
+
+    /**
      * property name
      */
     private String property;

@@ -80,7 +80,10 @@ public interface QProperty<T> extends Comparable<QProperty<T>>, FunctionCriteria
      * @return writer
      */
     @Nullable
-    String getWriter();
+    String getInsert();
+
+    @Nullable
+    String getUpdate();
 
     /**
      * return reader
