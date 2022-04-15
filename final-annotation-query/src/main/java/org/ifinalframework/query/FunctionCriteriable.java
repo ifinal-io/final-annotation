@@ -24,6 +24,7 @@ import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 import org.ifinalframework.query.function.DateFunction;
+import org.ifinalframework.query.function.JsonFunction;
 import org.ifinalframework.query.function.LogicFunction;
 
 /**
@@ -33,7 +34,7 @@ import org.ifinalframework.query.function.LogicFunction;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface FunctionCriteriable<V> extends Criteriable<V>, DateFunction<V>, LogicFunction<V> {
+public interface FunctionCriteriable<V> extends Criteriable<V>, DateFunction<V>, LogicFunction<V>, JsonFunction<V> {
 
     Criteriable<V> apply(@NonNull UnaryOperator<String> column, @Nullable Consumer<CriterionAttributes> consumer);
 
