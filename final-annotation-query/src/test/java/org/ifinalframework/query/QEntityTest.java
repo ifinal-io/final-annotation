@@ -16,8 +16,8 @@ import static org.mockito.Mockito.when;
  * QEntityTest.
  *
  * @author ilikly
- * @version 1.3.0
- * @since 1.3.0
+ * @version 1.3.1
+ * @since 1.3.1
  */
 @ExtendWith({MockitoExtension.class})
 class QEntityTest {
