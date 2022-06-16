@@ -29,7 +29,7 @@ import org.ifinalframework.query.Criteriable;
 public interface JsonFunction<V> extends Function<V>{
 
     default Criteriable<V> jsonExtract(@NonNull String path) {
-        return apply(column -> String.format("JSON_EXTRACT(%s, #{${criterion}.path}", column),
+        return apply(column -> String.format("JSON_EXTRACT(%s, #{${criterion}.path})", column),
                 criterion -> criterion.put("path", path));
     }
 }
