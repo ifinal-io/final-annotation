@@ -33,7 +33,7 @@ public final class SqlKeyWords {
     private static final Set<String> keys = new HashSet<>();
 
     static {
-        init("key", "order", "group", "source");
+        init("key", "order", "group", "source", "user");
     }
 
     private SqlKeyWords() {
