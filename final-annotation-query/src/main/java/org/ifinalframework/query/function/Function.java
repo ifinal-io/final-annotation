@@ -17,11 +17,11 @@
 
 package org.ifinalframework.query.function;
 
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
-
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
+
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import org.ifinalframework.query.Criteriable;
 import org.ifinalframework.query.CriterionAttributes;
@@ -37,7 +37,17 @@ import org.ifinalframework.query.CriterionAttributes;
 public interface Function<V> {
 
     /**
+     * @param function function
+     * @return criterion
+     * @since 1.3.5
+     */
+    default Criteriable<V> apply(@NonNull UnaryOperator<String> function) {
+        return apply(function, null);
+    }
+
+    /**
      * apply function with consumer
+     *
      * @param function function
      * @param consumer consumer
      * @return criterion

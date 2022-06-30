@@ -25,11 +25,22 @@ import org.ifinalframework.query.Criteriable;
  * @author ilikly
  * @version 1.3.1
  * @since 1.3.1
+ * @see org.ifinalframework.query.condition.JsonCondition
  */
-public interface JsonFunction<V> extends Function<V>{
+public interface JsonFunction<V> extends Function<V> {
 
     default Criteriable<V> jsonExtract(@NonNull String path) {
         return apply(column -> String.format("JSON_EXTRACT(%s, #{${criterion}.path})", column),
                 criterion -> criterion.put("path", path));
+    }
+
+    /**
+     * JSON_UNQUOTE
+     *
+     * @return criterion
+     * @since 1.3.5
+     */
+    default Criteriable<V> jsonUnquote() {
+        return apply(column -> String.format("JSON_UNQUOTE(%s)", column));
     }
 }
