@@ -17,6 +17,8 @@
 
 package org.ifinalframework.core;
 
+import java.util.Optional;
+
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
@@ -113,6 +115,16 @@ public interface IResult<T> extends IData<T> {
      */
     @Nullable
     IPagination getPagination();
+
+    /**
+     * @return total of the data.
+     * @see #getPagination()
+     * @since 1.4.0
+     */
+    @Nullable
+    default Long getTotal() {
+        return Optional.ofNullable(getPagination()).map(IPagination::getTotal).orElse(null);
+    }
 
     /**
      * return {@literal true} if this result response success, otherwise {@literal false}.
