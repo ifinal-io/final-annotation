@@ -17,18 +17,32 @@
 
 package org.ifinalframework.data.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * 视图，根据视图生成SQL。 实现根据不同的实图查询不同的列的需求。
  *
+ * <pre class="code">
+ * public class Entity implements IEntity&lt;Long&gt;{
+ *      private Long id;
+ *      &#064;View(ViewName.class)
+ *      private String name;
+ *      &#064;View(ViewAge.class)
+ *      private String age;
+ *
+ *      public interface ViewName{};
+ *      public interface ViewAge{};
+ * }
+ * </pre>
+ *
+ * <pre class="code">
+ *      // sql: select id,name from entity
+ *      entityRepository.select(ViewName.class);
+ * </pre>
  *
  * @author ilikly
  * @version 1.0.0
+ * @see org.springframework.data.repository.Repository
  * @since 1.0.0
  */
 @Documented
