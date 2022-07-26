@@ -17,13 +17,37 @@
 
 package org.ifinalframework.core;
 
+import java.util.Objects;
+
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
-import java.util.Objects;
-
 /**
  * A maker superinterface which the {@linkplain Enum enum} should be impl.
+ *
+ * <pre class="code">
+ * &#064;Getter
+ * &#064;AllArgsConstructor
+ * public enum YN implements IEnum&lt;Integer&gt; {
+ *      YES(1,"有效"),
+ *      NO(0,"无效");
+ *      private final Integer code;
+ *      private final String desc;
+ * }
+ *
+ *
+ * public class MyEntity{
+ *     private YN yn;
+ * }
+ * </pre>
+ * get the json when serialize the data of MyEntity.
+ * <pre class="code">
+ * {
+ *     "yn": 1,
+ *     "ynName": YES,
+ *     "ynDesc": "有效"
+ * }
+ * </pre>
  *
  * @author ilikly
  * @version 1.0.0
