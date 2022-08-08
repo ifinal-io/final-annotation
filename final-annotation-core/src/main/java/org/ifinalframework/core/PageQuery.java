@@ -15,16 +15,19 @@
 
 package org.ifinalframework.core;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
-
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * A simple {@linkplain IQuery query} with {@link Pageable}, {@link Orderable},{@link Limitable} and {@link Groupable}.
@@ -54,12 +57,14 @@ public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limita
      * return the page index number for pageable, start from {@code 1}, could be null.
      */
     @Nullable
+    @Min(1)
     private Integer page = DEFAULT_PAGE;
 
     /**
      * return the page size for pageable, min is {@code 1}, could be null.
      */
     @Nullable
+    @Max(100000)
     private Integer size = DEFAULT_SIZE;
 
     /**
