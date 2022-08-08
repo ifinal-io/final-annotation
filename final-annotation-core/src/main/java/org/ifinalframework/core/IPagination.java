@@ -17,14 +17,13 @@
 
 package org.ifinalframework.core;
 
+import java.io.Serializable;
+
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
-import java.io.Serializable;
-
 /**
  * The interface of pagination info which query with {@link Pageable}.
- *
  *
  * @author ilikly
  * @version 1.0.0

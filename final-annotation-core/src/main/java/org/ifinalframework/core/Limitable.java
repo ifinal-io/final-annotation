@@ -22,6 +22,10 @@ import org.springframework.lang.Nullable;
 /**
  * A limit query interface for {@link IQuery}.
  *
+ * <pre class="code">
+ * LIMIT [offset,] limit
+ * </pre>
+ *
  * @author ilikly
  * @version 1.0.0
  * @since 1.0.0

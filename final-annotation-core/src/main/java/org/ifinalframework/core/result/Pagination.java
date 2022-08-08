@@ -17,10 +17,21 @@
 
 package org.ifinalframework.core.result;
 
-import lombok.Data;
 import org.ifinalframework.core.IPagination;
 
+import lombok.Data;
+
 /**
+ * <pre class="code">
+ * {
+ *     "page": 1,
+ *     "size": 20,
+ *     "pages": 5,
+ *     "total": 100,
+ *     "firstPage": true,
+ *     "lastPage": true
+ * }
+ * </pre>
  *
  * @author ilikly
  * @version 1.0.0

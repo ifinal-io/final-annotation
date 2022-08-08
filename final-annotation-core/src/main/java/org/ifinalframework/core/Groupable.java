@@ -15,15 +15,21 @@
 
 package org.ifinalframework.core;
 
-import org.springframework.lang.Nullable;
-
 import java.util.List;
+
+import org.springframework.lang.Nullable;
 
 /**
  * Groupable.
  *
+ * <pre class="code">
+ * GROUP BY columns
+ * </pre>
+ *
  * @author ilikly
  * @version 1.0.0
+ * @see Orderable
+ * @see Limitable
  * @since 1.0.0
  */
 public interface Groupable {

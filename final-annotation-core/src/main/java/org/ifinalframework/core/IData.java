@@ -22,7 +22,7 @@ import org.springframework.lang.Nullable;
 import java.io.Serializable;
 
 /**
- * A interface for data holder should be impl which provide the method of {@link #getData()}/{@link #setData(Object)} to
+ * An interface for data holder should be impl which provide the method of {@link #getData()}/{@link #setData(Object)} to
  * get/set the data which could be {@literal null}.
  *
  *

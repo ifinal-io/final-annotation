@@ -35,7 +35,6 @@ import org.springframework.lang.Nullable;
  *      private final String desc;
  * }
  *
- *
  * public class MyEntity{
  *     private YN yn;
  * }

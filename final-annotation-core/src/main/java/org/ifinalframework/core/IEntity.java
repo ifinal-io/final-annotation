@@ -17,13 +17,12 @@
 
 package org.ifinalframework.core;
 
-import org.springframework.lang.Nullable;
-
 import java.io.Serializable;
 
+import org.springframework.lang.Nullable;
+
 /**
- * A marker superinterface of a entity must be impls.
- *
+ * A marker superinterface of an entity must be impls.
  *
  * @author ilikly
  * @version 1.0.0
