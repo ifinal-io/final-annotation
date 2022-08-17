@@ -34,6 +34,7 @@ import org.ifinalframework.core.lang.Transient;
 public class AbsUser implements IUser<Long> {
 
 
+    @AutoInc
     @PrimaryKey
     @Column(
             insert = {
