@@ -17,14 +17,10 @@
 
 package org.ifinalframework.data.annotation;
 
-import org.springframework.core.annotation.AliasFor;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.lang.reflect.Field;
+
+import org.springframework.core.annotation.AliasFor;
 
 import org.ifinalframework.core.IEntity;
 
@@ -54,6 +50,12 @@ public @interface Reference {
     ReferenceMode mode() default ReferenceMode.SIMPLE;
 
     String[] properties();
+
+    /**
+     * @return
+     * @since 1.4.0
+     */
+    Column[] columns() default {};
 
     String delimiter() default ":";
 

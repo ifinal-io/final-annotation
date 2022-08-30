@@ -27,7 +27,7 @@ import java.io.Serializable;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface IRecord<I extends Serializable, U extends IUser<I>> extends IEntity<I> {
+public interface IRecord<I extends Serializable, U extends IUser<?>> extends IEntity<I> {
 
     /**
      * return the record creator

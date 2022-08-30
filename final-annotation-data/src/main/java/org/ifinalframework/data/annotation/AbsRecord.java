@@ -17,10 +17,11 @@
 
 package org.ifinalframework.data.annotation;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.ifinalframework.core.IRecord;
 import org.ifinalframework.core.lang.Transient;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author ilikly
@@ -33,11 +34,151 @@ import org.ifinalframework.core.lang.Transient;
 public class AbsRecord extends AbsEntity implements IRecord<Long, AbsUser> {
 
     @Creator
-    @Reference(properties = {"id", "name"})
+    @Reference(properties = {"id", "name"},
+            columns = {
+                    @Column(name = "id",
+                            insert = {
+                                    "<choose>",
+                                    "     <when test=\"${test}\">",
+                                    "         #{${value}#if($typeHandler)",
+                                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "      </when>",
+                                    "     <when test=\"USER != null\">",
+                                    "         #{USER.id#if($typeHandler)",
+                                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "     </when>",
+                                    "    <otherwise>null</otherwise>",
+                                    "</choose>"
+                            },
+                            update = {
+                                    "<choose>",
+                                    "   <when test=\"${selectiveTest}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "   <when test=\"selective and USER!= null and USER.id != null\">",
+                                    "       ${column} = #{USER.id},",
+                                    "   </when>",
+                                    "   <when test=\"${test}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "</choose>"
+                            }),
+                    @Column(
+                            name = "name",
+                            insert = {
+                                    "<choose>",
+                                    "     <when test=\"${test}\">",
+                                    "         #{${value}#if($typeHandler)",
+                                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "      </when>",
+                                    "     <when test=\"USER != null\">",
+                                    "         #{USER.name#if($typeHandler)",
+                                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "     </when>",
+                                    "    <otherwise>null</otherwise>",
+                                    "</choose>"
+                            },
+                            update = {
+                                    "<choose>",
+                                    "   <when test=\"${selectiveTest}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "   <when test=\"selective and USER!= null and USER.name != null\">",
+                                    "       ${column} = #{USER.name},",
+                                    "   </when>",
+                                    "   <when test=\"${test}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "</choose>"
+                            }
+                    )
+            })
     private AbsUser creator;
 
     @LastModifier
-    @Reference(properties = {"id", "name"})
+    @Reference(properties = {"id", "name"},
+            columns = {
+                    @Column(name = "id",
+                            insert = {
+                                    "<choose>",
+                                    "     <when test=\"${test}\">",
+                                    "         #{${value}#if($typeHandler)",
+                                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "      </when>",
+                                    "     <when test=\"USER != null\">",
+                                    "         #{USER.id#if($typeHandler)",
+                                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "     </when>",
+                                    "    <otherwise>null</otherwise>",
+                                    "</choose>"
+                            },
+                            update = {
+                                    "<choose>",
+                                    "   <when test=\"${selectiveTest}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "   <when test=\"selective and USER!= null and USER.id != null\">",
+                                    "       ${column} = #{USER.id},",
+                                    "   </when>",
+                                    "   <when test=\"${test}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "</choose>"
+                            }),
+                    @Column(
+                            name = "name",
+                            insert = {
+                                    "<choose>",
+                                    "     <when test=\"${test}\">",
+                                    "         #{${value}#if($typeHandler)",
+                                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "      </when>",
+                                    "     <when test=\"USER != null\">",
+                                    "         #{USER.name#if($typeHandler)",
+                                    "               #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "               , typeHandler=$!{typeHandler.canonicalName}#end}",
+                                    "     </when>",
+                                    "    <otherwise>null</otherwise>",
+                                    "</choose>"
+                            },
+                            update = {
+                                    "<choose>",
+                                    "   <when test=\"${selectiveTest}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "   <when test=\"selective and USER!= null and USER.name != null\">",
+                                    "       ${column} = #{USER.name},",
+                                    "   </when>",
+                                    "   <when test=\"${test}\">",
+                                    "       ${column} = #{${value}#if($typeHandler)",
+                                    "           #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                                    "           , typeHandler=$!{typeHandler.canonicalName}#end},",
+                                    "   </when>",
+                                    "</choose>"
+                            }
+                    )
+            })
     private AbsUser lastModifier;
 
 }
