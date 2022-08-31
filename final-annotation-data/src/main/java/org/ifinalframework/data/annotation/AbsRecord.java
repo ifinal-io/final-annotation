@@ -18,6 +18,7 @@
 package org.ifinalframework.data.annotation;
 
 import org.ifinalframework.core.IRecord;
+import org.ifinalframework.core.IUser;
 import org.ifinalframework.core.lang.Transient;
 
 import lombok.Getter;

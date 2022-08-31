@@ -15,13 +15,13 @@
 
 package org.ifinalframework.web.annotation.bind;
 
+import java.lang.annotation.*;
+
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ValueConstants;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-
-import java.lang.annotation.*;
 
 /**
  * An ext {@link Annotation} which can resolve {@code json} param from request parameters for {@link HandlerMethodArgumentResolver} like {@link RequestParam} and {@link RequestBody}.
@@ -42,6 +42,10 @@ import java.lang.annotation.*;
  *
  * <pre class="code">
  * curl http://localhost:8080/json?json={"name":haha}
+ * </pre>
+ *
+ * <pre class="code>
+ *     &#064;RequestBody = &#064;RequestJsonParam("requestBody")
  * </pre>
  *
  * @author ilikly
