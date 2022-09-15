@@ -15,22 +15,15 @@
 
 package org.ifinalframework.query;
 
-import org.springframework.lang.NonNull;
-
-import org.ifinalframework.core.Groupable;
-import org.ifinalframework.core.IQuery;
-import org.ifinalframework.core.Limitable;
-import org.ifinalframework.core.Orderable;
-import org.ifinalframework.core.Pageable;
-
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+
+import org.springframework.lang.NonNull;
+
+import org.ifinalframework.core.IQuery;
+import org.ifinalframework.core.PageQuery;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Class can be used to build a {@linkplain IQuery query} instance from java.
@@ -44,43 +37,10 @@ import lombok.Setter;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable, Serializable {
+public class Query extends PageQuery {
 
     @Getter
     private final Criteria criteria = new Criteria();
-
-    /**
-     * 页码，第一页从1开始
-     */
-    @Setter
-    @Getter
-    private Integer page;
-
-    /**
-     * 页面容量
-     */
-    @Setter
-    @Getter
-    private Integer size;
-
-    /**
-     * 是否进行Count查询
-     */
-    @Setter
-    @Getter
-    private Boolean count = Boolean.TRUE;
-
-    @Getter
-    private Long offset;
-
-    @Getter
-    private Long limit;
-
-    @Getter
-    private final List<String> orders = new LinkedList<>();
-
-    @Getter
-    private final List<String> groups = new LinkedList<>();
 
 
     /**
@@ -91,10 +51,7 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query page(Integer page, Integer size) {
-
-        this.page = page;
-        this.size = size;
-        return this;
+        return page(page).size(size);
     }
 
     /**
@@ -104,8 +61,7 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query page(Integer page) {
-
-        this.page = page;
+        setPage(page);
         return this;
     }
 
@@ -116,8 +72,7 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query size(Integer size) {
-
-        this.size = size;
+        setSize(size);
         return this;
     }
 
@@ -128,8 +83,7 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query count(Boolean count) {
-
-        this.count = count;
+        setCount(count);
         return this;
     }
 
@@ -175,16 +129,18 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query group(Collection<QProperty<?>> properties) {
-        properties.forEach(it -> this.groups.add(it.getColumn()));
+        properties.forEach(it -> this.addGroup(it.getColumn()));
         return this;
     }
 
     /**
-     * @param cloumn cloumn
+     * @param columns columns
      * @return query
      */
-    public Query group(String... cloumn) {
-        this.groups.addAll(Arrays.asList(cloumn));
+    public Query group(String... columns) {
+        for (String column : columns) {
+            addGroup(column);
+        }
         return this;
     }
 
@@ -259,7 +215,7 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @param order order
      */
     private void sort(String order) {
-        this.orders.add(order);
+        addOrder(order);
     }
 
     /**
@@ -268,8 +224,8 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query limit(long offset, long limit) {
-        this.offset = offset;
-        this.limit = limit;
+        setOffset(offset);
+        setLimit(limit);
         return this;
     }
 
@@ -278,8 +234,8 @@ public class Query implements IQuery, Pageable, Groupable, Orderable, Limitable,
      * @return query
      */
     public Query limit(long limit) {
-        this.offset = null;
-        this.limit = limit;
+        setOffset(null);
+        setLimit(limit);
         return this;
     }
 
