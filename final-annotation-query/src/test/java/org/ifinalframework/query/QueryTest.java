@@ -15,12 +15,11 @@
 
 package org.ifinalframework.query;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * QueryTest.
@@ -34,15 +33,15 @@ class QueryTest {
     @Test
     void defaultQuery() {
         Query query = new Query();
-        assertNull(query.getPage());
-        assertNull(query.getSize());
+        assertNotNull(query.getPage());
+        assertNotNull(query.getSize());
         assertEquals(Boolean.TRUE, query.getCount());
         assertNull(query.getOffset());
         assertNull(query.getLimit());
 
         assertEquals(0, query.getCriteria().size());
-        assertEquals(0, query.getGroups().size());
-        assertEquals(0, query.getOrders().size());
+        assertNull(query.getGroups());
+        assertNull(query.getOrders());
     }
 
     @Test
