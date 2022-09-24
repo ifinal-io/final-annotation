@@ -33,8 +33,8 @@ class QueryTest {
     @Test
     void defaultQuery() {
         Query query = new Query();
-        assertNotNull(query.getPage());
-        assertNotNull(query.getSize());
+        assertNull(query.getPage());
+        assertNull(query.getSize());
         assertEquals(Boolean.TRUE, query.getCount());
         assertNull(query.getOffset());
         assertNull(query.getLimit());

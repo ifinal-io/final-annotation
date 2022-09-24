@@ -42,6 +42,10 @@ public class Query extends PageQuery {
     @Getter
     private final Criteria criteria = new Criteria();
 
+    public Query() {
+        super.setPage(null);
+        super.setSize(null);
+    }
 
     /**
      * set query page and size
