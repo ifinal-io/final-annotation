@@ -21,6 +21,7 @@ import org.springframework.lang.Nullable;
 import org.ifinalframework.core.Sortable;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
@@ -45,6 +46,8 @@ public interface QProperty<T> extends Comparable<QProperty<T>>, FunctionCriteria
      * @return property type
      */
     Class<T> getType();
+
+    Type getGenericType();
 
     /**
      * return order
