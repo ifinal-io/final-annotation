@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * @version 1.3.1
  * @since 1.3.1
  */
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Tenant {
 }
