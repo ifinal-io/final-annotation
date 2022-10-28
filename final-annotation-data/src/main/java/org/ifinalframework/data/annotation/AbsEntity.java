@@ -15,14 +15,15 @@
 
 package org.ifinalframework.data.annotation;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
+
 import org.ifinalframework.core.IEntity;
 import org.ifinalframework.core.IView;
 import org.ifinalframework.core.lang.Default;
 import org.ifinalframework.core.lang.Transient;
 
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The built-in base impl of {@linkplain IEntity entity} which have the common property. such as {@link #id}, {@link
