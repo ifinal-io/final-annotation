@@ -20,7 +20,7 @@ jobs:
           java-version: 11
       # 设置 Maven Settings
       - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           profiles: >
             [
