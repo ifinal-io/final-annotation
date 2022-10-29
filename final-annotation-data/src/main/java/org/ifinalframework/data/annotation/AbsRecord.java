@@ -32,7 +32,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Transient
-public class AbsRecord extends AbsEntity implements IRecord<Long, AbsUser> {
+public class AbsRecord extends AbsEntity implements IRecord<Long, IUser<Long>> {
 
     @Creator
     @Reference(properties = {"id", "name"},
@@ -106,7 +106,7 @@ public class AbsRecord extends AbsEntity implements IRecord<Long, AbsUser> {
                             }
                     )
             })
-    private AbsUser creator;
+    private IUser<Long> creator;
 
     @LastModifier
     @Reference(properties = {"id", "name"},
@@ -180,7 +180,7 @@ public class AbsRecord extends AbsEntity implements IRecord<Long, AbsUser> {
                             }
                     )
             })
-    private AbsUser lastModifier;
+    private IUser<Long> lastModifier;
 
 }
 

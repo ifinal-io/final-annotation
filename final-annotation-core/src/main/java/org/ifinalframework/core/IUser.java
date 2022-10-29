@@ -19,6 +19,8 @@ package org.ifinalframework.core;
 
 import java.io.Serializable;
 
+import org.springframework.lang.Nullable;
+
 /**
  * The interface of {@code user} which impl the interface of {@link IEntity} in the system.
  *
@@ -27,6 +29,25 @@ import java.io.Serializable;
  * @since 1.0.0
  */
 public interface IUser<I extends Serializable> extends IEntity<I> {
+
+
+    /**
+     * return the entity id.
+     * Note: {@link java.beans.Introspector} can not found properties from {@link Class#getInterfaces()}.
+     *
+     * @return the entity id.
+     */
+    @Override
+    @Nullable
+    I getId();
+
+    /**
+     * set id to this entity.
+     *
+     * @param id id
+     */
+    @Override
+    void setId(@Nullable I id);
 
     /**
      * return user name.

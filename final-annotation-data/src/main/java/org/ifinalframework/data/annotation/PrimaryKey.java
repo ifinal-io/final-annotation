@@ -15,11 +15,16 @@
 
 package org.ifinalframework.data.annotation;
 
-import org.ifinalframework.core.IEntity;
-import org.ifinalframework.core.lang.Final;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import org.springframework.core.annotation.AliasFor;
 
-import java.lang.annotation.*;
+import org.ifinalframework.core.IEntity;
+import org.ifinalframework.core.lang.Final;
 
 /**
  * Marked the element is a primary key.
@@ -36,7 +41,7 @@ import java.lang.annotation.*;
 @Documented
 @Order(Integer.MIN_VALUE)
 @org.springframework.data.annotation.Id
-@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PrimaryKey {
 
