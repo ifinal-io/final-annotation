@@ -15,10 +15,15 @@
 
 package org.ifinalframework.core.result;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * RTest.
@@ -31,11 +36,72 @@ import org.junit.jupiter.api.Test;
 class RTest {
 
     @Test
-    void test() {
-        for (final Method method : R.class.getMethods()) {
-            final String[] split = method.toGenericString().split(" ");
-            logger.info(split[split.length - 1]);
-        }
+    void instance() {
+        InvocationTargetException illegalAccessError = assertThrows(InvocationTargetException.class, () -> {
+            Constructor<R> constructor = R.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            R instance = constructor.newInstance();
+        });
+        assertEquals("There is no instance for you!", illegalAccessError.getTargetException().getMessage());
+
+    }
+
+    @Test
+    void success() {
+        Result<Object> result = R.success();
+        assertTrue(result.isSuccess());
+        assertNull(result.getData());
+        assertNull(result.getPagination());
+    }
+
+    @ParameterizedTest
+    @ValueSource(
+            strings = {"a", "B"}
+    )
+    void successWithData(String data) {
+        Result<String> result = R.success(data);
+        assertTrue(result.isSuccess());
+        assertNotNull(result.getData());
+        assertNull(result.getPagination());
+        assertEquals(data, result.getData());
+    }
+
+    @ParameterizedTest
+    @ValueSource(
+            strings = {"a", "B"}
+    )
+    void successWithCodeAndData(String data) {
+        Result<String> result = R.success(data, data, data);
+        assertTrue(result.isSuccess());
+        assertNotNull(result.getData());
+        assertNull(result.getPagination());
+        assertEquals(data, result.getData());
+        assertEquals(data, result.getCode());
+        assertEquals(data, result.getMessage());
+    }
+
+    @Test
+    void failure() {
+        Result<Object> result = R.failure(123, "123");
+        assertFalse(result.isSuccess());
+        assertNull(result.getData());
+        assertNull(result.getPagination());
+        assertEquals(123, result.getStatus());
+        assertEquals("123", result.getDescription());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void failureWithCode(int status) {
+        String message = String.valueOf(status);
+        Result<Object> result = R.failure(status, message, message, message);
+        assertFalse(result.isSuccess());
+        assertNull(result.getData());
+        assertNull(result.getPagination());
+        assertEquals(status, result.getStatus());
+        assertEquals(message, result.getDescription());
+        assertEquals(message, result.getCode());
+        assertEquals(message, result.getMessage());
     }
 
 }

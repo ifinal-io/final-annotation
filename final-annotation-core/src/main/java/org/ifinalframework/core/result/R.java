@@ -20,21 +20,21 @@ import org.springframework.lang.Nullable;
 
 import org.ifinalframework.core.ResponseStatus;
 
-import lombok.experimental.UtilityClass;
-
 /**
  * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */
-@UtilityClass
-public class R {
+public final class R {
+    private R() {
+        throw new IllegalAccessError("There is no instance for you!");
+    }
+
     public static <T> Result<T> success() {
         return success(null);
     }
 
     public static <T> Result<T> success(T data) {
-
         return new Result<>(ResponseStatus.SUCCESS.getCode(), ResponseStatus.SUCCESS.getDesc(), data);
     }
 
