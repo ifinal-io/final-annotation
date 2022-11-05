@@ -17,11 +17,11 @@
 
 package org.ifinalframework.data.annotation;
 
-import org.springframework.lang.NonNull;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.lang.NonNull;
 
 /**
  * @author ilikly
@@ -30,7 +30,7 @@ import java.util.Set;
  */
 public final class SqlKeyWords {
 
-    private static final Set<String> keys = new HashSet<>();
+    private static final Set<String> KEYS = new HashSet<>();
 
     static {
         init("key", "order", "group", "source", "user");
@@ -41,13 +41,27 @@ public final class SqlKeyWords {
     }
 
     private static void init(final String... keys) {
-
-        Arrays.stream(keys).map(String::toLowerCase).forEach(SqlKeyWords.keys::add);
+        Arrays.stream(keys).map(String::toLowerCase).forEach(SqlKeyWords.KEYS::add);
     }
 
-    public static boolean contains(final @NonNull String word) {
+    /**
+     * @param word test word
+     * @return {@code true} if the test word is a keyword.
+     * @since 1.4.2
+     */
+    public static boolean isKeyWord(String word) {
+        return KEYS.contains(word.toLowerCase());
+    }
 
-        return keys.contains(word.toLowerCase());
+    /**
+     * @param word test word
+     * @return {@code true} if the test word is a keyword.
+     * @see #isKeyWord(String)
+     * @deprecated replaced by {@link #isKeyWord(String)}.
+     */
+    @Deprecated
+    public static boolean contains(final @NonNull String word) {
+        return isKeyWord(word);
     }
 
 }

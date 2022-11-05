@@ -17,10 +17,11 @@
 
 package org.ifinalframework.data.annotation;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.ifinalframework.core.IEntity;
 import org.ifinalframework.core.IEnum;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * 是否有效枚举，用于标记记录是否有效。
@@ -31,7 +32,7 @@ import org.ifinalframework.core.IEnum;
  * @since 1.0.0
  */
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum YN implements IEnum<Integer> {
     /**
      * 有效
@@ -40,8 +41,13 @@ public enum YN implements IEnum<Integer> {
     /**
      * 无效
      */
-    NO(0, "无效");
-
+    NO(0, "无效"),
+    /**
+     * 已删除
+     *
+     * @since 1.4.2
+     */
+    DELETED(-1, "已删除");
     /**
      * 枚举码
      */
