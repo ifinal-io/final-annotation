@@ -20,17 +20,20 @@ package org.ifinalframework.core.result;
 import java.io.Serializable;
 import java.util.List;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.ifinalframework.core.IPage;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author ilikly
  * @version 1.0.0
  * @since 1.0.0
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Setter
+@Getter
+@ToString(callSuper = true)
 public class Page<T extends Serializable> extends Pagination implements IPage<T> {
 
     private List<T> data;

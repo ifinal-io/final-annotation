@@ -20,10 +20,15 @@ package org.ifinalframework.core;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 /**
  * IResultTest.
@@ -44,31 +49,39 @@ class IResultTest {
     @Test
     void isSuccess() {
 
-        Mockito.when(result.getStatus()).thenReturn(ResponseStatus.SUCCESS.getCode());
-        Assertions.assertTrue(result.isSuccess());
+        when(result.getStatus()).thenReturn(ResponseStatus.SUCCESS.getCode());
+        assertTrue(result.isSuccess());
 
     }
 
     @Test
     void should_not_hasMore_when_pagination_is_null() {
-        Mockito.when(result.getPagination()).thenReturn(null);
-        Assertions.assertFalse(result.hasMore());
+        when(result.getPagination()).thenReturn(null);
+        assertFalse(result.hasMore());
     }
 
     @Test
     void should_hasMore_when_pagination_is_not_lastPage() {
 
-        Mockito.when(pagination.getLastPage()).thenReturn(null);
-        Mockito.when(result.getPagination()).thenReturn(pagination);
-        Assertions.assertTrue(result.hasMore());
+        when(pagination.getLastPage()).thenReturn(null);
+        when(result.getPagination()).thenReturn(pagination);
+        assertTrue(result.hasMore());
 
     }
 
     @Test
     void should_not_hasMore_when_pagination_is_lastPage() {
-        Mockito.when(pagination.getLastPage()).thenReturn(true);
-        Mockito.when(result.getPagination()).thenReturn(pagination);
-        Assertions.assertFalse(result.hasMore());
+        when(pagination.getLastPage()).thenReturn(true);
+        when(result.getPagination()).thenReturn(pagination);
+        assertFalse(result.hasMore());
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {100L,1000L})
+    void total(Long total){
+       when(pagination.getTotal()).thenReturn(total);
+       when(result.getPagination()).thenReturn(pagination);
+       assertEquals(total,result.getTotal());
     }
 
 }

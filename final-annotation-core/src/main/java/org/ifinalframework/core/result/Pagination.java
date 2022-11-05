@@ -19,7 +19,9 @@ package org.ifinalframework.core.result;
 
 import org.ifinalframework.core.IPagination;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <pre class="code">
@@ -37,7 +39,9 @@ import lombok.Data;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Data
+@Setter
+@Getter
+@ToString
 public class Pagination implements IPagination {
 
     private static final long serialVersionUID = -4875155337971995663L;
