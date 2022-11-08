@@ -61,10 +61,10 @@ public @interface EnumValue {
     Class<?> valueType() default Integer.class;
 
     /**
-     * 序列化时增加的枚举描述对应的枚举属性
+     * return the desc method name.
      *
      * @return desc
      */
-    String desc() default "desc";
+    String desc() default "getDesc";
 
 }
