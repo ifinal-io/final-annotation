@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2021 the original author or authors.
+ * Copyright 2020-2022 the original author or authors.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,25 +15,24 @@
 
 package org.ifinalframework.web.annotation.auth;
 
-import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
- * Mark the target need to do auth.
+ * AuthPermission.
  *
  * @author ilikly
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.4.2
+ * @since 1.4.2
  */
+@Auth(type = AuthPermission.class)
 @Target({ElementType.METHOD, ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Auth {
-
-    Class<? extends Annotation> type() default Auth.class;
-
+public @interface AuthPermission {
+    @AliasFor(annotation = Auth.class)
     String[] value() default {};
-
 }
