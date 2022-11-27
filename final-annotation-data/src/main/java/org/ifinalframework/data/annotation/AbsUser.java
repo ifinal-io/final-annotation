@@ -31,11 +31,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Transient
-public class AbsUser implements IUser<Long> {
+public class AbsUser extends AbsEntity implements IUser<Long> {
 
-    @AutoInc
-    @PrimaryKey
-    private Long id;
 
     private String name;
 
