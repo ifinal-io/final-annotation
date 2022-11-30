@@ -39,7 +39,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limitable, Serializable {
+public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limitable, Viewable, Serializable {
 
     private static final long serialVersionUID = 4813020012879522797L;
 
@@ -84,6 +84,8 @@ public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limita
 
     @Nullable
     private Long limit;
+
+    private Class<?> view;
 
     public void setPage(final Integer page) {
         if (Objects.nonNull(page) && page < DEFAULT_PAGE) {
