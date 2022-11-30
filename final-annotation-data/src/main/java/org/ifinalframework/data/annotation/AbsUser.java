@@ -36,5 +36,14 @@ public class AbsUser extends AbsEntity implements IUser<Long> {
 
     private String name;
 
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
 }
 
