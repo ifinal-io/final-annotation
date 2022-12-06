@@ -42,7 +42,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public final class BetweenValue<T> implements Serializable {
+public class BetweenValue<T> implements Serializable {
 
     private static final long serialVersionUID = 6194662646358531082L;
 

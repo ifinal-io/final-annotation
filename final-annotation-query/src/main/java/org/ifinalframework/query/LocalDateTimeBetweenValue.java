@@ -1,6 +1,5 @@
 /*
- * Copyright 2020-2021 the original author or authors.
- *
+ * Copyright 2020-2022 the original author or authors.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,37 +11,39 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
-package org.ifinalframework.core;
+package org.ifinalframework.query;
+
+import java.time.LocalDateTime;
 
 /**
- * The marked interface of {@code view}.
+ * LocalDateTimeBetweenValue.
  *
  * @author ilikly
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.4.2
+ * @since 1.4.2
  */
-public interface IView {
-
-    interface List extends IView {
+public final class LocalDateTimeBetweenValue extends BetweenValue<LocalDateTime> {
+    @Override
+    public void setMax(LocalDateTime max) {
+        super.setMax(max);
     }
 
-    interface Detail extends List {
-
+    @Override
+    public void setMin(LocalDateTime min) {
+        super.setMin(min);
     }
 
-    interface Create extends IView {
-
+    @Override
+    public LocalDateTime getMax() {
+        return super.getMax();
     }
 
-    interface Update extends IView {
-
+    @Override
+    public LocalDateTime getMin() {
+        return super.getMin();
     }
-
-    interface Delete extends IView {
-
-    }
-
 }
+
+
