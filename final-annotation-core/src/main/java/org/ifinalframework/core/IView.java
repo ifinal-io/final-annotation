@@ -17,6 +17,8 @@
 
 package org.ifinalframework.core;
 
+import javax.validation.groups.Default;
+
 /**
  * The marked interface of {@code view}.
  *
@@ -24,7 +26,7 @@ package org.ifinalframework.core;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface IView {
+public interface IView extends Default {
 
     interface List extends IView {
     }
@@ -43,6 +45,12 @@ public interface IView {
 
     interface Delete extends IView {
 
+    }
+
+    interface Import extends IView {
+    }
+
+    interface Export extends IView {
     }
 
 }
