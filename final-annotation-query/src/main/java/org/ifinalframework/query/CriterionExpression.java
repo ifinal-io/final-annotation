@@ -338,12 +338,20 @@ public final class CriterionExpression {
         + "${andOr} JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
         + END_IF;
 
+    public static final String JSON_ARRAY_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
+            + "${andOr} JSON_CONTAINS( ${column}, JSON_ARRAY(" + VALUE + ")#if($path), '${path}'#end )"
+            + END_IF;
+
     /**
      * {@code !JSON_CONTAINS(column,value[,path])}
      */
     public static final String NOT_JSON_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
         + "${andOr} !JSON_CONTAINS( ${column}," + VALUE + "#if($path), '${path}'#end )"
         + END_IF;
+
+    public static final String NOT_JSON_ARRAY_CONTAINS = OPEN_IF + TEST_VALUE + CLOSE_IF
+            + "${andOr} !JSON_CONTAINS( ${column}, JSON_ARRAY(" + VALUE + ")#if($path), '${path}'#end )"
+            + END_IF;
 
     /**
      *{@code !JSON_CONTAINS(column,one|all,paths)}

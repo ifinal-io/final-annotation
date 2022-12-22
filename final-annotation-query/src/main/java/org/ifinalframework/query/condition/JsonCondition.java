@@ -58,6 +58,21 @@ public interface JsonCondition<V> extends Condition {
             criterionAttributes -> criterionAttributes.put("path", path));
     }
 
+    default Criterion jsonArrayContains(@Nullable V value) {
+        return jsonArrayContains(value, null);
+    }
+
+    /**
+     * @param value value
+     * @param path  path
+     * @return criterion
+     * @see org.ifinalframework.query.annotation.JsonContains
+     */
+    default Criterion jsonArrayContains(@Nullable V value, @Nullable String path) {
+        return condition(CriterionExpression.JSON_ARRAY_CONTAINS, value,
+                criterionAttributes -> criterionAttributes.put("path", path));
+    }
+
     /**
      * @see #notJsonContains(Object, String)
      */
@@ -74,6 +89,24 @@ public interface JsonCondition<V> extends Condition {
     default Criterion notJsonContains(@Nullable V value, @Nullable String path) {
         return condition(CriterionExpression.NOT_JSON_CONTAINS, value,
             criterionAttributes -> criterionAttributes.put("path", path));
+    }
+
+    /**
+     * @see #notJsonContains(Object, String)
+     */
+    default Criterion notJsonArrayContains(@Nullable V value) {
+        return notJsonArrayContains(value, null);
+    }
+
+    /**
+     * @param value value
+     * @param path  path
+     * @return criterion
+     * @see org.ifinalframework.query.annotation.NotJsonContains
+     */
+    default Criterion notJsonArrayContains(@Nullable V value, @Nullable String path) {
+        return condition(CriterionExpression.NOT_JSON_ARRAY_CONTAINS, value,
+                criterionAttributes -> criterionAttributes.put("path", path));
     }
 
     //==================================================================================================================
