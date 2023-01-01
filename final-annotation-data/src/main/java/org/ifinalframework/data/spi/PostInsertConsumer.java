@@ -16,7 +16,6 @@
 package org.ifinalframework.data.spi;
 
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 /**
  * PostInsertConsumer.
@@ -26,5 +25,5 @@ import org.springframework.lang.Nullable;
  * @since 1.4.2
  */
 public interface PostInsertConsumer<T, U> {
-    void accept(@NonNull T entity, @Nullable U user);
+    void accept(@NonNull T entity, @NonNull U user);
 }

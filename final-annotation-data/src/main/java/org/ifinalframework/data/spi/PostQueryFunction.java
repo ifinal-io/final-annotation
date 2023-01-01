@@ -27,5 +27,5 @@ import org.springframework.lang.Nullable;
  */
 @FunctionalInterface
 public interface PostQueryFunction<T, Q, U, R> {
-    R apply(@NonNull T entity, @NonNull Q query, @Nullable U user);
+    R apply(@NonNull T entity, @NonNull Q query, @NonNull U user);
 }

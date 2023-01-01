@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  * @since 1.4.2
  */
 public interface PreInsertValidator<T, U> {
-    void validate(@NonNull T entity, @Nullable U user);
+    void validate(@NonNull T entity, @NonNull U user);
 }
 
 

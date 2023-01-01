@@ -28,5 +28,5 @@ import org.springframework.lang.Nullable;
  */
 @FunctionalInterface
 public interface PreQueryValidator<Q, U> {
-    void validate(@NonNull Q query, @Nullable U user);
+    void validate(@NonNull Q query, @NonNull U user);
 }

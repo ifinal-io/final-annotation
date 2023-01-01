@@ -27,5 +27,5 @@ import org.springframework.lang.Nullable;
  */
 @FunctionalInterface
 public interface PreQueryPredicate<Q, U> {
-    boolean test(@NonNull Q query, @Nullable U user);
+    boolean test(@NonNull Q query, @NonNull U user);
 }

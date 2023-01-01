@@ -22,7 +22,7 @@ package org.ifinalframework.core;
  * @version 1.4.2
  * @since 1.4.2
  */
-public interface IStatus<T> {
+public interface IStatus<T extends IEnum<?>> {
     void setStatus(T status);
 
     T getStatus();
