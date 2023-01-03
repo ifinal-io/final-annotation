@@ -24,8 +24,12 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.2
+ * @see PreInsertValidator
+ * @see PreInsertConsumer
+ * @see PostInsertConsumer
  * @since 1.4.2
  */
-public interface PreInsertFunction<T,U, R> {
-    List<R> map(@NonNull T dto,@NonNull U user);
+@FunctionalInterface
+public interface PreInsertFunction<T, U, R> {
+    List<R> map(@NonNull T dto, @NonNull U user);
 }

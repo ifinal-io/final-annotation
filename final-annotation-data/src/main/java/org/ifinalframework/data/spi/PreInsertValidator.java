@@ -16,7 +16,6 @@
 package org.ifinalframework.data.spi;
 
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 /**
  * PreInsertValidator.
@@ -25,6 +24,7 @@ import org.springframework.lang.Nullable;
  * @version 1.4.2
  * @since 1.4.2
  */
+@FunctionalInterface
 public interface PreInsertValidator<T, U> {
     void validate(@NonNull T entity, @NonNull U user);
 }

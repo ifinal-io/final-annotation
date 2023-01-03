@@ -22,8 +22,12 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.2
+ * @see PreInsertFunction
+ * @see PreInsertValidator
+ * @see PostInsertConsumer
  * @since 1.4.2
  */
+@FunctionalInterface
 public interface PreInsertConsumer<T, U> {
     void accept(@NonNull T entity, @NonNull U user);
 }
