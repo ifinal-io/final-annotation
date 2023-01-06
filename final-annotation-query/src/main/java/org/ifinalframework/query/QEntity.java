@@ -17,10 +17,10 @@
 
 package org.ifinalframework.query;
 
-import org.springframework.lang.NonNull;
-
 import java.io.Serializable;
 import java.util.stream.Stream;
+
+import org.springframework.lang.NonNull;
 
 /**
  * @author ilikly
@@ -29,14 +29,16 @@ import java.util.stream.Stream;
  */
 public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?>> {
 
-    /**
+    /**3
      * return entity type
+     *
      * @return entity type
      */
     Class<T> getType();
 
     /**
      * return entity name
+     *
      * @return entity name
      */
     default String getName() {
@@ -45,6 +47,7 @@ public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?
 
     /**
      * return entity simple name
+     *
      * @return simple name
      */
     default String getSimpleName() {
@@ -53,18 +56,21 @@ public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?
 
     /**
      * return entity mapping table name
+     *
      * @return mapping table name
      */
     String getTable();
 
     /**
      * return id property
+     *
      * @return id property
      */
     QProperty<I> getIdProperty();
 
     /**
      * return version property
+     *
      * @param <E> version type
      * @return version property
      */
@@ -72,6 +78,7 @@ public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?
 
     /**
      * return {@code true} if had a version property
+     *
      * @return {@code true} if had a version property
      * @see #getVersionProperty()
      */
@@ -79,18 +86,26 @@ public interface QEntity<I extends Serializable, T> extends Iterable<QProperty<?
         return getVersionProperty() != null;
     }
 
+    <E> QProperty<E> getTenantProperty();
+
+    default boolean hasTenantProperty() {
+        return getTenantProperty() != null;
+    }
+
     /**
      * return property by path
+     *
      * @param path path
-     * @param <E> property type
+     * @param <E>  property type
      * @return property
      */
     <E> QProperty<E> getProperty(String path);
 
     /**
      * return required property of path
+     *
      * @param path property path
-     * @param <E> property type
+     * @param <E>  property type
      * @return property
      */
     @NonNull

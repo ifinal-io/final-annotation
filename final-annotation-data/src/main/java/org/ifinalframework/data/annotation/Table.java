@@ -17,8 +17,6 @@
 
 package org.ifinalframework.data.annotation;
 
-import org.springframework.lang.NonNull;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -52,7 +50,7 @@ public @interface Table {
      *
      * @return the special table name.
      */
-    @NonNull
-    String value() default "";
+    String[] value() default {};
+
 
 }

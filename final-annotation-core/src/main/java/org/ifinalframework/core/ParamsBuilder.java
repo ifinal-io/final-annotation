@@ -31,6 +31,9 @@ import java.util.Map;
 public class ParamsBuilder<I, T> {
 
     public static final String TABLE_PARAM_NAME = "table";
+
+    public static final String TENANT_PARAM_NAME = "tenant";
+
     public static final String VIEW_PARAM_NAME = "view";
     public static final String IGNORE_PARAM_NAME = "ignore";
     public static final String SELECTIVE_PARAM_NAME = "selective";
