@@ -16,6 +16,7 @@
 package org.ifinalframework.data.annotation;
 
 import org.ifinalframework.core.ITenant;
+import org.ifinalframework.core.lang.Final;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,22 @@ import lombok.Setter;
 @Setter
 @Getter
 public class AbsTenantUser extends AbsUser implements ITenant {
+    @Final
+    @Tenant
+    @Column(value = "${final.data.tenant.column:tenant}",
+            insert = {
+                    "<choose>",
+                    "     <when test=\"${test}\">",
+                    "         #{${value}#if($typeHandler)",
+                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "      </when>",
+                    "     <when test=\"tenant != null\">",
+                    "         #{tenant}",
+                    "     </when>",
+                    "    <otherwise>null</otherwise>",
+                    "</choose>"
+            })
     private Long tenant;
 }
 

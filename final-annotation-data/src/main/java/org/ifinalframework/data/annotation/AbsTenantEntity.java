@@ -32,6 +32,21 @@ import lombok.Setter;
 @Getter
 public class AbsTenantEntity extends AbsEntity implements ITenant {
     @Final
+    @Tenant
+    @Column(value = "${final.data.tenant.column:tenant}",
+            insert = {
+                    "<choose>",
+                    "     <when test=\"${test}\">",
+                    "         #{${value}#if($typeHandler)",
+                    "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                    "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                    "      </when>",
+                    "     <when test=\"tenant != null\">",
+                    "         #{tenant}",
+                    "     </when>",
+                    "    <otherwise>null</otherwise>",
+                    "</choose>"
+            })
     private Long tenant;
 }
 
