@@ -25,6 +25,7 @@ import org.springframework.lang.NonNull;
  * @see PreInsertFunction
  * @see PreInsertValidator
  * @see PostInsertConsumer
+ * @see AfterReturnInsertConsumer
  * @since 1.4.2
  */
 @FunctionalInterface
