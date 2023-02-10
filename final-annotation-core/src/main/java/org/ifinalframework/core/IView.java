@@ -35,6 +35,9 @@ public interface IView extends Default {
 
     }
 
+    interface Count extends IView {
+    }
+
     interface Create extends IView {
 
     }
