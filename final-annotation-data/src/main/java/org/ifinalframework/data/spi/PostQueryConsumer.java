@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 /**
@@ -27,6 +29,10 @@ import org.springframework.lang.NonNull;
 @FunctionalInterface
 public interface PostQueryConsumer<T, Q, U> {
 
-    void accept(@NonNull T entity,@NonNull Q query,@NonNull U user);
+    default void accept(@NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
+        entities.forEach(item -> accept(item, query, user));
+    }
+
+    void accept(@NonNull T entity, @NonNull Q query, @NonNull U user);
 
 }
