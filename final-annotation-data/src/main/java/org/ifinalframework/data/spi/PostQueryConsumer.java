@@ -29,6 +29,12 @@ import org.springframework.lang.NonNull;
 @FunctionalInterface
 public interface PostQueryConsumer<T, Q, U> {
 
+    /**
+     * @param entities
+     * @param query
+     * @param user
+     * @since 1.4.3
+     */
     default void accept(@NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
         entities.forEach(item -> accept(item, query, user));
     }

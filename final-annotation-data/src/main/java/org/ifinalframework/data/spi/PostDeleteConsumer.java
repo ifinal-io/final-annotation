@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 /**
@@ -24,6 +26,16 @@ import org.springframework.lang.NonNull;
  * @version 1.4.2
  * @since 1.4.2
  */
-public interface PostDeleteConsumer<T,U> {
+public interface PostDeleteConsumer<T, U> {
+
+    /**
+     * @param entities the entities of deleted, maybe empty.
+     * @param user     operator user
+     * @since 1.4.3
+     */
+    default void accept(@NonNull List<T> entities, @NonNull U user) {
+        entities.forEach(item -> accept(item, user));
+    }
+
     void accept(@NonNull T entity, @NonNull U user);
 }

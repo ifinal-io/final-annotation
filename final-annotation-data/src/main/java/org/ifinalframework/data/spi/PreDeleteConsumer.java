@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 /**
@@ -25,5 +27,19 @@ import org.springframework.lang.NonNull;
  * @since 1.4.2
  */
 public interface PreDeleteConsumer<T, U> {
+
+    /**
+     * @param entities the entities will be deleted, maybe empty.
+     * @param user     operator user.
+     * @since 1.4.3
+     */
+    default void accept(@NonNull List<T> entities, @NonNull U user) {
+        entities.forEach(item -> accept(item, user));
+    }
+
+    /**
+     * @param entity the entity will be deleted.
+     * @param user   operator user.
+     */
     void accept(@NonNull T entity, @NonNull U user);
 }

@@ -32,6 +32,11 @@ import org.springframework.lang.NonNull;
 @FunctionalInterface
 public interface PostInsertConsumer<T, U> {
 
+    /**
+     * @param entities
+     * @param user
+     * @since 1.4.3
+     */
     default void accept(@NonNull List<T> entities, @NonNull U user) {
         entities.forEach(item -> accept(item, user));
     }
