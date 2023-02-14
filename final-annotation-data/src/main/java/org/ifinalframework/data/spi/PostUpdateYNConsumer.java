@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 import org.ifinalframework.data.annotation.YN;
@@ -30,5 +32,10 @@ import org.ifinalframework.data.annotation.YN;
  */
 @FunctionalInterface
 public interface PostUpdateYNConsumer<T, U> {
+
+    default void accept(@NonNull List<T> entities, @NonNull YN yn, @NonNull U user) {
+        entities.forEach(item -> accept(item, yn, user));
+    }
+
     void accept(@NonNull T entity, @NonNull YN yn, @NonNull U user);
 }
