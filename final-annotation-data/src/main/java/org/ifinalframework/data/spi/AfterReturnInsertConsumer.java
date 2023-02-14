@@ -15,6 +15,8 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
@@ -24,10 +26,15 @@ import org.springframework.lang.Nullable;
  * @author ilikly
  * @version 1.4.3
  * @see PreInsertConsumer
- * @see PostUpdateConsumer
+ * @see PostInsertConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
 public interface AfterReturnInsertConsumer<T, U> {
+
+    default void accept(@NonNull List<T> entities, @NonNull U user, @Nullable Throwable e) {
+        entities.forEach(item -> accept(entities, user, e));
+    }
+
     void accept(@NonNull T entity, @NonNull U user, @Nullable Throwable e);
 }
