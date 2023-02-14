@@ -22,7 +22,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
 
 /**
- * AfterQueryConsumer.
+ * AfterReturnQueryConsumer.
  *
  * @author ilikly
  * @version 1.4.3
@@ -32,7 +32,7 @@ import org.springframework.util.CollectionUtils;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterQueryConsumer<T, Q, U> {
+public interface AfterReturnQueryConsumer<T, Q, U> {
 
     default void accept(@Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
         if (CollectionUtils.isEmpty(entities)) {
