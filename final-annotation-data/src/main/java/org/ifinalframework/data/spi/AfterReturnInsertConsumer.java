@@ -33,7 +33,7 @@ import org.springframework.lang.Nullable;
 public interface AfterReturnInsertConsumer<T, U> {
 
     default void accept(@NonNull List<T> entities, @NonNull U user, @Nullable Throwable e) {
-        entities.forEach(item -> accept(entities, user, e));
+        entities.forEach(item -> accept(item, user, e));
     }
 
     void accept(@NonNull T entity, @NonNull U user, @Nullable Throwable e);
