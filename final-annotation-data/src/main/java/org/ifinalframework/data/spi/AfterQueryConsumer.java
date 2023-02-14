@@ -22,24 +22,25 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
 
 /**
- * AfterReturnInsertConsumer.
+ * AfterQueryConsumer.
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreInsertConsumer
- * @see PostInsertConsumer
+ * @see PreQueryValidator
+ * @see PreQueryConsumer
+ * @see PostQueryConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterReturnInsertConsumer<T, U> {
+public interface AfterQueryConsumer<T, Q, U> {
 
-    default void accept(@Nullable List<T> entities, @NonNull U user, @Nullable Throwable e) {
+    default void accept(@Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
         if (CollectionUtils.isEmpty(entities)) {
-            accept((T) null, user, e);
+            accept((T) null, query, user, e);
         } else {
-            entities.forEach(item -> accept(item, user, e));
+            entities.forEach(item -> accept(item, query, user, e));
         }
     }
 
-    void accept(@Nullable T entity, @NonNull U user, @Nullable Throwable e);
+    void accept(@Nullable T entity, @NonNull Q query, @NonNull U user, @Nullable Throwable e);
 }
