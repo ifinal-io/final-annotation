@@ -33,8 +33,8 @@ import org.springframework.lang.NonNull;
 public interface PostInsertConsumer<T, U> {
 
     /**
-     * @param entities
-     * @param user
+     * @param entities the entities had be inserted, maybe empty.
+     * @param user     the current user.
      * @since 1.4.3
      */
     default void accept(@NonNull List<T> entities, @NonNull U user) {

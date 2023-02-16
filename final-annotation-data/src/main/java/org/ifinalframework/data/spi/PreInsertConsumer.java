@@ -34,8 +34,8 @@ import org.springframework.lang.NonNull;
 public interface PreInsertConsumer<T, U> {
 
     /**
-     * @param entities
-     * @param user
+     * @param entities the entities would be inserted, maybe is empty.
+     * @param user     current user
      * @since 1.4.3
      */
     default void accept(@NonNull List<T> entities, @NonNull U user) {
