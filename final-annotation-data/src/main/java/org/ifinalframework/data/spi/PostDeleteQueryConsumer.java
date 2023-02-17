@@ -15,22 +15,24 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 /**
- * PreDeleteQueryConsumer.
+ * PostDeleteQueryConsumer.
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreDeleteConsumer
+ * @see PreDeleteQueryConsumer
  * @see PostDeleteConsumer
  * @since 1.4.3
  */
-@FunctionalInterface
-public interface PreDeleteQueryConsumer<Q, U> {
-    /**
-     * @param query the query of to delete.
-     * @param user  the current user.
-     */
-    void accept(@NonNull Q query, @NonNull U user);
+public interface PostDeleteQueryConsumer<T, Q, U> {
+
+    default void accept(@NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
+        entities.forEach(item -> accept(item, query, user));
+    }
+
+    void accept(@NonNull T entity, @NonNull Q query, @NonNull U user);
 }
