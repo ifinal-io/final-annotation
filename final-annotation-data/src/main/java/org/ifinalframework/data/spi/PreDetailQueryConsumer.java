@@ -22,6 +22,8 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.3
+ * @see PostDetailQueryConsumer
+ * @see PostDetailConsumer
  * @since 1.4.3
  */
 @FunctionalInterface

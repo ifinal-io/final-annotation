@@ -22,9 +22,15 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.2
+ * @see org.ifinalframework.core.IView.List
+ * @see PostQueryConsumer
  * @since 1.4.2
  */
 @FunctionalInterface
 public interface PreQueryConsumer<Q, U> {
+    /**
+     * @param query the query of list.
+     * @param user  the current user.
+     */
     void accept(@NonNull Q query, @NonNull U user);
 }
