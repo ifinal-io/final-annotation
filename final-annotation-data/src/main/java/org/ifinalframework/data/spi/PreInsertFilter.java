@@ -24,7 +24,15 @@ import org.springframework.lang.NonNull;
  * @version 1.4.3
  * @since 1.4.3
  */
+@FunctionalInterface
 public interface PreInsertFilter<T, U> {
+    /**
+     * test the entity with user.
+     *
+     * @param entity the entity to test.
+     * @param user   the current user.
+     * @return true if the entity matched.
+     */
     boolean test(@NonNull T entity, @NonNull U user);
 }
 
