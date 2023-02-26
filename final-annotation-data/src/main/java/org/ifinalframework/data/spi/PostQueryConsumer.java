@@ -25,15 +25,16 @@ import org.springframework.lang.NonNull;
  * @author ilikly
  * @version 1.4.2
  * @see PreQueryConsumer
+ * @see AfterReturnQueryConsumer
  * @since 1.4.2
  */
 @FunctionalInterface
 public interface PostQueryConsumer<T, Q, U> {
 
     /**
-     * @param entities
-     * @param query
-     * @param user
+     * @param entities the entities of query.
+     * @param query    the query.
+     * @param user     the current user.
      * @since 1.4.3
      */
     default void accept(@NonNull List<T> entities, @NonNull Q query, @NonNull U user) {

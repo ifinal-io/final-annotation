@@ -15,18 +15,28 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+import org.springframework.util.CollectionUtils;
 
 /**
- * PreDetailQueryConsumer.
+ * AfterThrowingQueryConsumer.
  *
  * @author ilikly
  * @version 1.4.3
- * @see PostDetailQueryConsumer
- * @see PostDetailConsumer
  * @since 1.4.3
  */
-@FunctionalInterface
-public interface PreDetailQueryConsumer<Q, U> {
-    void accept(@NonNull Q query, @NonNull U user);
+public interface AfterThrowingQueryConsumer<T, Q, U> {
+
+    default void accept(@Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e) {
+        if (CollectionUtils.isEmpty(entities)) {
+            accept((T) null, query, user, e);
+        } else {
+            entities.forEach(item -> accept(item, query, user, e));
+        }
+    }
+
+    void accept(@Nullable T entity, @NonNull Q query, @NonNull U user, @NonNull Throwable e);
 }
