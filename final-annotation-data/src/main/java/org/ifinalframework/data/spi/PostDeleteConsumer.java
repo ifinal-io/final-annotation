@@ -24,7 +24,6 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.2
- * @see PreDeleteQueryConsumer
  * @see PreDeleteConsumer
  * @since 1.4.2
  */
