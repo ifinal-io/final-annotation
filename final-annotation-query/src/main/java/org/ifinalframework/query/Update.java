@@ -15,8 +15,10 @@
 
 package org.ifinalframework.query;
 
-import java.util.*;
+import java.util.LinkedList;
 import java.util.function.Consumer;
+
+import org.springframework.lang.Nullable;
 
 import org.ifinalframework.core.IUpdate;
 import org.ifinalframework.query.update.JsonUpdatable;
@@ -67,7 +69,7 @@ public final class Update extends LinkedList<Criterion> implements Updatable, IU
 
 
     @Override
-    public Update update(String expression, String column, Object value, Consumer<CriterionAttributes> consumer) {
+    public Update update(String expression, String column, Object value, @Nullable Consumer<CriterionAttributes> consumer) {
         Criterion criterion = CriterionTarget.from(column)
                 .condition(expression, value, consumer);
         this.add(criterion);

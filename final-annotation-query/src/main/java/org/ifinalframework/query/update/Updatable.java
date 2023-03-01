@@ -17,6 +17,8 @@ package org.ifinalframework.query.update;
 
 import java.util.function.Consumer;
 
+import org.springframework.lang.Nullable;
+
 import org.ifinalframework.query.CriterionAttributes;
 import org.ifinalframework.query.Update;
 
@@ -33,5 +35,5 @@ public interface Updatable {
         return update(expression, column, value, null);
     }
 
-    Update update(String expression, String column, Object value, Consumer<CriterionAttributes> consumer);
+    Update update(String expression, String column, Object value,@Nullable Consumer<CriterionAttributes> consumer);
 }

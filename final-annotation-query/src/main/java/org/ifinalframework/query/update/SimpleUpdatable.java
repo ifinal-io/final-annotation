@@ -55,6 +55,13 @@ public interface SimpleUpdatable extends Updatable {
         return incr(property.getColumn(), value);
     }
 
+    /**
+     * Update {@code column} with {@code value} user sql like {@code column = column + #{value}}.
+     *
+     * @param column the column to update.
+     * @param value  the incr value.
+     * @return update.
+     */
     default Update incr(String column, Number value) {
         return update(CriterionExpression.UPDATE_INCR, column, value);
     }
