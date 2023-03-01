@@ -189,32 +189,32 @@ class CriterionTargetTest {
     }
 
     @Test
-    void startWith() {
-        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).startWith(VALUE);
+    void startsWith() {
+        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).startsWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
         assertEquals(CriterionExpression.STARTS_WITH, criterion.getExpression());
     }
 
     @Test
-    void notStartWith() {
-        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notStartWith(VALUE);
+    void notStartsWith() {
+        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notStartsWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
         assertEquals(CriterionExpression.NOT_STARTS_WITH, criterion.getExpression());
     }
 
     @Test
-    void endWith() {
-        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).endWith(VALUE);
+    void endsWith() {
+        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).endsWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
         assertEquals(CriterionExpression.ENDS_WITH, criterion.getExpression());
     }
 
     @Test
-    void notEndWith() {
-        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notEndWith(VALUE);
+    void notEndsWith() {
+        CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).notEndsWith(VALUE);
         assertEquals(COLUMN, criterion.getColumn());
         assertEquals(VALUE, criterion.getValue());
         assertEquals(CriterionExpression.NOT_ENDS_WITH, criterion.getExpression());

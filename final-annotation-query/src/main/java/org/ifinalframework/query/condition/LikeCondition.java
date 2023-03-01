@@ -77,47 +77,6 @@ public interface LikeCondition extends Condition {
         return condition(CriterionExpression.NOT_ENDS_WITH, value);
     }
 
-    /**
-     * @see #startsWith(String)
-     * @deprecated rename to {@code startsWith} since 1.2.1
-     */
-    @Deprecated
-    default Criterion startWith(@Nullable String value) {
-        return startsWith(value);
-    }
-
-    /**
-     * @param value value
-     * @return criterion
-     * @see #notStartsWith(String)
-     * @deprecated rename to {@code notStartsWith} since 1.2.1
-     */
-    @Deprecated
-    default Criterion notStartWith(@Nullable String value) {
-        return notStartsWith(value);
-    }
-
-    /**
-     * @param value value
-     * @return criterion
-     * @see #endsWith(String)
-     * @deprecated rename to {@code endsWith} since 1.2.1
-     */
-    @Deprecated
-    default Criterion endWith(@Nullable String value) {
-        return endsWith(value);
-    }
-
-    /**
-     * @param value value
-     * @return criterion
-     * @see #notEndsWith(String)
-     * @deprecated rename to {@code notEndsWith} since 1.2.1
-     */
-    @Deprecated
-    default Criterion notEndWith(@Nullable String value) {
-        return notEndsWith(value);
-    }
 
     /**
      * @param value value
@@ -128,7 +87,6 @@ public interface LikeCondition extends Condition {
     }
 
     /**
-     *
      * @param value value
      * @return criterion
      */
@@ -143,6 +101,7 @@ public interface LikeCondition extends Condition {
     default Criterion like(@Nullable String value) {
         return condition(CriterionExpression.LIKE, value);
     }
+
     /**
      * @param value value
      * @return criterion
