@@ -22,8 +22,6 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreUpdateConsumer
- * @see PostUpdateConsumer
  * @since 1.4.3
  */
 public interface PreUpdateValidator<T, U> {

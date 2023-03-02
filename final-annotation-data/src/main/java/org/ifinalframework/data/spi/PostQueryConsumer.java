@@ -37,10 +37,10 @@ public interface PostQueryConsumer<T, Q, U> {
      * @param user     the current user.
      * @since 1.4.3
      */
-    default void accept(@NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
-        entities.forEach(item -> accept(item, query, user));
+    default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
+        entities.forEach(item -> accept(action, item, query, user));
     }
 
-    void accept(@NonNull T entity, @NonNull Q query, @NonNull U user);
+    void accept(@NonNull SpiAction action, @NonNull T entity, @NonNull Q query, @NonNull U user);
 
 }

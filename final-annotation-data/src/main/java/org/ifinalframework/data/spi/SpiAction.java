@@ -15,26 +15,36 @@
 
 package org.ifinalframework.data.spi;
 
-import org.springframework.lang.NonNull;
+import lombok.Getter;
 
 /**
- * PreInsertFilter.
+ * SpiAction.
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreInsertConsumer
- * @see PostInsertConsumer
  * @since 1.4.3
  */
-@FunctionalInterface
-public interface PreInsertFilter<T, U> {
-    /**
-     * test the entity with user.
-     *
-     * @param entity the entity to test.
-     * @param user   the current user.
-     * @return true if the entity matched.
-     */
-    boolean test(@NonNull T entity, @NonNull U user);
-}
+@Getter
+public enum SpiAction {
+    PRE_CREATE("PreInsert"),
+    POST_CREATE("PostInsert"),
+    PRE_DELETE("PreDelete"),
+    POST_DELETE("PostDelete"),
+    PRE_UPDATE("PreUpdate"),
+    POST_UPDATE("PostUpdate"),
+    PRE_YN("PreUpdateYn"),
+    POST_YN("PostUpdateYn"),
+    PRE_STATUS("PreUpdateStatus"),
+    POST_STATUS("PostUpdateStatus"),
+    PRE_LIST("PreListQuery", "PreQuery"),
+    POST_LIST("PostListQuery", "PostQuery"),
+    PRE_DETAIL("PreDetail", "PreQuery"),
+    POST_DETAIL("PostDetail", "PostQuery"),
+    PRE_COUNT("PreCountQuery");
 
+    private final String[] values;
+
+    SpiAction(String... values) {
+        this.values = values;
+    }
+}

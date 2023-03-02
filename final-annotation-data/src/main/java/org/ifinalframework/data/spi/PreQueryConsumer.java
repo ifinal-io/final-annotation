@@ -32,5 +32,5 @@ public interface PreQueryConsumer<Q, U> {
      * @param query the query of list.
      * @param user  the current user.
      */
-    void accept(@NonNull Q query, @NonNull U user);
+    void accept(@NonNull SpiAction action, @NonNull Q query, @NonNull U user);
 }

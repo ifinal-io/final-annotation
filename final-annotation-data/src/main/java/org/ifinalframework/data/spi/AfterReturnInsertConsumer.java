@@ -26,8 +26,6 @@ import org.springframework.util.CollectionUtils;
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreInsertConsumer
- * @see PostInsertConsumer
  * @since 1.4.3
  */
 @FunctionalInterface

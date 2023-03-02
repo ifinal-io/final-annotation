@@ -20,27 +20,26 @@ import java.util.List;
 import org.springframework.lang.NonNull;
 
 /**
- * PreInsertConsumer.
+ * PreConsumer.
  *
  * @author ilikly
- * @version 1.4.2
- * @see PreInsertFunction
- * @see PreInsertValidator
- * @see PostInsertConsumer
- * @see AfterReturnInsertConsumer
- * @since 1.4.2
+ * @version 1.4.3
+ * @since 1.4.3
  */
-@FunctionalInterface
-public interface PreInsertConsumer<T, U> {
+public interface Consumer<T, U> {
 
     /**
-     * @param entities the entities would be inserted, maybe is empty.
-     * @param user     current user
+     * @param entities the entities will be deleted, maybe empty.
+     * @param user     operator user.
      * @since 1.4.3
      */
-    default void accept(@NonNull List<T> entities, @NonNull U user) {
-        entities.forEach(item -> accept(item, user));
+    default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @NonNull U user) {
+        entities.forEach(item -> accept(action, item, user));
     }
 
-    void accept(@NonNull T entity, @NonNull U user);
+    /**
+     * @param entity the entity will be deleted.
+     * @param user   operator user.
+     */
+    void accept(@NonNull SpiAction action, @NonNull T entity, @NonNull U user);
 }

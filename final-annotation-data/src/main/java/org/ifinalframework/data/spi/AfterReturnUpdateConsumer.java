@@ -24,8 +24,6 @@ import org.springframework.lang.Nullable;
  * @author ilikly
  * @version 1.4.3
  * @see PreUpdateValidator
- * @see PreUpdateConsumer
- * @see PostUpdateConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
