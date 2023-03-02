@@ -29,6 +29,7 @@ import org.springframework.lang.NonNull;
 public interface Consumer<T, U> {
 
     /**
+     * @param action   the spi action.
      * @param entities the entities will be deleted, maybe empty.
      * @param user     operator user.
      * @since 1.4.3
@@ -38,6 +39,7 @@ public interface Consumer<T, U> {
     }
 
     /**
+     * @param action the spi action.
      * @param entity the entity will be deleted.
      * @param user   operator user.
      */
