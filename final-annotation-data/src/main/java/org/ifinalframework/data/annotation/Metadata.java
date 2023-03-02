@@ -61,7 +61,7 @@ public class Metadata implements Serializable {
     /**
      * value type handler
      */
-    private Class<? extends org.apache.ibatis.type.TypeHandler> typeHandler;
+    private Class<?> typeHandler;
 
 }
 
