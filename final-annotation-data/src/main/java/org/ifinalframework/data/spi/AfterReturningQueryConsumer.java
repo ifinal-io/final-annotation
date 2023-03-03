@@ -32,7 +32,7 @@ import org.springframework.util.CollectionUtils;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterReturnQueryConsumer<T, Q, U> {
+public interface AfterReturningQueryConsumer<T, Q, U> {
 
     default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
         if (CollectionUtils.isEmpty(entities)) {
