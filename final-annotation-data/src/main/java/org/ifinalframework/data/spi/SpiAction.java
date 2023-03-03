@@ -31,6 +31,7 @@ public enum SpiAction {
     DELETE("Delete"),
     UPDATE("Update"),
     UPDATE_YN("UpdateYn"),
+    UPDATE_STATUS("UpdateStatus"),
 
     LIST("List", "Query"),
 
