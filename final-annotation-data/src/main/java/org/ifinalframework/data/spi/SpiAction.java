@@ -36,8 +36,12 @@ public enum SpiAction {
     POST_YN("PostUpdateYn"),
     PRE_STATUS("PreUpdateStatus"),
     POST_STATUS("PostUpdateStatus"),
+
+    LIST,
     PRE_LIST("PreList", "PreQuery"),
     POST_LIST("PostList", "PostQuery"),
+
+    DETAIL,
     PRE_DETAIL("PreDetail", "PreQuery"),
     POST_DETAIL("PostDetail", "PostQuery"),
     PRE_COUNT("PreCountQuery");
