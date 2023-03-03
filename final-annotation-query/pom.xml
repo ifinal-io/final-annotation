@@ -63,7 +63,8 @@
         <dependency>
             <groupId>org.ifinalframework</groupId>
             <artifactId>final-core</artifactId>
-            <version>${project.version}</version>
+<!--            <version>${project.version}</version>-->
+            <version>1.4.3-SNAPSHOT</version>
             <optional>true</optional>
             <scope>test</scope>
         </dependency>
