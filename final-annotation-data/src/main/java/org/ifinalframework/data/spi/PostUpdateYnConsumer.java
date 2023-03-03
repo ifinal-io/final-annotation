@@ -31,7 +31,7 @@ import org.ifinalframework.data.annotation.YN;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface PostUpdateYNConsumer<T, U> {
+public interface PostUpdateYnConsumer<T, U> {
 
     default void accept(@NonNull List<T> entities, @NonNull YN yn, @NonNull U user) {
         entities.forEach(item -> accept(item, yn, user));
