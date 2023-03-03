@@ -16,6 +16,7 @@
 package org.ifinalframework.data.spi;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * SpiAction.
@@ -27,29 +28,27 @@ import lombok.Getter;
 @Getter
 public enum SpiAction {
     CREATE("Insert"),
-    PRE_CREATE("PreInsert"),
-    POST_CREATE("PostInsert"),
-    PRE_DELETE("PreDelete"),
-    POST_DELETE("PostDelete"),
-    PRE_UPDATE("PreUpdate"),
-    POST_UPDATE("PostUpdate"),
-    PRE_YN("PreUpdateYn"),
-    POST_YN("PostUpdateYn"),
-    PRE_STATUS("PreUpdateStatus"),
-    POST_STATUS("PostUpdateStatus"),
+    DELETE("Delete"),
+    UPDATE("Update"),
+    UPDATE_YN("UpdateYn"),
 
-    LIST("List","Query"),
-    PRE_LIST("PreList", "PreQuery"),
-    POST_LIST("PostList", "PostQuery"),
+    LIST("List", "Query"),
 
-    DETAIL("Detail","Query"),
-    PRE_DETAIL("PreDetail", "PreQuery"),
-    POST_DETAIL("PostDetail", "PostQuery"),
-    PRE_COUNT("PreCountQuery");
+    DETAIL("Detail", "Query"),
+    COUNT("CountQuery", "Query");
 
     private final String[] values;
 
     SpiAction(String... values) {
         this.values = values;
+    }
+
+    @RequiredArgsConstructor
+    @Getter
+    public enum Advice {
+        PRE("Pre"), POST("Post"), AFTER_THROWING("AfterThrowing"), AFTER_RETURNING("AfterReturning");
+
+        private final String value;
+
     }
 }
