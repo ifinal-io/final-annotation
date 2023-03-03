@@ -25,14 +25,15 @@ import org.springframework.lang.NonNull;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface PreFilter<T, U> {
+public interface Filter<T, U> {
     /**
      * test the entity with user.
      *
+     * @param action the spi action.
      * @param entity the entity to test.
      * @param user   the current user.
      * @return true if the entity matched.
      */
-    boolean test(@NonNull T entity, @NonNull U user);
+    boolean test(@NonNull SpiAction action, @NonNull T entity, @NonNull U user);
 }
 
