@@ -25,6 +25,8 @@ import org.springframework.lang.Nullable;
  *
  * @author ilikly
  * @version 1.5.0
+ * @see AfterThrowingConsumer
+ * @see AfterReturningQueryConsumer
  * @since 1.5.0
  */
 public interface AfterReturningConsumer<T, R, U> {
