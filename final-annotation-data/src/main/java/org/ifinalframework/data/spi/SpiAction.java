@@ -26,6 +26,7 @@ import lombok.Getter;
  */
 @Getter
 public enum SpiAction {
+    CREATE,
     PRE_CREATE("PreInsert"),
     POST_CREATE("PostInsert"),
     PRE_DELETE("PreDelete"),
