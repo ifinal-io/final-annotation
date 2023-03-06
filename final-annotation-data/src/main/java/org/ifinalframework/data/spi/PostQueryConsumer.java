@@ -32,6 +32,7 @@ import org.springframework.lang.NonNull;
 public interface PostQueryConsumer<T, Q, U> {
 
     /**
+     * @param action   the spi action.
      * @param entities the entities of query.
      * @param query    the query.
      * @param user     the current user.
