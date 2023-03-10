@@ -24,6 +24,7 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.3
+ * @see UpdateConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
