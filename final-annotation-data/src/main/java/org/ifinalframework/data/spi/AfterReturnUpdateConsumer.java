@@ -27,6 +27,6 @@ import org.springframework.lang.Nullable;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterReturnUpdateConsumer<T, U> {
+public interface AfterReturnUpdateConsumer<T,R, U> {
     void accept(@NonNull T entity, @NonNull U user, @Nullable Throwable e);
 }

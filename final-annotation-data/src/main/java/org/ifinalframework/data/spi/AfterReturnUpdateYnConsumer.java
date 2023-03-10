@@ -25,7 +25,6 @@ import org.ifinalframework.data.annotation.YN;
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreUpdateYnValidator
  * @since 1.4.3
  */
 @FunctionalInterface

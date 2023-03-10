@@ -26,6 +26,7 @@ import org.springframework.lang.NonNull;
  * @version 1.4.3
  * @since 1.4.3
  */
+@FunctionalInterface
 public interface Consumer<T, U> {
 
     /**
@@ -36,6 +37,7 @@ public interface Consumer<T, U> {
      */
     void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user);
 
+    @FunctionalInterface
     interface ForEach<T, U> extends Consumer<T, U> {
         default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user) {
             entities.forEach(item -> accept(action, advice, item, user));

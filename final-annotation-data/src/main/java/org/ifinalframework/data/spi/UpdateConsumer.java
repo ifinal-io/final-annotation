@@ -18,32 +18,27 @@ package org.ifinalframework.data.spi;
 import java.util.List;
 
 import org.springframework.lang.NonNull;
-
-import org.ifinalframework.data.annotation.YN;
+import org.springframework.lang.Nullable;
 
 /**
- * PostUpdateYNConsumer.
+ * PreUpdateConsumer.
  *
  * @author ilikly
- * @version 1.4.3
- * @see PreUpdateYnValidator
- * @see AfterReturnUpdateYnConsumer
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
 @FunctionalInterface
-public interface PostUpdateYnConsumer<T, U> {
-
-    void accept(@NonNull List<T> entities, @NonNull YN yn, @NonNull U user);
+public interface UpdateConsumer<T, V, U> {
+    void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user);
 
     @FunctionalInterface
-    interface ForEach<T, U> extends PostUpdateYnConsumer<T, U> {
-
-
-        default void accept(@NonNull List<T> entities, @NonNull YN yn, @NonNull U user) {
-            entities.forEach(item -> accept(item, yn, user));
+    interface ForEach<T, V, U> extends UpdateConsumer<T, V, U> {
+        @Override
+        default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user) {
+            entities.forEach(item -> accept(action, advice, item, value, user));
         }
 
-        void accept(@NonNull T entity, @NonNull YN yn, @NonNull U user);
+        void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull T entity, @Nullable V value, @NonNull U user);
     }
 
 }

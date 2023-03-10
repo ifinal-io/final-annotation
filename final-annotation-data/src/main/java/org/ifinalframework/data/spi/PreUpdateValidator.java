@@ -15,21 +15,30 @@
 
 package org.ifinalframework.data.spi;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 /**
- * PreUpdateValidator.
+ * PreUpdateConsumer.
  *
  * @author ilikly
- * @version 1.4.3
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
-public interface PreUpdateValidator<T, U> {
-    /**
-     * validate the entity for update.
-     *
-     * @param entity the entity for update
-     * @param user   the context user.
-     */
-    void validate(@NonNull T entity, @NonNull U user);
+@FunctionalInterface
+public interface PreUpdateValidator<T, V, U> {
+    void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user);
+
+    @FunctionalInterface
+    interface ForEach<T, V, U> extends PreUpdateValidator<T, V, U> {
+        @Override
+        default void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user) {
+            entities.forEach(item -> validate(item, value, user));
+        }
+
+        void validate(@NonNull T entity, @Nullable V value, @NonNull U user);
+    }
+
 }
