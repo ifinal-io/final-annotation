@@ -34,14 +34,20 @@ public interface Consumer<T, U> {
      * @param user     operator user.
      * @since 1.4.3
      */
-    default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user) {
-        entities.forEach(item -> accept(action, advice, item, user));
+    void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user);
+
+    interface ForEach<T, U> extends Consumer<T, U> {
+        default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user) {
+            entities.forEach(item -> accept(action, advice, item, user));
+        }
+
+        /**
+         * @param action the spi action.
+         * @param entity the entity will be deleted.
+         * @param user   operator user.
+         */
+        void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull T entity, @NonNull U user);
     }
 
-    /**
-     * @param action the spi action.
-     * @param entity the entity will be deleted.
-     * @param user   operator user.
-     */
-    void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull T entity, @NonNull U user);
+
 }

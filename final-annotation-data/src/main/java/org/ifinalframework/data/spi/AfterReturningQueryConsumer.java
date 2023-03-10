@@ -34,13 +34,17 @@ import org.springframework.util.CollectionUtils;
 @FunctionalInterface
 public interface AfterReturningQueryConsumer<T, Q, U> {
 
-    default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
-        if (CollectionUtils.isEmpty(entities)) {
-            accept(action, (T) null, query, user, e);
-        } else {
-            entities.forEach(item -> accept(action, item, query, user, e));
-        }
-    }
+    void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e);
 
-    void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull Q query, @NonNull U user, @Nullable Throwable e);
+    interface ForEach<T, Q, U> extends AfterReturningQueryConsumer<T, Q, U> {
+        default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
+            if (CollectionUtils.isEmpty(entities)) {
+                accept(action, (T) null, query, user, e);
+            } else {
+                entities.forEach(item -> accept(action, item, query, user, e));
+            }
+        }
+
+        void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull Q query, @NonNull U user, @Nullable Throwable e);
+    }
 }

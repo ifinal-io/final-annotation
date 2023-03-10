@@ -29,21 +29,27 @@ import org.springframework.lang.Nullable;
  * @see AfterReturningQueryConsumer
  * @since 1.5.0
  */
+@FunctionalInterface
 public interface AfterReturningConsumer<T, R, U> {
 
-    /**
-     * @param action   the spi action.
-     * @param entities the entities will be deleted, maybe empty.
-     * @param user     operator user.
-     */
-    default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @Nullable R result, @NonNull U user, @Nullable Throwable throwable) {
-        entities.forEach(item -> accept(action, item, result, user, throwable));
-    }
+    void accept(@NonNull SpiAction action, @NonNull List<T> entities, @Nullable R result, @NonNull U user, @Nullable Throwable throwable);
 
-    /**
-     * @param action the spi action.
-     * @param entity the entity will be deleted.
-     * @param user   operator user.
-     */
-    void accept(@NonNull SpiAction action, @NonNull T entity, @Nullable R result, @NonNull U user, @Nullable Throwable throwable);
+    @FunctionalInterface
+    interface ForEach<T, R, U> extends AfterReturningConsumer<T, R, U> {
+        /**
+         * @param action   the spi action.
+         * @param entities the entities will be deleted, maybe empty.
+         * @param user     operator user.
+         */
+        default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @Nullable R result, @NonNull U user, @Nullable Throwable throwable) {
+            entities.forEach(item -> accept(action, item, result, user, throwable));
+        }
+
+        /**
+         * @param action the spi action.
+         * @param entity the entity will be deleted.
+         * @param user   operator user.
+         */
+        void accept(@NonNull SpiAction action, @NonNull T entity, @Nullable R result, @NonNull U user, @Nullable Throwable throwable);
+    }
 }

@@ -28,15 +28,22 @@ import org.springframework.util.CollectionUtils;
  * @version 1.4.3
  * @since 1.4.3
  */
+@FunctionalInterface
 public interface AfterThrowingQueryConsumer<T, Q, U> {
+    void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e);
 
-    default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e) {
-        if (CollectionUtils.isEmpty(entities)) {
-            accept(action, (T) null, query, user, e);
-        } else {
-            entities.forEach(item -> accept(action, item, query, user, e));
+    @FunctionalInterface
+    interface ForEach<T, Q, U> extends AfterThrowingQueryConsumer<T, Q, U> {
+
+
+        default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e) {
+            if (CollectionUtils.isEmpty(entities)) {
+                accept(action, (T) null, query, user, e);
+            } else {
+                entities.forEach(item -> accept(action, item, query, user, e));
+            }
         }
-    }
 
-    void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull Q query, @NonNull U user, @NonNull Throwable e);
+        void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull Q query, @NonNull U user, @NonNull Throwable e);
+    }
 }

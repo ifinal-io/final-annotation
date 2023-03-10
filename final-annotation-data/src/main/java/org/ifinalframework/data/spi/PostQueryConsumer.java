@@ -30,18 +30,24 @@ import org.springframework.lang.NonNull;
  */
 @FunctionalInterface
 public interface PostQueryConsumer<T, Q, U> {
+    void accept(@NonNull SpiAction action, @NonNull List<T> entities, @NonNull Q query, @NonNull U user);
 
-    /**
-     * @param action   the spi action.
-     * @param entities the entities of query.
-     * @param query    the query.
-     * @param user     the current user.
-     * @since 1.4.3
-     */
-    default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
-        entities.forEach(item -> accept(action, item, query, user));
+    @FunctionalInterface
+    interface ForEach<T, Q, U> extends PostQueryConsumer<T, Q, U> {
+
+
+        /**
+         * @param action   the spi action.
+         * @param entities the entities of query.
+         * @param query    the query.
+         * @param user     the current user.
+         * @since 1.4.3
+         */
+        default void accept(@NonNull SpiAction action, @NonNull List<T> entities, @NonNull Q query, @NonNull U user) {
+            entities.forEach(item -> accept(action, item, query, user));
+        }
+
+        void accept(@NonNull SpiAction action, @NonNull T entity, @NonNull Q query, @NonNull U user);
     }
-
-    void accept(@NonNull SpiAction action, @NonNull T entity, @NonNull Q query, @NonNull U user);
 
 }
