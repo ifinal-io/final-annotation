@@ -20,22 +20,21 @@ import java.util.List;
 import org.springframework.lang.NonNull;
 
 /**
- * AfterInsertTrigger.
+ * BiTrigger.
  *
  * @author ilikly
- * @version 1.4.3
- * @see BeforeInsertTrigger
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
-public interface AfterInsertTrigger<T> {
-    void accept(@NonNull List<T> entities);
+public interface BiTrigger<T, V> {
+    void accept(@NonNull List<T> entities, @NonNull V value);
 
-    interface ForEach<T> extends AfterInsertTrigger<T> {
+    interface ForEach<T, V> extends BiTrigger<T, V> {
         @Override
-        default void accept(@NonNull List<T> entities) {
-            entities.forEach(this::accept);
+        default void accept(@NonNull List<T> entities, @NonNull V value) {
+            entities.forEach(item -> accept(item, value));
         }
 
-        void accept(@NonNull T t);
+        void accept(@NonNull T t, @NonNull V value);
     }
 }

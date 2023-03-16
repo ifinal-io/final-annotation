@@ -20,17 +20,15 @@ import java.util.List;
 import org.springframework.lang.NonNull;
 
 /**
- * AfterInsertTrigger.
+ * TriggerConsumer.
  *
  * @author ilikly
- * @version 1.4.3
- * @see BeforeInsertTrigger
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
-public interface AfterInsertTrigger<T> {
+public interface Trigger<T> {
     void accept(@NonNull List<T> entities);
-
-    interface ForEach<T> extends AfterInsertTrigger<T> {
+    interface ForEach<T> extends Trigger<T> {
         @Override
         default void accept(@NonNull List<T> entities) {
             entities.forEach(this::accept);
