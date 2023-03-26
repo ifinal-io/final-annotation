@@ -32,7 +32,7 @@ public enum SpiAction {
     UPDATE("Update"),
     UPDATE_YN("UpdateYn"),
     UPDATE_STATUS("UpdateStatus"),
-
+    UPDATE_LOCKED("UpdateLocked"),
     LIST("List", "Query"),
 
     DETAIL("Detail", "Query"),

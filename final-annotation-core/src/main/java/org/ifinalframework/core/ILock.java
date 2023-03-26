@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 the original author or authors.
+ * Copyright 2020-2023 the original author or authors.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,18 +13,17 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.data.spi;
-
-import org.springframework.lang.NonNull;
+package org.ifinalframework.core;
 
 /**
- * PostQueryFunction.
+ * ILock.
  *
  * @author ilikly
- * @version 1.4.2
- * @since 1.4.2
+ * @version 1.5.0
+ * @since 1.5.0
  */
-@FunctionalInterface
-public interface PostQueryFunction<T, Q, U> {
-    Object map(@NonNull T entity, @NonNull Q query, @NonNull U user);
+public interface ILock {
+    void setLocked(Boolean locked);
+
+    Boolean getLocked();
 }
