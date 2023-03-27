@@ -17,6 +17,7 @@ package org.ifinalframework.data.annotation;
 
 import org.ifinalframework.core.lang.Default;
 import org.springframework.core.annotation.AliasFor;
+import org.springframework.core.annotation.Order;
 
 import java.lang.annotation.*;
 

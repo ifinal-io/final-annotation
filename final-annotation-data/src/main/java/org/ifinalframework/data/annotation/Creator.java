@@ -18,6 +18,7 @@
 package org.ifinalframework.data.annotation;
 
 import org.springframework.core.annotation.AliasFor;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.CreatedBy;
 
 import java.lang.annotation.Documented;

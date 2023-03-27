@@ -91,7 +91,6 @@ public class AbsEntity implements IEntity<Long> {
     /**
      * 有效标记
      */
-    @Order(Integer.MAX_VALUE)
     @Default
     @Column
     @View(IView.class)

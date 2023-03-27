@@ -22,6 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.springframework.core.annotation.AliasFor;
+import org.springframework.core.annotation.Order;
 
 import org.ifinalframework.core.IEntity;
 import org.ifinalframework.core.lang.Final;
