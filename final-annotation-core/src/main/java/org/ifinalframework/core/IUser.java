@@ -50,16 +50,16 @@ public interface IUser<I extends Serializable> extends IEntity<I> {
     void setId(@Nullable I id);
 
     /**
-     * return user name.
+     * return name.
      *
-     * @return user name.
+     * @return name.
      */
     String getName();
 
     /**
-     * set user name.
+     * set name.
      *
-     * @param name user name.
+     * @param name name.
      */
     void setName(String name);
 
