@@ -26,7 +26,6 @@ import org.springframework.util.CollectionUtils;
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreQueryValidator
  * @see PreQueryConsumer
  * @see PostQueryConsumer
  * @since 1.4.3
