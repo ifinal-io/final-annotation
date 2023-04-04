@@ -23,7 +23,7 @@ package org.ifinalframework.core;
  * @since 1.5.0
  */
 public interface IDQuery<ID> extends IQuery {
-    void setId(Long id);
+    void setId(ID id);
 
     ID getId();
 }
