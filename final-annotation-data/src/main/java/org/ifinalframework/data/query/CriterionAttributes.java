@@ -60,7 +60,7 @@ public class CriterionAttributes extends AnnotationAttributes implements Criteri
     /**
      * query
      */
-    public static final String ATTRIBUTE_NAME_QUERY = "org/ifinalframework/data/query";
+    public static final String ATTRIBUTE_NAME_QUERY = "query";
 
     /**
      * expression
