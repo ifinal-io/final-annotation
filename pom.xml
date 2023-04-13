@@ -32,7 +32,6 @@
     <modules>
         <module>final-annotation-core</module>
         <module>final-annotation-data</module>
-        <module>final-annotation-query</module>
         <module>final-annotation-sharding</module>
         <module>final-annotation-cache</module>
         <module>final-annotation-monitor</module>
@@ -78,11 +77,6 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>1.5.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ifinalframework.annotation</groupId>
-                <artifactId>final-annotation-query</artifactId>
                 <version>1.5.0-SNAPSHOT</version>
             </dependency>
             <dependency>
