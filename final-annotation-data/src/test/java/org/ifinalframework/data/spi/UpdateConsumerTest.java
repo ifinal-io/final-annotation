@@ -15,19 +15,33 @@
 
 package org.ifinalframework.data.spi;
 
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
+import java.util.Collections;
 
-import org.ifinalframework.data.annotation.YN;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 /**
- * AfterReturnUpdateYnConsumer.
+ * UpdateConsumerTest.
  *
  * @author ilikly
- * @version 1.4.3
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
-@FunctionalInterface
-public interface AfterReturnUpdateYnConsumer<T, U> {
-    void accept(@NonNull T entity, @NonNull YN yn, @NonNull U user, @Nullable Throwable throwable);
+@ExtendWith(MockitoExtension.class)
+class UpdateConsumerTest {
+
+    @Spy
+    private UpdateConsumer.ForEach consumer;
+
+    @Test
+    void accept() {
+        consumer.accept(null,null, Collections.singletonList(new Object()),null,null);
+        verify(consumer, atLeastOnce()).accept(any(),any(),any(),any(),any());
+    }
 }
