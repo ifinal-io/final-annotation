@@ -29,28 +29,5 @@ public interface QueryProvider {
      */
     String where();
 
-    /**
-     * return sql of group
-     *
-     * @return sql of group
-     * @see org.ifinalframework.core.Groupable
-     */
-    String groups();
-
-    /**
-     * return sql of order
-     *
-     * @return sql of order
-     * @see org.ifinalframework.core.Orderable
-     */
-    String orders();
-
-    /**
-     * return sql of limit
-     *
-     * @return sql of limit
-     * @see org.ifinalframework.core.Limitable
-     */
-    String limit();
 
 }
