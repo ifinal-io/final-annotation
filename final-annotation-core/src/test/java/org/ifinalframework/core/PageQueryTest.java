@@ -35,10 +35,14 @@ class PageQueryTest {
 
     @Test
     void defaultPageable() {
-        Pageable query = new PageQuery();
+        PageQuery query = new PageQuery();
         assertEquals(1, query.getPage());
         assertEquals(20, query.getSize());
         assertEquals(true, query.getCount());
+        assertNull(query.getOrders());
+        assertNull(query.getOrders());
+        assertNull(query.getLimit());
+        assertNull(query.getOffset());
     }
 
     @ParameterizedTest

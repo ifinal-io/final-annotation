@@ -20,6 +20,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.ifinalframework.core.lang.Final;
+
 /**
  * Tenant.
  *
@@ -27,6 +29,21 @@ import java.lang.annotation.Target;
  * @version 1.3.1
  * @since 1.3.1
  */
+@Final
+@Column(value = "${final.data.tenant.column:tenant}",
+        insert = {
+                "<choose>",
+                "     <when test=\"${test}\">",
+                "         #{${value}#if($typeHandler)",
+                "             #if($javaType), javaType=$!{javaType.canonicalName}#end",
+                "             , typeHandler=$!{typeHandler.canonicalName}#end}",
+                "      </when>",
+                "     <when test=\"tenant != null\">",
+                "         #{tenant}",
+                "     </when>",
+                "     <otherwise>null</otherwise>",
+                "</choose>"
+        })
 @Target({ElementType.TYPE, ElementType.PARAMETER, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Tenant {
