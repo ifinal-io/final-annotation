@@ -19,6 +19,8 @@ package org.ifinalframework.data.annotation;
 
 import java.io.Serializable;
 
+import org.ifinalframework.data.query.AndOr;
+
 import lombok.Data;
 
 /**
@@ -37,6 +39,8 @@ public class Metadata implements Serializable {
      * selective test value
      */
     private String selectiveTest;
+
+    private AndOr andOr;
 
     /**
      * property name

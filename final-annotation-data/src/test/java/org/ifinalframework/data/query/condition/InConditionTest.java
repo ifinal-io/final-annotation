@@ -15,38 +15,30 @@
 
 package org.ifinalframework.data.query.condition;
 
+import java.util.Collections;
 import java.util.regex.Pattern;
 
-import org.apache.ibatis.mapping.BoundSql;
-
-import org.ifinalframework.data.query.Criterion;
 import org.ifinalframework.data.query.CriterionAttributes;
 import org.ifinalframework.data.query.CriterionTarget;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * CompareConditionTest.
+ * InConditionTest.
  *
  * @author ilikly
  * @version 1.5.0
  * @since 1.5.0
  */
 @Slf4j
-class CompareConditionTest extends ConditionTest{
+class InConditionTest extends ConditionTest{
     @Test
     void test(){
-        assertTrue(Pattern.matches("AND name\\s*=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").eq("123"))));
-        assertTrue(Pattern.matches("AND name\\s*!=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").neq("123"))));
-        assertTrue(Pattern.matches("AND name\\s*>\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").gt("123"))));
-        assertTrue(Pattern.matches("AND name\\s*>=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").geq("123"))));
-        assertTrue(Pattern.matches("AND name\\s*<\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").lt("123"))));
-        assertTrue(Pattern.matches("AND name\\s*<=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").leq("123"))));
+        assertTrue(Pattern.matches("AND name\\s*IN\\s*\\(\\s*'123'\\s*\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").in(Collections.singletonList("123")))));
+        assertTrue(Pattern.matches("AND name\\s*NOT IN\\s*\\(\\s*'123'\\s*\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").nin(Collections.singletonList("123")))));
     }
-
 
 }

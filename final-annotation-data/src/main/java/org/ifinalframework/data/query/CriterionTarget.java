@@ -58,6 +58,7 @@ public class CriterionTarget implements FunctionCriteriable<Object> {
         criterion.setColumn(column);
         criterion.setValue(value);
 
+
         if (Objects.nonNull(consumer)) {
             consumer.accept(criterion);
         }

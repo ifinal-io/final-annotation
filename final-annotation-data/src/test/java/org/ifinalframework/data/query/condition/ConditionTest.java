@@ -78,6 +78,7 @@ class ConditionTest {
         final Metadata params = new Metadata();
         params.setColumn(criterionAttributes.getColumn());
         params.setValue("value");
+        params.setAndOr(criterionAttributes.getAndor());
         final String eval = Velocities.eval(criterionAttributes.getExpression(), params);
         sql.append(eval);
         sql.append("</script>");
