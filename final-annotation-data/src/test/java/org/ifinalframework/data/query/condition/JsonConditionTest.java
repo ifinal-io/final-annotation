@@ -53,4 +53,20 @@ class JsonConditionTest extends ConditionTest {
         assertTrue(Pattern.matches("AND !JSON_CONTAINS\\(\\s*column\\s*,\\s*1\\s*\\)", sql));
     }
 
+    @Test
+    void jsonArrayContains(){
+        final Criterion criterion = CriterionTarget.from("column").jsonArrayContains(1);
+        final String sql = sql((CriterionAttributes) criterion);
+        logger.info(sql);
+        assertTrue(Pattern.matches("AND JSON_CONTAINS\\(\\s*column\\s*,\\s*JSON_ARRAY\\(\\s*1\\s*\\)\\s*\\)", sql));
+    }
+
+    @Test
+    void notJsonArrayContains(){
+        final Criterion criterion = CriterionTarget.from("column").notJsonArrayContains(1);
+        final String sql = sql((CriterionAttributes) criterion);
+        logger.info(sql);
+        assertTrue(Pattern.matches("AND !JSON_CONTAINS\\(\\s*column\\s*,\\s*JSON_ARRAY\\(\\s*1\\s*\\)\\s*\\)", sql));
+    }
+
 }
