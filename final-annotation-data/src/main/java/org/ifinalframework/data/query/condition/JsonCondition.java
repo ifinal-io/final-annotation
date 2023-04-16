@@ -120,7 +120,7 @@ public interface JsonCondition<V> extends Condition {
      * @see #jsonContainsPath(OneOrAll, Collection)
      */
     default Criterion jsonContainsPath(String... paths) {
-        return jsonContainsPath(OneOrAll.ONE, paths);
+        return jsonContainsPath(Arrays.asList(paths));
     }
 
     /**
