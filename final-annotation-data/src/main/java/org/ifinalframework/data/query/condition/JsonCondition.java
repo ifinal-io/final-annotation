@@ -166,7 +166,7 @@ public interface JsonCondition<V> extends Condition {
      * @see #notJsonContainsPath(OneOrAll, Collection)
      */
     default Criterion notJsonContainsPath(String... paths) {
-        return notJsonContainsPath(OneOrAll.ONE, paths);
+        return notJsonContainsPath(Arrays.asList(paths));
     }
 
     /**
