@@ -233,33 +233,10 @@ public final class CriterionExpression {
 
     /**
      * <pre class="code">
-     * #{column} LIKE CONCAT('%',#{value})
-     * </pre>
-     */
-    public static final String STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
-        + CDATA_OPEN
-        + "${andOr} ${column} LIKE CONCAT('%',#{${value}})"
-        + CDATA_CLOSE
-        + END_IF;
-
-    /**
-     * <pre class="code">
-     * #{column} NOT LIKE CONCAT('%',#{value})
-     * </pre>
-     */
-    public static final String NOT_STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
-        + CDATA_OPEN
-        + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}})"
-        + CDATA_CLOSE
-        + END_IF;
-
-
-    /**
-     * <pre class="code">
      * #{column} LIKE CONCAT(#{value},'%')
      * </pre>
      */
-    public static final String ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+    public static final String STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} LIKE CONCAT(#{${value}},'%')"
         + CDATA_CLOSE
@@ -270,9 +247,32 @@ public final class CriterionExpression {
      * #{column} NOT LIKE CONCAT(#{value},'%')
      * </pre>
      */
-    public static final String NOT_ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+    public static final String NOT_STARTS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
         + CDATA_OPEN
         + "${andOr} ${column} NOT LIKE CONCAT(#{${value}},'%')"
+        + CDATA_CLOSE
+        + END_IF;
+
+
+    /**
+     * <pre class="code">
+     * #{column} LIKE CONCAT('%',#{value})
+     * </pre>
+     */
+    public static final String ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} LIKE CONCAT('%',#{${value}})"
+        + CDATA_CLOSE
+        + END_IF;
+
+    /**
+     * <pre class="code">
+     * #{column} NOT LIKE CONCAT('%',#{value})
+     * </pre>
+     */
+    public static final String NOT_ENDS_WITH = OPEN_IF + TEST_LIKE + CLOSE_IF
+        + CDATA_OPEN
+        + "${andOr} ${column} NOT LIKE CONCAT('%',#{${value}})"
         + CDATA_CLOSE
         + END_IF;
 

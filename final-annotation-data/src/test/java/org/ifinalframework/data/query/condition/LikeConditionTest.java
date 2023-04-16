@@ -20,9 +20,10 @@ import java.util.regex.Pattern;
 import org.ifinalframework.data.query.CriterionAttributes;
 import org.ifinalframework.data.query.CriterionTarget;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * LikeConditionTest.
@@ -31,15 +32,19 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.5.0
  * @since 1.5.0
  */
-class LikeConditionTest extends ConditionTest{
+@Slf4j
+class LikeConditionTest extends ConditionTest {
     @Test
-    void test(){
-        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*'%123%'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").contains("123"))));
-        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*'%123%'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notContains("123"))));
-        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*'%123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").endsWith("123"))));
-        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*'%123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notEndsWith("123"))));
-        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*'123%'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").startsWith("123"))));
-        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*'123%'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notStartsWith("123"))));
+    void test() {
+        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*CONCAT\\('%','123','%'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").contains("123"))));
+        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*CONCAT\\('%','123','%'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notContains("123"))));
+
+        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*CONCAT\\('%','123'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").endsWith("123"))));
+        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*CONCAT\\('%','123'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notEndsWith("123"))));
+
+        assertTrue(Pattern.matches("AND name\\s*LIKE\\s*CONCAT\\('123','%'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").startsWith("123"))));
+        assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*CONCAT\\('123','%'\\)\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notStartsWith("123"))));
+
         assertTrue(Pattern.matches("AND name\\s*LIKE\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").like("123"))));
         assertTrue(Pattern.matches("AND name\\s*NOT LIKE\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").notLike("123"))));
     }
