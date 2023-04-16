@@ -26,10 +26,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import org.ifinalframework.data.annotation.Metadata;
 import org.ifinalframework.data.query.BetweenValue;
 import org.ifinalframework.data.query.CriterionAttributes;
 import org.ifinalframework.data.query.CriterionExpression;
 import org.ifinalframework.data.query.CriterionTarget;
+import org.ifinalframework.velocity.Velocities;
 
 /**
  * CriterionTargetTest.
@@ -268,6 +271,17 @@ class CriterionTargetTest {
         assertEquals(path, criterion.get("path"));
         assertEquals(VALUE, criterion.getValue());
         assertEquals(CriterionExpression.NOT_JSON_CONTAINS, criterion.getExpression());
+    }
+
+    @Test
+    void jsonArrayContains(){
+        final CriterionAttributes criterion = (CriterionAttributes) CriterionTarget.from(COLUMN).jsonArrayContains("123");
+        final Metadata params = new Metadata();
+        params.setColumn(criterion.getColumn());
+        params.setValue("value");
+        final String eval = Velocities.eval(criterion.getExpression(), params);
+
+
     }
 
 }
