@@ -15,22 +15,13 @@
 
 package org.ifinalframework.data.trigger;
 
-import java.util.List;
-
-import org.springframework.lang.NonNull;
-
 /**
- * BeforeInsertTrigger.
+ * TriggerAction.
  *
  * @author ilikly
- * @version 1.4.3
- * @see AfterInsertTrigger
- * @since 1.4.3
+ * @version 1.5.0
+ * @since 1.5.0
  */
-public interface BeforeInsertTrigger<T> {
-    default void accept(@NonNull List<T> entities) {
-        entities.forEach(this::accept);
-    }
-
-    void accept(@NonNull T entity);
+public enum TriggerAction {
+    PRE_INSERT, POST_INSERT;
 }

@@ -27,13 +27,14 @@ import org.springframework.lang.NonNull;
  * @since 1.5.0
  */
 public interface Trigger<T> {
-    void accept(@NonNull List<T> entities);
+    void accept(@NonNull TriggerAction action, @NonNull List<T> entities);
+
     interface ForEach<T> extends Trigger<T> {
         @Override
-        default void accept(@NonNull List<T> entities) {
-            entities.forEach(this::accept);
+        default void accept(@NonNull TriggerAction action, @NonNull List<T> entities) {
+            entities.forEach(item -> this.accept(action, item));
         }
 
-        void accept(@NonNull T t);
+        void accept(@NonNull TriggerAction action, @NonNull T t);
     }
 }

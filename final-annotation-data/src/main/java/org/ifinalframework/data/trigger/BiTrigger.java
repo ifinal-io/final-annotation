@@ -27,14 +27,14 @@ import org.springframework.lang.NonNull;
  * @since 1.5.0
  */
 public interface BiTrigger<T, V> {
-    void accept(@NonNull List<T> entities, @NonNull V value);
+    void accept(@NonNull TriggerAction action, @NonNull List<T> entities, @NonNull V value);
 
     interface ForEach<T, V> extends BiTrigger<T, V> {
         @Override
-        default void accept(@NonNull List<T> entities, @NonNull V value) {
-            entities.forEach(item -> accept(item, value));
+        default void accept(@NonNull TriggerAction action, @NonNull List<T> entities, @NonNull V value) {
+            entities.forEach(item -> accept(action, item, value));
         }
 
-        void accept(@NonNull T t, @NonNull V value);
+        void accept(@NonNull TriggerAction action, @NonNull T t, @NonNull V value);
     }
 }
