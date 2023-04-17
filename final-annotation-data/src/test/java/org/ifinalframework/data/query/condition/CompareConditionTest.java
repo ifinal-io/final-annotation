@@ -46,6 +46,8 @@ class CompareConditionTest extends ConditionTest{
         assertTrue(Pattern.matches("AND name\\s*>=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").geq("123"))));
         assertTrue(Pattern.matches("AND name\\s*<\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").lt("123"))));
         assertTrue(Pattern.matches("AND name\\s*<=\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").leq("123"))));
+        assertTrue(Pattern.matches("AND name\\s*<\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").before("123"))));
+        assertTrue(Pattern.matches("AND name\\s*>\\s*'123'\\s*", sql((CriterionAttributes) CriterionTarget.from("name").after("123"))));
     }
 
 
