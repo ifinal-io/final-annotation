@@ -23,5 +23,6 @@ package org.ifinalframework.data.trigger;
  * @since 1.5.0
  */
 public enum TriggerAction {
-    PRE_INSERT, POST_INSERT;
+    PRE_INSERT, POST_INSERT,
+    POST_SELECT,
 }
