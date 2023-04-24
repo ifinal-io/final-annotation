@@ -20,6 +20,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 import org.ifinalframework.data.query.condition.CompareCondition;
 
 /**
@@ -33,22 +35,7 @@ import org.ifinalframework.data.query.condition.CompareCondition;
  * @see CompareCondition#eq(Object)
  * @since 1.0.0
  */
-@Criterion(Equal.class)
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Equal {
-
-    /**
-     * property name
-     * @return return property name
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion({
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
         "       ${andOr} ${column} = #{${value}",
@@ -56,12 +43,28 @@ public @interface Equal {
         "           #if($typeHandler), typeHandler=$!{typeHandler.canonicalName}#end }",
         "   ]]>",
         "</if>"
-    };
+})
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Equal {
+
+    /**
+     * property name
+     *
+     * @return property name
+     */
+    @AliasFor(annotation = Criterion.class)
+    String property() default "";
+
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

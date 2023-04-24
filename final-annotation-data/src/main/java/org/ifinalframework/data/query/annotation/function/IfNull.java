@@ -15,24 +15,21 @@
 
 package org.ifinalframework.data.query.annotation.function;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Max.
+ * IfNull.
  *
  * @author ilikly
- * @version 1.0.0
- * @see Min
- * @since 1.0.0
+ * @version 1.5.0
+ * @since 1.5.0
  */
-@Documented
-@Function(annotation = Max.class, value = "MAX(${column})")
+@Function(annotation = IfNull.class, value = "IFNULL(${column},${value})")
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Max {
-
+public @interface IfNull {
+    String value();
 }

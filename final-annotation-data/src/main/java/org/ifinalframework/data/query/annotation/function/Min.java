@@ -29,11 +29,10 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Function(value = Min.class)
+@Function(annotation = Min.class, value = "MIN($(column))")
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Min {
 
-    String[] value() default "MIN($(column))";
 
 }

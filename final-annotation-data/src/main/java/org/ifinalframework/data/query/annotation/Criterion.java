@@ -23,6 +23,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
  * The meta annotation to mark the {@link java.lang.annotation.Annotation} is a criterion annotation. The {@link
  * java.lang.annotation.Annotation} of criterion must have
@@ -87,6 +89,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Criterion {
 
-    Class<? extends Annotation> value();
+    String property() default "";
+
+    String[] value();
+
+    Class<?> javaType() default Object.class;
+
+    Class<? extends Annotation> annotation() default Criterion.class;
 
 }

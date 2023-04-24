@@ -15,13 +15,15 @@
 
 package org.ifinalframework.data.query.annotation;
 
-import org.ifinalframework.data.query.condition.NullCondition;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import org.springframework.core.annotation.AliasFor;
+
+import org.ifinalframework.data.query.condition.NullCondition;
 
 /**
  * Generate sql fragment like {@code column IS NOT NULL} when the target {@link java.lang.reflect.Field} value is not
@@ -34,31 +36,32 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Criterion(IsNotNull.class)
+@Criterion( value = {
+        "<if test=\"${value} != null\">",
+        "   <![CDATA[ ${andOr} ${column} IS NOT NULL]]>",
+        "</if>"
+})
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IsNotNull {
 
     /**
      * property name
+     *
      * @return property name
      */
+    @AliasFor(annotation = Criterion.class)
     String property() default "";
 
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
-        "<if test=\"${value} != null\">",
-        "   <![CDATA[ ${andOr} ${column} IS NOT NULL]]>",
-        "</if>"
-    };
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

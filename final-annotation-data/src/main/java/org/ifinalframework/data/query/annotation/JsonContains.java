@@ -35,20 +35,7 @@ import org.ifinalframework.data.query.condition.JsonCondition;
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Criterion(JsonContains.class)
-public @interface JsonContains {
-
-    /**
-     * property name
-     * @return property nam
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion(annotation = JsonContains.class, value = {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
         "       ${andOr} JSON_CONTAINS( ${column}, #{${value}",
@@ -57,16 +44,27 @@ public @interface JsonContains {
         "       #if($path), '${path}'#end)",
         "   ]]>",
         "</if>"
-    };
+})
+public @interface JsonContains {
+
+    /**
+     * property name
+     *
+     * @return property nam
+     */
+    String property() default "";
+
 
     /**
      * path
+     *
      * @return path
      */
     String path() default "";
 
     /**
      * java type
+     *
      * @return javaType
      */
     Class<?> javaType() default Object.class;

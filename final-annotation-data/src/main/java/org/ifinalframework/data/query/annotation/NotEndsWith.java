@@ -20,36 +20,40 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
  * @author ilikly
  * @version 1.2.1
  * @see Like
  * @since 1.2.1
  */
-@Criterion(NotEndsWith.class)
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface NotEndsWith {
-    /**
-     * property name
-     * @return property name
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion({
         "<if test=\"${value} != null and ${value} != ''\">",
         "    ${andOr} ${column} NOT LIKE CONCAT(#{${value}},'%') ",
         "</if>"
-    };
+})
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NotEndsWith {
+
+    /**
+     * property name
+     *
+     * @return property name
+     */
+    @AliasFor(annotation = Criterion.class)
+    String property() default "";
+
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

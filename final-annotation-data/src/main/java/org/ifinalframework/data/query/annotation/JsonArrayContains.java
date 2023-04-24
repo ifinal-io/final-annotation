@@ -15,7 +15,11 @@
 
 package org.ifinalframework.data.query.annotation;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 import org.ifinalframework.data.query.condition.JsonCondition;
 
@@ -31,20 +35,7 @@ import org.ifinalframework.data.query.condition.JsonCondition;
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Criterion(JsonArrayContains.class)
-public @interface JsonArrayContains {
-
-    /**
-     * property name
-     * @return property nam
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion(annotation = JsonArrayContains.class, value = {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
         "       ${andOr} JSON_CONTAINS( ${column}, JSON_ARRAY(#{${value}",
@@ -53,16 +44,27 @@ public @interface JsonArrayContains {
         "       #if($path), '${path}'#end)",
         "   ]]>",
         "</if>"
-    };
+})
+public @interface JsonArrayContains {
+
+    /**
+     * property name
+     *
+     * @return property nam
+     */
+    String property() default "";
+
 
     /**
      * path
+     *
      * @return path
      */
     String path() default "";
 
     /**
      * java type
+     *
      * @return javaType
      */
     Class<?> javaType() default Object.class;

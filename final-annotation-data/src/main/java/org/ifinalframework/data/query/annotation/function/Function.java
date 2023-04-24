@@ -30,6 +30,8 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 public @interface Function {
 
-    Class<? extends Annotation> value();
+    String[] value();
+
+    Class<? extends Annotation> annotation() default Function.class;
 
 }

@@ -21,6 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
  * JsonKeys.
  *
@@ -29,7 +31,7 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Function(JsonKeys.class)
+@Function(annotation = JsonKeys.class,value = "JSON_KEYS(${column},${path})")
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonKeys {
@@ -38,12 +40,14 @@ public @interface JsonKeys {
      * json_keys
      * @return json_keys
      */
-    String[] value() default "JSON_KEYS(${column},${path})";
+    @AliasFor("path")
+    String[] value() default "";
 
     /**
      * json path
      * @return json path
      */
+    @AliasFor("value")
     String path() default "";
 
 }

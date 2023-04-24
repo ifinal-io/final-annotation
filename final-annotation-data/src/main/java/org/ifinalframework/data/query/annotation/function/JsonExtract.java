@@ -21,6 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
  * JsonExtract.
  *
@@ -29,21 +31,25 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Function(JsonExtract.class)
+@Function(value = "JSON_EXTRACT(${column},${path})", annotation = JsonExtract.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonExtract {
 
     /**
      * sql value
+     *
      * @return sql value
      */
-    String[] value() default "JSON_EXTRACT(${column},${path})";
+    @AliasFor("path")
+    String value() default "";
 
     /**
      * json path
+     *
      * @return json path
      */
+    @AliasFor("value")
     String path() default "";
 
 }

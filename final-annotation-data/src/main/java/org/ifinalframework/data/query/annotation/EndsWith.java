@@ -20,6 +20,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 import org.ifinalframework.data.query.condition.LikeCondition;
 
 /**
@@ -28,31 +30,32 @@ import org.ifinalframework.data.query.condition.LikeCondition;
  * @see LikeCondition#endsWith(String)
  * @since 1.2.1
  */
-@Criterion(EndsWith.class)
+@Criterion({
+        "<if test=\"${value} != null and ${value} != ''\">",
+        "     ${andOr} ${column} LIKE CONCAT(#{${value}},'%') ",
+        "</if>"
+})
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EndsWith {
 
     /**
      * property name
+     *
      * @return property name
      */
+    @AliasFor(annotation = Criterion.class)
     String property() default "";
 
-    /**
-     * sql criterion
-     * @return sql criterion
-     */
-    String[] value() default {
-        "<if test=\"${value} != null and ${value} != ''\">",
-        "     ${andOr} ${column} LIKE CONCAT(#{${value}},'%') ",
-        "</if>"
-    };
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

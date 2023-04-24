@@ -20,6 +20,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 import org.ifinalframework.data.query.condition.JsonCondition;
 
 /**
@@ -32,19 +34,7 @@ import org.ifinalframework.data.query.condition.JsonCondition;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Criterion(NotJsonContains.class)
-public @interface NotJsonContains {
-    /**
-     * property name
-     * @return property name
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion(annotation = NotJsonContains.class, value = {
         "<if test=\"${value} != null\">",
         "   <![CDATA[",
         "       ${andOr} !JSON_CONTAINS( ${column}, #{${value}",
@@ -53,18 +43,37 @@ public @interface NotJsonContains {
         "       #if($path), '${path}'#end)",
         "   ]]>",
         "</if>"
-    };
+})
+public @interface NotJsonContains {
+    /**
+     * property name
+     *
+     * @return property name
+     */
+    @AliasFor(annotation = Criterion.class)
+    String property() default "";
+
+    /**
+     * value
+     *
+     * @return value
+     */
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * json path
+     *
      * @return json path
      */
     String path() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

@@ -15,15 +15,16 @@
 
 package org.ifinalframework.data.query.annotation;
 
-import org.ifinalframework.data.query.QProperty;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.annotation.AliasFor;
+
 import org.ifinalframework.data.query.BetweenValue;
+import org.ifinalframework.data.query.QProperty;
 
 /**
  * <pre class="code">
@@ -38,22 +39,7 @@ import org.ifinalframework.data.query.BetweenValue;
  * @since 1.0.0
  */
 @Documented
-@Criterion(Between.class)
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Between {
-
-    /**
-     * property name
-     * @return property name
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion({
         "<if test=\"${value} != null and ${value}.min != null and ${value}.max != null\">",
         "    <![CDATA[",
         "       ${andOr} ${column} BETWEEN #{${value}.min",
@@ -64,12 +50,28 @@ public @interface Between {
         "           #if($typeHandler),typeHandler=$!{typeHandler.canonicalName}#end}",
         "       ]]>",
         "</if>"
-    };
+})
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Between {
+
+    /**
+     * property name
+     *
+     * @return property name
+     */
+    @AliasFor(annotation = Criterion.class)
+    String property() default "";
+
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }

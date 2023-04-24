@@ -21,6 +21,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.Collection;
 
+import org.springframework.core.annotation.AliasFor;
+
 import org.ifinalframework.data.query.condition.InCondition;
 
 /**
@@ -30,32 +32,34 @@ import org.ifinalframework.data.query.condition.InCondition;
  * @see InCondition#nin(Collection)
  * @since 1.0.0
  */
-@Criterion(NotIn.class)
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface NotIn {
-    /**
-     * property name
-     * @return property name
-     */
-    String property() default "";
-
-    /**
-     * value
-     * @return value
-     */
-    String[] value() default {
+@Criterion({
         "<if test=\"${value} != null\">",
         "   <foreach collection=\"${value}\" item=\"item\" open=\" ${andOr} ${column} NOT IN (\" close=\")\" separator=\",\">",
         "       #{item}",
         "   </foreach>",
         "</if>"
-    };
+})
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NotIn {
+
+    /**
+     * property name
+     *
+     * @return property name
+     */
+    @AliasFor(annotation = Criterion.class)
+    String property() default "";
+
+    @AliasFor(annotation = Criterion.class, value = "property")
+    String value() default "";
 
     /**
      * java type
+     *
      * @return java type
      */
+    @AliasFor(annotation = Criterion.class)
     Class<?> javaType() default Object.class;
 
 }
