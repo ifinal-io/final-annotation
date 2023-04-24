@@ -17,7 +17,7 @@ package org.ifinalframework.data.query;
 
 import org.springframework.core.annotation.AnnotationAttributes;
 
-import org.ifinalframework.data.query.annotation.CriterionSqlProvider;
+import org.ifinalframework.data.annotation.criterion.CriterionSqlProvider;
 
 /**
  * @author ilikly

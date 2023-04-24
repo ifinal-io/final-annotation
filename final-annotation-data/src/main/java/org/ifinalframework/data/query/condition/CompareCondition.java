@@ -23,12 +23,12 @@ import org.ifinalframework.data.query.CriterionExpression;
 
 import java.util.function.Consumer;
 
-import org.ifinalframework.data.query.annotation.Equal;
-import org.ifinalframework.data.query.annotation.GreatThan;
-import org.ifinalframework.data.query.annotation.GreatThanEqual;
-import org.ifinalframework.data.query.annotation.LessThan;
-import org.ifinalframework.data.query.annotation.LessThanEqual;
-import org.ifinalframework.data.query.annotation.NotEqual;
+import org.ifinalframework.data.annotation.criterion.Equal;
+import org.ifinalframework.data.annotation.criterion.GreatThan;
+import org.ifinalframework.data.annotation.criterion.GreatThanEqual;
+import org.ifinalframework.data.annotation.criterion.LessThan;
+import org.ifinalframework.data.annotation.criterion.LessThanEqual;
+import org.ifinalframework.data.annotation.criterion.NotEqual;
 
 /**
  * CompareCondition.

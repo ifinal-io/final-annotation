@@ -19,14 +19,14 @@ import org.springframework.lang.Nullable;
 
 import org.ifinalframework.data.query.Criterion;
 import org.ifinalframework.data.query.CriterionExpression;
-import org.ifinalframework.data.query.annotation.Contains;
-import org.ifinalframework.data.query.annotation.EndsWith;
-import org.ifinalframework.data.query.annotation.Like;
-import org.ifinalframework.data.query.annotation.NotContains;
-import org.ifinalframework.data.query.annotation.NotEndsWith;
-import org.ifinalframework.data.query.annotation.NotLike;
-import org.ifinalframework.data.query.annotation.NotStartsWith;
-import org.ifinalframework.data.query.annotation.StartsWith;
+import org.ifinalframework.data.annotation.criterion.Contains;
+import org.ifinalframework.data.annotation.criterion.EndsWith;
+import org.ifinalframework.data.annotation.criterion.Like;
+import org.ifinalframework.data.annotation.criterion.NotContains;
+import org.ifinalframework.data.annotation.criterion.NotEndsWith;
+import org.ifinalframework.data.annotation.criterion.NotLike;
+import org.ifinalframework.data.annotation.criterion.NotStartsWith;
+import org.ifinalframework.data.annotation.criterion.StartsWith;
 
 /**
  * LikeCondition.

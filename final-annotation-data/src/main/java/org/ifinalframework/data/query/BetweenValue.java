@@ -17,8 +17,8 @@ package org.ifinalframework.data.query;
 
 import java.io.Serializable;
 
-import org.ifinalframework.data.query.annotation.Between;
-import org.ifinalframework.data.query.annotation.NotBetween;
+import org.ifinalframework.data.annotation.criterion.Between;
+import org.ifinalframework.data.annotation.criterion.NotBetween;
 import org.ifinalframework.data.query.condition.BetweenCondition;
 
 import lombok.AllArgsConstructor;

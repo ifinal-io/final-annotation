@@ -17,8 +17,8 @@ package org.ifinalframework.data.query.condition;
 
 import org.ifinalframework.data.query.Criterion;
 import org.ifinalframework.data.query.CriterionExpression;
-import org.ifinalframework.data.query.annotation.IsNotNull;
-import org.ifinalframework.data.query.annotation.IsNull;
+import org.ifinalframework.data.annotation.criterion.IsNotNull;
+import org.ifinalframework.data.annotation.criterion.IsNull;
 
 /**
  * NullCondition.

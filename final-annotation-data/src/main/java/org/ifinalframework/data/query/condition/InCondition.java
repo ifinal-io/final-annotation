@@ -22,8 +22,8 @@ import org.ifinalframework.data.query.CriterionExpression;
 
 import java.util.Collection;
 
-import org.ifinalframework.data.query.annotation.In;
-import org.ifinalframework.data.query.annotation.NotIn;
+import org.ifinalframework.data.annotation.criterion.In;
+import org.ifinalframework.data.annotation.criterion.NotIn;
 
 /**
  * InCondition.

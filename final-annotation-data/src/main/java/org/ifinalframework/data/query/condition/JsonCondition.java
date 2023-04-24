@@ -26,8 +26,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
-import org.ifinalframework.data.query.annotation.JsonContains;
-import org.ifinalframework.data.query.annotation.NotJsonContains;
+import org.ifinalframework.data.annotation.criterion.JsonContains;
+import org.ifinalframework.data.annotation.criterion.NotJsonContains;
 
 /**
  * A condition for sql json criterion.
