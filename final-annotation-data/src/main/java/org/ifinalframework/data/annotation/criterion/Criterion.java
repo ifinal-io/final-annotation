@@ -15,13 +15,13 @@
 
 package org.ifinalframework.data.annotation.criterion;
 
-import org.ifinalframework.data.query.CriterionAttributes;
-
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import org.ifinalframework.data.query.CriterionAttributes;
 
 /**
  * The meta annotation to mark the {@link java.lang.annotation.Annotation} is a criterion annotation. The {@link
@@ -83,7 +83,7 @@ import java.lang.annotation.Target;
  * @see NotBetween
  * @since 1.0.0
  */
-@Target({ElementType.ANNOTATION_TYPE})
+@Target({ElementType.ANNOTATION_TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Criterion {
 
