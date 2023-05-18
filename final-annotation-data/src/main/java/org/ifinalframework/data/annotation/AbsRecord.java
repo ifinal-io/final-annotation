@@ -21,6 +21,7 @@ import org.ifinalframework.core.IRecord;
 import org.ifinalframework.core.IUser;
 import org.ifinalframework.core.lang.Transient;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -106,6 +107,7 @@ public class AbsRecord extends AbsEntity implements IRecord<Long, IUser<Long>> {
                             }
                     )
             })
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private IUser<Long> creator;
 
     @LastModifier
@@ -180,6 +182,7 @@ public class AbsRecord extends AbsEntity implements IRecord<Long, IUser<Long>> {
                             }
                     )
             })
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private IUser<Long> lastModifier;
 
 }
