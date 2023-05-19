@@ -19,11 +19,9 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -37,11 +35,11 @@ import static org.mockito.Mockito.*;
 class UpdateConsumerTest {
 
     @Spy
-    private UpdateConsumer.ForEach consumer;
+    private BiConsumer.ForEach consumer;
 
     @Test
     void accept() {
-        consumer.accept(null,null, Collections.singletonList(new Object()),null,null);
-        verify(consumer, atLeastOnce()).accept(any(),any(),any(),any(),any());
+        consumer.accept(null, null, Collections.singletonList(new Object()), null, null);
+        verify(consumer, atLeastOnce()).accept(any(), any(), any(), any(), any());
     }
 }

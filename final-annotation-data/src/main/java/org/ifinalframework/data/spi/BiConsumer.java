@@ -21,18 +21,17 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 /**
- * PreUpdateConsumer.
+ * BiConsumer.
  *
  * @author ilikly
  * @version 1.5.0
  * @since 1.5.0
  */
-@FunctionalInterface
-public interface UpdateConsumer<T, V, U> {
+public interface BiConsumer<T, V, U> {
     void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user);
 
     @FunctionalInterface
-    interface ForEach<T, V, U> extends UpdateConsumer<T, V, U> {
+    interface ForEach<T, V, U> extends BiConsumer<T, V, U> {
         @Override
         default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user) {
             entities.forEach(item -> accept(action, advice, item, value, user));
