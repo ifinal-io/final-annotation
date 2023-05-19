@@ -24,7 +24,7 @@ import org.springframework.lang.NonNull;
  *
  * @author ilikly
  * @version 1.4.3
- * @see UpdateConsumer
+ * @see BiConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
@@ -34,6 +34,7 @@ public interface Consumer<T, U> {
      * @param action   the spi action.
      * @param entities the entities will be deleted, maybe empty.
      * @param user     operator user.
+     *
      * @since 1.4.3
      */
     void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user);
