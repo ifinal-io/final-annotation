@@ -35,7 +35,6 @@ public interface AfterThrowingQueryConsumer<T, Q, U> {
     @FunctionalInterface
     interface ForEach<T, Q, U> extends AfterThrowingQueryConsumer<T, Q, U> {
 
-
         default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e) {
             if (CollectionUtils.isEmpty(entities)) {
                 accept(action, (T) null, query, user, e);
