@@ -21,18 +21,18 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 /**
- * PreUpdateConsumer.
+ * BiValidator.
  *
  * @author ilikly
  * @version 1.5.0
  * @since 1.5.0
  */
 @FunctionalInterface
-public interface PreUpdateValidator<T, V, U> {
+public interface BiValidator<T, V, U> {
     void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user);
 
     @FunctionalInterface
-    interface ForEach<T, V, U> extends PreUpdateValidator<T, V, U> {
+    interface ForEach<T, V, U> extends BiValidator<T, V, U> {
         @Override
         default void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user) {
             entities.forEach(item -> validate(item, value, user));

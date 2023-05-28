@@ -23,7 +23,7 @@ import org.springframework.lang.Nullable;
  *
  * @author ilikly
  * @version 1.4.3
- * @see PreUpdateValidator
+ * @see BiValidator
  * @since 1.4.3
  */
 @FunctionalInterface
