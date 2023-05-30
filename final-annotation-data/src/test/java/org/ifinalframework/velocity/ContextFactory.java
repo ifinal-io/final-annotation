@@ -13,33 +13,30 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.data.query;
+package org.ifinalframework.velocity;
 
-import java.util.Arrays;
-import java.util.List;
+import org.apache.velocity.context.Context;
+import org.apache.velocity.exception.VelocityException;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 /**
- * CriterionTargetTest.
+ * Velocity {@link Context} factory.
  *
  * @author ilikly
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.2.4
+ * @see Context
+ * @since 1.2.4
  */
-@Slf4j
-class CriterionTargetTest {
-
-    public static final String COLUMN = "name";
-
-    public static final String VALUE = "haha";
-
-    private static final int MIN = 1;
-
-    private static final int MAX = 10;
-
-    private static final BetweenValue<Integer> BETWEEN_VALUE = new BetweenValue<>(MIN, MAX);
-
-    private static final List<Integer> IN_VALUE = Arrays.asList(MIN, MAX);
-
+@FunctionalInterface
+public interface ContextFactory {
+    /**
+     * Create a {@link Context} from {@code param}.
+     *
+     * @param param context param.
+     * @throws VelocityException velocity context exception.
+     */
+    @NonNull
+    Context create(@Nullable Object param) throws VelocityException;
 }

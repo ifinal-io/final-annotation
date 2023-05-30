@@ -15,7 +15,9 @@
 
 package org.ifinalframework.data.query;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.Collections;
+import java.util.Map;
+
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.mapping.SqlSource;
@@ -23,17 +25,12 @@ import org.apache.ibatis.ognl.OgnlException;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.scripting.xmltags.XMLLanguageDriver;
 import org.apache.ibatis.session.Configuration;
+
 import org.ifinalframework.velocity.Velocities;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.ifinalframework.data.query.Criterion;
-import org.ifinalframework.data.query.CriterionAttributes;
-import org.ifinalframework.data.query.CriterionExpression;
-import org.ifinalframework.data.query.CriterionTarget;
-
-import java.util.Collections;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

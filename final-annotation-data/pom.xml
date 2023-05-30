@@ -90,6 +90,18 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
+        <!--Velocity-->
+        <dependency>
+            <artifactId>velocity-engine-core</artifactId>
+            <groupId>org.apache.velocity</groupId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <artifactId>velocity-tools-generic</artifactId>
+            <groupId>org.apache.velocity.tools</groupId>
+            <scope>test</scope>
+        </dependency>
+        <!--Velocity-->
     </dependencies>
 
 </project>
