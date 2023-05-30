@@ -21,13 +21,13 @@
     <parent>
         <groupId>org.ifinalframework.project</groupId>
         <artifactId>final-project</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.ifinalframework.annotation</groupId>
     <artifactId>final-annotation</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.1-SNAPSHOT</version>
 
     <modules>
         <module>final-annotation-core</module>
@@ -41,7 +41,7 @@
     <name>final-annotation</name>
     <description>Define annotation and interface for final framework.</description>
     <properties>
-        <final.version>1.5.0</final.version>
+        <final.version>1.5.1-SNAPSHOT</final.version>
         <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -72,32 +72,32 @@
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-core</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-data</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-sharding</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-cache</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-monitor</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.ifinalframework.annotation</groupId>
                 <artifactId>final-annotation-web</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
