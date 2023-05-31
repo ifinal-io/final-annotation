@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Function(annotation = Max.class, value = "MAX(${column})")
+@Function(value = "MAX(${column})")
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Max {

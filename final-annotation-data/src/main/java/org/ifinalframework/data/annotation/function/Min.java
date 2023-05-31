@@ -22,14 +22,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Max.
+ * Min.
  *
  * @author ilikly
  * @version 1.0.0
+ * @see Max
  * @since 1.0.0
  */
 @Documented
-@Function(annotation = Min.class, value = "MIN($(column))")
+@Function(value = "MIN($(column))")
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Min {
