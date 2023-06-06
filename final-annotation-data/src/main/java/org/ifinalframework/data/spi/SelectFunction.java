@@ -15,16 +15,14 @@
 
 package org.ifinalframework.data.spi;
 
-import java.util.List;
-
 /**
- * UpdateAction.
+ * SelectAction.
  *
  * @author ilikly
  * @version 1.5.1
  * @since 1.5.1
  */
 @FunctionalInterface
-public interface UpdateAction<T, P, V, U> {
-    Integer update(List<T> entities, P param, V value, U user);
+public interface SelectFunction<R, P, U> {
+    R select(P param, U user);
 }
