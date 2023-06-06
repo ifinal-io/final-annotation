@@ -23,6 +23,6 @@ package org.ifinalframework.data.spi;
  * @since 1.5.1
  */
 @FunctionalInterface
-public interface SelectFunction<R, P, U> {
+public interface SelectFunction<P, U, R> {
     R select(P param, U user);
 }
