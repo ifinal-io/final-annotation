@@ -48,7 +48,7 @@ public enum SpiAction {
     @RequiredArgsConstructor
     @Getter
     public enum Advice {
-        PRE("Pre"), POST("Post"), AFTER_THROWING("AfterThrowing"), AFTER_RETURNING("AfterReturning");
+        PRE("Pre"), POST("Post"),AFTER("After"), AFTER_THROWING("AfterThrowing"), AFTER_RETURNING("AfterReturning");
 
         private final String value;
 
