@@ -17,9 +17,9 @@
 
 package org.ifinalframework.core;
 
-import java.io.Serializable;
-
 import org.springframework.lang.Nullable;
+
+import java.io.Serializable;
 
 /**
  * The interface of {@code user} which impl the interface of {@link IEntity} in the system.
@@ -28,7 +28,7 @@ import org.springframework.lang.Nullable;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface IUser<I extends Serializable> extends IEntity<I> {
+public interface IUser<I extends Serializable> extends IEntity<I>, IName {
 
 
     /**
@@ -54,6 +54,7 @@ public interface IUser<I extends Serializable> extends IEntity<I> {
      *
      * @return name.
      */
+    @Override
     String getName();
 
     /**
@@ -61,6 +62,7 @@ public interface IUser<I extends Serializable> extends IEntity<I> {
      *
      * @param name name.
      */
+    @Override
     void setName(String name);
 
 }

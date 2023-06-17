@@ -43,6 +43,6 @@ public interface AfterConsumer<T, P, V, R, U> {
             }
         }
 
-        void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull P query, @Nullable V value, @Nullable R result, @NonNull U user, @NonNull Throwable e);
+        void accept(@NonNull SpiAction action, @Nullable T entity, @NonNull P param, @Nullable V value, @Nullable R result, @NonNull U user, @NonNull Throwable e);
     }
 }
