@@ -15,6 +15,9 @@
 
 package org.ifinalframework.data.spi;
 
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 /**
  * SelectAction.
  *
@@ -24,5 +27,13 @@ package org.ifinalframework.data.spi;
  */
 @FunctionalInterface
 public interface SelectFunction<P, U, R> {
-    R select(P param, U user);
+    /**
+     * select something with param and user.
+     *
+     * @param param select param.
+     * @param user  select user.
+     * @return something selected.
+     */
+    @Nullable
+    R select(@NonNull P param, @NonNull U user);
 }
