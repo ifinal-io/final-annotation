@@ -25,15 +25,14 @@ import java.util.List;
  * @since 1.5.1
  */
 @FunctionalInterface
-public interface UpdateFunction<T, P, V, U> {
+public interface DeleteFunction<T, P, U> {
     /**
-     * Update or delete something with param and value by user.
+     * delete something with param by user.
      *
      * @param entities will update and delete entities.
      * @param param    update or delete param, maybe null.
-     * @param value    update value.
      * @param user     operator user.
      * @return update or delete rows.
      */
-    Integer update(List<T> entities, P param, V value, U user);
+    Integer delete(List<T> entities, P param, U user);
 }
