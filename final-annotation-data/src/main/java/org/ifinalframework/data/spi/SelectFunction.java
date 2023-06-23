@@ -23,6 +23,8 @@ import org.springframework.lang.Nullable;
  *
  * @author ilikly
  * @version 1.5.1
+ * @see UpdateFunction
+ * @see DeleteFunction
  * @since 1.5.1
  */
 @FunctionalInterface

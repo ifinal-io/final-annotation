@@ -22,6 +22,8 @@ import java.util.List;
  *
  * @author ilikly
  * @version 1.5.1
+ * @see SelectFunction
+ * @see DeleteFunction
  * @since 1.5.1
  */
 @FunctionalInterface
