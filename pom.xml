@@ -42,7 +42,7 @@
     <description>Define annotation and interface for final framework.</description>
     <properties>
         <final.version>1.5.2-SNAPSHOT</final.version>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
 
         <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>

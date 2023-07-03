@@ -17,7 +17,8 @@
 
 package org.ifinalframework.core;
 
-import javax.validation.groups.Default;
+
+import jakarta.validation.groups.Default;
 
 /**
  * The marked interface of {@code view}.

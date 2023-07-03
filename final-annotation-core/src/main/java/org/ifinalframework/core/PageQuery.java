@@ -15,13 +15,13 @@
 
 package org.ifinalframework.core;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
