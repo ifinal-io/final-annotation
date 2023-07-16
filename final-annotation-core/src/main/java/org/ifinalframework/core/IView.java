@@ -47,6 +47,10 @@ public interface IView extends Default {
 
     }
 
+    interface Patch extends IView{
+
+    }
+
     interface Delete extends IView {
 
     }
