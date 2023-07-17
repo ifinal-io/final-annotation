@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2021 the original author or authors.
+ * Copyright 2020-2023 the original author or authors.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,21 +13,29 @@
  * limitations under the License.
  */
 
-package org.ifinalframework.core;
-
-import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
+package org.ifinalframework.data.query;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.ifinalframework.core.Groupable;
+import org.ifinalframework.core.IQuery;
+import org.ifinalframework.core.Limitable;
+import org.ifinalframework.core.Orderable;
+import org.ifinalframework.core.Pageable;
+import org.ifinalframework.core.Viewable;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@linkplain IQuery query} with {@link Pageable}, {@link Orderable},{@link Limitable} and {@link Groupable}.
@@ -52,6 +60,9 @@ public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limita
      * 默认分页容量
      */
     private static final Integer DEFAULT_SIZE = 20;
+
+    @Getter
+    private final Criteria criteria = new Criteria();
 
     /**
      * return the page index number for pageable, start from {@code 1}, could be null.
@@ -94,6 +105,36 @@ public class PageQuery implements IQuery, Pageable, Groupable, Orderable, Limita
             this.page = page;
         }
     }
+
+    /**
+     * where
+     *
+     * @param criteria criteria
+     * @return query
+     */
+    public PageQuery where(@NonNull Criterion... criteria) {
+        return where(Arrays.asList(criteria));
+    }
+
+    /**
+     * where
+     *
+     * @param criteria criteria
+     * @return query
+     */
+    public PageQuery where(@NonNull Collection<Criterion> criteria) {
+        return where(AndOr.AND, criteria);
+    }
+
+    public PageQuery where(AndOr andOr, @NonNull Collection<Criterion> criteria) {
+        if (AndOr.AND == andOr) {
+            this.criteria.addAll(criteria);
+        } else {
+            this.criteria.add(Criteria.or(criteria));
+        }
+        return this;
+    }
+
 
     /**
      * add order to {@link #orders}

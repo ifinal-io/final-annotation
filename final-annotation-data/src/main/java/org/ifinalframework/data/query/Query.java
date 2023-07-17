@@ -15,15 +15,11 @@
 
 package org.ifinalframework.data.query;
 
-import java.util.Arrays;
-import java.util.Collection;
-
+import org.ifinalframework.core.IQuery;
 import org.springframework.lang.NonNull;
 
-import org.ifinalframework.core.IQuery;
-import org.ifinalframework.core.PageQuery;
-
-import lombok.Getter;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Class can be used to build a {@linkplain IQuery query} instance from java.
@@ -38,9 +34,6 @@ import lombok.Getter;
  * @since 1.0.0
  */
 public class Query extends PageQuery {
-
-    @Getter
-    private final Criteria criteria = new Criteria();
 
     public Query() {
         super.setPage(null);
@@ -97,6 +90,7 @@ public class Query extends PageQuery {
      * @param criteria criteria
      * @return query
      */
+    @Override
     public Query where(@NonNull Criterion... criteria) {
         return where(Arrays.asList(criteria));
     }
@@ -107,16 +101,14 @@ public class Query extends PageQuery {
      * @param criteria criteria
      * @return query
      */
+    @Override
     public Query where(@NonNull Collection<Criterion> criteria) {
         return where(AndOr.AND, criteria);
     }
 
+    @Override
     public Query where(AndOr andOr, @NonNull Collection<Criterion> criteria) {
-        if (AndOr.AND == andOr) {
-            this.criteria.addAll(criteria);
-        } else {
-            this.criteria.add(Criteria.or(criteria));
-        }
+        super.where(andOr, criteria);
         return this;
     }
 

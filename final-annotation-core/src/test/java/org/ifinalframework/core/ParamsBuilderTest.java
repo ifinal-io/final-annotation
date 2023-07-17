@@ -28,7 +28,7 @@ class ParamsBuilderTest {
                 .update(1)
                 .update(update)
                 .selective(true)
-                .query(new PageQuery())
+//                .query(new PageQuery())
                 .id(1L)
                 .ids(Arrays.asList(1L,2L))
                 .build();
