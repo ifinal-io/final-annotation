@@ -27,28 +27,30 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 public enum SpiAction {
-    CREATE("Insert"),
-    DELETE("Delete"),
-    UPDATE("Update"),
-    UPDATE_YN("UpdateYn"),
-    UPDATE_LOCKED("UpdateLocked"),
-    UPDATE_STATUS("UpdateStatus"),
-    UPDATE_AUDIT_STATUS("UpdateAuditStatus"),
-    LIST("List", "Query"),
+    CREATE("create", "Insert"),
+    DELETE("delete", "Delete"),
+    UPDATE("update", "Update"),
+    UPDATE_YN("yn", "UpdateYn"),
+    UPDATE_LOCKED("lock", "UpdateLocked"),
+    UPDATE_STATUS("status", "UpdateStatus"),
+    UPDATE_AUDIT_STATUS("audit", "UpdateAuditStatus"),
+    LIST("list", "List", "Query"),
 
-    DETAIL("Detail", "Query"),
-    COUNT("CountQuery", "Query");
+    DETAIL("detail", "Detail", "Query"),
+    COUNT("count", "CountQuery", "Query");
 
+    private final String authority;
     private final String[] values;
 
-    SpiAction(String... values) {
+    SpiAction(String authority, String... values) {
+        this.authority = authority;
         this.values = values;
     }
 
     @RequiredArgsConstructor
     @Getter
     public enum Advice {
-        PRE("Pre"), POST("Post"),AFTER("After"), AFTER_THROWING("AfterThrowing"), AFTER_RETURNING("AfterReturning");
+        PRE("Pre"), POST("Post"), AFTER("After"), AFTER_THROWING("AfterThrowing"), AFTER_RETURNING("AfterReturning");
 
         private final String value;
 

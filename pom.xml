@@ -36,6 +36,7 @@
         <module>final-annotation-cache</module>
         <module>final-annotation-monitor</module>
         <module>final-annotation-web</module>
+        <module>final-annotation-security</module>
     </modules>
 
     <name>final-annotation</name>
