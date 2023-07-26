@@ -37,7 +37,9 @@ public enum SpiAction {
     LIST("list", "List", "Query"),
 
     DETAIL("detail", "Detail", "Query"),
-    COUNT("count", "CountQuery", "Query");
+    COUNT("count", "CountQuery", "Query"),
+
+    EXPORT("export", "ExportQuery", "ListQuery", "Query");
 
     private final String authority;
     private final String[] values;
