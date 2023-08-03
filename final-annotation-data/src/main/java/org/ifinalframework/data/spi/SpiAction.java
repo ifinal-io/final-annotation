@@ -57,4 +57,17 @@ public enum SpiAction {
         private final String value;
 
     }
+
+    public enum Type {
+        CREATE,
+        DELETE_BY_QUERY, DELETE_BY_ID,
+        LIST_BY_QUERY,
+        DETAIL_BY_QUERY, DETAIL_BY_ID,
+        UPDATE_BY_ID,
+        UPDATE_YN_BY_ID,
+        UPDATE_LOCKED_BY_ID,
+        UPDATE_STATUS_BY_ID,
+        UPDATE_AUDIT_STATUS_BY_ID,
+        COUNT_BY_QUERY
+    }
 }
