@@ -62,6 +62,7 @@ public enum SpiAction {
         CREATE,
         DELETE_BY_QUERY, DELETE_BY_ID,
         LIST_BY_QUERY,
+        EXPORT_BY_QUERY,
         DETAIL_BY_QUERY, DETAIL_BY_ID,
         UPDATE_BY_ID,
         UPDATE_YN_BY_ID,
