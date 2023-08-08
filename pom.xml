@@ -43,7 +43,7 @@
     <name>final-annotation</name>
     <description>Define annotation and interface for final framework.</description>
     <properties>
-        <final.version>1.5.2</final.version>
+        <final.version>1.5.3-SNAPSHOT</final.version>
         <java.version>17</java.version>
 
         <sonar.projectKey>final-projects_final-annotation</sonar.projectKey>
