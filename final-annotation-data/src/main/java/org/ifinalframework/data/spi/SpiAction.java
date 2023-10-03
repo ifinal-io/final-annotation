@@ -39,7 +39,7 @@ public enum SpiAction {
     DETAIL("detail", "Detail", "Query"),
     COUNT("count", "CountQuery", "Query"),
 
-    EXPORT("export", "ExportQuery", "ListQuery", "Query");
+    EXPORT("export", "ExportQuery", "ListQuery", "Query"), SORT("sort", "Sort");
 
     private final String authority;
     private final String[] values;
@@ -60,6 +60,7 @@ public enum SpiAction {
 
     public enum Type {
         CREATE,
+        SORT,
         DELETE_BY_QUERY, DELETE_BY_ID,
         LIST_BY_QUERY,
         EXPORT_BY_QUERY,
