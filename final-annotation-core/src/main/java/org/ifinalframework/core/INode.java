@@ -15,12 +15,20 @@
 
 package org.ifinalframework.core;
 
+import java.util.List;
+
 /**
- * ITree
+ * INode
  *
  * @author mik
  * @since 1.5.5
  **/
-@Deprecated
-public interface ITree<T> extends INode<T> {
+public interface INode<T> {
+    void setParentId(Long id);
+
+    Long getParentId();
+
+    void setChildren(List<T> children);
+
+    List<T> getChildren();
 }
