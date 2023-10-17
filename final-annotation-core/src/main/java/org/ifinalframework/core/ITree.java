@@ -22,5 +22,5 @@ package org.ifinalframework.core;
  * @since 1.5.5
  **/
 @Deprecated
-public interface ITree<T> extends INode<T> {
+public interface ITree<K, T> extends INode<K, T> {
 }

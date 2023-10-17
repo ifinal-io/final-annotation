@@ -23,10 +23,10 @@ import java.util.List;
  * @author mik
  * @since 1.5.5
  **/
-public interface INode<T> {
-    void setParentId(Long id);
+public interface INode<K, T> {
+    void setParentId(K id);
 
-    Long getParentId();
+    K getParentId();
 
     void setChildren(List<T> children);
 
