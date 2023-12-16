@@ -27,7 +27,7 @@ import java.util.List;
  * @since 1.5.1
  */
 @FunctionalInterface
-public interface UpdateFunction<T, P1, P2, V, U> {
+public interface UpdateFunction<T, P1, P2, V, U> extends UpdateProperty<T> {
     /**
      * Update or delete something with param and value by user.
      *
@@ -37,5 +37,31 @@ public interface UpdateFunction<T, P1, P2, V, U> {
      * @param user     operator user.
      * @return update or delete rows.
      */
-    Integer update(List<T> entities, P1 param, P2 param2, V value, U user);
+    default Integer update(List<T> entities, P1 param, P2 param2, V value, U user) {
+        return update(entities, null, param, param2, value, user);
+    }
+
+    /**
+     * Update entity property with param and value by user.
+     *
+     * @param entities the entity will be updated.
+     * @param property the property will be updated, {@code null} means update entity.
+     * @param param    the first param.
+     * @param param2   the second param.
+     * @param value    the value will be updated.
+     * @param user     the operator user.
+     * @return update rows.
+     * @since 1.5.6
+     */
+    Integer update(List<T> entities, String property, P1 param, P2 param2, V value, U user);
+
+    /**
+     * Get update property, {@code null} means update entity.
+     *
+     * @return update property.
+     */
+    @Override
+    default String getProperty() {
+        return null;
+    }
 }

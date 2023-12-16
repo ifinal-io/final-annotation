@@ -25,7 +25,8 @@ import java.util.List;
  * @author mik
  * @since 1.5.2
  **/
-public interface UpdateConsumer<T, V, U> {
+@FunctionalInterface
+public interface UpdateConsumer<T, V, U> extends UpdateProperty<T> {
     /**
      * @param action   the spi action.
      * @param entities the entities will be deleted, maybe empty.
@@ -33,6 +34,11 @@ public interface UpdateConsumer<T, V, U> {
      * @since 1.4.3
      */
     void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull V value, @NonNull U user);
+
+    @Override
+    default String getProperty() {
+        return null;
+    }
 
     @FunctionalInterface
     interface ForEach<T, V, U> extends UpdateConsumer<T, V, U> {
