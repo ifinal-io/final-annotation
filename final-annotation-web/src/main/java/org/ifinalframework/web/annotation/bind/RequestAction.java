@@ -15,7 +15,7 @@
 
 package org.ifinalframework.web.annotation.bind;
 
-import org.ifinalframework.data.spi.SpiAction;
+import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -31,7 +31,14 @@ import java.lang.annotation.Target;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RequestAction {
+    @AliasFor("value")
+    String action() default "";
+
+    @AliasFor("action")
+    String value() default "";
+
     String resource() default "resource";
 
-    SpiAction.Type type();
+
+    String property() default "property";
 }
