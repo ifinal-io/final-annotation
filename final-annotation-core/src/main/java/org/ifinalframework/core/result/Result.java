@@ -127,6 +127,11 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
      */
     private IUser<?> operator;
 
+    /**
+     * @since 1.5.6
+     */
+    private String version;
+
     private Class<?> view;
 
     private Class<? extends Throwable> exception;
@@ -135,7 +140,7 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
     }
 
     public Result(final Integer status, final String description, final String code, final String message,
-        final T data) {
+                  final T data) {
         this.status = Objects.requireNonNull(status);
         this.description = Objects.requireNonNull(description);
         this.code = Objects.requireNonNull(code);
