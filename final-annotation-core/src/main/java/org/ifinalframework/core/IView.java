@@ -29,35 +29,63 @@ import jakarta.validation.groups.Default;
  */
 public interface IView extends Default {
 
+
+    /**
+     * list table view
+     */
     interface List extends IView {
     }
 
+    /**
+     * detail view
+     */
     interface Detail extends List {
 
     }
 
+    /**
+     * count view
+     */
     interface Count extends IView {
     }
 
+    /**
+     * create view
+     */
     interface Create extends IView {
 
     }
 
+    /**
+     * all update view
+     */
     interface Update extends IView {
 
     }
 
-    interface Patch extends IView{
+    /**
+     * patch update view
+     */
+    interface Patch extends IView {
 
     }
 
+    /**
+     * delete view
+     */
     interface Delete extends IView {
 
     }
 
+    /**
+     * import view
+     */
     interface Import extends IView {
     }
 
+    /**
+     * export view
+     */
     interface Export extends IView {
     }
 
