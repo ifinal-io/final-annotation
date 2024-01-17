@@ -15,12 +15,15 @@
 
 package org.ifinalframework.core.result;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.ifinalframework.core.IData;
 import org.ifinalframework.core.IException;
 import org.ifinalframework.core.IResult;
 import org.ifinalframework.core.IUser;
 import org.ifinalframework.core.ResponseStatus;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Duration;
 import java.util.List;
@@ -42,6 +45,7 @@ import lombok.Setter;
 @Getter
 public final class Result<T> implements IResult<T>, Responsible, Serializable {
 
+    @Serial
     private static final long serialVersionUID = -2801752781032532754L;
 
     /**
@@ -125,6 +129,7 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
     /**
      * 操作者
      */
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private IUser<?> operator;
 
     /**
@@ -132,8 +137,9 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
      */
     private String version;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Class<?> view;
-
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Class<? extends Throwable> exception;
 
     public Result() {
