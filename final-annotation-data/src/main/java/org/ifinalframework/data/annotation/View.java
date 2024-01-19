@@ -40,7 +40,7 @@ import java.lang.annotation.*;
  *      entityRepository.select(ViewName.class);
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see org.springframework.data.repository.Repository
  * @since 1.0.0

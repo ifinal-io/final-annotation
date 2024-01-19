@@ -24,7 +24,7 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Cache#increment(Object, Object, Long)
  * @see Cache#increment(Object, Object, Double)

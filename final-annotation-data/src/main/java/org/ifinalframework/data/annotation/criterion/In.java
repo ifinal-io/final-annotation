@@ -26,7 +26,7 @@ import org.springframework.core.annotation.AliasFor;
 import org.ifinalframework.data.query.condition.InCondition;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see NotIn
  * @see InCondition#in(Collection)

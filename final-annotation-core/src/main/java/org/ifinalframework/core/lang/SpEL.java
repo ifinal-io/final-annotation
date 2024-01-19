@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 /**
  * Annotated the {@link java.lang.reflect.Method} is supported {@code SpEl} in the {@link java.lang.annotation.Annotation}.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.2.2
  * @since 1.2.2
  */

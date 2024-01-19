@@ -23,7 +23,7 @@
  *     <li>The business exception should be an instance of {@link org.ifinalframework.core.IException}.</li>
  * </ul>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

@@ -26,7 +26,7 @@ import org.ifinalframework.data.query.condition.JsonCondition;
 /**
  * Generate sql fragment like {@code JSON_CONTAINS(${column},'${value}'[,'${path}']})}
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see NotJsonContains
  * @see JsonCondition#jsonContains(Object)

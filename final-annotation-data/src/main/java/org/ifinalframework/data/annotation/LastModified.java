@@ -33,7 +33,7 @@ import org.ifinalframework.core.lang.Default;
  *     <li>would not be generated sql when {@code insert} and {@code update}.</li>
  * </ul>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Created
  * @see LastModifier

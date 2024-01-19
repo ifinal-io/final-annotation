@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  * GROUP BY columns
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Orderable
  * @see Limitable

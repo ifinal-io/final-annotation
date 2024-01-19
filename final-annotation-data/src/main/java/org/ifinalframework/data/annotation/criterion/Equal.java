@@ -29,7 +29,7 @@ import org.ifinalframework.data.query.condition.CompareCondition;
  *     column = #{value, javaType=, typeHandler=}
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see NotEqual
  * @see CompareCondition#eq(Object)

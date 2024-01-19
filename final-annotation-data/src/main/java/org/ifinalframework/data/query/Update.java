@@ -55,7 +55,7 @@ import org.ifinalframework.data.query.update.Updatable;
  *     <li>set column with custom sql, see {@link #update(String, String, Object, Consumer)}</li>
  * </ul>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

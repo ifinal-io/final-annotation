@@ -23,7 +23,7 @@ import org.ifinalframework.data.annotation.criterion.IsNull;
 /**
  * NullCondition.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see IsNull
  * @see IsNotNull

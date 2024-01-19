@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 /**
  * RequestEntity
  *
- * @author mik
+ * @author iimik
  * @see org.springframework.web.bind.annotation.RequestBody
  * @since 1.5.2
  **/

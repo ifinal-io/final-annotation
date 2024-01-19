@@ -25,7 +25,7 @@ import org.springframework.core.annotation.AliasFor;
 import org.ifinalframework.data.query.condition.LikeCondition;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.2.1
  * @see LikeCondition#endsWith(String)
  * @since 1.2.1

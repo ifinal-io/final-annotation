@@ -19,7 +19,7 @@ import java.lang.annotation.*;
 import java.time.temporal.ChronoUnit;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see org.apache.shardingsphere.sharding.algorithm.sharding.datetime.IntervalShardingAlgorithm
  * @since 1.0.0

@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * UpdateConsumer
  *
- * @author mik
+ * @author iimik
  * @since 1.5.2
  **/
 @FunctionalInterface

@@ -26,7 +26,7 @@ import org.ifinalframework.data.query.BetweenValue;
 import org.ifinalframework.data.query.QProperty;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Between
  * @see BetweenValue

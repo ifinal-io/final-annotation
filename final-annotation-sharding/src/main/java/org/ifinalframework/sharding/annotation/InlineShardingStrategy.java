@@ -18,7 +18,7 @@ package org.ifinalframework.sharding.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration
  * @see org.apache.shardingsphere.infra.config.algorithm.ShardingSphereAlgorithmConfiguration

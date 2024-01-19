@@ -24,7 +24,7 @@ import org.ifinalframework.data.query.CriterionExpression;
 /**
  * BetweenCondition.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

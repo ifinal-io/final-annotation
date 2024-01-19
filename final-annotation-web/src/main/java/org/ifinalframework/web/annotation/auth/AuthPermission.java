@@ -25,7 +25,7 @@ import org.springframework.core.annotation.AliasFor;
 /**
  * AuthPermission.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.2
  * @since 1.4.2
  */

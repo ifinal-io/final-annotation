@@ -31,7 +31,7 @@ import org.ifinalframework.data.query.QProperty;
  *     column BETWEEN #{min} AND #{max}
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see QProperty#between(Object, Object)
  * @see BetweenValue

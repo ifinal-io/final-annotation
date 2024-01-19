@@ -24,7 +24,7 @@ import org.springframework.util.CollectionUtils;
 /**
  * AfterReturnQueryConsumer.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.3
  * @see PreQueryConsumer
  * @since 1.4.3

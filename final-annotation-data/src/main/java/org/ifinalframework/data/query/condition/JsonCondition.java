@@ -32,7 +32,7 @@ import org.ifinalframework.data.annotation.criterion.NotJsonContains;
 /**
  * A condition for sql json criterion.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see JsonContains
  * @see NotJsonContains

@@ -41,7 +41,7 @@ import lombok.Setter;
  * )
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Version
  * @see Created

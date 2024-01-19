@@ -22,7 +22,7 @@ import org.springframework.lang.NonNull;
 /**
  * PreConsumer.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.3
  * @see BiConsumer
  * @since 1.4.3

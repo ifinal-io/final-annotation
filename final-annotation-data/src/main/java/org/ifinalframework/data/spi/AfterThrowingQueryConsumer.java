@@ -24,7 +24,7 @@ import org.springframework.util.CollectionUtils;
 /**
  * AfterThrowingQueryConsumer.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.3
  * @since 1.4.3
  */

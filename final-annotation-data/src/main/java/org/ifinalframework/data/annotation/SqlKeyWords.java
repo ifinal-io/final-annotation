@@ -24,7 +24,7 @@ import java.util.Set;
 import org.springframework.lang.NonNull;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

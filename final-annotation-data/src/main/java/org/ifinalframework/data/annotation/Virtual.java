@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
  *      GENERATED ALWAYS AS JSON_UNQUOTE({column}-&gt;{path});
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Column
  * @see Prefix

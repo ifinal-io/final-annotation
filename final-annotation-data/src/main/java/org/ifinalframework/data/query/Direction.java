@@ -18,7 +18,7 @@ package org.ifinalframework.data.query;
 /**
  * 方向
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Order
  * @since 1.0.0

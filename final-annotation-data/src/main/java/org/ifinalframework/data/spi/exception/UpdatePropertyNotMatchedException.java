@@ -19,7 +19,7 @@ package org.ifinalframework.data.spi.exception;
 /**
  * UpdatePropertyNotMatchedException
  *
- * @author mik
+ * @author iimik
  * @since 1.5.6
  **/
 public class UpdatePropertyNotMatchedException extends RuntimeException{

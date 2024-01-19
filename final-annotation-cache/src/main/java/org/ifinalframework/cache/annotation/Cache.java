@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 缓存器，定义统一的缓存接口方法。
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

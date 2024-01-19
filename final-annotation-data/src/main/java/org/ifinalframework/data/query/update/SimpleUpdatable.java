@@ -22,7 +22,7 @@ import org.ifinalframework.data.query.Update;
 /**
  * SimpleUpdatable.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.3.5
  * @since 1.3.5
  */

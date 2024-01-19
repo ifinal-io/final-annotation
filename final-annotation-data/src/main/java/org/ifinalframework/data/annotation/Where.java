@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 /**
  * Where.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.5.0
  * @since 1.5.0
  */

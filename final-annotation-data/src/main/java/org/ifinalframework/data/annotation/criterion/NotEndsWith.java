@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 import org.springframework.core.annotation.AliasFor;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.2.1
  * @see Like
  * @since 1.2.1

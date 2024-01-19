@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 是否有效枚举，用于标记记录是否有效。
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see IEntity
  * @since 1.0.0

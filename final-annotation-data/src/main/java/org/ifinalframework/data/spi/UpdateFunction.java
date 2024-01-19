@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * UpdateAction.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.5.1
  * @see SelectFunction
  * @see DeleteFunction

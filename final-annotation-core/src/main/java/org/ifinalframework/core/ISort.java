@@ -18,7 +18,7 @@ package org.ifinalframework.core;
 /**
  * ISort
  *
- * @author mik
+ * @author iimik
  * @since 1.5.4
  **/
 public interface ISort {

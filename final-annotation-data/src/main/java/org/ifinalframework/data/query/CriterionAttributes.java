@@ -20,7 +20,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.ifinalframework.data.annotation.criterion.CriterionSqlProvider;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see CriterionSqlProvider
  * @since 1.0.0

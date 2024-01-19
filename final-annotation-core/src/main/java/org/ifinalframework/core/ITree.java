@@ -18,7 +18,7 @@ package org.ifinalframework.core;
 /**
  * ITree
  *
- * @author mik
+ * @author iimik
  * @since 1.5.5
  **/
 @Deprecated

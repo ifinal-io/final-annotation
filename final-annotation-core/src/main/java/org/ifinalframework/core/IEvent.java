@@ -21,7 +21,7 @@ package org.ifinalframework.core;
  * The marked interface of {@code event}.
  *
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see java.util.EventObject
  * @since 1.0.0

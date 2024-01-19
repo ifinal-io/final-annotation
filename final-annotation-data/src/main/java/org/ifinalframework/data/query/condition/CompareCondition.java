@@ -33,7 +33,7 @@ import org.ifinalframework.data.annotation.criterion.NotEqual;
 /**
  * CompareCondition.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

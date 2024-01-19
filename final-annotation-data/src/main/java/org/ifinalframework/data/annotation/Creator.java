@@ -34,7 +34,7 @@ import org.ifinalframework.core.lang.Final;
  * Annotate the {@linkplain java.lang.reflect.Field property} represent the {@linkplain IUser creator} which is
  * {@linkplain Final}.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Column
  * @see Created

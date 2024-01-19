@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  *
  * Annotate the {@linkplain java.lang.reflect.Field property} is {@literal final} which would not be updated.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

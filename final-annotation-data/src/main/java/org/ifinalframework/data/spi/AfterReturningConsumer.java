@@ -23,7 +23,7 @@ import org.springframework.lang.Nullable;
 /**
  * AfterThrowingConsumer.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.5.0
  * @see AfterThrowingConsumer
  * @see AfterReturningQueryConsumer

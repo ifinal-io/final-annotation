@@ -32,7 +32,7 @@ import lombok.NoArgsConstructor;
  * BETWEEN {min} AND {max}
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Between
  * @see NotBetween

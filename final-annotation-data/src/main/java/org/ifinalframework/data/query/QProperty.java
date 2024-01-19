@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

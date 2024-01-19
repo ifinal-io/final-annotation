@@ -21,7 +21,7 @@ import java.lang.annotation.Target;
 /**
  * PreAuth
  *
- * @author mik
+ * @author iimik
  * @since 1.5.2
  **/
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE, ElementType.TYPE})

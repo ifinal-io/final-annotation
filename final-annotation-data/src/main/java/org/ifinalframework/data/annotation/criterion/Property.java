@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 /**
  * Mark the {@link Criterion} method is a property.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

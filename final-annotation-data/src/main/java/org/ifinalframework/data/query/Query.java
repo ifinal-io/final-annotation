@@ -29,7 +29,7 @@ import java.util.Collection;
  *          .where(QProperty.eq.("name"));
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

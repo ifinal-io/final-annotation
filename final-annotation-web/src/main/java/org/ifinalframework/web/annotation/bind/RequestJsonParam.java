@@ -48,7 +48,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
  *     &#064;RequestBody = &#064;RequestJsonParam("requestBody")
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see RequestParam
  * @see RequestBody

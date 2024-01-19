@@ -23,7 +23,7 @@ import org.apache.shardingsphere.sharding.algorithm.sharding.mod.HashModSharding
 import org.apache.shardingsphere.sharding.algorithm.sharding.mod.ModShardingAlgorithm;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

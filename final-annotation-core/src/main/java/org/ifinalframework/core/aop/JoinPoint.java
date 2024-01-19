@@ -22,7 +22,7 @@ import org.ifinalframework.core.lang.Transient;
 /**
  * AOP切入点，用于描述缓存 {@link java.lang.annotation.Annotation} 的调用顺序。
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @since 1.0.0
  */

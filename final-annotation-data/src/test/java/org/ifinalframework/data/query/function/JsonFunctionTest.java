@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * JsonFunctionTest.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.3.5
  * @since 1.3.5
  */

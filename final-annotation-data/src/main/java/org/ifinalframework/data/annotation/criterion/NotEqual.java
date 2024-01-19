@@ -25,7 +25,7 @@ import org.springframework.core.annotation.AliasFor;
 import org.ifinalframework.data.query.condition.CompareCondition;
 
 /**
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Equal
  * @see CompareCondition#neq(Object)

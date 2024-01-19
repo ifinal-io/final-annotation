@@ -40,7 +40,7 @@ import org.ifinalframework.core.lang.Final;
  *     <li>would not be generated sql when {@code insert} and {@code update}.</li>
  * </ul>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Column
  * @see Default NOW()

@@ -25,7 +25,7 @@ import org.ifinalframework.data.query.Update;
 /**
  * Updatable.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.3.5
  * @since 1.3.5
  */

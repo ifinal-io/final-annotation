@@ -29,7 +29,7 @@ import org.ifinalframework.data.query.condition.LikeCondition;
  *      column LIKE CONCAT('%',#{value})
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.2.1
  * @see Like
  * @see NotStartsWith

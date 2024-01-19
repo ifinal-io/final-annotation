@@ -18,7 +18,7 @@ package org.ifinalframework.data.query;
 /**
  * SQL 元素
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Criteria
  * @since 1.0.0

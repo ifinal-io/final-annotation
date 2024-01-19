@@ -28,7 +28,7 @@ import org.ifinalframework.data.annotation.criterion.NotIn;
 /**
  * InCondition.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see In
  * @see NotIn

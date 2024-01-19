@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * INode
  *
- * @author mik
+ * @author iimik
  * @since 1.5.5
  **/
 public interface INode<K, T> {

@@ -18,7 +18,7 @@ package org.ifinalframework.core;
 /**
  * ITenant.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.2
  * @since 1.4.2
  */

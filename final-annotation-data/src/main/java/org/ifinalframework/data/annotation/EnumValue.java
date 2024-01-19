@@ -28,7 +28,7 @@ import org.ifinalframework.core.IEnum;
  * Annotate the bean {@linkplain java.lang.reflect.Field property} is a {@link Enum} which will be serialized some ext
  * property in json, such as {@literal xxxName} and {@literal xxxDesc}.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see IEnum
  * @since 1.0.0

@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 /**
  * RequestAction
  *
- * @author mik
+ * @author iimik
  * @since 1.5.2
  **/
 @Target(ElementType.PARAMETER)

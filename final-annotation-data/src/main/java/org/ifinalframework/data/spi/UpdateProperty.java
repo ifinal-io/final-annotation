@@ -18,7 +18,7 @@ package org.ifinalframework.data.spi;
 /**
  * UpdateProperty
  *
- * @author mik
+ * @author iimik
  * @since 1.5.6
  **/
 public interface UpdateProperty<T> {

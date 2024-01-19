@@ -22,7 +22,7 @@ import org.springframework.lang.Nullable;
  * {@linkplain #getSize()} are not null, and do count query only then the {@linkplain #getCount() count} is {@code
  * true}.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Limitable
  * @since 1.0.0

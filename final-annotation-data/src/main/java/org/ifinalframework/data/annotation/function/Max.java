@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 /**
  * Max.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Min
  * @since 1.0.0

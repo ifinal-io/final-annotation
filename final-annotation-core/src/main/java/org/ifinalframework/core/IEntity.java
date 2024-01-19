@@ -24,7 +24,7 @@ import org.springframework.lang.Nullable;
 /**
  * A marker superinterface of an entity must be impls.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see IEnum
  * @since 1.0.0

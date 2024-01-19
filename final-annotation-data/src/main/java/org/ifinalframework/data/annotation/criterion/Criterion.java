@@ -57,7 +57,7 @@ import org.ifinalframework.data.query.CriterionAttributes;
  *     <li>use {@link NotEndsWith} for `column NOT LIKE CONCAT(#{value},'%')`</li>
  * </ul>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see CriterionAttributes
  * @see CriterionSqlProvider

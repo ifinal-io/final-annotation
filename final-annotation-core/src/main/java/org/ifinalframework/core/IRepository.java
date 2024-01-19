@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * IRepository.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.2.2
  * @see ParamsBuilder
  * @since 1.2.2

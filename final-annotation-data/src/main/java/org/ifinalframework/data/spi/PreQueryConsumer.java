@@ -20,7 +20,7 @@ import org.springframework.lang.NonNull;
 /**
  * PreQueryConsumer.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.4.2
  * @see org.ifinalframework.core.IView.List
  * @since 1.4.2

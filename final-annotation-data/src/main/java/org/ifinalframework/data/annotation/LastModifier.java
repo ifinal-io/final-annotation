@@ -31,7 +31,7 @@ import org.ifinalframework.core.IUser;
 /**
  * Annotate the {@linkplain java.lang.reflect.Field property} represent a {@linkplain IUser last modifier}.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see Creator
  * @see IUser

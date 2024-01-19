@@ -33,7 +33,7 @@ import org.ifinalframework.data.query.condition.LikeCondition;
  *         &lt;if&gt;
  * </pre>
  *
- * @author ilikly
+ * @author iimik
  * @version 1.0.0
  * @see NotContains
  * @see StartsWith

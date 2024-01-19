@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * ParamsBuilder.
  *
- * @author ilikly
+ * @author iimik
  * @version 1.2.2
  * @see IRepository
  * @since 1.2.2
