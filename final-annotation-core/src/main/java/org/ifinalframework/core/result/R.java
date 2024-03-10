@@ -30,7 +30,7 @@ public final class R {
         throw new IllegalAccessError("There is no instance for you!");
     }
 
-    public static <T> Result<T> success() {
+    public static Result<?> success() {
         return success(null);
     }
 
@@ -46,7 +46,7 @@ public final class R {
     }
 
     public static Result<?> failure(@NonNull Integer status, @NonNull String description,
-                                       @NonNull String code, @NonNull String message) {
+                                    @NonNull String code, @NonNull String message) {
 
         return new Result<>(status, description, code, message);
     }

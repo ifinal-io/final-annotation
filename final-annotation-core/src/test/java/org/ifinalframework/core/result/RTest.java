@@ -49,7 +49,7 @@ class RTest {
 
     @Test
     void success() {
-        Result<Object> result = R.success();
+        Result<?> result = R.success();
         assertTrue(result.isSuccess());
         assertNull(result.getData());
         assertNull(result.getPagination());
