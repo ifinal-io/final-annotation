@@ -142,6 +142,12 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Class<? extends Throwable> exception;
 
+    /**
+     * 应用名称，一般取自 {@code spring.application.name}变量
+     */
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private String application;
+
     public Result() {
     }
 
