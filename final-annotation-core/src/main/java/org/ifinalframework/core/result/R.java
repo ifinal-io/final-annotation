@@ -45,13 +45,13 @@ public final class R {
         return new Result<>(ResponseStatus.SUCCESS.getCode(), ResponseStatus.SUCCESS.getDesc(), code, message, data);
     }
 
-    public static <T> Result<T> failure(@NonNull Integer status, @NonNull String description,
-                                        @NonNull String code, @NonNull String message) {
+    public static Result<?> failure(@NonNull Integer status, @NonNull String description,
+                                       @NonNull String code, @NonNull String message) {
 
         return new Result<>(status, description, code, message);
     }
 
-    public static <T> Result<T> failure(@NonNull Integer status, @NonNull String message) {
+    public static Result<?> failure(@NonNull Integer status, @NonNull String message) {
 
         return new Result<>(status, message);
     }
