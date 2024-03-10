@@ -15,13 +15,14 @@
 
 package org.ifinalframework.core.result;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,7 +83,7 @@ class RTest {
 
     @Test
     void failure() {
-        Result<Object> result = R.failure(123, "123");
+        Result<?> result = R.failure(123, "123");
         assertFalse(result.isSuccess());
         assertNull(result.getData());
         assertNull(result.getPagination());
@@ -94,7 +95,7 @@ class RTest {
     @ValueSource(ints = {1, 2, 3})
     void failureWithCode(int status) {
         String message = String.valueOf(status);
-        Result<Object> result = R.failure(status, message, message, message);
+        Result<?> result = R.failure(status, message, message, message);
         assertFalse(result.isSuccess());
         assertNull(result.getData());
         assertNull(result.getPagination());
