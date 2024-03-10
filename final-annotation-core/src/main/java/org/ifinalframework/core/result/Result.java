@@ -143,7 +143,9 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
     private Class<? extends Throwable> exception;
 
     /**
-     * 应用名称，一般取自 {@code spring.application.name}变量
+     * 应用名称，一般取自 {@code spring.application.name}变量。
+     *
+     * @since 1.6.0
      */
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String application;
