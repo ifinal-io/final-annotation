@@ -15,12 +15,18 @@
 
 package org.ifinalframework.data.spi;
 
-import java.util.List;
-
 import org.springframework.lang.NonNull;
 
+import java.util.List;
+
 /**
- * PreConsumer.
+ * Consumer.
+ * <p>
+ * 数据处理点，一般可用于：
+ * <ul>
+ *     <li>在{@code insert}之前对数据进行处理，如填充</li>
+ *     <li>在{@code select}之后对数据进行处理，如填充</li>
+ * </ul>
  *
  * @author iimik
  * @version 1.4.3
@@ -34,7 +40,6 @@ public interface Consumer<T, U> {
      * @param action   the spi action.
      * @param entities the entities will be deleted, maybe empty.
      * @param user     operator user.
-     *
      * @since 1.4.3
      */
     void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @NonNull U user);

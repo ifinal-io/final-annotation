@@ -28,14 +28,14 @@ import org.springframework.lang.Nullable;
  * @since 1.5.0
  */
 @FunctionalInterface
-public interface BiValidator<T, V, U> {
-    void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user);
+public interface BiValidator<T, P, U> {
+    void validate(@NonNull List<T> entities, @Nullable P param, @NonNull U user);
 
     @FunctionalInterface
     interface ForEach<T, V, U> extends BiValidator<T, V, U> {
         @Override
-        default void validate(@NonNull List<T> entities, @Nullable V value, @NonNull U user) {
-            entities.forEach(item -> validate(item, value, user));
+        default void validate(@NonNull List<T> entities, @Nullable V param, @NonNull U user) {
+            entities.forEach(item -> validate(item, param, user));
         }
 
         void validate(@NonNull T entity, @Nullable V value, @NonNull U user);

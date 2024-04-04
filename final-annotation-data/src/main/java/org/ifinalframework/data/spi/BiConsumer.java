@@ -21,10 +21,16 @@ import org.springframework.lang.Nullable;
 import java.util.List;
 
 /**
- * BiConsumer.
+ * 参数化数据处理点.
+ *
+ * 一般可用于：
+ * <ul>
+ *     <li>在{@code select}之后根据查询条件{@code query}进行处理，如数据填充</li>
+ * </ul>
  *
  * @author iimik
  * @version 1.5.0
+ * @see Consumer
  * @since 1.5.0
  */
 @FunctionalInterface
