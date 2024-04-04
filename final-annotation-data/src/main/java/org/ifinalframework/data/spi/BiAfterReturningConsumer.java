@@ -26,15 +26,15 @@ import org.springframework.util.CollectionUtils;
  *
  * @author iimik
  * @version 1.4.3
- * @see PreQueryConsumer
+ * @see QueryConsumer
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterReturningQueryConsumer<T, Q, U> {
+public interface BiAfterReturningConsumer<T, Q, U> {
 
     void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e);
 
-    interface ForEach<T, Q, U> extends AfterReturningQueryConsumer<T, Q, U> {
+    interface ForEach<T, Q, U> extends BiAfterReturningConsumer<T, Q, U> {
         default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @Nullable Throwable e) {
             if (CollectionUtils.isEmpty(entities)) {
                 accept(action, (T) null, query, user, e);

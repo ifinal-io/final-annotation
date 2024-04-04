@@ -15,10 +15,10 @@
 
 package org.ifinalframework.data.spi;
 
-import java.util.List;
-
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
+
+import java.util.List;
 
 /**
  * BiConsumer.
@@ -27,14 +27,22 @@ import org.springframework.lang.Nullable;
  * @version 1.5.0
  * @since 1.5.0
  */
-public interface BiConsumer<T, V, U> {
-    void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user);
+@FunctionalInterface
+public interface BiConsumer<T, P, U> {
+    /**
+     * @param action   操作类型
+     * @param advice   切点
+     * @param entities 查询到的结果集
+     * @param param    参数
+     * @param user     操作用户
+     */
+    void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable P param, @NonNull U user);
 
     @FunctionalInterface
     interface ForEach<T, V, U> extends BiConsumer<T, V, U> {
         @Override
-        default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V value, @NonNull U user) {
-            entities.forEach(item -> accept(action, advice, item, value, user));
+        default void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull List<T> entities, @Nullable V param, @NonNull U user) {
+            entities.forEach(item -> accept(action, advice, item, param, user));
         }
 
         void accept(@NonNull SpiAction action, @NonNull SpiAction.Advice advice, @NonNull T entity, @Nullable V value, @NonNull U user);

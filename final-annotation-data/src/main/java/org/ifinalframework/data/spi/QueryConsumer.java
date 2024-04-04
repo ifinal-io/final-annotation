@@ -15,18 +15,25 @@
 
 package org.ifinalframework.data.spi;
 
+import org.springframework.lang.NonNull;
+
 /**
- * PreQueryConsumer.
+ * 查询消费者.
+ * <p>
+ * 开发者可以对用户的请求参数进行加工处理。
  *
  * @author iimik
- * @version 1.4.2
+ * @version 1.6.0
  * @see org.ifinalframework.core.IView.List
- * @see QueryConsumer
- * @since 1.4.2
- * @deprecated {@link QueryConsumer}
+ * @since 1.6.0
  */
-@Deprecated
 @FunctionalInterface
-public interface PreQueryConsumer<Q, U> extends QueryConsumer<Q, U> {
-
+public interface QueryConsumer<Q, U> {
+    /**
+     * 对用户的请求参数发进行加工处理
+     *
+     * @param query 用户查询参数
+     * @param user  当前操作用户
+     */
+    void accept(@NonNull SpiAction action, @NonNull Q query, @NonNull U user);
 }

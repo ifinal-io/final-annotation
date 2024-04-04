@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  * @author iimik
  * @version 1.5.0
  * @see AfterThrowingConsumer
- * @see AfterReturningQueryConsumer
+ * @see BiAfterReturningConsumer
  * @since 1.5.0
  */
 @FunctionalInterface
