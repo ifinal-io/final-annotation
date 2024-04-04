@@ -29,11 +29,11 @@ import org.springframework.util.CollectionUtils;
  * @since 1.4.3
  */
 @FunctionalInterface
-public interface AfterThrowingQueryConsumer<T, Q, U> {
+public interface BiAfterThrowingConsumer<T, Q, U> {
     void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e);
 
     @FunctionalInterface
-    interface ForEach<T, Q, U> extends AfterThrowingQueryConsumer<T, Q, U> {
+    interface ForEach<T, Q, U> extends BiAfterThrowingConsumer<T, Q, U> {
 
         default void accept(@NonNull SpiAction action, @Nullable List<T> entities, @NonNull Q query, @NonNull U user, @NonNull Throwable e) {
             if (CollectionUtils.isEmpty(entities)) {
