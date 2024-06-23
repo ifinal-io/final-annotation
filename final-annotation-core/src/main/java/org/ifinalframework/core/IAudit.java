@@ -15,33 +15,73 @@
 
 package org.ifinalframework.core;
 
+import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDateTime;
-
 /**
- * IAudit.
+ * 可审核对象接口。
  *
  * @author iimik
  * @version 1.5.1
  * @since 1.5.1
  */
 public interface IAudit<T extends IUser<?>> {
+    /**
+     * 设置审核状态
+     *
+     * @param status 审核状态
+     */
     void setAuditStatus(AuditStatus status);
 
+    /**
+     * 获取审核状态
+     *
+     * @return 审核状态
+     */
     AuditStatus getAuditStatus();
 
+    /**
+     * 设置审核内容
+     *
+     * @param auditContent 审核内容
+     */
     void setAuditContent(String auditContent);
 
+    /**
+     * 获取审核内容
+     *
+     * @return 审核内容
+     */
     String getAuditContent();
 
+    /**
+     * 设置审核时间
+     *
+     * @param auditDateTime 审核时间
+     */
     void setAuditDateTime(LocalDateTime auditDateTime);
 
+    /**
+     * 获取审核时间
+     *
+     * @return 审核时间
+     */
     LocalDateTime getAuditDateTime();
 
+    /**
+     * 设置审核人
+     *
+     * @param auditor 审核人
+     */
     void setAuditor(T auditor);
 
+    /**
+     * 获取审核人
+     *
+     * @return 审核人
+     */
     T getAuditor();
 
     @Getter
