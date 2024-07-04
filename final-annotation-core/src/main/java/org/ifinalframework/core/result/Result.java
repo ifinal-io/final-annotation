@@ -37,6 +37,7 @@ import lombok.Setter;
 /**
  * 业务数据返回结果封装，统一业务返回的数据结构。
  *
+ *
  * @author iimik
  * @version 1.0.0
  * @since 1.0.0
@@ -171,7 +172,6 @@ public final class Result<T> implements IResult<T>, Responsible, Serializable {
     }
 
     public Result(final Integer status, final String description) {
-
         this(status, description, status.toString(), description);
     }
 

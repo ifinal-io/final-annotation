@@ -28,12 +28,12 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ResponseStatus implements IEnum<Integer> {
-    SUCCESS(0, "Success"),
-    BAD_REQUEST(400, "Bad Request"),
-    UNAUTHORIZED(401, "Unauthorized"),
-    FORBIDDEN(403, "Forbidden"),
-    NOT_FOUND(404, "Not Found"),
-    INTERNAL_SERVER_ERROR(500, "Internal Server Error");
+    SUCCESS(0, "成功"),
+    BAD_REQUEST(400, "错误的请求"),
+    UNAUTHORIZED(401, "未登录"),
+    FORBIDDEN(403, "未授权"),
+    NOT_FOUND(404, "未找到"),
+    INTERNAL_SERVER_ERROR(500, "服务错误");
 
     private final Integer code;
 
