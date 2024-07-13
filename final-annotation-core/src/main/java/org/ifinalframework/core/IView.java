@@ -31,13 +31,13 @@ public interface IView extends Default {
 
 
     /**
-     * list table view
+     * 列表查询视图，URL一般为 {@code /{prefix}/{entities}}
      */
     interface List extends IView {
     }
 
     /**
-     * detail view
+     * 详情查询视图，URL一般为 {@code /{prefix}/{entities}/{id}}
      */
     interface Detail extends List {
 

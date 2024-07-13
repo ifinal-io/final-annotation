@@ -15,6 +15,8 @@
 
 package org.ifinalframework.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * ILock.
  *
@@ -23,7 +25,24 @@ package org.ifinalframework.core;
  * @since 1.5.0
  */
 public interface ILock {
+    /**
+     * 设置锁定状态
+     * @param locked
+     */
     void setLocked(Boolean locked);
 
+    /**
+     * 获取锁定状态
+     * @return
+     */
     Boolean getLocked();
+
+    /**
+     * 是否锁定
+     * @return
+     */
+    @JsonIgnore
+    default boolean isLocked(){
+        return Boolean.TRUE.equals(getLocked());
+    }
 }
